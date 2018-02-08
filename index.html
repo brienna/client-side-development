@@ -1,0 +1,45 @@
+
+<head>
+    <style> 
+        body {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+    </form>
+
+
+    <script>
+        window.onload = function() {
+            var optionTexts = ["Choose this", "or this"];
+            var form = document.getElementsByTagName('form')[0];
+            createDropMenu(form, optionTexts);
+        };
+
+        // Creates all of the dropdowns
+        function createDropMenu(parentNode, optionTexts) {
+            var select = document.createElement("select");
+            select.name = "example name";
+            
+            // For each text,
+            for (var i = 0; i < optionTexts.length; i++) {
+                // Create <option> element
+                var option = document.createElement("option");
+                // Create text node for <option> element
+                var optionText = document.createTextNode(optionTexts[i]);
+                // Append text node to <option> element
+                option.appendChild(optionText);
+                // Append <option> element to <select> element
+                select.appendChild(option);
+            }
+            
+            parentNode.appendChild(select);
+        }
+    </script>
+</body>
+
+
+
