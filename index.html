@@ -14,9 +14,10 @@
 
     <script>
         var form = document.getElementsByTagName('form')[0];
-        var node;
+        var currentNode;
+        var currentNum; // keeps track of <select> elements
         var optionTexts = {
-            1: {
+            1: {"Choose": null,
                 "One" : {"One point one": {}, 
                         "One point two": {}, 
                         "One point three": {}},
@@ -27,15 +28,16 @@
 
         window.onload = function() {
             // Set optionTexts node 'pointer' to first node
-            node = optionTexts[1]; 
-            createDropMenu(Object.keys(node));
+            currentNum = 1;
+            currentNode = optionTexts[1]; 
+            createDropMenu(Object.keys(currentNode), currentNum);
         };
 
         // Creates all of the dropdowns
-        function createDropMenu(texts) {
+        function createDropMenu(texts, num) {
             var select = document.createElement("select");
-            select.name = "main";
-            select.onchange = function() { getNext(this.value) };
+            select.name = num;
+            select.onchange = function() { getNext(this) };
             
             // For each text,
             for (var i = 0; i < texts.length; i++) {
@@ -55,13 +57,22 @@
         }
 
         // Search for next options based on the option selected
-        function getNext(text) {
-            for (var key in node) {
-                if (key == text) {
-                    node = node[key];
-                    console.log(node);
-                    createDropMenu(Object.keys(node));
+        function getNext(element) {
+            // Clear any <select>s afterward
+            otherEles = form.getElementsByTagName('select');
+            for (var i = 0; i < otherEles.length; i++) {
+                if (otherEles[i].name > element.name) {
+                    form.removeChild(otherEles[i]);
                 }
+            }
+
+            var list = currentNode;
+            for (var key in list) {
+                if (key == element.value) {
+                    currentNode = list[key];
+                    currentNum++;
+                    createDropMenu(Object.keys(currentNode), currentNum);
+                } 
             }
         }
     </script>
