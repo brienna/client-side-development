@@ -13,10 +13,19 @@
 
 
     <script>
+        var optionTexts = {
+            1: {
+                "One" : {"One point one": {}, 
+                        "One point two": {}, 
+                        "One point three": {}},
+                "Two": {"Two point one": {"2. 1. 1.": {}},
+                        "Two point two": {"2. 2. 2.": {}}}
+            }
+        };
+
         window.onload = function() {
-            var optionTexts = ["Choose this", "or this"];
             var form = document.getElementsByTagName('form')[0];
-            createDropMenu(form, optionTexts);
+            createDropMenu(form, Object.keys(optionTexts[1]));
         };
 
         // Creates all of the dropdowns
