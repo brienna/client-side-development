@@ -13,6 +13,8 @@
 
 
     <script>
+        var form = document.getElementsByTagName('form')[0];
+        var node;
         var optionTexts = {
             1: {
                 "One" : {"One point one": {}, 
@@ -24,28 +26,43 @@
         };
 
         window.onload = function() {
-            var form = document.getElementsByTagName('form')[0];
-            createDropMenu(form, Object.keys(optionTexts[1]));
+            // Set optionTexts node 'pointer' to first node
+            node = optionTexts[1]; 
+            createDropMenu(Object.keys(node));
         };
 
         // Creates all of the dropdowns
-        function createDropMenu(parentNode, optionTexts) {
+        function createDropMenu(texts) {
             var select = document.createElement("select");
-            select.name = "example name";
+            select.name = "main";
+            select.onchange = function() { getNext(this.value) };
             
             // For each text,
-            for (var i = 0; i < optionTexts.length; i++) {
-                // Create <option> element
+            for (var i = 0; i < texts.length; i++) {
+                // Create <option> 
                 var option = document.createElement("option");
-                // Create text node for <option> element
-                var optionText = document.createTextNode(optionTexts[i]);
-                // Append text node to <option> element
+                // Create text node for <option> 
+                var optionText = document.createTextNode(texts[i]);
+                // Assign same text to value attr of <option> 
+                option.value = texts[i];
+                // Append text node to <option> 
                 option.appendChild(optionText);
-                // Append <option> element to <select> element
+                // Append <option> to <select> 
                 select.appendChild(option);
             }
             
-            parentNode.appendChild(select);
+            form.appendChild(select);
+        }
+
+        // Search for next options based on the option selected
+        function getNext(text) {
+            for (var key in node) {
+                if (key == text) {
+                    node = node[key];
+                    console.log(node);
+                    createDropMenu(Object.keys(node));
+                }
+            }
         }
     </script>
 </body>
