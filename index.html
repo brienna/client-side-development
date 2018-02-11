@@ -13,19 +13,37 @@
 
 
     <script>
-        var form = document.getElementsByTagName('form')[0];
-        var currentNode;
-        var currentNum; // keeps track of <select> elements
         var optionTexts = {
-            1: {"Choose": null,
-                "One" : {"One point one": {}, 
-                        "One point two": {}, 
-                        "One point three": {}},
-                "Two": {"Two point one": {"2. 1. 1.": {}},
-                        "Two point two": {"2. 2. 2.": {}}}
+            1: {
+                "Choose gender": null, 
+                "M": 
+                    {"Facial hair?": null,
+                    "H": 
+                        {"Complexion?": null,
+                        "D": null, 
+                        "L": null}, 
+                    "NH": 
+                        {"Build?": null,
+                        "B": null, 
+                        "S": null}
+                    },
+                "W": 
+                    {"Blonde/Brunette?": null, 
+                    "Blonde": 
+                        {"Height?": null,
+                            "T": null, 
+                            "S": null},
+                    "Brunette":
+                        {"Eyes?": null,
+                        "Br": null, 
+                        "Bl": null}
+                    }
             }
         };
 
+        var form = document.getElementsByTagName('form')[0];
+        var currentNode;
+        var currentNum; // keeps track of <select> elements
         window.onload = function() {
             // Set optionTexts node 'pointer' to first node
             currentNum = 1;
@@ -35,6 +53,7 @@
 
         // Creates all of the dropdowns
         function createDropMenu(texts, num) {
+            console.log("creating select #" + num + "with " + texts);
             var select = document.createElement("select");
             select.name = num;
             select.onchange = function() { getNext(this) };
@@ -57,24 +76,38 @@
         }
 
         // Search for next options based on the option selected
-        function getNext(element) {
-            // Clear any <select>s afterward
-            otherEles = form.getElementsByTagName('select');
-            for (var i = 0; i < otherEles.length; i++) {
-                if (otherEles[i].name > element.name) {
-                    form.removeChild(otherEles[i]);
+        function getNext(select) {
+            console.log("selected " + select.name);
+            navigate(optionTexts[1]);
+
+            function navigate(node) {
+                if (node == null) {
+                    return;
+                } 
+
+                for (var key in node) {
+                    if (node[key] != null && key == select.value) {
+                        // Clear any <select>s after current <select>
+                        selects = form.getElementsByTagName('select');
+                        for (var i = 0; i < selects.length; i++) {
+                            console.log(selects[i]);
+                            if (selects[i].name > select.name) {
+                                form.removeChild(selects[i]);
+                            }
+                        }
+
+                        currentNode = node[key];
+                        currentNum = Number(select.name) + 1;
+                        createDropMenu(Object.keys(currentNode), currentNum);
+                        return;
+                    } else {
+                        navigate(node[key]);
+                    }
                 }
             }
-
-            var list = currentNode;
-            for (var key in list) {
-                if (key == element.value) {
-                    currentNode = list[key];
-                    currentNum++;
-                    createDropMenu(Object.keys(currentNode), currentNum);
-                } 
-            }
         }
+
+        
     </script>
 </body>
 
