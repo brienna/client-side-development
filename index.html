@@ -42,27 +42,29 @@
         };
 
         var form = document.getElementsByTagName('form')[0];
-        var currentNode;
-        var currentNum; // keeps track of <select> elements
+        var currNode;
+        var activeSelectId; // keeps track of <select> elements
         window.onload = function() {
             // Set optionTexts node 'pointer' to first node
-            currentNum = 1;
-            currentNode = optionTexts[1]; 
-            createDropMenu(Object.keys(currentNode), currentNum);
+            activeSelectId = 1;
+            currNode = optionTexts[1];
+            createDropMenu(Object.keys(currNode), activeSelectId);
         };
 
         // Creates all of the dropdowns
-        function createDropMenu(texts, num) {
-            console.log("creating select #" + num + "with " + texts);
+        function createDropMenu(texts, id) {
+            console.log("creating select #" + id + " with " + texts);
             var select = document.createElement("select");
-            select.name = num;
-            select.onchange = function() { getNext(this) };
+            select.name = id;
+            select.onchange = function() { 
+                getNext(this); 
+            };
             
             // For each text,
             for (var i = 0; i < texts.length; i++) {
-                // Create <option> 
+                // Create <option>
                 var option = document.createElement("option");
-                // Create text node for <option> 
+                // Create text node for <option>
                 var optionText = document.createTextNode(texts[i]);
                 // Assign same text to value attr of <option> 
                 option.value = texts[i];
@@ -77,34 +79,42 @@
 
         // Search for next options based on the option selected
         function getNext(select) {
+
+            console.log(" ");
             console.log("selected " + select.name);
+
+            // Clear any <select>s after current <select>
+            selects = form.getElementsByTagName('select');
+            console.log("there are this amount of selects: "+selects.length);
+            for (var i = 0; i < selects.length; i++) {
+                console.log(selects[i].name + " " + select.name);
+                if (selects[i].name > select.name) {
+                    console.log("clearing " + selects[i].name);
+                    form.removeChild(selects[i]);
+                }
+            }
+
+            // Search data structure for matching selection, beginning with first node
             navigate(optionTexts[1]);
 
             function navigate(node) {
+                // If node is null, stop navigating
                 if (node == null) {
                     return;
-                } 
+                }
 
                 for (var key in node) {
                     if (node[key] != null && key == select.value) {
-                        // Clear any <select>s after current <select>
-                        selects = form.getElementsByTagName('select');
-                        for (var i = 0; i < selects.length; i++) {
-                            console.log(selects[i]);
-                            if (selects[i].name > select.name) {
-                                form.removeChild(selects[i]);
-                            }
-                        }
-
-                        currentNode = node[key];
-                        currentNum = Number(select.name) + 1;
-                        createDropMenu(Object.keys(currentNode), currentNum);
+                        currNode = node[key];
+                        activeSelectId = Number(select.name) + 1;
+                        createDropMenu(Object.keys(currNode), activeSelectId);
                         return;
                     } else {
                         navigate(node[key]);
                     }
                 }
             }
+
         }
 
         
