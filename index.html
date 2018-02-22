@@ -84,13 +84,14 @@
             console.log("selected " + select.name);
 
             // Clear any <select>s after current <select>
-            selects = form.getElementsByTagName('select');
+            selectsLive = form.getElementsByTagName('select');
+            selects = form.querySelectorAll('select');
             console.log("there are this amount of selects: "+selects.length);
             for (var i = 0; i < selects.length; i++) {
                 console.log(selects[i].name + " " + select.name);
                 if (selects[i].name > select.name) {
                     console.log("clearing " + selects[i].name);
-                    form.removeChild(selects[i]);
+                    form.removeChild(selectsLive.namedItem(selects[i].name));
                 }
             }
 
