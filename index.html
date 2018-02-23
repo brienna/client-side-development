@@ -4,13 +4,13 @@
         body {
             background-color: lightgray;
         }
+
     </style>
 </head>
 
 <body>
     <form>
     </form>
-
 
     <script>
         var optionTexts = {
@@ -74,12 +74,16 @@
                 select.appendChild(option);
             }
             
+            // Add the new dropdown menu to the form with animation
+            select.style.opacity = 0;
             form.appendChild(select);
+            fadeIn(select);
         }
+
+
 
         // Search for next options based on the option selected
         function getNext(select) {
-
             console.log(" ");
             console.log("selected " + select.name);
 
@@ -115,7 +119,24 @@
                     }
                 }
             }
+        };
 
+
+        function fadeIn(e) {
+            // Incremental animation
+            var tick = function() {
+                e.style.opacity = +e.style.opacity + 0.05;
+                    if (+e.style.opacity < 1) {
+                        // If the browser supports window.requestAnimationFrame
+                        if (window.requestAnimationFrame) {
+                            window.requestAnimationFrame(tick);
+                        } else {
+                            setTimeout(tick, 16);
+                        }
+                    }
+            };
+            // Begin animation
+            tick();
         }
 
         
