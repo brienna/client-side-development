@@ -25,11 +25,11 @@
             // Check if name has been saved, then show
             if (window.localStorage.name) {
                 name = window.localStorage.name;
-                showName();
+                showName(true);
             } else {
                 // If not, prompt user for name, then save
                 p.firstChild.nodeValue = "Welcome! Who are you? ";
-                showName();
+                showName(false);
             }
 
             function changeName() {
@@ -48,14 +48,18 @@
                         changeName();
                     } else {
                         window.localStorage.name = name;
-                        showName();
+                        showName(false);
                     }
                 });
             }
 
-            function showName() {
+            function showName(returned) {
                 // Show name
-                p.firstChild.nodeValue = "Welcome, " + name + "! ";
+                if (returned) {
+                    p.firstChild.nodeValue = "Welcome back, " + name + "! ";
+                } else {
+                    p.firstChild.nodeValue = "Welcome, " + name + "! ";
+                }
                 // Give user option to change name again
                 var a = document.createElement('a');
                 a.appendChild(document.createTextNode('(Not you?)'));
@@ -64,7 +68,7 @@
                     p.removeChild(a);
                     p.firstChild.nodeValue = "Welcome! Who are you? ";
                     changeName(); 
-                    return false; 
+                    return false;  // so browser doesn't redirect? 
                 }
                 p.appendChild(a);
             }
