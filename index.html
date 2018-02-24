@@ -39,11 +39,12 @@
                 p.appendChild(nameInput);
                 p.appendChild(nameSubmit);
                 nameSubmit.addEventListener('click', function() {
-                    name = nameInput.value;
+                    // Trim white spaces from beginning & end of input
+                    name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
                     // If empty string, prompt user again for name
                     p.removeChild(nameSubmit);
                     p.removeChild(nameInput);
-                    if (!name) {
+                    if (name.length == 0) {
                         changeName();
                     } else {
                         window.localStorage.name = name;
@@ -67,7 +68,7 @@
                 }
                 p.appendChild(a);
             }
-        }
+        } 
 
         var optionTexts = {
             1: {
