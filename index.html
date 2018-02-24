@@ -2,8 +2,23 @@
 <head>
     <style> 
         body {
-            background-color: lightgray;
+            background-color: #F9FAFC;
+            font-size: 14px;
+            font-family: Arial;
+            color: #3a3a3a;
         }
+
+        p {
+            font-weight: bold;
+        }
+
+        a {
+            color: #7ABBDB;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+
 
     </style>
 </head>
@@ -18,61 +33,85 @@
         var form = document.getElementsByTagName('form')[0];
         var p = document.getElementById('name');
 
-        // Show or request user name
-        // If browser supports window.localStorage, 
-        if (window.localStorage) {
-            var name; 
-            // Check if name has been saved, then show
-            if (window.localStorage.name) {
-                name = window.localStorage.name;
-                showName(true);
-            } else {
-                // If not, prompt user for name, then save
-                p.firstChild.nodeValue = "Welcome! Who are you? ";
-                showName(false);
-            }
+        ///////////////////////////////// GREETING /////////////////////////////////
+        var greeting = "Welcome to the geometrical rains";
+        var returnGreeting = "Welcome back to the geometrical rains";
+        var name; 
+        getNameFromStorage();
 
-            function changeName() {
-                var nameInput = document.createElement('input');
-                var nameSubmit = document.createElement('button');
-                nameSubmit.appendChild(document.createTextNode('Submit'));
-                p.appendChild(nameInput);
-                p.appendChild(nameSubmit);
-                nameSubmit.addEventListener('click', function() {
-                    // Trim white spaces from beginning & end of input
-                    name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-                    // If empty string, prompt user again for name
+        function getNameFromStorage() {
+            // If browser supports localStorage, retrieve name & show
+            if (window.localStorage) {
+                if (window.localStorage.name) {
+                    name = window.localStorage.name;
+                    showName(true);
+                } else {
+                    // Otherwise prompt for name
+                    promptName();
+                }
+            } else {
+                // If browser doesn't support window.localStorage, check cookies for name
+                if (document.cookie.indexOf('nameCookie') != -1) {
+                    name = document.cookie.match(/nameCookie=([\w\s]+)/)[1];
+                    showName(true);
+                } else {
+                    // Otherwise prompt for name
+                    promptName();
+                }
+            }
+        }
+
+        function promptName() {
+            p.firstChild.nodeValue = greeting + "! Who are you? ";
+            var nameInput = document.createElement('input');
+            var nameSubmit = document.createElement('button');
+            nameSubmit.appendChild(document.createTextNode('Submit'));
+            p.appendChild(nameInput);
+            p.appendChild(nameSubmit);
+            nameSubmit.addEventListener('click', function() {
+                // Trim white spaces from beginning & end of input
+                name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+                // Show name if it isn't a empty string
+                if (name.length != 0) {
                     p.removeChild(nameSubmit);
                     p.removeChild(nameInput);
-                    if (name.length == 0) {
-                        changeName();
-                    } else {
-                        window.localStorage.name = name;
-                        showName(false);
-                    }
-                });
-            }
+                    saveName();
+                    showName(false);
+                }
+            });
+        }
 
-            function showName(returned) {
-                // Show name
-                if (returned) {
-                    p.firstChild.nodeValue = "Welcome back, " + name + "! ";
-                } else {
-                    p.firstChild.nodeValue = "Welcome, " + name + "! ";
-                }
-                // Give user option to change name again
-                var a = document.createElement('a');
-                a.appendChild(document.createTextNode('(Not you?)'));
-                a.setAttribute('href', '#');
-                a.onclick = function() {
-                    p.removeChild(a);
-                    p.firstChild.nodeValue = "Welcome! Who are you? ";
-                    changeName(); 
-                    return false;  // so browser doesn't redirect? 
-                }
-                p.appendChild(a);
+        function showName(returned) {
+            // Show name
+            if (returned) {
+                p.firstChild.nodeValue = returnGreeting + ", " + name + "! ";
+            } else {
+                p.firstChild.nodeValue = greeting + ", " + name + "! ";
             }
-        } 
+            // Give user option to change name again
+            var a = document.createElement('a');
+            a.appendChild(document.createTextNode('(Not you?)'));
+            a.setAttribute('href', '#');
+            a.onclick = function() {
+                p.removeChild(a);
+                promptName();
+                return false;  // so browser doesn't redirect? 
+            }
+            p.appendChild(a);
+        }
+
+        function saveName() {
+            // Save to localStorage or cookie
+            if (window.localStorage) {
+                window.localStorage.name = name;
+                console.log("saved " + name + " to localStorage");
+            } else {
+                var nextyear = new Date();
+                nextyear.setFullYear(nextyear.getFullYear()+1);
+                document.cookie = "nameCookie=" + name + "; expires=" + nextyear.toGMTString() + "; path=/";
+                console.log("saved " + name + " to cookie");
+            }
+        }
 
         var optionTexts = {
             1: {
