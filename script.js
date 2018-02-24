@@ -7,6 +7,28 @@ window.onload = function() {
     // Access form 
     var form = document.getElementsByTagName('form')[0];
     var p = document.getElementById('name');
+    var selectsLive = form.getElementsByTagName('select');
+    var optionTexts;  // holds text for questions & choices
+    var currNode;
+    var activeSelectId = 1; // keeps track of <select> elements
+
+    ///////////////////////////////// LOAD DATA /////////////////////////////////
+
+    // Create the HTTP object
+    var xmlhttp = new XMLHttpRequest();
+    var dataUrl = 'data.json';
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            optionTexts = JSON.parse(this.responseText);
+            // Set optionTexts node 'pointer' to first node
+            currNode = optionTexts[1];
+            createDropMenu(Object.keys(currNode), activeSelectId);
+            getUserChoices();
+        }
+    };
+    xmlhttp.open("GET", dataUrl);
+    xmlhttp.send();
+
 
     ///////////////////////////////// SHOW GREETING /////////////////////////////////
     var greeting = "Welcome to the geometric rains";
@@ -17,8 +39,8 @@ window.onload = function() {
     function getNameFromStorage() {
         // If browser supports localStorage, retrieve name & show
         if (window.localStorage) {
-            if (window.localStorage.name) {
-                name = window.localStorage.name;
+            name = window.localStorage.getItem('name');
+            if (name) {
                 showName(true);
             } else {
                 // Otherwise prompt for name
@@ -78,8 +100,8 @@ window.onload = function() {
     function saveName() {
         // Save to localStorage or cookie
         if (window.localStorage) {
-            window.localStorage.name = name;
-            console.log("saved " + name + " to localStorage");
+            window.localStorage.setItem('name', name)
+            console.log("saved " + window.localStorage.getItem('name') + " to localStorage");
         } else {
             var nextyear = new Date();
             nextyear.setFullYear(nextyear.getFullYear()+1);
@@ -87,38 +109,22 @@ window.onload = function() {
             console.log("saved " + name + " to cookie");
         }
     }
-
-
-    ///////////////////////////////// LOAD DATA /////////////////////////////////
-
-    var optionTexts;  // holds text for questions & choices
-    var currNode;
-    var activeSelectId; // keeps track of <select> elements
-
-    // Create the HTTP object
-    var xmlhttp = new XMLHttpRequest();
-    var dataUrl = 'data.json';
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            optionTexts = JSON.parse(this.responseText);
-            // Set optionTexts node 'pointer' to first node
-            activeSelectId = 1;
-            currNode = optionTexts[1];
-            createDropMenu(Object.keys(currNode), activeSelectId);
-        }
-    };
-    xmlhttp.open("GET", dataUrl);
-    xmlhttp.send();
-
     
     ///////////////////////////////// SHOW MENUS /////////////////////////////////
-    
+
     // Creates all of the dropdowns
     function createDropMenu(texts, id) {
         var select = document.createElement("select");
         select.name = id;
         select.addEventListener('change', function(e) { 
             getNext(this);
+            // If last menu has been changed, save user choices
+            if (select.name == (Object.keys(optionTexts[1])).length) {
+                saveUserChoices();
+                form.style.border = '1px solid #00000';
+            } else {
+                form.style.border = '0px solid #00000';
+            }
         });
         
         // Create question <p>
@@ -146,10 +152,37 @@ window.onload = function() {
         fadeIn(select);
     }
 
+    function saveUserChoices() {
+        console.log('saving user choices...');
+        // Save choice for each select element
+        for (var i = 0; i < selectsLive.length; i++) {
+            if (window.localStorage) {
+                window.localStorage.setItem((i+1), selectsLive[i].value);
+            }
+        }
+    }
+
+    function getUserChoices() {
+        // Check if user choices exist
+        if (window.localStorage) {
+            // If a choice has been saved, proceed
+            var selectName = 1;
+            while (true) {
+                var choice = window.localStorage.getItem(selectName);
+                if (!choice) {
+                    break;
+                }
+                var selectElement = selectsLive.namedItem(selectName);
+                selectElement.value = choice;
+                getNext(selectElement);
+                selectName += 1;
+            }
+        }
+    }
+
     // Search for next options based on the option selected
     function getNext(select) {
         // Clear any <select>s after current <select>
-        selectsLive = form.getElementsByTagName('select');
         selects = form.querySelectorAll('select');
         for (var i = 0; i < selects.length; i++) {
             if (selects[i].name > select.name) {
