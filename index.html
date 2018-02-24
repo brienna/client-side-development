@@ -8,6 +8,7 @@
             font-size: 14px;
             font-family: Arial;
             color: #3a3a3a;
+            text-align: center;
         }
 
         p {
@@ -20,6 +21,15 @@
             font-weight: normal;
         }
 
+        select {
+            margin: 0 auto;
+            display: block;
+        }
+
+        .question {
+            color: gray;
+        }
+
 
 
     </style>
@@ -27,7 +37,7 @@
 
 <body>
     <p id="name">Welcome! </p>
-    <p>Customize your world...</p>
+    <p>Customize your rain...</p>
     <form>
     </form>
 
@@ -149,46 +159,47 @@
             
             // Creates all of the dropdowns
             function createDropMenu(texts, id) {
-                console.log("creating select #" + id + " with " + texts);
                 var select = document.createElement("select");
                 select.name = id;
-                select.onchange = function() { 
-                    getNext(this); 
-                };
+                select.addEventListener('change', function(e) { 
+                    getNext(this);
+                });
                 
-                // For each text,
-                for (var i = 0; i < texts.length; i++) {
-                    // Create <option>
+                // Create question <p>
+                var question = document.createElement('p');
+                question.setAttribute('class', 'question');
+                question.appendChild(document.createTextNode(texts[0]));
+                form.append(question);
+
+                // Create blank choice
+                select.appendChild(document.createElement("option"));
+
+                // Create dropdown menu with choices
+                for (var i = 1; i < texts.length; i++) {
                     var option = document.createElement("option");
-                    // Create text node for <option>
                     var optionText = document.createTextNode(texts[i]);
-                    // Assign same text to value attr of <option> 
                     option.value = texts[i];
-                    // Append text node to <option> 
                     option.appendChild(optionText);
-                    // Append <option> to <select> 
                     select.appendChild(option);
                 }
                 
                 // Add the new dropdown menu to the form with animation
                 select.style.opacity = 0;
                 form.appendChild(select);
+                form.appendChild(document.createElement('br'));
                 fadeIn(select);
             }
 
             // Search for next options based on the option selected
             function getNext(select) {
-                console.log(" ");
-                console.log("selected " + select.name);
-
                 // Clear any <select>s after current <select>
                 selectsLive = form.getElementsByTagName('select');
                 selects = form.querySelectorAll('select');
-                console.log("there are this amount of selects: "+selects.length);
                 for (var i = 0; i < selects.length; i++) {
-                    console.log(selects[i].name + " " + select.name);
                     if (selects[i].name > select.name) {
-                        console.log("clearing " + selects[i].name);
+                        var eleToRemove = selectsLive.namedItem(selects[i].name);
+                        form.removeChild(eleToRemove.previousSibling);
+                        form.removeChild(eleToRemove.nextSibling);
                         form.removeChild(selectsLive.namedItem(selects[i].name));
                     }
                 }
@@ -197,11 +208,6 @@
                 navigate(optionTexts[1]);
 
                 function navigate(node) {
-                    // If node is null, stop navigating
-                    if (node == null) {
-                        return;
-                    }
-
                     for (var key in node) {
                         if (node[key] != null && key == select.value) {
                             currNode = node[key];
