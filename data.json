@@ -1,0 +1,31 @@
+{
+    "1": {
+        "Choose gender": null,
+        "M": {
+            "Facial hair?": null,
+            "H": {
+                "Complexion?": null,
+                "D": null,
+                "L": null
+            },
+            "NH": {
+                "Build?": null,
+                "B": null,
+                "S": null
+            }
+        },
+        "W": {
+            "Blonde/Brunette?": null,
+            "Blonde": {
+                "Height?": null,
+                "T": null,
+                "S": null
+            },
+            "Brunette": {
+                "Eyes?": null,
+                "Br": null,
+                "Bl": null
+            }
+        }
+    }
+}
