@@ -1,5 +1,7 @@
-
+<!DOCTYPE html>
+<html lang="en"> 
 <head>
+    <meta charset="utf-8"/>
     <style> 
         body {
             background-color: #F9FAFC;
@@ -25,18 +27,23 @@
 
 <body>
     <p id="name">Welcome! </p>
+    <p>Customize your world...</p>
     <form>
     </form>
 
     <script>
+        if (!document.getElementById) {
+            window.location = "legacy.html";
+        }
+
         // Access form 
         var form = document.getElementsByTagName('form')[0];
         var p = document.getElementById('name');
 
         ///////////////////////////////// GREETING /////////////////////////////////
-        var greeting = "Welcome to the geometrical rains";
-        var returnGreeting = "Welcome back to the geometrical rains";
-        var name; 
+        var greeting = "Welcome to the geometric rains";
+        var returnGreeting = "Welcome back to the geometric rains";
+        var name;
         getNameFromStorage();
 
         function getNameFromStorage() {
@@ -140,7 +147,6 @@
                     }
             }
         };
-
         
         var currNode;
         var activeSelectId; // keeps track of <select> elements
