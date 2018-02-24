@@ -9,10 +9,66 @@
 </head>
 
 <body>
+    <p id="name">Welcome! </p>
     <form>
     </form>
 
     <script>
+        // Access form 
+        var form = document.getElementsByTagName('form')[0];
+        var p = document.getElementById('name');
+
+        // Show or request user name
+        // If browser supports window.localStorage, 
+        if (window.localStorage) {
+            var name; 
+            // Check if name has been saved, then show
+            if (window.localStorage.name) {
+                name = window.localStorage.name;
+                showName();
+            } else {
+                // If not, prompt user for name, then save
+                p.firstChild.nodeValue = "Welcome! Who are you? ";
+                showName();
+            }
+
+            function changeName() {
+                var nameInput = document.createElement('input');
+                var nameSubmit = document.createElement('button');
+                nameSubmit.appendChild(document.createTextNode('Submit'));
+                p.appendChild(nameInput);
+                p.appendChild(nameSubmit);
+                nameSubmit.addEventListener('click', function() {
+                    name = nameInput.value;
+                    // If empty string, prompt user again for name
+                    p.removeChild(nameSubmit);
+                    p.removeChild(nameInput);
+                    if (!name) {
+                        changeName();
+                    } else {
+                        window.localStorage.name = name;
+                        showName();
+                    }
+                });
+            }
+
+            function showName() {
+                // Show name
+                p.firstChild.nodeValue = "Welcome, " + name + "! ";
+                // Give user option to change name again
+                var a = document.createElement('a');
+                a.appendChild(document.createTextNode('(Not you?)'));
+                a.setAttribute('href', '#');
+                a.onclick = function() {
+                    p.removeChild(a);
+                    p.firstChild.nodeValue = "Welcome! Who are you? ";
+                    changeName(); 
+                    return false; 
+                }
+                p.appendChild(a);
+            }
+        }
+
         var optionTexts = {
             1: {
                 "Choose gender": null, 
@@ -41,7 +97,7 @@
             }
         };
 
-        var form = document.getElementsByTagName('form')[0];
+        
         var currNode;
         var activeSelectId; // keeps track of <select> elements
         window.onload = function() {
