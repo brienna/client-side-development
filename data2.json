@@ -1,0 +1,59 @@
+{
+    "1": {
+        "ball 1:": null,
+        "blue": {
+            "ball 2:": null,
+            "lightsteelblue": {
+                "ball 3:": null,
+                "lightyellow": null,
+                "lightcoral": null
+            },
+            "deepskyblue": {
+                "ball 3:": null,
+                "midnightblue": null,
+                "mediumpurple": null
+            },
+            "lightskyblue": {
+                "ball 3:": null,
+                "palegoldenrod": null,
+                "oldlace": null
+            }
+        },
+        "red": {
+            "ball 2:": null,
+            "pink": {
+                "ball 3:": null,
+                "sandybrown": null,
+                "sienna": null
+            },
+            "palevioletred": {
+                "ball 3:": null,
+                "wheat": null,
+                "yellow": null
+            },
+            "magenta": {
+                "ball 3:": null,
+                "teal": null,
+                "violet": null
+            }
+        },
+        "green": {
+            "ball 2:": null,
+            "lime": {
+                "ball 3:": null,
+                "mistyrose": null,
+                "mocassin": null
+            },
+            "mediumspringgreen": {
+                "ball 3:": null,
+                "paleturquoise": null,
+                "rosybrown": null
+            },
+            "olivedrab": {
+                "ball 3:": null,
+                "salmon": null,
+                "silver": null
+            }
+        }
+    }
+}

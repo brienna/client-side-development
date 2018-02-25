@@ -9,10 +9,15 @@
             font-family: Arial;
             color: #3a3a3a;
             text-align: center;
+            margin-top: 50px;
         }
 
         p {
             font-weight: bold;
+        }
+
+        #name {
+            font-size: 20px;
         }
 
         a {
@@ -30,14 +35,34 @@
             color: gray;
         }
 
+        div > div {
+            display: inline-block;
+            border-radius: 50%;
+            border: 2px solid black;
+            width: 50px;
+            height: 50px;
+        }
+
+        .wrapper {
+            display: inline-block;
+            padding: 20px;
+            background-color: "";
+        }
+
     </style>
     <script src="script.js"></script>
 </head>
 
 <body>
     <p id="name">Welcome! </p>
-    <p>Customize your rain...</p>
-    <form></form> 
+    <br>
+    <p>Guess the colors of these balls...</p>
+    <br>
+    <div class="wrapper"><div title="1"></div></div>
+    <div class="wrapper"><div title="2"></div></div>
+    <div class="wrapper"><div title="3"></div></div>
+    <br><br>
+    <form></form>
 </body>
 
 

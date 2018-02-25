@@ -4,35 +4,62 @@ if (!document.getElementById) {
 
 window.onload = function() {
 
-    // Access form 
+    // Initialize some globals
     var form = document.getElementsByTagName('form')[0];
     var p = document.getElementById('name');
     var selectsLive = form.getElementsByTagName('select');
+    var divsLive = document.getElementsByTagName('div');
     var optionTexts;  // holds text for questions & choices
     var currNode;
     var activeSelectId = 1; // keeps track of <select> elements
+    var answer;
+    var guess;
 
     ///////////////////////////////// LOAD DATA /////////////////////////////////
 
     // Create the HTTP object
     var xmlhttp = new XMLHttpRequest();
-    var dataUrl = 'data.json';
+    var dataUrl = 'data2.json';
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             optionTexts = JSON.parse(this.responseText);
             // Set optionTexts node 'pointer' to first node
             currNode = optionTexts[1];
+            // Generate random answer
+            answer = [];
+            generateRandomAnswer(optionTexts[1]);
+            // Create first drop down menu
             createDropMenu(Object.keys(currNode), activeSelectId);
+            // Get user choices if saved in storage
             getUserChoices();
         }
     };
     xmlhttp.open("GET", dataUrl);
     xmlhttp.send();
 
+    function generateRandomAnswer(node) {
+        // If empty node, quit navigating beyond this node
+        if (node === null || node === undefined) {
+            return;
+        }
+
+        var randomColor = getRandomColor();
+        answer.push(randomColor);
+        generateRandomAnswer(node[randomColor]);
+
+        function getRandomColor() {
+            var keys = Object.keys(node);
+            var prop = keys[keys.length * Math.random() << 0];
+            if (!prop.match(/ball \d+/)) {
+                return prop;
+            }
+            getRandomColor();
+        }
+    }
 
     ///////////////////////////////// SHOW GREETING /////////////////////////////////
-    var greeting = "Welcome to the geometric rains";
-    var returnGreeting = "Welcome back to the geometric rains";
+    var greeting = "Welcome to the color lottery";
+    var returnGreeting = "Welcome back to the color lottery";
     var name;
     getNameFromStorage();
 
@@ -116,14 +143,22 @@ window.onload = function() {
     function createDropMenu(texts, id) {
         var select = document.createElement("select");
         select.name = id;
-        select.addEventListener('change', function(e) { 
+        select.addEventListener('change', function(e) {
+            colorBall(this);
             getNext(this);
             // If it was last menu && actual choice was picked, save user choices
-            if (select.name == (Object.keys(optionTexts[1])).length && select.value != "") {
+            if (select.name == ((Object.keys(optionTexts[1])).length - 1) && select.value != "") {
                 saveUserChoices();
-                form.style.borderBottom = "2px solid #000000";
+                check(); // check answers
+                enableClear(); // let user clear choices
             } else {
-                form.style.border = 'none';
+                // Strip background colors from wrapper divs
+                var wrappers = document.getElementsByClassName('wrapper');
+                for (var i = 0; i < wrappers.length; i++) {
+                    if (wrappers[i].style.border != "") {
+                        wrappers[i].style.border = "";
+                    }
+                }
             }
         });
         
@@ -151,9 +186,20 @@ window.onload = function() {
         form.appendChild(document.createElement('br'));
         fadeIn(select);
     }
+    
+    // Check user choices against randomly generated answer
+    function check() {
+        for (var i = 0; i < guess.length; i++) {
+            if (guess[i] == answer[i]) {
+                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid green";
+            } else {
+                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid red";
+            }
+        }
+    }
 
     function saveUserChoices() {
-        console.log('saving user choices...');
+        guess = [];
         // Save choice for each select element
         for (var i = 0; i < selectsLive.length; i++) {
             if (window.localStorage) {
@@ -162,8 +208,10 @@ window.onload = function() {
                 var nextyear = new Date();
                 nextyear.setFullYear(nextyear.getFullYear()+1);
                 document.cookie = (i+1) + "=" + selectsLive[i].value + "; expires=" + nextyear.toGMTString() + "; path=/";
-                console.log("saved " + selectsLive[i].value + " to cookie");
             }
+
+            // also populate guess array
+            guess.push(selectsLive[i].value);
         }
     }
 
@@ -248,4 +296,19 @@ window.onload = function() {
         // Begin animation
         tick();
     }
+
+    function colorBall(selectElement) {
+        var color = selectElement.value;
+        var whichBall = selectElement.name;
+        document.querySelector('[title="'+whichBall+'"]').style.backgroundColor = color;
+
+        // Clear any balls after current ball
+        for (var i = 0; i < divsLive.length; i++) {
+            if (divsLive[i].title > whichBall) {
+                divsLive[i].style.backgroundColor = "";
+            }
+        }
+    }
+
+
 };
