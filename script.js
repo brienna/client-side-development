@@ -14,6 +14,12 @@ window.onload = function() {
     var activeSelectId = 1; // keeps track of <select> elements
     var answer;
     var guess;
+    // Clear button stuff
+    var clearButtonTxt = document.createTextNode('Clear');
+    var clearButton = document.createElement('button');
+    clearButton.appendChild(clearButtonTxt);
+    clearButton.style.marginTop = '20px';
+    clearButton.onclick = reset;
 
     ///////////////////////////////// LOAD DATA /////////////////////////////////
 
@@ -141,6 +147,7 @@ window.onload = function() {
 
     // Creates all of the dropdowns
     function createDropMenu(texts, id) {
+        form.appendChild(clearButton);
         var select = document.createElement("select");
         select.name = id;
         select.addEventListener('change', function(e) {
@@ -150,7 +157,6 @@ window.onload = function() {
             if (select.name == ((Object.keys(optionTexts[1])).length - 1) && select.value != "") {
                 saveUserChoices();
                 check(); // check answers
-                enableClear(); // let user clear choices
             } else {
                 // Strip background colors from wrapper divs
                 var wrappers = document.getElementsByClassName('wrapper');
@@ -166,7 +172,7 @@ window.onload = function() {
         var question = document.createElement('p');
         question.setAttribute('class', 'question');
         question.appendChild(document.createTextNode(texts[0]));
-        form.append(question);
+        form.insertBefore(question, clearButton);
 
         // Add blank choice for display purposes
         select.appendChild(document.createElement("option"));
@@ -182,8 +188,8 @@ window.onload = function() {
         
         // Append the new dropdown menu to the form with animation
         select.style.opacity = 0;
-        form.appendChild(select);
-        form.appendChild(document.createElement('br'));
+        form.insertBefore(select, clearButton);
+        form.insertBefore(document.createElement('br'), clearButton);
         fadeIn(select);
     }
     
@@ -227,6 +233,7 @@ window.onload = function() {
                     // If a choice has been saved, proceed
                     var selectElement = selectsLive.namedItem(selectName);
                     selectElement.value = choice;
+                    colorBall(selectElement);
                     getNext(selectElement);
                     selectName += 1;    
                 }
@@ -242,6 +249,7 @@ window.onload = function() {
                     } else {
                         var selectElement = selectsLive.namedItem(selectName);
                         selectElement.value = choice[1];
+                        colorBall(selectElement);
                         getNext(selectElement);
                         selectName += 1;
                     }
@@ -308,6 +316,44 @@ window.onload = function() {
                 divsLive[i].style.backgroundColor = "";
             }
         }
+    }
+
+    function reset() {
+        for (var i = 0; i < selectsLive.length; i++) {
+            // Remove localStorage/cookies
+            if (window.localStorage) {
+                window.localStorage.removeItem(selectsLive[i].name);
+            } else {
+                //var lastyear = new Date();
+                //last.setFullYear(lastyear.getFullYear()-1);
+                document.cookie = (i+1) + "=" + selectsLive[i].value + "; expires=" + new Date() + "; path=/";
+            }
+        }
+
+        // Clear balls
+        for (var i = 0; i < divsLive.length; i++) {
+            if (divsLive[i].title) {
+                divsLive[i].style.backgroundColor = "";
+            }
+        }
+        var wrappers = document.getElementsByClassName('wrapper');
+        for (var i = 0; i < wrappers.length; i++) {
+            if (wrappers[i].style.border != "") {
+                wrappers[i].style.border = "";
+            }
+        }
+
+        // Clear selects
+        var selects = form.querySelectorAll('select');
+        for (var i = 1; i < selects.length; i++) {
+            var eleToRemove = selectsLive.namedItem(selects[i].name);
+            form.removeChild(eleToRemove.previousSibling);
+            form.removeChild(eleToRemove.nextSibling);
+            form.removeChild(selectsLive.namedItem(selects[i].name));
+        }
+        selectsLive.namedItem(1).value = "";
+
+        return false; // prevent page from refreshing if click button inside form
     }
 
 
