@@ -69,7 +69,7 @@ window.onload = function() {
             // Trim white spaces from beginning & end of input
             name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
             // Show name if it isn't a empty string
-            if (name.length != 0) {
+            if (name.length !== 0) {
                 p.removeChild(nameSubmit);
                 p.removeChild(nameInput);
                 saveName();
@@ -93,14 +93,14 @@ window.onload = function() {
             p.removeChild(a);
             promptName();
             return false;  // so browser doesn't redirect? 
-        }
+        };
         p.appendChild(a);
     }
 
     function saveName() {
         // Save to localStorage or cookie
         if (window.localStorage) {
-            window.localStorage.setItem('name', name)
+            window.localStorage.setItem('name', name);
             console.log("saved " + window.localStorage.getItem('name') + " to localStorage");
         } else {
             var nextyear = new Date();
@@ -118,12 +118,12 @@ window.onload = function() {
         select.name = id;
         select.addEventListener('change', function(e) { 
             getNext(this);
-            // If last menu has been changed, save user choices
-            if (select.name == (Object.keys(optionTexts[1])).length) {
+            // If it was last menu && actual choice was picked, save user choices
+            if (select.name == (Object.keys(optionTexts[1])).length && select.value != "") {
                 saveUserChoices();
-                form.style.border = '1px solid #00000';
+                form.style.borderBottom = "2px solid #000000";
             } else {
-                form.style.border = '0px solid #00000';
+                form.style.border = 'none';
             }
         });
         
@@ -158,24 +158,46 @@ window.onload = function() {
         for (var i = 0; i < selectsLive.length; i++) {
             if (window.localStorage) {
                 window.localStorage.setItem((i+1), selectsLive[i].value);
+            } else {
+                var nextyear = new Date();
+                nextyear.setFullYear(nextyear.getFullYear()+1);
+                document.cookie = (i+1) + "=" + selectsLive[i].value + "; expires=" + nextyear.toGMTString() + "; path=/";
+                console.log("saved " + selectsLive[i].value + " to cookie");
             }
         }
     }
 
     function getUserChoices() {
         // Check if user choices exist
+        var selectName = 1;
         if (window.localStorage) {
-            // If a choice has been saved, proceed
-            var selectName = 1;
             while (true) {
                 var choice = window.localStorage.getItem(selectName);
                 if (!choice) {
                     break;
+                } else {
+                    // If a choice has been saved, proceed
+                    var selectElement = selectsLive.namedItem(selectName);
+                    selectElement.value = choice;
+                    getNext(selectElement);
+                    selectName += 1;    
                 }
-                var selectElement = selectsLive.namedItem(selectName);
-                selectElement.value = choice;
-                getNext(selectElement);
-                selectName += 1;
+            }
+        } else {
+            // If browser doesn't support window.localStorage, check cookies for choices
+            if (document.cookie.indexOf('1=') != -1) {
+                while (true) {
+                    var re = new RegExp(selectName + '=([\\w\\s]+)');
+                    var choice = document.cookie.match(re);
+                    if (!choice) {
+                        break;
+                    } else {
+                        var selectElement = selectsLive.namedItem(selectName);
+                        selectElement.value = choice[1];
+                        getNext(selectElement);
+                        selectName += 1;
+                    }
+                }
             }
         }
     }
@@ -183,7 +205,7 @@ window.onload = function() {
     // Search for next options based on the option selected
     function getNext(select) {
         // Clear any <select>s after current <select>
-        selects = form.querySelectorAll('select');
+        var selects = form.querySelectorAll('select');
         for (var i = 0; i < selects.length; i++) {
             if (selects[i].name > select.name) {
                 var eleToRemove = selectsLive.namedItem(selects[i].name);
@@ -198,7 +220,7 @@ window.onload = function() {
 
         function navigate(node) {
             for (var key in node) {
-                if (node[key] != null && key == select.value) {
+                if (node[key] !== null && key == select.value) {
                     currNode = node[key];
                     activeSelectId = Number(select.name) + 1;
                     createDropMenu(Object.keys(currNode), activeSelectId);
@@ -208,7 +230,7 @@ window.onload = function() {
                 }
             }
         }
-    };
+    }
 
     function fadeIn(e) {
         // Incremental animation
