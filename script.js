@@ -313,7 +313,7 @@ window.onload = function() {
         // Clear any balls after current ball
         for (var i = 0; i < divsLive.length; i++) {
             if (divsLive[i].title > whichBall) {
-                divsLive[i].style.backgroundColor = "";
+                divsLive[i].style.backgroundColor = "#F9FAFC";
             }
         }
     }
@@ -333,7 +333,7 @@ window.onload = function() {
         // Clear balls
         for (var i = 0; i < divsLive.length; i++) {
             if (divsLive[i].title) {
-                divsLive[i].style.backgroundColor = "";
+                divsLive[i].style.backgroundColor = "#F9FAFC";
             }
         }
         var wrappers = document.getElementsByClassName('wrapper');
