@@ -27,8 +27,10 @@
         }
 
         select {
-            margin: 0 auto;
             display: block;
+            margin-left:auto;
+            margin-right:auto;
+            width:100px;
         }
 
         .question {
@@ -36,9 +38,9 @@
         }
 
         /* http://jonraasch.com/blog/css-rounded-corners-in-all-browsers */
-        .rounded-corners {
-            behavior: url(/css/border-radius.htc);
-            border-radius: 50px;
+        div > div {
+            /*behavior: url(/css/border-radius.htc);
+            border-radius: 50px;*/
             width: 50px;
             height: 50px;
             border: 2px solid black;
@@ -51,21 +53,32 @@
             background-color: "";
         }
 
+        #description {
+            display: none;
+        }
     </style>
-    <script src="ie.js"></script>
+    
+    <!-- polyfills for IE -->
+    <script src="js/polyfills/Object.keys.polyfill.js"></script>
+    <script src="js/polyfills/JSON.polyfill.js"></script>
+    <script src="js/polyfills/getElementsByClassName.polyfill.js"></script>
+    <!-- my script -->
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <p id="name">Welcome! </p>
+    <p id="description">Your choices have been saved from your last visit, <br>but the quiz has generated a new answer.</p>
     <br>
-    <p>Guess the colors of these balls...</p>
+    <p>Guess the colors of these squares...</p>
     <br>
-    <div class="wrapper"><div class="rounded-corners" title="1"></div></div>
-    <div class="wrapper"><div class="rounded-corners" title="2"></div></div>
-    <div class="wrapper"><div class="rounded-corners" title="3"></div></div>
+    <div class="wrapper"><div title="1"></div></div>
+    <div class="wrapper"><div title="2"></div></div>
+    <div class="wrapper"><div title="3"></div></div>
     <br><br>
     <form></form>
 </body>
+</html>
 
 
 

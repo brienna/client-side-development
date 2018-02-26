@@ -1,0 +1,60 @@
+{
+    "1": {
+        "Choose gender": null,
+        "M": {
+            "Facial hair?": null,
+            "H": {
+                "Complexion?": null,
+                "D": null,
+                "L": null,
+                "test": null,
+                "test2": null,
+                "test 3": null
+            },
+            "NH": {
+                "Build?": null,
+                "B": null,
+                "S": null
+            }
+        },
+        "W": {
+            "Blonde/Brunette?": null,
+            "Blonde": {
+                "Height?": null,
+                "T": null,
+                "w": null
+            },
+            "Brunette": {
+                "Eyes?": null,
+                "Br": null,
+                "Bl": null
+            }
+        },
+        "Neither": {
+            "Something": null,
+            "Something2": {
+                "hi?": null,
+                "bye": null,
+                "hi": null
+            },
+            "Something3": {
+                "hey": null,
+                "hola": null,
+                "aloha": null
+            }
+        },
+        "Both": {
+            "well": null,
+            "it": {
+                "nope?": null,
+                "yes": null,
+                "nah": null
+            },
+            "happens": {
+                "yup": null,
+                "nay": null,
+                "yea": null
+            }
+        }
+    }
+}
