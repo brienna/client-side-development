@@ -1,0 +1,73 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #F36E21;
+}
+
+.panel {
+    width: 100%;
+}
+
+/***** News *****/ 
+#news {
+    background-color: rgb(211, 211, 211, 0.6);
+    width: 500px;
+    padding: 1%;
+    left: 200px;
+}
+
+.news_column:first-child {
+    float: left;
+    width: 46%;
+    padding: 0;
+    margin-right: 1%;
+}
+
+.news_column:last-child {
+    float: right;
+    width: 46%;
+    margin-left: 1%;
+}
+
+.news_column h1 {
+    font-size: 15px;
+}
+
+.news_column p {
+    font-size: 12px;
+}
+
+.more_news > p {
+    text-align: right;
+    font-size: 10px
+}
+
+#popup {
+    display: none; /* Hide as jQuery plugin loads, then plugin will hide it */
+    width: 70%;
+    background-color: lightgray;
+    padding: 2em;
+    border: 1px solid black;
+    transform: translateX(0) translateY(-40%);
+}
+
+#slide_background {
+  transition: all 0.3s 0.3s;
+}
+#popup,
+#slide_wrapper {
+  transition: all 0.3s ease-out;
+}
+
+.popup_visible #popup {
+  transform: translateX(0) translateY(0);
+}

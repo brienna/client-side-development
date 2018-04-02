@@ -2,11 +2,35 @@
 <html lang="en">  <!-- need this tag? -->
 <head>
     <meta charset="utf-8"/>
-    <!-- Include jQuery, my script -->
+    <!-- Include my CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Include js files -->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.popupoverlay.js"></script> <!-- plugin http://dev.vast.com/jquery-popup-overlay/ -->
     <script src="js/script.js"></script>
 </head>
 <body>
-    <div id="content"></div>
+
+    <!-- Main panel -->
+    <section class="panel" id="main">
+        <!-- News main view-->
+        <div id="news">
+            <div class="news_column">
+                <!-- onload AJAX request -->
+            </div>
+            <div class="news_column">
+                <!-- onload AJAX request -->
+            </div>
+        </div>
+
+    </section>
+
+    <!-- News popup overlay -->
+    <div id="popup" class="fadeandscale">
+        <button class="popup_close">Close</button>
+        <!-- onclick AJAX request -->
+    </div>
+
 </body>
 </html>
