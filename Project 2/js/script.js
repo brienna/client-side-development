@@ -1,13 +1,9 @@
 
 $(document).ready(function() {
-    // Initialize news overlay
+    /**************************** SETUP ****************************/
+    // Initialize overlay
     $('#popup').popup({
         closeelement: '.popup_close',
-    });
-
-    // Get news
-    xhr('get', { path : '/news/' }).done(function(json) {
-        processNews(json);
     });
 
     /** 
@@ -16,7 +12,7 @@ $(document).ready(function() {
      * @param type 'get' or 'post'
      * @param path API node to query
      * @return result in json
-     **/ 
+     **/
     function xhr(type, path) {
         return $.ajax({
             type: 'get',
@@ -29,6 +25,33 @@ $(document).ready(function() {
             console.log('Error: ' + err);
         });                     // Note: No done here
     }
+
+    /**************************** SCROLLMAGIC ****************************/
+    // Initialize ScrollMagic controller
+    var controller = new ScrollMagic.Controller({
+        globalSceneOptions: {
+            triggerHook: 'onLeave'
+        }
+    });
+
+    // Get all panels
+    var panels = $('section.panel');
+
+    // Create scene for every panel
+    for (var i=0; i<panels.length; i++) {
+        new ScrollMagic.Scene({
+                triggerElement: panels[i]
+            })
+            .setPin(panels[i])
+            .addIndicators() // Debug: Add indicators (Requires additional plugin)
+            .addTo(controller);
+    }
+
+    /**************************** NEWS ****************************/
+    // Get news
+    xhr('get', { path : '/news/' }).done(function(json) {
+        processNews(json);
+    });
 
     /**
      * Processes and renders result of AJAX call to get news,
@@ -75,8 +98,8 @@ $(document).ready(function() {
 
                 // Add to correct news column
                 ajaxPath = ('/news/older/date=' + data.older[i].date).replace(" ", "%20"); 
-                $('.news_column:nth-child(' + (i+1) + ')').append('<a href="#" data-ajaxpath="' 
-                    + ajaxPath +'"><h1>' + data.older[i].title + '</h1><p>' + desc + '...</p></a>');
+                $('.news_column:nth-child(' + (i+1) + ')').append('<a href="#" data-ajaxpath="' +
+                    ajaxPath +'"><h1>' + data.older[i].title + '</h1><p>' + desc + '...</p></a>');
 
                 // Update news count tracker
                 numShowing++;
@@ -121,9 +144,11 @@ $(document).ready(function() {
             $('#popup').children().slice(1).remove();
             // Add all news articles from both /news/year/ and /news/older/
             for (var category in data) {
-                $.each(data[category], function(i, article) {
-                    $('#popup').append('<h1>' + article.title + '</h1><p>' + article.date + '<br><br>' + (article.description ? article.description : "" ) + '</p><hr/>'); // Note: Shows description only if not null
-                });
+                if (data.hasOwnProperty(category)) {
+                    $.each(data[category], function(i, article) {
+                        $('#popup').append('<h1>' + article.title + '</h1><p>' + article.date + '<br><br>' + (article.description ? article.description : "" ) + '</p><hr/>'); // Note: Shows description only if not null
+                    });
+                }
             }
             // Show overlay
             $('#popup').popup('show');
