@@ -3,39 +3,37 @@
 <head>
     <meta charset="utf-8"/>
     <!-- Include css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- Include js files -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> <!-- Plugin http://scrollmagic.io/ -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> <!-- Scrollmagic debugger -->
-    <script src="js/jquery.popupoverlay.js"></script> <!-- Plugin http://dev.vast.com/jquery-popup-overlay/ -->
-    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> <!-- Plugin http://scrollmagic.io/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> <!-- Scrollmagic debugger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script> <!-- Plugin http://dev.vast.com/jquery-popup-overlay/ -->
+    <script src="script.js"></script>
 </head>
 <body>
 
     <header>
-        <a href="www.rit.edu" target="_blank">Rochester Institute of Technology</a>
+        <a target="_blank">Rochester Institute of Technology</a>
     </header>
 
     <!-- Main panel -->
     <section class="panel" id="main">
         <!-- News main view-->
         <div id="news">
-            <div class="news_column">
-                <!-- Onload AJAX request -->
-            </div>
-            <div class="news_column">
-                <!-- Onload AJAX request -->
-            </div>
+            <div class="news_column"><!-- Onload AJAX request --></div>
+            <div class="news_column"><!-- Onload AJAX request --></div>
         </div>
     </section>
 
-    <!--> About IST panel -->
+    <!-- About IST panel -->
     <section class="panel" id="about">
         <div class="inner">
-            <h1>About</h1>
-            <p> Text goes here... </p>
+            <h1><!-- Onload AJAX request --></h1>
+            <p><!-- Onload AJAX request --></p>
+            <p><!-- Onload AJAX request --></p>
+            <p><!-- Onload AJAX request --></p>
         </div>
     </section>
 
@@ -43,8 +41,10 @@
     <section class="panel" id="degrees">
         <!-- Like IST's current Faculty/Staff, can change view -->
         <div class="inner">
-            <h1>Degrees</h1>
-            <p> Text goes here... </p>
+            <h1>Our Degrees</h1>
+            <h2><span id="showUndergrad">Undergraduate</span> | <span id="showGrad">Graduate</span></h2>
+            <div id="undergraduate"><!-- Onload AJAX request --></div>
+            <div><div id="graduate"><!-- Onload AJAX request --></div></div>
         </div>
     </section>
 

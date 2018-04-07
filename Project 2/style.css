@@ -4,6 +4,7 @@ body {
     background-color: black;
     height: 100%;
     margin: 0;
+    color: gray;
 }
 
 header {
@@ -31,16 +32,17 @@ a:hover {
     color: #F36E21;
 }
 
-#main {
-    top: 33px;
-}
-
 .inner h1 {
     padding: 20% 0 0 0;
     margin: 0;
     text-align: center;
     font-size: 20px;
     color: white;
+}
+
+.inner h2, .inner h2 a {
+    text-align: center;
+    color: gray;
 }
 
 .inner p {
@@ -58,6 +60,33 @@ a:hover {
 .inner {
     margin: 0 auto; /* center the content of the sections */
     max-width: 85%;
+}
+
+#showGrad, #showUndergrad {
+    cursor: pointer;
+}
+
+#showUndergrad { 
+    color: white; 
+}
+
+#showGrad {
+    color: gray;
+}
+
+#undergraduate + div { /* set undergraduate as default degree view */
+    display: none;
+}
+
+#undergraduate + div > p { /* graduate certifications */
+    clear: left; /* end floating for degrees */
+    padding-top: 50px;
+}
+
+.degrees {
+    float: left;
+    width: 33%;
+    border: 1px dashed gray;
 }
 
 #news {
@@ -97,7 +126,7 @@ a:hover {
 }
 
 #popup {
-    display: none; /* Hide as jQuery plugin loads, then plugin will hide it */
+    display: none; /* Hide until jQuery plugin loads, then plugin will hide it too */
     width: 70%;
     background-color: lightgray;
     padding: 2em;
