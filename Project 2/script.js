@@ -6,6 +6,9 @@ $(document).ready(function() {
         closeelement: '.popup_close',
     });
 
+    // Initialize ScrollMagic controller
+    var controller = new ScrollMagic.Controller();
+
     /** 
      * Makes an AJAX call.
      *
@@ -24,27 +27,6 @@ $(document).ready(function() {
         }).fail(function(err) {
             console.log('Error: ' + err);
         });                     // Note: No .done() here
-    }
-
-    /**************************** SCROLLMAGIC ****************************/
-    // Initialize ScrollMagic controller
-    var controller = new ScrollMagic.Controller({
-        globalSceneOptions: {
-            triggerHook: 'onLeave'
-        }
-    });
-
-    // Get all panels
-    var panels = $('section.panel');
-
-    // Create scene for every panel
-    for (var i=0; i<panels.length; i++) {
-        new ScrollMagic.Scene({
-                triggerElement: panels[i]
-            })
-            .setPin(panels[i])
-            .addIndicators() // debugging (requires additional plugin)
-            .addTo(controller);
     }
 
     /**************************** ABOUT ****************************/
@@ -361,5 +343,24 @@ $(document).ready(function() {
             $('#popup').popup('show');
         }
     }
+
+    /**************************** SCROLLING ****************************/
+
+    // Define movement of panels
+    var wipeAnimation = new TimelineMax()
+        .to("#slideContainer", 1,   {x: "-25%"})    
+        .to("#slideContainer", 1,   {x: "-50%"})
+        .to("#slideContainer", 1,   {x: "-75%"})
+
+    // Create scene to pin and link animation
+    new ScrollMagic.Scene({
+            triggerElement: "#pinContainer",
+            triggerHook: "onLeave",
+            duration: "500%"
+        })
+        .setPin("#pinContainer")
+        .setTween(wipeAnimation)
+        .addIndicators() 
+        .addTo(controller);
 
 });
