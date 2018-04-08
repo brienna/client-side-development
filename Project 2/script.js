@@ -34,7 +34,7 @@ $(document).ready(function() {
     // Query "About" data
     xhr('get', { path : '/about/' }).done(function(json) {
         processAbout(json);
-    })
+    });
 
     /**
      * Processes and renders result of AJAX call to get 'About' information.
@@ -65,9 +65,8 @@ $(document).ready(function() {
     function processDegrees(data) {
         var category;
         var node;
-        var certifications;
 
-         // Process undergraduate & graduate degrees separately,
+        // Process undergraduate & graduate degrees separately,
         for (var level in data) {
             console.log("Processing " + level + " degrees...");
             category = data[level];
@@ -89,8 +88,8 @@ $(document).ready(function() {
 
             // Add degrees to appropriate view in Degrees panel
             $.each(category, function(i, degree) {
-                $(node).append('<div class="clickable degree" data-level="' + level + '" data-name="' 
-                    + degree.degreeName + '"><h4>' + degree.title + '</h4><p>' + degree.description);
+                $(node).append('<div class="clickable degree" data-level="' + level + '" data-name="' + 
+                    degree.degreeName + '"><h4>' + degree.title + '</h4><p>' + degree.description);
             });
         }
 
@@ -130,7 +129,7 @@ $(document).ready(function() {
                             $.each(json.courses, function(i, course) {
                                 // Add each course
                                 $('#popup').append('<li class="list-group-item course" name="' + course + '">' + course);
-                            })
+                            });
                         });
                         break; // end data loop looking for degree that was clicked
                     }
@@ -201,7 +200,7 @@ $(document).ready(function() {
         });
 
         // Allow user to click on each minor to view more details in overlay
-        $('.minor').each(function(index) {
+        $('.minor').each(function() {
             $(this).on('click', function() {
                 // Reset overlay, leaving only its close button
                 $('#popup').children().slice(1).remove();
@@ -247,25 +246,88 @@ $(document).ready(function() {
     });
 
     function processPeople(data) {
-        console.log(data);
+        console.log("Processing people...");
 
-        var title = data.title;
-        var subTitle = data.subTitle;
-        var faculty = data.faculty;
-        var staff = data.staff;
+        // Add headings
+        $('#people .inner').children().first().text(data.title).next().text(data.subTitle);
 
-        $('#people .inner').children().first().text(title).next().text(subTitle);
-
-        $.each(faculty, function() {
-            $('#people .inner').find('ul').append('<li class="clickable person col-md-3 faculty"><a data-uName="' + this.username + '">' + this.name);
+        // Add faculty members
+        $.each(data.faculty, function() {
+            $('#people .inner').find('ul').append('<li class="clickable person col-sm-2 faculty" data-username="' + this.username + '">' + this.name);
         }); 
 
-        $.each(staff, function() {
-            $('#people .inner').find('ul').append('<li class="clickable person col-md-3 staff"><a data-uName"' + this.username + '">' + this.name);
-        })
+        // Add staff members
+        $.each(data.staff, function() {
+            $('#people .inner').find('ul').append('<li class="clickable person col-sm-2 staff" data-username="' + this.username + '">' + this.name);
+        });
 
         // Set faculty as default view
         $('.staff').hide();
+
+        // Allow user to click on person to see more details
+        $('.person').each(function() {
+            $(this).on('click', function() {
+                var thisPerson = $(this);
+
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+
+                var category; 
+                if (thisPerson.hasClass('faculty')) {
+                    category = data.faculty;
+                } else if (thisPerson.hasClass('staff')) {
+                    category = data.staff;
+                }
+
+                var person;
+                $.each(category, function(i, item) {
+                    // After finding the correct match in the data, populate overlay with person's details
+                    if (item.username == thisPerson.data('username')) {
+                        person = item;
+                        return false;  // end data loop looking for person that was clicked
+                    }
+                });
+
+                // Generate heading
+                var html = '<h1>' + person.name + '</h1><h2>' + person.title + '</h2>';
+                if (person.tagline) { 
+                    html = html + '<h2>' + person.tagline + '</h2>';
+                }
+                // Generate left column with image 
+                html = html + '<div class="row"><div class="col-md-6"><img src="' + person.imagePath + '" width="50%"/></div>';
+                // Generate right column with small details
+                html = html + '<div class="col-md-6"><ul>';
+                if (person.office) {
+                    html = html + '<li>' + person.office + '</li>';
+                }
+                if (person.phone) {
+                    html = html + '<li>' + person.phone + '</li>';
+                }
+                if (person.website) {
+                    html = html + '<li><a href="' + person.website + '">' + person.website + '</a></li>';
+                }
+                if (person.email) {
+                    html = html + '<li>' + person.email + '</li>';
+                }
+                if (person.facebook) {
+                    html = html + '<li>' + person.facebook + '</li>';
+                }
+                if (person.twitter) {
+                    html = html + '<li>' + person.twitter + '</li>';
+                }
+                if (person.interestArea) {
+                   html = html + '<li>Interest areas: ' + person.interestArea.toUpperCase() + '</li>';
+                }
+
+                html = html + '</div></div>';
+                // Generate description panel with queried data
+                html = html + '<div class="row"><div class="col-md-12">' + '</div></div>';
+                $('#popup').append(html);
+
+                // Show overlay
+                $('#popup').popup('show');
+            });
+        });
     }
 
     // Toggle "Majors" and "Minors" views
@@ -308,7 +370,7 @@ $(document).ready(function() {
         // If news exists from recent year, process it
         if (data.year) {
             try {
-                for (i = 0; numShowing < maxNumShowing; i++) {
+                for (var i = 0; numShowing < maxNumShowing; i++) {
                     // Get the parts of each news article                
                     desc = data.year[i].description.split(" ").slice(0,20).join(" ");
 
@@ -329,13 +391,13 @@ $(document).ready(function() {
 
         // If older news exists & still need more news to show, process it
         if (data.older) {
-            for (i = 0; numShowing < maxNumShowing; i++) {
-                desc = data.older[i].description.split(" ").slice(0,20).join(" ");
+            for (var j = 0; numShowing < maxNumShowing; j++) {
+                desc = data.older[j].description.split(" ").slice(0,20).join(" ");
 
                 // Add to correct news column
-                ajaxPath = ('/news/older/date=' + data.older[i].date).replace(" ", "%20"); 
-                $('.news_column:nth-child(' + (i+1) + ')').append('<a href="#" data-ajaxpath="' +
-                    ajaxPath +'"><h1>' + data.older[i].title + '</h1><p>' + desc + '...</p></a>');
+                ajaxPath = ('/news/older/date=' + data.older[j].date).replace(" ", "%20"); 
+                $('.news_column:nth-child(' + (j+1) + ')').append('<a href="#" data-ajaxpath="' +
+                    ajaxPath +'"><h1>' + data.older[j].title + '</h1><p>' + desc + '...</p></a>');
 
                 // Update news count tracker
                 numShowing++;
@@ -392,9 +454,10 @@ $(document).ready(function() {
 
     // Define movement of panels
     var wipeAnimation = new TimelineMax()
-        .to("#slideContainer", 1,   {x: "-25%"})    
-        .to("#slideContainer", 1,   {x: "-50%"})
-        .to("#slideContainer", 1,   {x: "-75%"})
+        .to("#slideContainer", 1,   {x: "-20%"})    
+        .to("#slideContainer", 1,   {x: "-40%"})
+        .to("#slideContainer", 1,   {x: "-60%"})
+        .to("#slideContainer", 1,   {x: "-80%"});
 
     // Create scene to pin and link animation
     new ScrollMagic.Scene({
