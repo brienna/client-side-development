@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <!-- Include css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- Include js files -->
@@ -20,6 +21,7 @@
 
     <!-- Main panel -->
     <section class="panel" id="main">
+        <h1>Information Sciences and Technologies</h1>
         <!-- News main view-->
         <div id="news">
             <div class="news_column"><!-- Onload AJAX request --></div>
@@ -38,13 +40,22 @@
     </section>
 
     <!-- IST degrees panel -->
-    <section class="panel" id="degrees">
-        <!-- Like IST's current Faculty/Staff, can change view -->
+    <section class="panel">
         <div class="inner">
             <h1>Our Degrees</h1>
-            <h2><span id="showUndergrad">Undergraduate</span> | <span id="showGrad">Graduate</span></h2>
-            <div id="undergraduate"><!-- Onload AJAX request --></div>
-            <div><div id="graduate"><!-- Onload AJAX request --></div></div>
+            <h2><span id="showUndergrad">UNDERGRADUATE</span> | <span id="showGrad">GRADUATE</span></h2>
+            <div id="undergraduate">
+                <h3><span id="showMajors">DEGREES</span> | <span id="showMinors">MINORS</span></h3>
+                <div id="majors"><!-- Onload AJAX request --></div>
+                <div id="minors"><!-- Onload AJAX request --></div>
+            </div>
+            <div>
+                <div id="graduate">
+                    <h3><span id="showDegrees">DEGREES</span> | <span id="showCertificates">CERTIFICATES</span></h3>
+                    <div id="degrees"><!-- Onload AJAX request --></div>
+                    <div id="certificates"><!-- Onload AJAX request --></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -64,10 +75,10 @@
         </div>
     </section>
 
-    <!-- News popup overlay -->
+    <!-- News popup overlay, reusable -->
     <div id="popup" class="fadeandscale">
         <button class="popup_close">Close</button>
-        <!-- Onclick AJAX request -->
+        <!-- Onclick AJAX requests -->
     </div>
 
     <!-- Note: Use Advanced tweening on scrollmagic to add faculty pictures? --> 

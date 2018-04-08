@@ -59,19 +59,13 @@ $(document).ready(function() {
      * @param data the returned result.
      **/
     function processAbout(data) {
-        console.log("Processing 'About'...");
+        console.log("Processing about...");
 
-        // Get "About" data 
-        var title = data.title;
-        var desc = data.description;
-        var quote = data.quote;
-        var quoteAuthor = data.quoteAuthor;
-
-        // Add the pieces to "About" panel
-        $('#about .inner').children().first().text(title)
-            .next().text(desc)
-            .next().text(quote)
-            .next().text("- " + quoteAuthor);
+        // Add the data pieces to "About" panel
+        $('#about .inner').children().first().text(data.title)
+            .next().text(data.description)
+            .next().text(data.quote)
+            .next().text("- " + data.quoteAuthor);
     }
 
     /**************************** DEGREES ****************************/
@@ -86,29 +80,39 @@ $(document).ready(function() {
      * @param data object representing either "graduate" or "undergraduate" degrees.
      **/
     function processDegrees(data) {
-        // Process undergraduate & graduate degrees separately
         var category;
+        var node;
+        var certifications;
+
+         // Process undergraduate & graduate degrees separately,
         for (var level in data) {
-            category = data[level];
-            if (level == "graduate") {
-                certifications = category[3];
-                category = category.slice(0, 3);                
-            }
-            
-            // Get info for each degree
             console.log("Processing " + level + " degrees...");
+            category = data[level];
+
+            // If degrees are graduate,
+            if (level == "graduate") {
+                // Set aside certifications to be processed separately
+                processCertificates(category[3].availableCertificates);
+                category = category.slice(0, 3);
+                // Specify degrees to be appended to graduate degrees sub-sub-section
+                node = '#degrees';
+            }
+
+            // If degrees are undergraduate,
+            if (level == "undergraduate") {
+                // Specify degrees to be appended to the majors sub-sub-section
+                node = '#majors';
+            }
+
+            // Add degrees to appropriate view in Degrees panel
             $.each(category, function(i, degree) {
-                // Add degree title & description to Degree panel
-                $('#' + level).append('<div class="degrees" data-level="' + level + '" data-name="' 
-                    + degree.degreeName + '"><h3>' + degree.title + '</h3><p>' + degree.description);
+                $(node).append('<div class="degree" data-level="' + level + '" data-name="' 
+                    + degree.degreeName + '"><h4>' + degree.title + '</h4><p>' + degree.description);
             });
         }
 
-        // Add graduate certifications
-        $('#graduate').parent().append('<p>' + certifications.degreeName);
-
         // Allow user to click on each degree to view more details in overlay
-        $('.degrees').each(function(index) {
+        $('.degree').each(function(index) {
             $(this).on('click', function() {
                 // Reset overlay, leaving only its close button
                 $('#popup').children().slice(1).remove();
@@ -119,7 +123,7 @@ $(document).ready(function() {
                 for (var i = 0; i < data[level].length; i++) {
                     var degree = data[level][i];
                     if (degree.degreeName == name) {
-                        $('#popup').append('<h1>' + degree.title + '</h1><p>' + degree.description + '</p>');
+                        $('#popup').append('<h1>' + degree.title + '</h1><p>' + degree.description + '</p><h2>Concentrations</h2>');
                         for (var j = 0; j < degree.concentrations.length; j++) {
                             $('#popup').append('<li>' + degree.concentrations[j]);
                         }
@@ -135,15 +139,17 @@ $(document).ready(function() {
                         } else if (level == 'undergraduate') {
                             modifiedName = 'BS' + modifiedName;
                         } 
+                        // TO BE CHANGED: ADD BUTTON FOR USER TO CLICK ON TO SHOW COURSES
                         var coursePath = '/courses/degreeName=' + modifiedName;
                         $('#popup').append('<h2>Courses</h2>');
                         // Query courses with appropriately built path
                         xhr('get', { path : coursePath }).done(function(json) {
                             $.each(json.courses, function(i, course) {
                                 // Add each course
-                                $('#popup').append('<li>' + course);
+                                $('#popup').append('<li class="course" name="' + course + '">' + course);
                             })
                         });
+                        break; // end data loop looking for degree that was clicked
                     }
                 }
 
@@ -167,6 +173,90 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
+    /**************************** GRADUATE CERTIFICATES ****************************/
+
+    function processCertificates(data) {
+        console.log("Processing graduate certificates...");
+
+        var link;
+        for (var x = 0; x < data.length; x++) {
+            if (data[x] == "Web Development Advanced certificate") {
+                link = "http://www.rit.edu/programs/web-development-adv-cert";
+            }
+            if (data[x] == "Networking,Planning and Design Advanced Cerificate") {
+                link = "http://www.rit.edu/programs/networking-planning-and-design-adv-cert";
+            }
+            $('#certificates').append('<a href="' + link + '" target="_blank"><div class="certificate">' + data[x]);
+        }
+    }
+
+    // Toggle "Degrees" and "Certificates" views
+    $('#showDegrees').on('click', function() {
+        $('#certificates').hide();
+        $('#degrees').show();
+        $('#showCertificates').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+    $('#showCertificates').on('click', function() {
+        $('#degrees').hide();
+        $('#certificates').show();
+        $('#showDegrees').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+
+    /**************************** UNDERGRADUATE MINORS ****************************/
+    // Query minors data
+    xhr('get', { path : '/minors/' }).done(function(json) {
+        processMinors(json.UgMinors);
+    });
+
+    function processMinors(data) {
+        console.log("Processing undergraduate minors...");
+
+        $.each(data, function(i, minor) {
+            $('#minors').append('<div class="minor" data-name="' + minor.name + '"><h4>' + minor.title);
+        });
+
+        // Allow user to click on each minor to view more details in overlay
+        $('.minor').each(function(index) {
+            $(this).on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+
+                for (var i = 0; i < data.length; i++) {
+                    var minor = data[i];
+                    if (minor.name == $(this).data('name')) {
+                        // Add details to overlay
+                        $('#popup').append('<h1>' + minor.title + '</h1><p>' + minor.description + '<h2>Courses</h2>');
+                        for (var j = 0; j < minor.courses.length; j++) {
+                            $('#popup').append('<li>' + minor.courses[j]);
+                        }
+                        break; // end data loop looking for minor that was clicked
+                    }
+                }
+
+                // Show overlay
+                $('#popup').popup('show');
+            });
+        });
+    }
+
+    // Toggle "Majors" and "Minors" views
+    $('#showMajors').on('click', function() {
+        $('#minors').hide();
+        $('#majors').show();
+        $('#showMinors').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+    $('#showMinors').on('click', function() {
+        $('#majors').hide();
+        $('#minors').show();
+        $('#showMajors').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+
+    /**************************** COURSES ****************************/
+
     /**************************** NEWS ****************************/ 
     // Query "News" data 
     xhr('get', { path : '/news/' }).done(function(json) {
@@ -182,7 +272,7 @@ $(document).ready(function() {
      * @param data the returned result.
      **/
     function processNews(data) {
-        console.log("Processing 'News'...");
+        console.log("Processing news...");
 
         var numShowing = 0;  // news count tracker
         var maxNumShowing = 2;  // max num of news stories to show on home page
