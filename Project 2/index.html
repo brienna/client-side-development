@@ -34,7 +34,7 @@
     <div id="pinContainer">
         <div id="slideContainer">
             <!-- About IST panel -->
-            <section class="panel blue" id="about">
+            <section class="panel" id="about">
                 <div class="inner">
                     <h1><!-- Onload AJAX request --></h1>
                     <p><!-- Onload AJAX request --></p>
@@ -44,18 +44,18 @@
             </section>
 
             <!-- IST degrees panel -->
-            <section class="panel green">
+            <section class="panel">
                 <div class="inner">
                     <h1>Our Degrees</h1>
-                    <h2><span id="showUndergrad">UNDERGRADUATE</span> | <span id="showGrad">GRADUATE</span></h2>
+                    <h2><span class="clickable" id="showUndergrad">UNDERGRADUATE</span> | <span class="clickable" id="showGrad">GRADUATE</span></h2>
                     <div id="undergraduate">
-                        <h3><span id="showMajors">DEGREES</span> | <span id="showMinors">MINORS</span></h3>
+                        <h3><span class="clickable" id="showMajors">DEGREES</span> | <span class="clickable" id="showMinors">MINORS</span></h3>
                         <div id="majors"><!-- Onload AJAX request --></div>
                         <div id="minors"><!-- Onload AJAX request --></div>
                     </div>
                     <div>
                         <div id="graduate">
-                            <h3><span id="showDegrees">DEGREES</span> | <span id="showCertificates">CERTIFICATES</span></h3>
+                            <h3><span class="clickable" id="showDegrees">DEGREES</span> | <span class="clickable" id="showCertificates">CERTIFICATES</span></h3>
                             <div id="degrees"><!-- Onload AJAX request --></div>
                             <div id="certificates"><!-- Onload AJAX request --></div>
                         </div>
@@ -64,10 +64,12 @@
             </section>
 
             <!-- IST Faculty/Staff panel -->
-            <section class="panel red" id="people">
-                <div class="inner">
-                    <h1>People</h1>
-                    <p> Text goes here... </p>
+            <section class="panel" id="people">
+                <div class="inner container-fluid">
+                    <h1><!-- Onload AJAX request --></h1>
+                    <p><!-- Onload AJAX request --></p>
+                    <h2><span class="clickable" id="showFaculty">FACULTY</span> | <span class="clickable" id="showStaff">STAFF</span></h2>
+                    <div class="people"><ul class="row"><!-- Onload AJAX request --></div>
                 </div>
             </section>
 

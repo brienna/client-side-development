@@ -4,6 +4,7 @@ $(document).ready(function() {
     // Initialize overlay
     $('#popup').popup({
         closeelement: '.popup_close',
+        scrolllock: true // Disables scrolling of background content while the popup is visible
     });
 
     // Initialize ScrollMagic controller
@@ -88,7 +89,7 @@ $(document).ready(function() {
 
             // Add degrees to appropriate view in Degrees panel
             $.each(category, function(i, degree) {
-                $(node).append('<div class="degree" data-level="' + level + '" data-name="' 
+                $(node).append('<div class="clickable degree" data-level="' + level + '" data-name="' 
                     + degree.degreeName + '"><h4>' + degree.title + '</h4><p>' + degree.description);
             });
         }
@@ -105,7 +106,7 @@ $(document).ready(function() {
                 for (var i = 0; i < data[level].length; i++) {
                     var degree = data[level][i];
                     if (degree.degreeName == name) {
-                        $('#popup').append('<h1>' + degree.title + '</h1><p>' + degree.description + '</p><h2>Concentrations</h2>');
+                        $('#popup').append('<h1>' + degree.title + '</h1><p>' + degree.description + '</p><h2>Concentrations</h2><ul>');
                         for (var j = 0; j < degree.concentrations.length; j++) {
                             $('#popup').append('<li>' + degree.concentrations[j]);
                         }
@@ -128,7 +129,7 @@ $(document).ready(function() {
                         xhr('get', { path : coursePath }).done(function(json) {
                             $.each(json.courses, function(i, course) {
                                 // Add each course
-                                $('#popup').append('<li class="course" name="' + course + '">' + course);
+                                $('#popup').append('<li class="list-group-item course" name="' + course + '">' + course);
                             })
                         });
                         break; // end data loop looking for degree that was clicked
@@ -168,7 +169,7 @@ $(document).ready(function() {
             if (data[x] == "Networking,Planning and Design Advanced Cerificate") {
                 link = "http://www.rit.edu/programs/networking-planning-and-design-adv-cert";
             }
-            $('#certificates').append('<a href="' + link + '" target="_blank"><div class="certificate">' + data[x]);
+            $('#certificates').append('<a href="' + link + '" target="_blank"><div class="clickable certificate">' + data[x]);
         }
     }
 
@@ -196,7 +197,7 @@ $(document).ready(function() {
         console.log("Processing undergraduate minors...");
 
         $.each(data, function(i, minor) {
-            $('#minors').append('<div class="minor" data-name="' + minor.name + '"><h4>' + minor.title);
+            $('#minors').append('<div class="minor clickable" data-name="' + minor.name + '"><h4>' + minor.title);
         });
 
         // Allow user to click on each minor to view more details in overlay
@@ -209,9 +210,9 @@ $(document).ready(function() {
                     var minor = data[i];
                     if (minor.name == $(this).data('name')) {
                         // Add details to overlay
-                        $('#popup').append('<h1>' + minor.title + '</h1><p>' + minor.description + '<h2>Courses</h2>');
+                        $('#popup').append('<h1>' + minor.title + '</h1><p>' + minor.description + '<h2>Courses</h2><ul class="list-group">');
                         for (var j = 0; j < minor.courses.length; j++) {
-                            $('#popup').append('<li>' + minor.courses[j]);
+                            $('#popup ul').append('<li class="course list-group-item">' + minor.courses[j]);
                         }
                         break; // end data loop looking for minor that was clicked
                     }
@@ -238,6 +239,49 @@ $(document).ready(function() {
     });
 
     /**************************** COURSES ****************************/
+
+    /**************************** PEOPLE ****************************/
+    // Query "people" data
+    xhr('get', { path : '/people/'}).done(function(json) {
+        processPeople(json);
+    });
+
+    function processPeople(data) {
+        console.log(data);
+
+        var title = data.title;
+        var subTitle = data.subTitle;
+        var faculty = data.faculty;
+        var staff = data.staff;
+
+        $('#people .inner').children().first().text(title).next().text(subTitle);
+
+        $.each(faculty, function() {
+            $('#people .inner').find('ul').append('<li class="clickable person col-md-3 faculty"><a data-uName="' + this.username + '">' + this.name);
+        }); 
+
+        $.each(staff, function() {
+            $('#people .inner').find('ul').append('<li class="clickable person col-md-3 staff"><a data-uName"' + this.username + '">' + this.name);
+        })
+
+        // Set faculty as default view
+        $('.staff').hide();
+    }
+
+    // Toggle "Majors" and "Minors" views
+    $('#showFaculty').on('click', function() {
+        $('.staff').hide();
+        $('.faculty').show();
+        $('#showStaff').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+    $('#showStaff').on('click', function() {
+        $('.faculty').hide();
+        $('.staff').show();
+        $('#showFaculty').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+
 
     /**************************** NEWS ****************************/ 
     // Query "News" data 

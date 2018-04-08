@@ -28,8 +28,24 @@ a {
     color: black;
 }
 
+.people ul {
+    list-style-type: none;
+}
+
+.person {
+    border: 1px solid white;
+}
+
+#showFaculty {
+    color: white;
+}
+
 #main {
     height: 100vh;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 a:hover {
@@ -67,10 +83,6 @@ a:hover {
     max-width: 85%;
 }
 
-#showGrad, #showUndergrad {
-    cursor: pointer;
-}
-
 #showUndergrad { 
     color: white;
 }
@@ -92,11 +104,6 @@ a:hover {
     float: left;
     width: 33%;
     border: 1px solid gray;
-    cursor: pointer;
-}
-
-#showDegrees, #showCertificates {
-    cursor: pointer;
 }
 
 #showDegrees {
@@ -111,7 +118,6 @@ a:hover {
     float: left;
     width: 33%;
     border: 1px dashed gray;
-    cursor: pointer;
 }
 
 #certificates > a {
@@ -120,10 +126,6 @@ a:hover {
 
 #graduate > a {
     color: gray;
-}
-
-#showMajors, #showMinors {
-    cursor: pointer;
 }
 
 #showMajors {
@@ -138,7 +140,6 @@ a:hover {
     float: left;
     width: 33%;
     border: 1px dashed gray;
-    cursor: pointer;
 }
 
 #news {
@@ -180,7 +181,7 @@ a:hover {
 #popup {
     display: none; /* Hide until jQuery plugin loads, then plugin will hide it too */
     width: 70%;
-    background-color: lightgray;
+    background-color: white;
     padding: 2em;
     border: 1px solid black;
     transform: translateX(0) translateY(-40%);
@@ -209,10 +210,6 @@ a:hover {
     overflow: hidden;
     -webkit-perspective: 1000;
             perspective: 1000;
-}
-
-.red {
-    background-color: red;
 }
 
 .blue {
