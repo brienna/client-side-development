@@ -24,13 +24,13 @@ $(document).ready(function() {
      * @param path API node to query
      * @return result in json
      **/
-    function xhr(type, path) {
+    function xhr(type, dataType, path) {
         return $.ajax({
-            type: 'get',
+            type: type,
             url: 'proxy.php',   // Note: Needed because data is on different server
             cache: false,       // Note: Set once and it will work always
             async: true,        // Note: ^^^
-            dataType: 'json',
+            dataType: dataType,
             data: path,
         }).fail(function(err) {
             console.log('Error: ' + err);
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
     /**************************** ABOUT ****************************/
     // Query "About" data
-    xhr('get', { path : '/about/' }).done(function(json) {
+    xhr('get', 'json', { path : '/about/' }).done(function(json) {
         processAbout(json);
     });
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     /**************************** DEGREES ****************************/
     // Query "Degrees" data
-    xhr('get', { path : '/degrees/' }).done(function(json) {
+    xhr('get', 'json', { path : '/degrees/' }).done(function(json) {
         processDegrees(json);
     });
 
@@ -132,7 +132,7 @@ $(document).ready(function() {
                         var coursePath = '/courses/degreeName=' + modifiedName;
                         $('#popup').append('<h2>Courses</h2>');
                         // Query courses with appropriately built path
-                        xhr('get', { path : coursePath }).done(function(json) {
+                        xhr('get', 'json', { path : coursePath }).done(function(json) {
                             $.each(json.courses, function(i, course) {
                                 // Add each course
                                 $('#popup').append('<li class="list-group-item course" name="' + course + '">' + course);
@@ -195,7 +195,7 @@ $(document).ready(function() {
 
     /**************************** UNDERGRADUATE MINORS ****************************/
     // Query minors data
-    xhr('get', { path : '/minors/' }).done(function(json) {
+    xhr('get', 'json', { path : '/minors/' }).done(function(json) {
         processMinors(json.UgMinors);
     });
 
@@ -248,7 +248,7 @@ $(document).ready(function() {
 
     /**************************** PEOPLE ****************************/
     // Query "people" data
-    xhr('get', { path : '/people/'}).done(function(json) {
+    xhr('get', 'json', { path : '/people/'}).done(function(json) {
         processPeople(json);
     });
 
@@ -353,11 +353,11 @@ $(document).ready(function() {
 
     /**************************** EMPLOYMENT ****************************/ 
 
-    xhr('get', { path : '/employment/' }).done(function(json) {
+    xhr('get', 'json', { path : '/employment/' }).done(function(json) {
         processEmployment(json);
 
         // Query employment locations to mark on map
-        xhr('get', { path : '/location/' }).done(function(results) {
+        xhr('get', 'json', { path : '/location/' }).done(function(results) {
             // Process locations along with details for info window
             processLocations(results, json.employmentTable.professionalEmploymentInformation);
         });
@@ -365,10 +365,74 @@ $(document).ready(function() {
 
     function processEmployment(data) {
         console.log("Processing employment...");
-        //console.log(data);
+        console.log(data);
 
+        // Get data pieces
+        var heading = data.introduction.title;
+        var empHeading = data.introduction.content[0].title;
+        var empDesc = data.introduction.content[0].description;
+        empDesc = empDesc.replace('95% of our students landing a job within the first 6 months after graduation', 
+            '<span class="highlight">95% of our students landing a job within the first 6 months after graduation</span>');
+        var coopHeading = data.introduction.content[1].title;
+        var coopDesc = data.introduction.content[1].description;
+        coopDesc = coopDesc.replace('resources page', '<span class="clickable highlight">resources page</span>');
+        var coopTableHeading = data.coopTable.title;
+        var coopTableInfo = data.coopTable.coopInformation; // 2D array
+        var empTableHeading = data.employmentTable.title;
+        var empTableInfo = data.employmentTable.professionalEmploymentInformation;
 
+        var degreeStatsHeading = data.degreeStatistics.title;
+        var degreeStats = data.degreeStatistics.statistics; // 2D array
+        var careersHeading = data.careers.title; 
+        var careers = data.careers.careerNames; // 1D array
+        var employersHeading = data.employers.title;
+        var employers = data.employers.employerNames; // 1D array
+
+        // Add employer & co-op headings & descriptions to "Work" panel
+        $('#work h1').text(heading);
+        $('#work .col-md-6').first().append('<h2>' + empHeading + '</h2><p>' + empDesc + '</p>');
+        $('#work .col-md-6').last().append('<h2>' + coopHeading + '</h2><p>' + coopDesc + '</p>');
+        // If the user clicks on "Resources," take user to "Resources" panel
+        $('#work .col-md-6').last().find('span').on('click', function() {
+            wipeAnimation.seek(6);  // based on seconds defined in wipeAnimation 
+        });
+
+        // Add coop & employment table buttons
+        var coopTableBtn = '<div class="btn" id="coop_table"><p>' + coopTableHeading + '</p></div>';
+        var empTableBtn = '<div class="btn" id="emp_table"><p>' + empTableHeading + '</p></div>';
+        $('#work .inner').append('<div class="row">' + coopTableBtn + empTableBtn + '</div>');
         
+        // If user clicks on coop table button, show coop table in overlay
+        $('#coop_table').on('click', function() {
+            // Generate coop table HTML
+            var coopTable = '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>DEGREE</th>' +
+                '<th>EMPLOYER</th><th>CITY</th><th>TERM</th></thead><tbody>';
+            $.each(coopTableInfo, function(i, row) {
+                coopTable = coopTable + '<tr><td>' + row.degree + '</td><td>' + row.employer + 
+                    '</td><td>' + row.city + '</td><td>' + row.term + '</td></tr>';
+            });
+            coopTable = coopTable + '</tbody></table></div>';
+
+            // Reset overlay, leaving only its close button, then append table & show overlay
+            $('#popup').children().slice(1).remove();
+            $('#popup').append(coopTable).popup('show');
+        });
+
+        // If user clicks on emp table button, show employment table in overlay
+        $('#emp_table').on('click', function() {
+            // Generate employment table HTML
+            var empTable = '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>DEGREE</th>' +
+                '<th>EMPLOYER</th><th>TITLE</th><th>CITY</th><th>START DATE</th></thead><tbody>';
+            $.each(empTableInfo, function(i, row) {
+                empTable = empTable + '<tr><td>' + row.degree + '</td><td>' + row.employer + '</td><td>' + row.title + 
+                    '</td><td>' + row.city + '</td><td>' + row.startDate + '</td></tr>';
+            });
+            empTable = empTable + '</tbody></table></div>';
+
+            // Reset overlay, leaving only its close button, then append table & show overlay
+            $('#popup').children().slice(1).remove();
+            $('#popup').append(empTable).popup('show');
+        });
     }
 
     /**
@@ -390,7 +454,6 @@ $(document).ready(function() {
                 var detailCity = detail.city.toUpperCase().replace(/[,]/g, "").trim();
                 // If a matching location in details has been found,
                 if (~locCity.indexOf(detailCity) || ~detailCity.indexOf(locCity)) {
-                    console.log(locCity + " " + detailCity);
                     // Add details to location's info window html
                     info = info + '<hr/>';
                     var employer = "<p>Employer: " + detail.employer + '</p>';
@@ -412,7 +475,7 @@ $(document).ready(function() {
 
     /**************************** NEWS ****************************/ 
     // Query "News" data 
-    xhr('get', { path : '/news/' }).done(function(json) {
+    xhr('get', 'json', { path : '/news/' }).done(function(json) {
         processNews(json);
     });
 
@@ -484,7 +547,7 @@ $(document).ready(function() {
                 
                 // Get data based on path specified in anchor tag's data attribute
                 // TO BE CHANGED: Probably don't need to make another query, can filter data by date
-                xhr('get', { path : $(this).data('ajaxpath') }).done(function(json) {
+                xhr('get', 'json', { path : $(this).data('ajaxpath') }).done(function(json) {
                     $('#popup').append('<h1>' + json.title + '</h1><p>' + json.date + '<br><br>' + json.description + '...</p>');
                     // Also append "More news >>>" to overlay
                     $('#popup').append(moreNewsHtml).children().last().on('click', function() {
@@ -514,6 +577,13 @@ $(document).ready(function() {
             $('#popup').popup('show');
         }
     }
+
+    /**************************** CONTACT FORM ****************************/
+    // Query Contact Form  
+    xhr('get', 'html', { path : '/contactForm/' }).done(function(results) {
+        console.log(results);
+        $('#contactForm').append(results);
+    });
 
     /**************************** SCROLLING ****************************/
 

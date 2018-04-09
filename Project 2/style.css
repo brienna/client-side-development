@@ -93,6 +93,19 @@ a:hover {
     float: left;
 }
 
+#work {
+    border-right: none;
+}
+
+#employment {
+    border-left: none;
+}
+
+#work p {
+    font-size: 0.9em;
+    text-align: left;
+}
+
 section {
     height: 100vh;
 }
@@ -211,6 +224,10 @@ section {
     height: 140px !important;
 }
 
+.highlight {
+    color: #F36E21;
+}
+
 #popup {
     display: none; /* Hide until jQuery plugin loads, then plugin will hide it too */
     width: 70%;
@@ -221,12 +238,24 @@ section {
     transform: translateX(0) translateY(-40%);
 }
 
+table {
+    font-size: .9em;
+}
+
 #slide_background {
   transition: all 0.3s 0.3s;
 }
 #popup,
 #slide_wrapper {
   transition: all 0.3s ease-out;
+}
+
+.btn {
+    background-color: gray;
+}
+
+.btn p {
+    color: black;
 }
 
 .popup_visible #popup {
