@@ -2,17 +2,28 @@
 <html lang="en">  <!-- Note: Need this tag? -->
 <head>
     <meta charset="utf-8"/>
-    <!-- Include css -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- My stylesheet -->
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <!-- Include js files -->
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script> <!-- TweenMax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> <!-- Plugin http://scrollmagic.io/ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script> <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> <!-- Scrollmagic debugger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script> <!-- Plugin http://dev.vast.com/jquery-popup-overlay/ -->
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbgEZ6hTmDlIYt3YNWcb2BLk15ZMkVWlI"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.googlemap/1.5/jquery.googlemap.min.js"></script>
+    <!-- TweenMax, a ScrollMagic dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script> 
+    <!-- ScrollMagic http://scrollmagic.io/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> 
+    <!-- GSAP, a ScrollMagic dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script> 
+    <!-- Scrollmagic debugger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> 
+    <!-- Plugin http://dev.vast.com/jquery-popup-overlay/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script> 
+    <!-- My code -->
     <script src="script.js"></script>
 </head>
 <body>
@@ -81,6 +92,23 @@
                 </div>
             </section>
 
+            <!-- IST Employment 2nd panel -->
+            <section class="panel" id="work">
+                <div class="inner">
+                    <h1>Work</h1>
+                    <p> Text goes here... </p>
+                </div>
+            </section>
+
+            <!-- IST Employment 1st panel -->
+            <section class="panel" id="employment">
+                <div class="inner">
+                    <h1>Employment</h1>
+                    <p> Text goes here... </p>
+                    <div id="map"></div>
+                </div>
+            </section>
+
             <!-- IST Resources panel -->
             <section class="panel" id="resources">
                 <div class="inner">
@@ -90,6 +118,14 @@
             </section>
         </div>
     </div>
+
+    <!-- IST Contact Form panel -->
+    <section id="contactForm">
+        <div class="inner">
+            <h1>Contact Form</h1>
+            <!-- Onload AJAX request -->
+        </div>
+    </section>
 
     <!-- News popup overlay, reusable -->
     <div id="popup" class="fadeandscale container-fluid">

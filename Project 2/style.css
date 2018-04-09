@@ -87,11 +87,14 @@ a:hover {
 }
 
 .panel {
-    height: 100vh; /* need for scrollmagic */
-    width: 20%; /* to override stupid width problems caused by scrollmagic */
+    width: 12.5%; /* to override stupid width problems caused by scrollmagic */
     background-color: black;
     border: 1px solid #F36E21;
     float: left;
+}
+
+section {
+    height: 100vh;
 }
 
 .inner {
@@ -194,6 +197,20 @@ a:hover {
     font-size: 10px
 }
 
+#map {
+    width: 100%;
+    height: 50vh;
+}
+
+#map h1 {
+    color: black;
+}
+
+#map_info {
+    overflow: auto;
+    height: 140px !important;
+}
+
 #popup {
     display: none; /* Hide until jQuery plugin loads, then plugin will hide it too */
     width: 70%;
@@ -217,7 +234,7 @@ a:hover {
 }
 
 #slideContainer {
-    width: 500%; /* to contain 5 panels, each with 100% of window width */
+    width: 800%; /* to contain 7 panels, each with 100% of window width */
     height: 100%;
 }
 
@@ -227,12 +244,4 @@ a:hover {
     overflow: hidden;
     -webkit-perspective: 1000;
             perspective: 1000;
-}
-
-.blue {
-    background-color: blue;
-}
-
-.green {
-    background-color: green;
 }

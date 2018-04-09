@@ -10,6 +10,13 @@ $(document).ready(function() {
     // Initialize ScrollMagic controller
     var controller = new ScrollMagic.Controller();
 
+    // Initialize "Employment" Google Map
+    $("#map").googleMap({
+      zoom: 4, // Initial zoom level 
+      type: "HYBRID", 
+      scrollwheel: false // Disable scroll scaling 
+    });
+
     /** 
      * Makes an AJAX call.
      *
@@ -344,6 +351,64 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
+    /**************************** EMPLOYMENT ****************************/ 
+
+    xhr('get', { path : '/employment/' }).done(function(json) {
+        processEmployment(json);
+
+        // Query employment locations to mark on map
+        xhr('get', { path : '/location/' }).done(function(results) {
+            // Process locations along with details for info window
+            processLocations(results, json.employmentTable.professionalEmploymentInformation);
+        });
+    });
+
+    function processEmployment(data) {
+        console.log("Processing employment...");
+        //console.log(data);
+
+
+        
+    }
+
+    /**
+     * Processes and renders array of locations,
+     * appending each location as a marker to map.
+     * 
+     * @param locations array of locations.
+     * @param details array of employment details.
+     **/
+    function processLocations(locations, details) {
+        console.log("Processing employment locations...");
+        // For each location,
+        $.each(locations, function(i, location) {
+            var locCity = (location.city + location.state).toUpperCase().trim();
+            // Initialize its info window html
+            var info = '<div id="map_info">';
+            // Search employment details for any matching locations
+            $.each(details, function(i, detail) {
+                var detailCity = detail.city.toUpperCase().replace(/[,]/g, "").trim();
+                // If a matching location in details has been found,
+                if (~locCity.indexOf(detailCity) || ~detailCity.indexOf(locCity)) {
+                    console.log(locCity + " " + detailCity);
+                    // Add details to location's info window html
+                    info = info + '<hr/>';
+                    var employer = "<p>Employer: " + detail.employer + '</p>';
+                    var jobTitle = "<p>Job Title: " + detail.title  + '</p>';
+                    var degree = "<p>Degree: " + detail.degree  + '</p>';
+                    var startDate = "<p>Start Date: " + detail.startDate + '</p>';
+                    info = info + employer + jobTitle + degree + startDate;
+                }
+            });
+
+            // Add marker & its info window to map
+            $("#map").addMarker({
+                coords: [location.latitude, location.longitude],
+                title: locCity,
+                text: info
+            });
+        });
+    }
 
     /**************************** NEWS ****************************/ 
     // Query "News" data 
@@ -454,16 +519,18 @@ $(document).ready(function() {
 
     // Define movement of panels
     var wipeAnimation = new TimelineMax()
-        .to("#slideContainer", 1,   {x: "-20%"})    
-        .to("#slideContainer", 1,   {x: "-40%"})
-        .to("#slideContainer", 1,   {x: "-60%"})
-        .to("#slideContainer", 1,   {x: "-80%"});
+        .to("#slideContainer", 1,   {x: "-12.5%"})      // to Degrees
+        .to("#slideContainer", 1,   {x: "-25%"})        // to People
+        .to("#slideContainer", 1,   {x: "-37.5%"})      // to Research
+        .to("#slideContainer", 1,   {x: "-50%"})        // to Employment
+        .to("#slideContainer", 1,   {x: "-62.5%"})      // to Work
+        .to("#slideContainer", 1,   {x: "-75%"})        // to Resources
 
     // Create scene to pin and link animation
     new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
             triggerHook: "onLeave",
-            duration: "500%"
+            duration: "600%"  // slows down scrolling
         })
         .setPin("#pinContainer")
         .setTween(wipeAnimation)
