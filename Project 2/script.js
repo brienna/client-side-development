@@ -117,7 +117,7 @@ $(document).ready(function() {
                             $('#popup').append('<li>' + degree.concentrations[j]);
                         }
 
-                        // Add courses available for the degree
+                        // Get courses available for the degree
                         var modifiedName = name.toUpperCase();
                         if (level == 'graduate') {
                             // Exception: IST is queried as IT so need to change its name here 
@@ -128,16 +128,17 @@ $(document).ready(function() {
                         } else if (level == 'undergraduate') {
                             modifiedName = 'BS' + modifiedName;
                         } 
-                        // TO BE CHANGED: ADD BUTTON FOR USER TO CLICK ON TO SHOW COURSES
                         var coursePath = '/courses/degreeName=' + modifiedName;
-                        $('#popup').append('<h2>Courses</h2>');
-                        // Query courses with appropriately built path
-                        xhr('get', 'json', { path : coursePath }).done(function(json) {
-                            $.each(json.courses, function(i, course) {
-                                // Add each course
-                                $('#popup').append('<li class="list-group-item course" name="' + course + '">' + course);
-                            });
+                        // Set heading and event listener to load courses
+                        $('#popup').append('<h2 class="btn">View Available Courses</h2>').find('h2').last().on('click', function() {
+                            // Change heading
+                            $(this).removeClass('btn').text('Available Courses');
+                            // Load and show courses
+                            getCourses(coursePath);
+                            // Remove event handler to prevent further ajax calls 
+                            $(this).off();
                         });
+
                         break; // end data loop looking for degree that was clicked
                     }
                 }
@@ -218,11 +219,14 @@ $(document).ready(function() {
                         // Add details to overlay
                         $('#popup').append('<h1>' + minor.title + '</h1><p>' + minor.description + '<h2>Courses</h2><ul class="list-group">');
                         for (var j = 0; j < minor.courses.length; j++) {
-                            $('#popup ul').append('<li class="course list-group-item">' + minor.courses[j]);
+                            $('#popup ul').append('<li class="course list-group-item" data-name="' + minor.courses[j] + '"><p>' + minor.courses[j] + '</p>');
                         }
                         break; // end data loop looking for minor that was clicked
                     }
                 }
+
+                // Allow user to click any course to see or hide details
+                enableCourseDetails();
 
                 // Show overlay
                 $('#popup').popup('show');
@@ -245,6 +249,59 @@ $(document).ready(function() {
     });
 
     /**************************** COURSES ****************************/
+
+    function getCourses(coursePath) {
+        // Query courses 
+        xhr('get', 'json', { path : coursePath }).done(function(json) {
+            processCourses(json.courses);
+
+            // Allow user to click any course to see or hide details
+            enableCourseDetails();
+        });
+    }
+
+    function processCourses(courses) {
+        // Add each course to names array if its name is valid and unique
+        var names = [];
+        $.each(courses, function(i, course) {
+            if (/[A-Z]{3,4}-(?!0)\d{2,3}/.test(course)) {
+                if ($.inArray(course, names) === -1) {
+                    names.push(course);
+                }
+            }
+        });
+
+        // Sort courses by alphabetical order
+        names.sort();
+
+        // Add each course to overlay  
+        $.each(names, function(i, course) {
+            $('#popup').append('<li class="list-group-item course" data-name="' + course + '"><p>' + course + '</p>');
+        });
+    }
+
+    // Allow user to click any course (in any view) to see or hide details
+    function enableCourseDetails() {
+        console.log($('.course').length);
+        $('.course').each(function(i, element) {
+            $(element).on('click', function() {
+                // If course data is showing, erase
+                if ($(element).has('#courseDetails').length) {
+                    $(element).children().slice(1).remove();
+                } else {
+                    // Otherwise query course data and show
+                    xhr('get', 'json', { path : '/course/courseID=' + $(element).data('name') }).done(function(json) {
+                        console.log(json);
+                        var html = '<div id="courseDetails"><p><b>' + json.title + '</b></p>';
+                        if (json.description) {
+                            html = html + '<p>' + json.description + '</p>';
+                        } 
+                        $(element).append(html + '</div>');
+                    });
+                }
+            });
+        });
+    }
 
     /**************************** PEOPLE ****************************/
     // Query "people" data
@@ -581,9 +638,21 @@ $(document).ready(function() {
     /**************************** CONTACT FORM ****************************/
     // Query Contact Form  
     xhr('get', 'html', { path : '/contactForm/' }).done(function(results) {
-        console.log(results);
         $('#contactForm').append(results);
     });
+
+    /**************************** FOOTER ****************************/
+
+    // Query "Footer" data 
+    xhr('get', 'json', { path : '/footer/' }).done(function(json) {
+        processFooter(json);
+    });
+
+    function processFooter(data) {
+        console.log(data);
+
+        var social = data.social;
+    }
 
     /**************************** SCROLLING ****************************/
 

@@ -238,6 +238,11 @@ section {
     transform: translateX(0) translateY(-40%);
 }
 
+footer {
+    height: 100px;
+    background-color: black;
+}
+
 table {
     font-size: .9em;
 }
