@@ -284,7 +284,6 @@ $(document).ready(function() {
 
     // Allow user to click any course (in any view) to see or hide details
     function enableCourseDetails() {
-        console.log($('.course').length);
         $('.course').each(function(i, element) {
             $(element).on('click', function() {
                 // If course data has been loaded, toggle visibility
@@ -293,7 +292,6 @@ $(document).ready(function() {
                 } else {
                     // Otherwise query course data and show
                     xhr('get', 'json', { path : '/course/courseID=' + $(element).data('name') }).done(function(json) {
-                        console.log(json);
                         var html = '<div id="courseDetails"><p><b>' + json.title + '</b></p>';
                         if (json.description) {
                             html = html + '<p>' + json.description + '</p>';
@@ -328,6 +326,7 @@ $(document).ready(function() {
         });
 
         // Set faculty as default view
+        $('#showFaculty').css('color', 'white');
         $('.staff').hide();
 
         // Allow user to click on person to see more details
@@ -410,8 +409,86 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
-    /**************************** EMPLOYMENT ****************************/ 
+    /**************************** RESEARCH ****************************/ 
+    xhr('get', 'json', { path : '/research/' }).done(function(json) {
+        processResearch(json);
+    });
 
+    function processResearch(data) {
+        console.log("Processing research...");
+
+        // Add research by interest area
+        $.each(data.byInterestArea, function() {
+            $('#research .inner').find('ul').append('<li class="clickable research col-sm-2 by_interest_area" data-interestarea="' + this.areaName + '">' + this.areaName);
+        }); 
+
+        // Add research by faculty name
+        $.each(data.byFaculty, function() {
+            $('#research .inner').find('ul').append('<li class="clickable research col-sm-2 by_faculty" data-username="' + this.username + '">' + this.facultyName);
+        });
+
+        // Set interest areas as default view
+        $('#showResearchInterest').css('color', 'white');
+        $('.by_faculty').hide();
+
+        // Allow user to click on research interest area or faculty name to see more details
+        $('.research').each(function() {
+            $(this).on('click', function() {
+                var thisResearchItem = $(this);
+                
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+
+                // Generate HTML
+                var html;
+                if (thisResearchItem.hasClass('by_faculty')) {
+                    $.each(data.byFaculty, function(i, item) {
+                        // After finding the correct match in the data, proceed to populate overlay with research citations
+                        if (item.username == thisResearchItem.data('username')) {
+                            html = '<h1>' + item.facultyName + '</h1><ul>';
+                            $.each(item.citations, function(i, citation) {
+                                html = html + '<li>' + citation + '</li>';
+                            });
+                            $('#popup').append(html + '</ul>');
+                            // Show overlay
+                            $('#popup').popup('show');
+                            return false;  // end data loop looking for person that was clicked
+                        }
+                    });
+                } else if (thisResearchItem.hasClass('by_interest_area')) {
+                    $.each(data.byInterestArea, function(i, item) {
+                        // After finding the correct match in the data, populate overlay with research citations
+                        if (item.areaName == $(thisResearchItem).data('interestarea')) { // NOTE: cannot use caps with data attr
+                            html = '<h1>' + item.areaName + '</h1><ul>';
+                            $.each(item.citations, function(i, citation) {
+                                html = html + '<li>' + citation + '</li>';
+                            });
+                            $('#popup').append(html + '</ul>');
+                            // Show overlay
+                            $('#popup').popup('show');
+                            return false;  // end data loop looking for person that was clicked
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    // Toggle "by_interest_area" and "by_faculty" views
+    $('#showResearchInterest').on('click', function() {
+        $('.by_faculty').hide();
+        $('.by_interest_area').show();
+        $('#showResearchFaculty').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+    $('#showResearchFaculty').on('click', function() {
+        $('.by_interest_area').hide();
+        $('.by_faculty').show();
+        $('#showResearchInterest').css('color', 'gray');
+        $(this).css('color', 'white');
+    });
+
+    /**************************** EMPLOYMENT ****************************/ 
     xhr('get', 'json', { path : '/employment/' }).done(function(json) {
         processEmployment(json);
 
@@ -472,7 +549,7 @@ $(document).ready(function() {
         $('#employment1 .col-md-6').last().append('<h2>' + coopHeading + '</h2><p>' + coopDesc + '</p>');
         // If the user clicks on "Resources," take user to "Resources" panel
         $('#employment1 .col-md-6').last().find('span').on('click', function() {
-            wipeAnimation.seek(6);  // based on seconds defined in wipeAnimation 
+            wipeAnimation.seek(7);  // based on seconds defined in wipeAnimation 
         });
 
         // Add coop & employment table buttons to first panel
@@ -803,14 +880,13 @@ $(document).ready(function() {
 
     // Define movement of panels
     var wipeAnimation = new TimelineMax()
-        .to("#slideContainer", 1,   {x: "-10%"})    // to Degrees
-        .to("#slideContainer", 1,   {x: "-20%"})    // to People
-        .to("#slideContainer", 1,   {x: "-30%"})    // to Research
-        .to("#slideContainer", 1,   {x: "-40%"})    // to Employment
-        .to("#slideContainer", 1,   {x: "-50%"})    // to Employment2
-        .to("#slideContainer", 1,   {x: "-60%"})    // to Employment3
-        .to("#slideContainer", 1,   {x: "-70%"})    // to Resources
-        .to("#slideContainer", 1,   {x: "-80%"})    // to another panel
+        .to("#slideContainer", 1,   {x: "-11.11%"})    // to Degrees
+        .to("#slideContainer", 1,   {x: "-22.22%"})    // to People
+        .to("#slideContainer", 1,   {x: "-33.33%"})    // to Research
+        .to("#slideContainer", 1,   {x: "-44.44%"})    // to Employment
+        .to("#slideContainer", 1,   {x: "-55.56%"})    // to Employment2
+        .to("#slideContainer", 1,   {x: "-66.67%"})    // to Employment3
+        .to("#slideContainer", 1,   {x: "-77.78%"});   // to Resources
 
     // Create scene to pin and link animation
     new ScrollMagic.Scene({

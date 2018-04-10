@@ -52,10 +52,6 @@ ul.row:after {
   display: block;
 }
 
-#showFaculty {
-    color: white;
-}
-
 #main {
     height: 100vh;
 }
@@ -266,14 +262,14 @@ table {
 }
 
 .panel {
-    width: 10%; /* to override stupid width problems caused by scrollmagic */
+    width: 11.11%; /* to override stupid width problems caused by scrollmagic */
     background-color: black;
     border: 1px solid #F36E21;
     float: left;
 }
 
 #slideContainer {
-    width: 1000%; /* to contain 9 panels, each with 100% of window width */
+    width: 900%; /* to contain 8 panels, each with 100% of window width */
     height: 100%;
 }
 
