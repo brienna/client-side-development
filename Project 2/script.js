@@ -261,6 +261,8 @@ $(document).ready(function() {
     }
 
     function processCourses(courses) {
+        console.log("Processing courses...");
+
         // Add each course to names array if its name is valid and unique
         var names = [];
         $.each(courses, function(i, course) {
@@ -285,9 +287,9 @@ $(document).ready(function() {
         console.log($('.course').length);
         $('.course').each(function(i, element) {
             $(element).on('click', function() {
-                // If course data is showing, erase
+                // If course data has been loaded, toggle visibility
                 if ($(element).has('#courseDetails').length) {
-                    $(element).children().slice(1).remove();
+                    $(element).children().slice(1).toggle();
                 } else {
                     // Otherwise query course data and show
                     xhr('get', 'json', { path : '/course/courseID=' + $(element).data('name') }).done(function(json) {
@@ -422,7 +424,6 @@ $(document).ready(function() {
 
     function processEmployment(data) {
         console.log("Processing employment...");
-        console.log(data);
 
         // Get data pieces
         var heading = data.introduction.title;
@@ -434,30 +435,50 @@ $(document).ready(function() {
         var coopDesc = data.introduction.content[1].description;
         coopDesc = coopDesc.replace('resources page', '<span class="clickable highlight">resources page</span>');
         var coopTableHeading = data.coopTable.title;
-        var coopTableInfo = data.coopTable.coopInformation; // 2D array
+        var coopTableInfo = data.coopTable.coopInformation; 
         var empTableHeading = data.employmentTable.title;
         var empTableInfo = data.employmentTable.professionalEmploymentInformation;
 
         var degreeStatsHeading = data.degreeStatistics.title;
-        var degreeStats = data.degreeStatistics.statistics; // 2D array
+        var degreeStats = data.degreeStatistics.statistics; 
         var careersHeading = data.careers.title; 
-        var careers = data.careers.careerNames; // 1D array
+        var careers = data.careers.careerNames; 
         var employersHeading = data.employers.title;
-        var employers = data.employers.employerNames; // 1D array
+        var employers = data.employers.employerNames; 
 
-        // Add employer & co-op headings & descriptions to "Work" panel
-        $('#work h1').text(heading);
-        $('#work .col-md-6').first().append('<h2>' + empHeading + '</h2><p>' + empDesc + '</p>');
-        $('#work .col-md-6').last().append('<h2>' + coopHeading + '</h2><p>' + coopDesc + '</p>');
+        // Add statistics to second panel
+        $('#employment2 .inner').append('<h1>' + degreeStatsHeading + '</h1>');
+        var statsHtml = '<div>';
+        $.each(degreeStats, function(i, stat) {
+            statsHtml = statsHtml + '<div class="stat"><p>' + stat.value + '</p><p>' + stat.description + '</div>';
+        });
+        $('#employment2 .inner').append(statsHtml); 
+
+        // Add careers & employers to second panel
+        var html = '<div class="row"><div class="col-md-6"><ul id="careers"><h2>' + careersHeading + '</h2>';
+        $.each(careers, function(index, career) {
+            html = html + '<li>' + career + '</li>';
+        });
+        html = html + '</ul></div><div class="col-md-6><ul id="employers"><h2>' + employersHeading + '</h2>';
+        $.each(employers, function(index, employer) {
+            html = html + '<li>' + employer + '</li>';
+        });
+        html = html + '</ul></div></div>';
+        $('#employment2 .inner').append(html);
+
+        // Add employer & co-op headings & descriptions to first panel
+        $('#employment1 h1').text(heading);
+        $('#employment1 .col-md-6').first().append('<h2>' + empHeading + '</h2><p>' + empDesc + '</p>');
+        $('#employment1 .col-md-6').last().append('<h2>' + coopHeading + '</h2><p>' + coopDesc + '</p>');
         // If the user clicks on "Resources," take user to "Resources" panel
-        $('#work .col-md-6').last().find('span').on('click', function() {
+        $('#employment1 .col-md-6').last().find('span').on('click', function() {
             wipeAnimation.seek(6);  // based on seconds defined in wipeAnimation 
         });
 
-        // Add coop & employment table buttons
+        // Add coop & employment table buttons to first panel
         var coopTableBtn = '<div class="btn" id="coop_table"><p>' + coopTableHeading + '</p></div>';
         var empTableBtn = '<div class="btn" id="emp_table"><p>' + empTableHeading + '</p></div>';
-        $('#work .inner').append('<div class="row">' + coopTableBtn + empTableBtn + '</div>');
+        $('#employment1 .inner').append('<div class="row">' + coopTableBtn + empTableBtn + '</div>');
         
         // If user clicks on coop table button, show coop table in overlay
         $('#coop_table').on('click', function() {
@@ -626,7 +647,8 @@ $(document).ready(function() {
             for (var category in data) {
                 if (data.hasOwnProperty(category)) {
                     $.each(data[category], function(i, article) {
-                        $('#popup').append('<h1>' + article.title + '</h1><p>' + article.date + '<br><br>' + (article.description ? article.description : "" ) + '</p><hr/>'); // Note: Shows description only if not null
+                        $('#popup').append('<h1>' + article.title + '</h1><p>' + article.date + '<br><br>' + 
+                            (article.description ? article.description : "" ) + '</p><hr/>'); // Note: Shows description only if not null
                     });
                 }
             }
@@ -635,9 +657,131 @@ $(document).ready(function() {
         }
     }
 
+    /**************************** RESOURCES ****************************/
+    // Query Resources data  
+    xhr('get', 'json', { path : '/resources/' }).done(function(json) {
+        processResources(json);
+    });
+
+    function processResources(resources) {
+        console.log("Processing resources...");
+
+        // Add title & subtitle
+        var title = resources.title;
+        var subtitle = resources.subTitle;
+        $('#resources h1').text(title).next().text(subtitle);
+
+        // Get resources
+        var forms = resources.forms;
+        var tutorsAndLabInfo = resources.tutorsAndLabInformation;
+        var advising = resources.studentServices;
+        var studyAbroad = resources.studyAbroad;
+        var ambassadors = resources.studentAmbassadors;
+        var coop = resources.coopEnrollment;
+        
+        // Add resources to panel & overlay
+        $('.resource')
+            .first().append('<p>Forms</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                var html = '<h1>Forms</h1>';
+                $.each(forms, function(i, category) {
+                    if (i == 'graduateForms') {
+                        html = html + '<h2>Graduate</h2><ul>';
+                    } else if (i == 'undergraduateForms') {
+                        html = html + '<h2>Undergraduate</h2><ul>';
+                    }
+                    $.each(category, function(j, form) {
+                        html = html + '<li><a href="http://ist.rit.edu/' + form.href + '" target="_blank">' + form.formName + '</a></li>'; 
+                    });
+                    html = html + '</ul>';
+                });
+                $('#popup').append(html);
+                // Show overlay
+                $('#popup').popup('show');
+            })
+            .next().append('<p>' + tutorsAndLabInfo.title + '</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                $('#popup').append('<h1>' + tutorsAndLabInfo.title + '</h1><p>' + tutorsAndLabInfo.description + '</p>' + 
+                    '<a href="' + tutorsAndLabInfo.tutoringLabHoursLink + '" target="_blank">Lab Hours and TA Schedule</a>');
+                // Show overlay
+                $('#popup').popup('show');
+            })
+            .next().append('<p>' + advising.title + '</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                var aAdvisors = advising.academicAdvisors;
+                var fAdvisors = advising.facultyAdvisors;
+                var pAdvisors = advising.professonalAdvisors;
+                var iAdvisors = advising.istMinorAdvising;
+                var html = '<h1>' + advising.title + '</h1>' + '<h2>' + aAdvisors.title + '</h2><p>' + aAdvisors.description + 
+                    '</p><p><a href="' + aAdvisors.faq.contentHref + '" target="_blank">' + aAdvisors.faq.title + '</a></p><h2>' + 
+                    fAdvisors.title + '</h2><p>' + fAdvisors.description + '</p><h2>' + pAdvisors.title + '</h2><ul>';
+                $.each(pAdvisors.advisorInformation, function(i, advisor) {
+                    html = html + '<li>' + advisor.name + ' (<a href="mailto:' + advisor.email + '">' + advisor.email + '</a>): ' + 
+                        advisor.department + '</li>';
+                });
+                html = html + '</ul><h2>' + iAdvisors.title + '</h2><ul>';
+                $.each(iAdvisors.minorAdvisorInformation, function(i, advisor) {
+                    html = html + '<li>' + advisor.advisor + ' (<a href="mailto:' + advisor.email + '">' + advisor.email.trim() + '</a>): ' + 
+                        advisor.title + '</li>';
+                });
+                $('#popup').append(html + '</ul>');
+                // Show overlay
+                $('#popup').popup('show');
+            })
+            .next().append('<p>' + studyAbroad.title + '</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                var html = '<h1>' + studyAbroad.title + '</h1><p>' + studyAbroad.description + '</p><h2>Places</h2><ul>';
+                $.each(studyAbroad.places, function(i, place) {
+                    html = html + '<li>' + place.nameOfPlace + ' — ' + place.description + '</li>';
+                });
+                $('#popup').append(html + '</ul>');
+                // Show overlay
+                $('#popup').popup('show');
+            })
+            .next().append('<p>' + ambassadors.title + '</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                var html = '<h1>' + ambassadors.title + '</h1><img src="' + ambassadors.ambassadorsImageSource + '"/>';
+                $.each(ambassadors.subSectionContent, function(i, section) {
+                    var description = section.description;
+                    if (section.title == "apply") {
+                        // Activate form link
+                        description = section.description.replace(/apply/, '<a href="' + ambassadors.applicationFormLink + '" target="_blank">apply</a>');
+                    }
+                    html = html + '<h2>' + section.title + '</h2><p>' + description + '</p>';
+                });
+                $('#popup').append(html + '<p>' + ambassadors.note + '</p>');
+                // Show overlay
+                $('#popup').popup('show');
+            })
+            .next().append('<p>' + coop.title + '</p>').on('click', function() {
+                // Reset overlay, leaving only its close button
+                $('#popup').children().slice(1).remove();
+                // Populate overlay
+                var html = '<h1>' + coop.title + '</h1><p>Please refer to our <a href="' + coop.RITJobZoneGuidelink + '" target="_blank">Co-op Guide</a>!';
+                $.each(coop.enrollmentInformationContent, function(i, info) {
+                    html = html + '<h2>' + info.title + '</h2><p>' + info.description + '</p>';
+                });
+                $('#popup').append(html);
+                // Show overlay
+                $('#popup').popup('show');
+            });
+    }
+
+
     /**************************** CONTACT FORM ****************************/
     // Query Contact Form  
     xhr('get', 'html', { path : '/contactForm/' }).done(function(results) {
+        console.log("Getting contact form...");
         $('#contactForm').append(results);
     });
 
@@ -649,6 +793,7 @@ $(document).ready(function() {
     });
 
     function processFooter(data) {
+        console.log("Processing footer...");
         console.log(data);
 
         var social = data.social;
@@ -658,12 +803,14 @@ $(document).ready(function() {
 
     // Define movement of panels
     var wipeAnimation = new TimelineMax()
-        .to("#slideContainer", 1,   {x: "-12.5%"})      // to Degrees
-        .to("#slideContainer", 1,   {x: "-25%"})        // to People
-        .to("#slideContainer", 1,   {x: "-37.5%"})      // to Research
-        .to("#slideContainer", 1,   {x: "-50%"})        // to Employment
-        .to("#slideContainer", 1,   {x: "-62.5%"})      // to Work
-        .to("#slideContainer", 1,   {x: "-75%"})        // to Resources
+        .to("#slideContainer", 1,   {x: "-10%"})    // to Degrees
+        .to("#slideContainer", 1,   {x: "-20%"})    // to People
+        .to("#slideContainer", 1,   {x: "-30%"})    // to Research
+        .to("#slideContainer", 1,   {x: "-40%"})    // to Employment
+        .to("#slideContainer", 1,   {x: "-50%"})    // to Employment2
+        .to("#slideContainer", 1,   {x: "-60%"})    // to Employment3
+        .to("#slideContainer", 1,   {x: "-70%"})    // to Resources
+        .to("#slideContainer", 1,   {x: "-80%"})    // to another panel
 
     // Create scene to pin and link animation
     new ScrollMagic.Scene({
@@ -673,7 +820,6 @@ $(document).ready(function() {
         })
         .setPin("#pinContainer")
         .setTween(wipeAnimation)
-        .addIndicators() 
+        //.addIndicators() 
         .addTo(controller);
-
 });
