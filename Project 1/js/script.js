@@ -3,13 +3,26 @@ if (!document.getElementById) {
 }
 
 window.onload = function() {
-    debugger;
 
     // Save info abt whether browser is IE 
     var isIE = ((navigator.userAgent.indexOf("MSIE") != -1) && (navigator.userAgent.indexOf("Opera") == -1)); 
 
-    // Initialize some globals
+    // Get form & set its onsubmit event listener to handle validation
     var form = document.getElementsByTagName('form')[0];
+    if (form.addEventListener) {
+        form.addEventListener("submit", function() { // Modern browsers
+            validate(event)
+        });  
+    } else if (form.attachEvent) {
+        form.attachEvent('onsubmit', function() {  // IE
+            validate(event);
+        });            
+    }
+
+    // Get reset button & set its onclick event listener to handle further reset functionality
+    resetButton = document.getElementById("resetBtn");
+    resetButton.onclick = reset;
+
     var p = document.getElementById('name');
     var selectsLive = form.getElementsByTagName('select');
     var divsLive = document.getElementsByTagName('div');
@@ -18,12 +31,7 @@ window.onload = function() {
     var activeSelectId = 1; // keeps track of <select> elements
     var answer;
     var guess;
-    // Clear button stuff
-    var clearButtonTxt = document.createTextNode('Clear');
-    var clearButton = document.createElement('button');
-    clearButton.appendChild(clearButtonTxt);
-    clearButton.style.marginTop = '20px';
-    clearButton.onclick = reset;
+
     var playAgainButtonTxt = document.createTextNode('Generate new answer');
     var playAgainButton = document.createElement('button');
     playAgainButton.appendChild(playAgainButtonTxt);
@@ -93,13 +101,12 @@ window.onload = function() {
             
             getRandomColor();
         }
-    }
+    } 
 
     ///////////////////////////////// SHOW MENUS /////////////////////////////////
 
     // Creates all of the dropdowns
     function createDropMenu(texts, id) {
-        form.appendChild(clearButton);
         form.appendChild(playAgainButton);
         var select = document.createElement("select");
         select.name = id;
@@ -119,18 +126,11 @@ window.onload = function() {
 
             colorBall(target);
             getNext(target);
-            // If it was last menu && actual choice was picked, save user choices
-            if (select.name == ((Object.keys(optionTexts[1])).length - 1) && select.value !== "") {
-                saveUserChoices();
-                check(); // check answers
-            } else {
-                // Strip border colors from wrapper divs
-                var wrappers = document.getElementsByClassName('wrapper');
-                for (var i = 0; i < wrappers.length; i++) {
-                    if (wrappers[i].style.border !== "") {
-                        wrappers[i].style.border = "";
-                    }
-                }
+
+            // If user randomly chooses earlier selection, 
+            // remove border colors from wrapper divs 
+            if (select.name !== ((Object.keys(optionTexts[1])).length - 1)) {
+                removeAnswers();
             }
         }
 
@@ -138,7 +138,7 @@ window.onload = function() {
         var question = document.createElement('p');
         question.setAttribute('class', 'question');
         question.appendChild(document.createTextNode(texts[0]));
-        form.insertBefore(question, clearButton);
+        form.insertBefore(question, resetButton);
 
         // Add blank choice for display purposes
         select.appendChild(document.createElement("option"));
@@ -156,8 +156,8 @@ window.onload = function() {
         if (!isIE) {
             select.style.opacity = 0;
         }
-        form.insertBefore(select, clearButton);
-        form.insertBefore(document.createElement('br'), clearButton);
+        form.insertBefore(select, resetButton);
+        form.insertBefore(document.createElement('br'), resetButton);
         if (!isIE) {
             fadeIn(select);
         }
@@ -223,38 +223,8 @@ window.onload = function() {
         tick();
     }
 
-    // Check user choices against randomly generated answer
-    function check() {
-        for (var i = 0; i < guess.length; i++) {
-            if (guess[i] == answer[i]) {
-                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid green";
-            } else {
-                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid red";
-            }
-        }
-    }
-
-    function saveUserChoices() {
-        guess = [];
-        // Save choice for each select element
-        for (var i = 0; i < selectsLive.length; i++) {
-            if (window.localStorage) {
-                window.localStorage.setItem((i+1), selectsLive[i].options[selectsLive[i].selectedIndex].text);
-            } else {
-                var nextyear = new Date();
-                nextyear.setFullYear(nextyear.getFullYear()+1);
-                var cookieStr = (i+1) + "=" + selectsLive[i].options[selectsLive[i].selectedIndex].text + "; expires=" + nextyear.toGMTString() + "; path=/";
-                document.cookie = cookieStr;
-            }
-
-            // also populate guess array
-            guess.push(selectsLive[i].options[selectsLive[i].selectedIndex].text);
-        }
-
-    }
-
     function getUserChoices() {
-        // Check if user choices exist
+        // Check if user choices exist in localstorage or cookies
         var index = 0;
         var choice;
         var oIndex;
@@ -311,8 +281,8 @@ window.onload = function() {
     }
 
     function reset() {
+        // Remove saved choices from local storage and cookies
         for (var i = 0; i < selectsLive.length; i++) {
-            // Remove localStorage/cookies
             if (window.localStorage) {
                 window.localStorage.removeItem(selectsLive[i].name);
             } else {
@@ -328,12 +298,9 @@ window.onload = function() {
                 divsLive[i].style.backgroundColor = "#F9FAFC";
             }
         }
-        var wrappers = document.getElementsByClassName('wrapper');
-        for (i = 0; i < wrappers.length; i++) {
-            if (wrappers[i].style.border !== "") {
-                wrappers[i].style.border = "";
-            }
-        }
+
+        // Clear answers
+        removeAnswers();
 
         // Clear selects
         var selects = form.querySelectorAll('select');
@@ -343,9 +310,16 @@ window.onload = function() {
             form.removeChild(eleToRemove.nextSibling);
             form.removeChild(selectsLive.namedItem(selects[i].name));
         }
-        selectsLive.namedItem(1).value = "";
+    }
 
-        return false; // prevent page from refreshing if click button inside form
+    // Removes answers, the red/green outlines around the colored boxes
+    function removeAnswers() {
+        var wrappers = document.getElementsByClassName('wrapper');
+        for (i = 0; i < wrappers.length; i++) {
+            if (wrappers[i].style.border !== "") {
+                wrappers[i].style.border = "";
+            }
+        }
     }
 
     ///////////////////////////////// SHOW GREETING /////////////////////////////////
@@ -440,6 +414,57 @@ window.onload = function() {
             nextyear.setFullYear(nextyear.getFullYear()+1);
             document.cookie = "nameCookie=" + name + "; expires=" + nextyear.toGMTString() + "; path=/";
             console.log("saved " + name + " to cookie");
+        }
+    }
+
+    //////////////////// FORM SUBMISSION ////////////////////////
+
+    // On click of "Check" button, this callback gets called
+    function validate(evt) {
+        // Prevent form from being submitted
+        evt.preventDefault();
+
+        // Make sure no selection is empty.
+        // We only need to check the last selection, 
+        // as it only appears after other selections have been filled in
+        if (selectsLive[selectsLive.length - 1].value !== "") {
+            console.log("Form is valid");
+            // Save answers
+            saveUserChoices();
+            // Check whether user guessed correctly
+            check();
+        } else {
+            console.log("Form is not valid");
+        }
+    }
+
+    // Check user choices against randomly generated answer
+    function check() {
+        for (var i = 0; i < guess.length; i++) {
+            if (guess[i] == answer[i]) {
+                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid green";
+            } else {
+                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid red";
+            }
+        }
+    }
+
+    // Save user choices to localstorage or cookies
+    function saveUserChoices() {
+        guess = [];
+        // Save choice for each select element
+        for (var i = 0; i < selectsLive.length; i++) {
+            if (window.localStorage) {
+                window.localStorage.setItem((i+1), selectsLive[i].options[selectsLive[i].selectedIndex].text);
+            } else {
+                var nextyear = new Date();
+                nextyear.setFullYear(nextyear.getFullYear()+1);
+                var cookieStr = (i+1) + "=" + selectsLive[i].options[selectsLive[i].selectedIndex].text + "; expires=" + nextyear.toGMTString() + "; path=/";
+                document.cookie = cookieStr;
+            }
+
+            // also populate guess array
+            guess.push(selectsLive[i].options[selectsLive[i].selectedIndex].text);
         }
     }
 

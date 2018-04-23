@@ -1,0 +1,50 @@
+body {
+    background-color: #F9FAFC;
+    font-size: 14px;
+    font-family: Arial;
+    color: #3a3a3a;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    font-weight: bold;
+}
+
+#name {
+    font-size: 20px;
+}
+
+a {
+    color: #7ABBDB;
+    font-style: italic;
+    font-weight: normal;
+}
+
+select {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    width:100px;
+}
+
+.question {
+    color: gray;
+}
+
+div > div {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    background: #F9FAFC;
+}
+
+.wrapper {
+    display: inline-block;
+    padding: 20px;
+    background-color: "";
+}
+
+#description {
+    display: none;
+}

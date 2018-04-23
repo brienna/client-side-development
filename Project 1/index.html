@@ -2,68 +2,14 @@
 <html lang="en"> 
 <head>
     <meta charset="utf-8"/>
-    <style> 
-        body {
-            background-color: #F9FAFC;
-            font-size: 14px;
-            font-family: Arial;
-            color: #3a3a3a;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        p {
-            font-weight: bold;
-        }
-
-        #name {
-            font-size: 20px;
-        }
-
-        a {
-            color: #7ABBDB;
-            font-style: italic;
-            font-weight: normal;
-        }
-
-        select {
-            display: block;
-            margin-left:auto;
-            margin-right:auto;
-            width:100px;
-        }
-
-        .question {
-            color: gray;
-        }
-
-        /* http://jonraasch.com/blog/css-rounded-corners-in-all-browsers */
-        div > div {
-            /*behavior: url(/css/border-radius.htc);
-            border-radius: 50px;*/
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            background: #F9FAFC;
-        }
-
-        .wrapper {
-            display: inline-block;
-            padding: 20px;
-            background-color: "";
-        }
-
-        #description {
-            display: none;
-        }
-    </style>
-    
     <!-- polyfills for IE -->
     <script src="js/polyfills/Object.keys.polyfill.js"></script>
     <script src="js/polyfills/JSON.polyfill.js"></script>
     <script src="js/polyfills/getElementsByClassName.polyfill.js"></script>
     <!-- my script -->
     <script src="js/script.js"></script>
+    <!-- my css -->
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -75,8 +21,13 @@
     <div class="wrapper"><div title="1"></div></div>
     <div class="wrapper"><div title="2"></div></div>
     <div class="wrapper"><div title="3"></div></div>
+    
     <br><br>
-    <form></form>
+
+    <form action="#" method="get">
+        <input id="resetBtn" type="reset" value="Reset">
+        <input type="submit" value="Check">
+    </form>
 </body>
 </html>
 
