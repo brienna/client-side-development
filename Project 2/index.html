@@ -23,53 +23,82 @@
     <!-- Scrollmagic debugger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> 
     <!-- Popup overlay http://dev.vast.com/jquery-popup-overlay/ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script>
+    <!-- Fonts / Icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <!-- Match height -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <!-- Modernizr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <!-- My code -->
     <script src="script.js"></script>
 </head>
 <body>
 
     <header>
-        <a target="_blank">Rochester Institute of Technology</a>
+        <img class="menu" src="/assets/hamburger.png"/>
+        <img class="close" src="/assets/close.png"/>
+        <p>Information Sciences and Technologies @ <a href="http://rit.edu" target="_blank"><img src="/assets/rit.jpg" /></a></p>
     </header>
+
+    <!-- Menu -->
+    <nav>
+        <ul class="list-group">
+            <a href="#start" class="menu-btn list-group-item">About</a>
+            <a href="#start" class="menu-btn list-group-item">Degrees</a>
+            <a href="#start" class="menu-btn list-group-item">People</a>
+            <a href="#start" class="menu-btn list-group-item">Research</a>
+            <a href="#start" class="menu-btn list-group-item">Employment</a>
+            <a href="#start" class="menu-btn list-group-item">Resources</a>
+            <a href="#contact" class="menu-btn list-group-item">Contact</a>
+        </ul>
+    </nav>
 
     <!-- Main panel -->
     <section id="main">
-        <h1>Information Sciences and Technologies</h1>
+        <h1>Information Sciences  <br/> and Technologies</h1>
         <!-- News main view-->
-        <div id="news">
-            <div class="news_column"><!-- Onload AJAX request --></div>
-            <div class="news_column"><!-- Onload AJAX request --></div>
+        <div class="news container-fluid">
+            <div id="news" class="row">
+                <div class="news_column col-sm-6"><!-- Onload AJAX request --></div>
+                <div class="news_column col-sm-6"><!-- Onload AJAX request --></div>
+            </div>
         </div>
     </section>
 
     <div id="pinContainer">
         <div id="slideContainer">
+        <a name="start"></a>
             <!-- About IST panel -->
             <section class="panel" id="about">
                 <div class="inner">
                     <h1><!-- Onload AJAX request --></h1>
                     <p><!-- Onload AJAX request --></p>
-                    <p><!-- Onload AJAX request --></p>
-                    <p><!-- Onload AJAX request --></p>
+                    <div class="bkg">
+                        <i class="fas fa-quote-left"></i>
+                        <p id="quote"><!-- Onload AJAX request --></p>
+                        <p><!-- Onload AJAX request --></p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
                 </div>
             </section>
 
             <!-- IST degrees panel -->
-            <section class="panel">
+            <section class="panel" id="deg_panel">
                 <div class="inner">
                     <h1>Our Degrees</h1>
+                    <p>To view undergraduate degrees and minors, and graduate degrees and certificates, click below.</p> 
                     <h2><span class="clickable" id="showUndergrad">UNDERGRADUATE</span> | <span class="clickable" id="showGrad">GRADUATE</span></h2>
-                    <div id="undergraduate">
+                    <div id="undergraduate" class="container-fluid">
                         <h3><span class="clickable" id="showMajors">DEGREES</span> | <span class="clickable" id="showMinors">MINORS</span></h3>
-                        <div id="majors"><!-- Onload AJAX request --></div>
-                        <div id="minors"><!-- Onload AJAX request --></div>
+                        <div id="majors" class="row-fluid"><!-- Onload AJAX request --></div>
+                        <div id="minors" class="row-fluid"><!-- Onload AJAX request --></div>
                     </div>
                     <div>
-                        <div id="graduate">
+                        <div id="graduate" class="container-fluid">
                             <h3><span class="clickable" id="showDegrees">DEGREES</span> | <span class="clickable" id="showCertificates">CERTIFICATES</span></h3>
-                            <div id="degrees"><!-- Onload AJAX request --></div>
-                            <div id="certificates"><!-- Onload AJAX request --></div>
+                            <div id="degrees" class="row"><!-- Onload AJAX request --></div>
+                            <div id="certificates" class="row"><!-- Onload AJAX request --></div>
                         </div>
                     </div>
                 </div>
@@ -90,11 +119,12 @@
                 <div class="inner">
                     <h1>Research</h1>
                     <h2><span class="clickable" id="showResearchInterest">BY INTEREST AREA</span> | <span class="clickable" id="showResearchFaculty">BY FACULTY</span></h2>
-                    <div class="container-fluid"><ul class="row"><!-- Onload AJAX request --></div>
+                    <div class="container-fluid researching"><ul class="row"><!-- Onload AJAX request --></div>
                 </div>
             </section>
 
             <!-- IST Employment 1st panel -->
+            <a name="employmentAnchor"></a>
             <section class="panel" id="employment1">
                 <div class="inner container-fluid">
                     <h1><!-- Onload AJAX request --></h1>
@@ -102,20 +132,22 @@
                         <div class="col-md-6"><!-- Onload AJAX request --></div>
                         <div class="col-md-6"><!-- Onload AJAX request --></div>
                     </div>
-                    <!-- Onload AJAX request -->
+                    <div class="row">
+                        <!-- Onload AJAX request -->
+                    </div>
                 </div>
             </section>
 
             <!-- IST Employment 2nd panel -->
             <section class="panel" id="employment2">
                 <div class="inner container-fluid"><!-- Onload AJAX request --></div>
+                <p>*These employers and career names are chosen randomly.</p>
             </section>
 
             <!-- IST Employment 3rd panel -->
             <section class="panel" id="employment3">
                 <div class="inner">
-                    <h1></h1>
-                    <p> Text goes here... </p>
+                    <h1>Where our students work</h1>
                     <div id="map"><!-- Onload AJAX request --></div>
                 </div>
             </section>
@@ -126,12 +158,12 @@
                     <h1></h1>
                     <p></p>
                     <div class="row">
-                        <div class="resource col-md-2"></div>
-                        <div class="resource col-md-2"></div>
-                        <div class="resource col-md-2"></div>
-                        <div class="resource col-md-2"></div>
-                        <div class="resource col-md-2"></div>
-                        <div class="resource col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
                     </div>
                 </div>
             </section>
@@ -139,21 +171,22 @@
     </div>
 
     <!-- IST Contact Form panel -->
-    <section id="contactForm">
-        <div class="inner">
-            <h1>Contact Form</h1>
-            <!-- Onload AJAX request -->
-        </div>
+    <a name="contact"></a>
+    <section id="contact">
+        <!-- Onload AJAX request -->
     </section>
 
     <!-- News popup overlay, reusable -->
     <div id="popup" class="fadeandscale container-fluid">
-        <button class="popup_close">Close</button>
+        <img class="popup_close" src="/assets/close.png"/>
         <!-- Onclick AJAX requests -->
     </div>
 
-    <footer>
-        <p>Hello there</p>
+    <footer class="container-fluid">
+        <div class="row">
+            <div id="quicklinks" class="col-md-6"></div>
+            <div id="social" class="col-md-6"></div>
+        </div>
     </footer>
 
 </body>

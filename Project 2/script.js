@@ -1,3 +1,7 @@
+// Note: jQuery docs recommend to use Modernizr to detect features
+if (!Modernizr.csstransforms3d) {
+    window.location = "legacy.html";
+} 
 
 $(document).ready(function() {
     /**************************** SETUP ****************************/
@@ -52,9 +56,8 @@ $(document).ready(function() {
         console.log("Processing about...");
 
         // Add the data pieces to "About" panel
-        $('#about .inner').children().first().text(data.title)
-            .next().text(data.description)
-            .next().text(data.quote)
+        $('#about .inner').children().first().text(data.title).next().text(data.description);
+        $('#quote').text(data.quote)
             .next().text("- " + data.quoteAuthor);
     }
 
@@ -95,10 +98,13 @@ $(document).ready(function() {
 
             // Add degrees to appropriate view in Degrees panel
             $.each(category, function(i, degree) {
-                $(node).append('<div class="clickable degree" data-level="' + level + '" data-name="' + 
+                $(node).append('<div class="clickable degree col-sm-4" data-level="' + level + '" data-name="' + 
                     degree.degreeName + '"><h4>' + degree.title + '</h4><p>' + degree.description);
             });
         }
+
+        // Make each degree box equal in height
+        $('.degree').matchHeight(false);
 
         // Allow user to click on each degree to view more details in overlay
         $('.degree').each(function(index) {
@@ -147,21 +153,25 @@ $(document).ready(function() {
                 $('#popup').popup('show');
             });
         });
-    }
 
-    // Toggle "Undergraduate" and "Graduate" views
-    $('#showGrad').on('click', function() {
-        $('#undergraduate').hide();
-        $('#graduate').parent().show();
-        $('#showUndergrad').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
-    $('#showUndergrad').on('click', function() {
+        // Set Undergraduates as default view
+        $('#showUndergrad').addClass('clicked').removeClass('clickable');
         $('#graduate').parent().hide();
-        $('#undergraduate').show();
-        $('#showGrad').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
+
+        // Toggle "Undergraduate" and "Graduate" views
+        $('#showGrad').on('click', function() {
+            $('#undergraduate').hide();
+            $('#graduate').parent().show();
+            $('#showUndergrad').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+        $('#showUndergrad').on('click', function() {
+            $('#graduate').parent().hide();
+            $('#undergraduate').show();
+            $('#showGrad').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+    }
 
     /**************************** GRADUATE CERTIFICATES ****************************/
 
@@ -176,23 +186,31 @@ $(document).ready(function() {
             if (data[x] == "Networking,Planning and Design Advanced Cerificate") {
                 link = "http://www.rit.edu/programs/networking-planning-and-design-adv-cert";
             }
-            $('#certificates').append('<a href="' + link + '" target="_blank"><div class="clickable certificate">' + data[x]);
+            $('#certificates').append('<a href="' + link + '" target="_blank" class="col-sm-6 certificate clickable">' + data[x]);
+    
         }
-    }
 
-    // Toggle "Degrees" and "Certificates" views
-    $('#showDegrees').on('click', function() {
+        // Make each degree box equal in height
+        $('.certificate').matchHeight(false);
+
+        // Set Degrees as default view
+        $('#showDegrees').addClass('clicked').removeClass('clickable');
         $('#certificates').hide();
-        $('#degrees').show();
-        $('#showCertificates').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
-    $('#showCertificates').on('click', function() {
-        $('#degrees').hide();
-        $('#certificates').show();
-        $('#showDegrees').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
+
+        // Toggle "Degrees" and "Certificates" views
+        $('#showDegrees').on('click', function() {
+            $('#certificates').hide();
+            $('#degrees').show();
+            $('#showCertificates').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+        $('#showCertificates').on('click', function() {
+            $('#degrees').hide();
+            $('#certificates').show();
+            $('#showDegrees').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+    }
 
     /**************************** UNDERGRADUATE MINORS ****************************/
     // Query minors data
@@ -204,7 +222,7 @@ $(document).ready(function() {
         console.log("Processing undergraduate minors...");
 
         $.each(data, function(i, minor) {
-            $('#minors').append('<div class="minor clickable" data-name="' + minor.name + '"><h4>' + minor.title);
+            $('#minors').append('<div class="minor clickable col-sm-4" data-name="' + minor.name + '"><h4>' + minor.title);
         });
 
         // Allow user to click on each minor to view more details in overlay
@@ -215,6 +233,7 @@ $(document).ready(function() {
 
                 for (var i = 0; i < data.length; i++) {
                     var minor = data[i];
+
                     if (minor.name == $(this).data('name')) {
                         // Add details to overlay
                         $('#popup').append('<h1>' + minor.title + '</h1><p>' + minor.description + '<h2>Courses</h2><ul class="list-group">');
@@ -232,21 +251,28 @@ $(document).ready(function() {
                 $('#popup').popup('show');
             });
         });
-    }
 
-    // Toggle "Majors" and "Minors" views
-    $('#showMajors').on('click', function() {
+        // Make each minor box equal in height
+        $('.minor').matchHeight(false);
+
+        // Set "Majors" as default view
+        $('#showMajors').addClass('clicked').removeClass('clickable');
         $('#minors').hide();
-        $('#majors').show();
-        $('#showMinors').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
-    $('#showMinors').on('click', function() {
-        $('#majors').hide();
-        $('#minors').show();
-        $('#showMajors').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
+
+        // Toggle "Majors" and "Minors" views
+        $('#showMajors').on('click', function() {
+            $('#minors').hide();
+            $('#majors').show();
+            $('#showMinors').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+        $('#showMinors').on('click', function() {
+            $('#majors').hide();
+            $('#minors').show();
+            $('#showMajors').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+    }
 
     /**************************** COURSES ****************************/
 
@@ -325,10 +351,6 @@ $(document).ready(function() {
             $('#people .inner').find('ul').append('<li class="clickable person col-sm-2 staff" data-username="' + this.username + '">' + this.name);
         });
 
-        // Set faculty as default view
-        $('#showFaculty').css('color', 'white');
-        $('.staff').hide();
-
         // Allow user to click on person to see more details
         $('.person').each(function() {
             $(this).on('click', function() {
@@ -393,21 +415,25 @@ $(document).ready(function() {
                 $('#popup').popup('show');
             });
         });
-    }
 
-    // Toggle "Majors" and "Minors" views
-    $('#showFaculty').on('click', function() {
+        // Set faculty as default view
+        $('#showFaculty').addClass('clicked').removeClass('clickable');
         $('.staff').hide();
-        $('.faculty').show();
-        $('#showStaff').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
-    $('#showStaff').on('click', function() {
-        $('.faculty').hide();
-        $('.staff').show();
-        $('#showFaculty').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
+
+        // Toggle "Majors" and "Minors" views
+        $('#showFaculty').on('click', function() {
+            $('.staff').hide();
+            $('.faculty').show();
+            $('#showStaff').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+        $('#showStaff').on('click', function() {
+            $('.faculty').hide();
+            $('.staff').show();
+            $('#showFaculty').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+    }
 
     /**************************** RESEARCH ****************************/ 
     xhr('get', 'json', { path : '/research/' }).done(function(json) {
@@ -419,17 +445,13 @@ $(document).ready(function() {
 
         // Add research by interest area
         $.each(data.byInterestArea, function() {
-            $('#research .inner').find('ul').append('<li class="clickable research col-sm-2 by_interest_area" data-interestarea="' + this.areaName + '">' + this.areaName);
+            $('#research .inner').find('ul').append('<li class="clickable research col-sm-3 by_interest_area" data-interestarea="' + this.areaName + '">' + this.areaName);
         }); 
 
         // Add research by faculty name
         $.each(data.byFaculty, function() {
-            $('#research .inner').find('ul').append('<li class="clickable research col-sm-2 by_faculty" data-username="' + this.username + '">' + this.facultyName);
+            $('#research .inner').find('ul').append('<li class="clickable research col-sm-3 by_faculty" data-username="' + this.username + '">' + this.facultyName);
         });
-
-        // Set interest areas as default view
-        $('#showResearchInterest').css('color', 'white');
-        $('.by_faculty').hide();
 
         // Allow user to click on research interest area or faculty name to see more details
         $('.research').each(function() {
@@ -439,22 +461,21 @@ $(document).ready(function() {
                 // Reset overlay, leaving only its close button
                 $('#popup').children().slice(1).remove();
 
-                // Generate HTML
+                // Generate HTML (note of interest: used alternative ways to find matches, grep/each)
                 var html;
                 if (thisResearchItem.hasClass('by_faculty')) {
-                    $.each(data.byFaculty, function(i, item) {
-                        // After finding the correct match in the data, proceed to populate overlay with research citations
-                        if (item.username == thisResearchItem.data('username')) {
-                            html = '<h1>' + item.facultyName + '</h1><ul>';
-                            $.each(item.citations, function(i, citation) {
-                                html = html + '<li>' + citation + '</li>';
-                            });
-                            $('#popup').append(html + '</ul>');
-                            // Show overlay
-                            $('#popup').popup('show');
-                            return false;  // end data loop looking for person that was clicked
-                        }
+                    // Find correct match in data
+                    var match = $.grep(data.byFaculty, function(item, i) {
+                        return (item.username == thisResearchItem.data('username'));
+                    })[0];
+                    // Populate overlay with research citations of the matched faculty
+                    html = '<h1>' + match.facultyName + '</h1><ul>';
+                    $.each(match.citations, function(i, citation) {
+                        html = html + '<li>' + citation + '</li>';
                     });
+                    $('#popup').append(html + '</ul>');
+                    // Show overlay
+                    $('#popup').popup('show');
                 } else if (thisResearchItem.hasClass('by_interest_area')) {
                     $.each(data.byInterestArea, function(i, item) {
                         // After finding the correct match in the data, populate overlay with research citations
@@ -472,21 +493,26 @@ $(document).ready(function() {
                 }
             });
         });
+
+        // Set interest areas as default view
+        $('#showResearchInterest').addClass('clicked').removeClass('clickable');
+        $('.by_faculty').hide();
+
+        // Toggle "by_interest_area" and "by_faculty" views
+        $('#showResearchInterest').on('click', function() {
+            $('.by_faculty').hide();
+            $('.by_interest_area').show();
+            $('#showResearchFaculty').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
+        $('#showResearchFaculty').on('click', function() {
+            $('.by_interest_area').hide();
+            $('.by_faculty').show();
+            $('#showResearchInterest').removeClass('clicked').addClass('clickable');
+            $(this).addClass('clicked').removeClass('clickable');
+        });
     }
 
-    // Toggle "by_interest_area" and "by_faculty" views
-    $('#showResearchInterest').on('click', function() {
-        $('.by_faculty').hide();
-        $('.by_interest_area').show();
-        $('#showResearchFaculty').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
-    $('#showResearchFaculty').on('click', function() {
-        $('.by_interest_area').hide();
-        $('.by_faculty').show();
-        $('#showResearchInterest').css('color', 'gray');
-        $(this).css('color', 'white');
-    });
 
     /**************************** EMPLOYMENT ****************************/ 
     xhr('get', 'json', { path : '/employment/' }).done(function(json) {
@@ -525,11 +551,11 @@ $(document).ready(function() {
 
         // Add statistics to second panel
         $('#employment2 .inner').append('<h1>' + degreeStatsHeading + '</h1>');
-        var statsHtml = '<div>';
+        var statsHtml = '<div class="stats">';
         $.each(degreeStats, function(i, stat) {
             statsHtml = statsHtml + '<div class="stat"><p>' + stat.value + '</p><p>' + stat.description + '</div>';
         });
-        $('#employment2 .inner').append(statsHtml); 
+        $('#employment2 .inner').append(statsHtml + '</div>'); 
 
         // Add careers & employers to second panel
         var html = '<div class="row"><div class="col-md-6"><ul id="careers"><h2>' + careersHeading + '</h2>';
@@ -550,12 +576,14 @@ $(document).ready(function() {
         // If the user clicks on "Resources," take user to "Resources" panel
         $('#employment1 .col-md-6').last().find('span').on('click', function() {
             wipeAnimation.seek(7);  // based on seconds defined in wipeAnimation 
+            //wipeAnimation.play();
+            //TweenLite.to(window, 0.8, {scrollTo:"#resources", autoKill:false, ease:Power4.easeInOut});
         });
 
         // Add coop & employment table buttons to first panel
-        var coopTableBtn = '<div class="btn" id="coop_table"><p>' + coopTableHeading + '</p></div>';
-        var empTableBtn = '<div class="btn" id="emp_table"><p>' + empTableHeading + '</p></div>';
-        $('#employment1 .inner').append('<div class="row">' + coopTableBtn + empTableBtn + '</div>');
+        var coopTableDiv = '<div class="col-md-6 clickable" id="coop_table"><p>' + coopTableHeading + '</p></div>';
+        var empTableDiv = '<div class="col-md-6 clickable" id="emp_table"><p>' + empTableHeading + '</p></div>';
+        $('#employment1 .inner').children().last().append(empTableDiv + coopTableDiv);
         
         // If user clicks on coop table button, show coop table in overlay
         $('#coop_table').on('click', function() {
@@ -588,6 +616,9 @@ $(document).ready(function() {
             $('#popup').children().slice(1).remove();
             $('#popup').append(empTable).popup('show');
         });
+
+        // Make stat boxes equal height
+        $('.stat').matchHeight(false);
     }
 
     /**
@@ -655,7 +686,7 @@ $(document).ready(function() {
             try {
                 for (var i = 0; numShowing < maxNumShowing; i++) {
                     // Get the parts of each news article                
-                    desc = data.year[i].description.split(" ").slice(0,20).join(" ");
+                    desc = data.year[i].description.split(" ").slice(0,30).join(" ");
 
                     // Add to correct news column
                     ajaxPath = ('/news/year/date=' + data.year[i].date).replace(" ", "%20"); 
@@ -675,7 +706,7 @@ $(document).ready(function() {
         // If older news exists & still need more news to show, process it
         if (data.older) {
             for (var j = 0; numShowing < maxNumShowing; j++) {
-                desc = data.older[j].description.split(" ").slice(0,20).join(" ");
+                desc = data.older[j].description.split(" ").slice(0,30).join(" ");
 
                 // Add to correct news column
                 ajaxPath = ('/news/older/date=' + data.older[j].date).replace(" ", "%20"); 
@@ -689,7 +720,7 @@ $(document).ready(function() {
 
         // Append "More news >>" to news div
         var moreNewsHtml = '<a href="#" class="more_news" data-ajaxpath="/news/"><p>More news >>></p></a>';
-        $('#news').append(moreNewsHtml).children().last().on('click', function() {
+        $('#news').parent().append(moreNewsHtml).children().last().on('click', function() {
             showAllNews();
         });
 
@@ -708,6 +739,7 @@ $(document).ready(function() {
                     $('#popup').append(moreNewsHtml).children().last().on('click', function() {
                         showAllNews();
                     });
+
                     // Show overlay
                     $('#popup').popup('show');
                 });
@@ -837,6 +869,8 @@ $(document).ready(function() {
                     html = html + '<h2>' + section.title + '</h2><p>' + description + '</p>';
                 });
                 $('#popup').append(html + '<p>' + ambassadors.note + '</p>');
+                // Set image size
+                $('#popup').find('h1 + img').css({'width': '60%', 'margin': '0 auto', 'display': 'block', 'padding-bottom': '40px'});
                 // Show overlay
                 $('#popup').popup('show');
             })
@@ -859,7 +893,7 @@ $(document).ready(function() {
     // Query Contact Form  
     xhr('get', 'html', { path : '/contactForm/' }).done(function(results) {
         console.log("Getting contact form...");
-        $('#contactForm').append(results);
+        $('#contact').append(results);
     });
 
     /**************************** FOOTER ****************************/
@@ -874,7 +908,66 @@ $(document).ready(function() {
         console.log(data);
 
         var social = data.social;
+        var quickLinks = data.quickLinks;
+        var copyright = data.copyright;
+
+        $('#social').append('<p>' + social.title + '</p><p>' + social.facebook + '</p><p>' + social.tweet + ' <a href="' + social.twitter + '">' + social.by + '</a></p>');
+
+        // Add each quick link
+        $.each(quickLinks, function(i, quicklink) {
+            $('#quicklinks').append('<a href="' + quicklink.href + '" target="_blank">' + quicklink.title + '</a><br>');
+        });
+
+
+        $('footer').append(copyright.html);
     }
+
+    /**************************** MENU ****************************/
+
+    $('.menu-btn').each(function(index, element) {
+        $(this).on('click', function() {
+            var name = $(this).text();
+            if (name == "Degrees") {
+                wipeAnimation.seek(1);
+                wipeAnimation.play(1);
+            } else if (name == "People") {
+                wipeAnimation.seek(2);
+            } else if (name == "Research") {
+                wipeAnimation.seek(3);
+            } else if (name == "Employment") {
+                //wipeAnimation.seek(4);
+                //controller.scrollTo('#start');
+             //   controller.scrollTo('#employmentAnchor')
+            //scene.progress(0.56);
+                
+                //wipeAnimation.play(4);
+
+                //alert(scene.progress());
+                //scene.progress(0.5);
+                //controller.scrollTo('#start');
+                
+                //alert('current pos: ' + controller.scrollPosMethod());
+                //wipeAnimation.play(4);
+                //wipeAnimation.start();
+                //wipeAnimation.play(4);
+            } else if (name == "Resources") {
+                wipeAnimation.seek(5);
+            }
+        });
+    })
+
+    $('.menu').on('click', function() {
+        $('nav').show();
+        $(this).hide();
+        $('.close').show();
+    })
+
+    $('.close').on('click', function() {
+        $('nav').hide();
+        $(this).hide();
+        $('.menu').show();
+    })
+
 
     /**************************** SCROLLING ****************************/
 
@@ -889,7 +982,7 @@ $(document).ready(function() {
         .to("#slideContainer", 1,   {x: "-77.78%"});   // to Resources
 
     // Create scene to pin and link animation
-    new ScrollMagic.Scene({
+    var scene = new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
             triggerHook: "onLeave",
             duration: "600%"  // slows down scrolling
@@ -898,4 +991,11 @@ $(document).ready(function() {
         .setTween(wipeAnimation)
         //.addIndicators() 
         .addTo(controller);
+
+    scene.on("progress", function (event) {
+        console.log("Scene progress changed to " + event.progress);
+    });
+
 });
+
+

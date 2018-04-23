@@ -1,85 +1,172 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: black;
     height: 100%;
     margin: 0;
-    color: gray;
-    background-image: url('https://pixnio.com/free-images/2017/08/22/2017-08-22-09-44-04.jpg');
-    background-size: 100% 100vh;
+    background-image: url('/assets/background.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+    font-size: 15px;
+}
+
+#popup > img:first-child {
+    position: absolute;
+    right: -2px;
+    cursor: pointer;
+    width: 50px;
+    top: -2px;
+} 
+
+nav {
+    width: 20%;
+    position: fixed;
+    z-index: 100000002; /* above panels */ 
+    top: 50px;
+    display: none;
+}
+
+nav a {
+    color: black;
+}
+
+.menu {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    left: 10px;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    left: 10px;
+    display: none;
+}
+
+.list-group-item:hover {
+    background-color: lightgray;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #F36E21;
 }
 
 header {
     width: 100%;
-    padding: 6px;
+    padding: 0px 0 6px 0;
     border-bottom: 1px solid #F36E21;
     background-color: black;
-    position: fixed;
     top: 0px;
-    z-index: 10001; /* place on top */
+    color: #CCCCCC;
+    /* show on top always */
+    z-index: 10001; 
+    position: fixed;
+    height: 50px;
+    text-align: center;
 }
 
-header > a {
-    color: lightgray;
+header p {
+    height: 100%;
+    padding: 10px 0 0 0;
+    display: inline-block;
+}
+
+header img {
+    height: 100%;
+}
+
+header .fa-bars {
+    margin: 8px 0 0 0;
+    position: fixed;
+    left: 15px;
+}
+
+#contact h2 {
+    color: white;
     text-align: center;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+#contact .help-block {
+    color: gray;
+}
+
+#contact button {
+    background-color: #F36E21;
+    border-color: #F36E21;
+}
+
+#main > h1 {
+    padding: 17% 0 0 0;
+    color: #CCCCCC;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.news {
+    background-color: rgb(0, 0, 0); /* Fallback */
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 70%;
+    padding: 1%;
+    margin: 15px 0 0 15%;
+    overflow:hidden;
+}
+
+.news_column {
+    float: left;
+}
+
+.news_column h1 {
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.news_column p {
+    font-size: 12px;
+}
+
+.news a {
+    color: #CCCCCC;
+}
+
+.news a:hover {
+    color: #F36E21
+}
+
+.more_news {
+    text-align: center;
+    font-size: 10px;
     display: block;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+footer {
+    overflow: hidden;
+    background-color: black;
+    border-top: 1px solid #F36E21;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
 }
 
-.people ul {
-    list-style-type: none;
-    margin: 0 auto;
+footer a {
+    color: #F36E21;
 }
 
-.person {
-    border: 1px solid white;
-    float: left;
-    padding: 12px 5px;
-    text-align: center;
+footer a:hover {
+    color: white;
 }
 
-.person:hover {
-    background-color: white;
-    color: black;
-}
-
-ul.row:after {
-  clear: both;
-  display: block;
+section {
+    height: 100vh;
+    width: 100%;
 }
 
 #main {
     height: 100vh;
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-a:hover {
-    color: #F36E21;
-}
-
-.inner h1 {
-    padding: 10% 0 0 0;
-    margin: 0;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-}
-
-.inner h2, .inner h2 a {
-    text-align: center;
-    color: gray;
-}
-
-.inner p {
-    text-align: center;
-    color: gray;
 }
 
 #employment1 {
@@ -93,115 +180,6 @@ a:hover {
 
 #employment3 {
     border-left: none;
-}
-
-#employment1 p {
-    font-size: 0.9em;
-    text-align: left;
-}
-
-section {
-    height: 100vh;
-}
-
-.inner {
-    margin: 0 auto; /* center the content of the sections */
-    max-width: 85%;
-}
-
-#showUndergrad { 
-    color: white;
-}
-
-#showGrad {
-    color: gray;
-}
-
-#undergraduate + div { /* set undergraduate as default degree view */
-    display: none;
-}
-
-#undergraduate + div > p { /* graduate certifications */
-    clear: left; /* end floating for degrees */
-    padding-top: 50px;
-}
-
-.degree {
-    float: left;
-    width: 33%;
-    border: 1px solid gray;
-}
-
-#showDegrees {
-    color: white;
-}
-
-#certificates { /* set degrees as default degree view within graduate */
-    display: none;
-}
-
-.certificate {
-    float: left;
-    width: 33%;
-    border: 1px dashed gray;
-}
-
-#certificates > a {
-    color: gray;
-}
-
-#graduate > a {
-    color: gray;
-}
-
-#showMajors {
-    color: white;
-}
-
-#minors { /* set majors as default degree view within undergraduates */
-    display: none;
-}
-
-.minor {
-    float: left;
-    width: 33%;
-    border: 1px dashed gray;
-}
-
-#news {
-    background-color: rgb(211, 211, 211, 0.6);
-    width: 500px;
-    padding: 1%;
-    display: inline-block;
-    left: 150px;
-    position: absolute;
-    top: 100px;
-}
-
-.news_column:first-child {
-    float: left;
-    width: 46%;
-    padding: 0;
-    margin-right: 1%;
-}
-
-.news_column:last-child {
-    float: right;
-    width: 46%;
-    margin-left: 1%;
-}
-
-.news_column h1 {
-    font-size: 15px;
-}
-
-.news_column p {
-    font-size: 12px;
-}
-
-.more_news > p {
-    text-align: right;
-    font-size: 10px
 }
 
 #map {
@@ -218,8 +196,245 @@ section {
     height: 140px !important;
 }
 
+.panel {
+    width: 11.11%; /* to override stupid width problems caused by scrollmagic */
+    background-color: black;
+    border: 1px solid #F36E21;
+    float: left;
+    color: gray;
+}
+
+.inner {
+    margin: 0 auto; /* center the content of the sections */
+    max-width: 85%;
+}
+
+.inner h1 {
+    padding: 10% 0 0 0;
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+/* ABOUT */
+#about p:first-of-type {
+    padding: 20px 0 0 0;
+}
+
+.bkg {
+    background-color: rgb(211, 211, 211);
+    background-color: rgb(211, 211, 211, 211);
+    color: black;
+    margin: 30px;
+    padding: 30px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* DEGREES */
+h2, h3 {
+    font-size: 20px;
+}
+
+#deg_panel p {
+    text-align: center;
+}
+
+#deg_panel h2, #deg_panel h3 {
+    text-align: center;
+    padding: 13px 0 0 0;
+}
+
+#deg_panel h1, #deg_panel h3 {
+    padding-bottom: 40px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+#certificates a {
+    color: gray;
+}
+
+.clickable:hover, #certificates a:hover {
+    color: #000000;
+    background-color: white;
+}
+
+.clicked {
+    color: white;
+    text-decoration: underline;
+}
+
+.degree, .minor, .certificate {
+    float: left;
+    width: 33%;
+    border: 1px solid gray;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+h4 {
+    font-size: 18px;
+    text-align: center;
+}
+
 .highlight {
     color: #F36E21;
+}
+
+/* PEOPLE */
+
+.people ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+.person {
+    border: 1px solid white;
+    float: left;
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.person:hover {
+    background-color: white;
+    color: black;
+}
+
+#people p {
+    padding-top: 11px;
+    text-align: center;
+}
+
+#people h2 {
+    padding: -10px 0 10px 0;
+    text-align: center;
+}
+
+/* RESEARCH */
+
+#research h2 {
+    text-align: center;
+    padding: 40px 0 0 0;
+}
+
+.researching ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 15px 0 0 0;
+}
+
+.research {
+    border: 1px solid white;
+    float: left;
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.research:hover {
+    background-color: white;
+    color: black;
+}
+
+.resource {
+    border: 1px solid white;
+    float: left;
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#resources p {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* EMPLOYMENT */
+
+#employment1 h2 {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+#coop_table, #emp_table {
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.stat {
+    float: left;
+    background-color: white;
+    width: 175px;
+    margin-right: 20px;
+    color: black;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+}
+
+.stats:after {
+    clear: both;
+    display: block;
+}
+
+.stats {
+    padding: 20px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.stat p:first-child {
+    font-size: 16px;
+}
+
+#employment2 > p:last-child {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 10px;
+}
+
+#employment3 h1 {
+    padding-bottom: 40px;
+}
+
+ul.row:after {
+  clear: both;
+  display: block;
+}
+
+#slideContainer {
+    width: 900%; /* to contain 8 panels, each with 100% of window width */
+    height: 100%;
+}
+
+#slide_background {
+  transition: all 0.3s 0.3s;
+}
+
+#popup,
+#slide_wrapper {
+  transition: all 0.3s ease-out;
+}
+
+#pinContainer {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-perspective: 1000;
+            perspective: 1000;
+}
+
+.popup_visible #popup {
+  transform: translateX(0) translateY(0);
 }
 
 #popup {
@@ -232,57 +447,14 @@ section {
     transform: translateX(0) translateY(-40%);
 }
 
-footer {
-    height: 100px;
-    background-color: black;
-}
-
 table {
     font-size: .9em;
 }
 
-#slide_background {
-  transition: all 0.3s 0.3s;
-}
-#popup,
-#slide_wrapper {
-  transition: all 0.3s ease-out;
-}
-
-.btn {
-    background-color: gray;
-}
-
-.btn p {
-    color: black;
-}
-
-.popup_visible #popup {
-  transform: translateX(0) translateY(0);
-}
-
-.panel {
-    width: 11.11%; /* to override stupid width problems caused by scrollmagic */
-    background-color: black;
-    border: 1px solid #F36E21;
-    float: left;
-}
-
-#slideContainer {
-    width: 900%; /* to contain 8 panels, each with 100% of window width */
-    height: 100%;
-}
-
-#pinContainer {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    -webkit-perspective: 1000;
-            perspective: 1000;
-}
-
-#main > h1 {
-    padding: 50vh 0 0 10%;
+div#contactForm {
     color: white;
-}
+    background-color: rgb(0, 0, 0); /* Fallback */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
 
+}
