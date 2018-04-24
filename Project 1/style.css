@@ -28,7 +28,7 @@ select {
     width:100px;
 }
 
-.question {
+label {
     color: gray;
 }
 

@@ -136,7 +136,6 @@ window.onload = function() {
 
         // Create question <p>
         var question = document.createElement('label');
-        question.setAttribute('class', 'question');
         question.setAttribute('for', select.getAttribute('id'));
         question.appendChild(document.createTextNode(texts[0]));
         form.insertBefore(question, resetButton);
@@ -317,10 +316,12 @@ window.onload = function() {
 
     // Removes answers, the red/green outlines around the colored boxes
     function removeAnswers() {
-        var wrappers = document.getElementsByClassName('wrapper');
-        for (i = 0; i < wrappers.length; i++) {
-            if (wrappers[i].style.border !== "") {
-                wrappers[i].style.border = "";
+        var wrappers = document.getElementsByTagName('div');
+        for (var i = 0; i < wrappers.length; i++) {
+            if (wrappers[i].getAttribute('class') == 'wrapper') {
+                if (wrappers[i].style.border !== "") {
+                    wrappers[i].style.border = "";
+                }
             }
         }
     }
