@@ -19,29 +19,28 @@ window.onload = function() {
         });            
     }
 
+    // Initialize other globals
+    var p = document.getElementById('name');
+    var selectsLive = form.getElementsByTagName('select');
+    var activeSelectId = 1; // keeps track of <select> elements
+    var divsLive = document.getElementsByTagName('div');
+    var optionTexts;  // holds text for questions & choices
+    var currNode;
+    var guess;
+     var answer;
+
     // Get reset button & set its onclick event listener to handle further reset functionality
     resetButton = document.getElementById("resetBtn");
     resetButton.onclick = reset;
 
-    var p = document.getElementById('name');
-    var selectsLive = form.getElementsByTagName('select');
-    var divsLive = document.getElementsByTagName('div');
-    var optionTexts;  // holds text for questions & choices
-    var currNode;
-    var activeSelectId = 1; // keeps track of <select> elements
-    var answer;
-    var guess;
-
-    var playAgainButtonTxt = document.createTextNode('Generate new answer');
-    var playAgainButton = document.createElement('button');
-    playAgainButton.appendChild(playAgainButtonTxt);
-    playAgainButton.style.marginLeft = '10px';
+    // Get "play again" button & set its onclick event listener to handle generating a new answer
+    playAgainButton = document.getElementById("playAgain");
     playAgainButton.onclick = function () {
-        reset();
+        form.reset();
+        reset(); 
         answer = [];
         generateRandomAnswer(optionTexts[1]);
         console.log(answer);
-        return false;
     }
 
     ///////////////////////////////// LOAD DATA /////////////////////////////////
@@ -110,6 +109,7 @@ window.onload = function() {
         form.appendChild(playAgainButton);
         var select = document.createElement("select");
         select.name = id;
+        select.setAttribute('id', 'select' + id);
         if (select.addEventListener) {
             select.addEventListener("change", respondToSelection);
         } else {
@@ -135,8 +135,9 @@ window.onload = function() {
         }
 
         // Create question <p>
-        var question = document.createElement('p');
+        var question = document.createElement('label');
         question.setAttribute('class', 'question');
+        question.setAttribute('for', select.getAttribute('id'));
         question.appendChild(document.createTextNode(texts[0]));
         form.insertBefore(question, resetButton);
 
@@ -281,6 +282,8 @@ window.onload = function() {
     }
 
     function reset() {
+
+
         // Remove saved choices from local storage and cookies
         for (var i = 0; i < selectsLive.length; i++) {
             if (window.localStorage) {
@@ -424,17 +427,28 @@ window.onload = function() {
         // Prevent form from being submitted
         evt.preventDefault();
 
+        // Get error msg to show when needed
+        var errorMsg = document.getElementById('errorMsg');
+        errorMsg.style.color = "red";
+
         // Make sure no selection is empty.
         // We only need to check the last selection, 
         // as it only appears after other selections have been filled in
         if (selectsLive[selectsLive.length - 1].value !== "") {
-            console.log("Form is valid");
+            // Hide invalid message if it is showing
+            if (errorMsg.style.display !== "none") {
+                errorMsg.style.display = "none";
+            }
             // Save answers
             saveUserChoices();
             // Check whether user guessed correctly
             check();
         } else {
-            console.log("Form is not valid");
+            // Show invalid msg if it isn't showing already
+            if (errorMsg.style.display == "none") {
+                errorMsg.style.display = "block";
+                console.log("Form is not valid");
+            }
         }
     }
 

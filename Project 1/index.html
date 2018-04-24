@@ -21,11 +21,14 @@
     <div class="wrapper"><div title="1"></div></div>
     <div class="wrapper"><div title="2"></div></div>
     <div class="wrapper"><div title="3"></div></div>
-    
+
     <br><br>
 
-    <form action="#" method="get">
+    <form action="#" method="post">
+        <!-- Set display inline so can access in JS -->
+        <p id="errorMsg" style="display: none;">Please fill all selections before checking.</p>
         <input id="resetBtn" type="reset" value="Reset">
+        <input id="playAgain" type="button" value="Play again">
         <input type="submit" value="Check">
     </form>
 </body>
