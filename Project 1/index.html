@@ -2,18 +2,23 @@
 <html lang="en"> 
 <head>
     <meta charset="utf-8"/>
-    <!-- polyfills for IE -->
-    <script src="js/polyfills/Object.keys.polyfill.js"></script>
-    <script src="js/polyfills/JSON.polyfill.js"></script>
-    <script src="js/polyfills/getElementsByClassName.polyfill.js"></script>
+    <!-- permitted polyfill for IE -->
+    <script src="js/JSON.polyfill.js"></script>
     <!-- my script -->
     <script src="js/script.js"></script>
     <!-- my css -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-    <p id="name">Welcome! </p>
+    <p id="name">Welcome!</p>
+
+    <form style="display: none;" action="#" method="post">
+        <label for="username">Who are you?</label>
+        <input id="username" name="nameinput" type="text">
+        <input type="submit" value="submit">
+    </form>
+
     <p id="description">Your choices have been saved from your last visit, <br>but the quiz has generated a new answer.</p>
     <br>
     <p>Guess the colors of these squares...</p>

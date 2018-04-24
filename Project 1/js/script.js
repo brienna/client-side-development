@@ -2,24 +2,30 @@ if (!document.getElementById) {
     window.location = "legacy.html";
 }
 
+// Set console.log as an empty function in case IE doesn't recognize it (happened once)
+if (!window.console) {
+    console = {log: function() {}};
+}
+
+
 window.onload = function() {
 
     // Save info abt whether browser is IE 
     var isIE = ((navigator.userAgent.indexOf("MSIE") != -1) && (navigator.userAgent.indexOf("Opera") == -1)); 
 
-    // Get form & set its onsubmit event listener to handle validation
-    var form = document.getElementsByTagName('form')[0];
+    // Get name form & set its onsubmit event listener to handle validation
+    var nameForm = document.getElementsByTagName('form')[0];
+
+    // Get selections form & set its onsubmit event listener to handle validation
+    var form = document.getElementsByTagName('form')[1];
     if (form.addEventListener) {
-        form.addEventListener("submit", function() { // Modern browsers
-            validate(event)
-        });  
+        form.addEventListener("submit", validate); // Modern browsers  
     } else if (form.attachEvent) {
-        form.attachEvent('onsubmit', function() {  // IE
-            validate(event);
-        });            
+        form.attachEvent('onsubmit', validate); // IE           
     }
 
     // Initialize other globals
+    var errorMsg = document.getElementById('errorMsg');
     var p = document.getElementById('name');
     var selectsLive = form.getElementsByTagName('select');
     var activeSelectId = 1; // keeps track of <select> elements
@@ -72,8 +78,10 @@ window.onload = function() {
         answer = [];
         generateRandomAnswer(optionTexts[1]);
         console.log(answer);
-        // Create first drop down menu
-        createDropMenu(Object.keys(currNode), activeSelectId);
+        // Get keys for first drop down menu
+        var keys = getKeys(currNode);
+        // Create the menu
+        createDropMenu(keys, activeSelectId);
         // Get user choices if saved in storage
         getUserChoices();
     }
@@ -92,7 +100,7 @@ window.onload = function() {
         }
         
         function getRandomColor() {
-            var keys = Object.keys(node);
+            var keys = getKeys(node);
             var prop = keys[Math.floor(Math.random() * (keys.length - 1)) + 1];
             if (!prop.match(/square \d+/)) {
                 return prop;
@@ -101,6 +109,15 @@ window.onload = function() {
             getRandomColor();
         }
     } 
+
+    // Utility function to get an object's upper level keys
+    function getKeys(obj) {
+        var keys = []
+        for (key in obj) {
+            keys.push(key);
+        }
+        return keys;
+    }
 
     ///////////////////////////////// SHOW MENUS /////////////////////////////////
 
@@ -129,7 +146,7 @@ window.onload = function() {
 
             // If user randomly chooses earlier selection, 
             // remove border colors from wrapper divs 
-            if (select.name !== ((Object.keys(optionTexts[1])).length - 1)) {
+            if (select.name !== ((getKeys(optionTexts[1])).length - 1)) {
                 removeAnswers();
             }
         }
@@ -197,7 +214,7 @@ window.onload = function() {
                 if (node[key] !== null && key == select.options[select.selectedIndex].text) {
                     currNode = node[key];
                     activeSelectId = Number(select.name) + 1;
-                    createDropMenu(Object.keys(currNode), activeSelectId);
+                    createDropMenu(getKeys(currNode), activeSelectId);
                     return;
                 } else {
                     navigate(node[key]);
@@ -281,7 +298,10 @@ window.onload = function() {
     }
 
     function reset() {
-
+        // Hide invalid message if it is showing
+        if (errorMsg.style.display !== "none") {
+            errorMsg.style.display = "none";
+        }
 
         // Remove saved choices from local storage and cookies
         for (var i = 0; i < selectsLive.length; i++) {
@@ -338,19 +358,19 @@ window.onload = function() {
         if (window.localStorage) {
             name = window.localStorage.getItem('name');
             if (name) {
-                showName(true);
+                showName(true); // returned user
             } else {
                 // Otherwise prompt for name
-                promptName();
+                promptName(); // new user
             }
         } else {
             // If browser doesn't support window.localStorage, check cookies for name
             if (document.cookie.indexOf('nameCookie') != -1) {
                 name = document.cookie.match(/nameCookie=([\w\s]+)/)[1];
-                showName(true);
+                showName(true); // returned user
             } else {
                 // Otherwise prompt for name
-                promptName();
+                promptName(); // new user
             }
         }
     }
@@ -359,52 +379,60 @@ window.onload = function() {
         var note = document.getElementById("description");
         // Show name
         if (returned) {
-            p.firstChild.nodeValue = returnGreeting + ", " + name + "! " ;
+            p.textContent = returnGreeting + ", " + name + "! " ;
             if (localStorage.length >= 4) {
                 note.style.display = "block";
             }
         } else {
-            p.firstChild.nodeValue = greeting + ", " + name + "! ";
+            p.textContent = greeting + ", " + name + "! ";
             note.style.display = "none";
         }
         // Give user option to change name again
         var a = document.createElement('a');
         a.appendChild(document.createTextNode('(Not you?)'));
-        a.href = '#';
-        a.onclick = function() {
-            p.removeChild(a);
-            promptName();
-            return false;  // so browser doesn't redirect? 
-        };
+        a.setAttribute('href', '#');
         p.appendChild(a);
+        a.onclick = function() {
+            // Remove link
+            p.removeChild(a);
+            p.textContent = greeting + "!";
+            // Show form prompting user for name
+            promptName();
+            // Stop browser from redirecting to #
+            return false;
+        };
     }
 
     function promptName() {
-        p.firstChild.nodeValue = greeting + "! Who are you? ";
-        var nameInput = document.createElement('input');
-        var nameBtn = document.createElement('button');
-        nameBtn.appendChild(document.createTextNode('Submit'));
-        p.appendChild(nameInput);
-        p.appendChild(nameBtn);
-
-        if (nameBtn.addEventListener) {
-            nameBtn.addEventListener("click", submitName);
-        } else {
-            nameBtn.attachEvent("onclick", submitName);
+        // Reset game for new user
+        reset();
+        // Display form prompting user for name
+        nameForm.style.display = "inline";
+        // Attach validation event handler to form onsubmit
+        if (nameForm.addEventListener) {
+            nameForm.addEventListener("submit", validateName); // Modern browsers  
+        } else if (nameForm.attachEvent) {
+            nameForm.attachEvent('onsubmit', validateName); // IE           
         }
+    }
 
-        function submitName() {
-            reset();
+    function validateName() {
+        // Prevent form from being submitted (considers IE)
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+        console.log("validating name...");
 
-            // Trim white spaces from beginning & end of input
-            name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-            // Show name if it isn't a empty string
-            if (name.length !== 0) {
-                p.removeChild(nameBtn);
-                p.removeChild(nameInput);
-                saveName();
-                showName(false);
-            }
+        var nameInput = nameForm.elements["nameinput"];
+
+        // Trim white spaces from beginning & end of input
+        name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        // If name is valid
+        if (name.length !== 0) {
+             // If valid, save name
+            saveName();
+            // Show name
+            showName();
+            // Remove name form
+            nameForm.style.display = "none";
         }
     }
 
@@ -424,14 +452,10 @@ window.onload = function() {
     //////////////////// FORM SUBMISSION ////////////////////////
 
     // On click of "Check" button, this callback gets called
-    function validate(evt) {
-        // Prevent form from being submitted
-        evt.preventDefault();
-
-        // Get error msg to show when needed
-        var errorMsg = document.getElementById('errorMsg');
-        errorMsg.style.color = "red";
-
+    function validate() {
+        // Prevent form from being submitted (considers IE)
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+       
         // Make sure no selection is empty.
         // We only need to check the last selection, 
         // as it only appears after other selections have been filled in
