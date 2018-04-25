@@ -9,7 +9,6 @@ if (!window.console) {
 
 
 window.onload = function() {
-
     // Save info abt whether browser is IE 
     var isIE = ((navigator.userAgent.indexOf("MSIE") != -1) && (navigator.userAgent.indexOf("Opera") == -1)); 
 
@@ -164,26 +163,26 @@ window.onload = function() {
         for (var i = 1; i < texts.length; i++) {
             var option = document.createElement("option");
             var optionText = document.createTextNode(texts[i]);
-            option.value = optionText;
+            //option.value = optionText;
             option.appendChild(optionText);
             select.appendChild(option);
         }
         
-        // Append the new dropdown menu to the form with animation
-        if (!isIE) {
-            select.style.opacity = 0;
-        }
+        // Append the new dropdown menu to the form with fade animation
+        select.style.opacity = 0;
         form.insertBefore(select, resetButton);
-        form.insertBefore(document.createElement('br'), resetButton);
-        if (!isIE) {
-            fadeIn(select);
-        }
+        fadeIn(select);
     }
 
     function colorBall(selectElement) {
         var color = selectElement.options[selectElement.selectedIndex].text;  // accommodates IE
         var whichSquare = selectElement.name;
-        document.querySelector('[title="'+whichSquare+'"]').style.background = color;
+
+        for (var i = 0; i < divsLive.length; i++) {
+            if (divsLive[i].getAttribute('title') == whichSquare) {
+                divsLive[i].style.background = color;
+            }
+        }
 
         // Clear any squares after current square
         for (var i = 0; i < divsLive.length; i++) {
@@ -196,13 +195,12 @@ window.onload = function() {
     // Search for next options based on the option selected
     function getNext(select) {
         // Clear any <select>s after current <select>
-        var selects = form.querySelectorAll('select');
-        for (var i = 0; i < selects.length; i++) {
+        var selects = form.getElementsByTagName('select');
+        for (var i = selects.length-1; i >= 0; i--) {
             if (selects[i].name > select.name) {
-                var eleToRemove = selectsLive.namedItem(selects[i].name);
-                form.removeChild(eleToRemove.previousSibling);
-                form.removeChild(eleToRemove.nextSibling);
-                form.removeChild(selectsLive.namedItem(selects[i].name));
+                var eleToRemove = selects[i];
+                form.removeChild(eleToRemove.previousSibling); // removes label
+                form.removeChild(eleToRemove);
             }
         }
 
@@ -223,21 +221,22 @@ window.onload = function() {
         }
     }
 
-    function fadeIn(e) {
-        // Incremental animation
-        var tick = function() {
-            e.style.opacity = +e.style.opacity + 0.05;
-                if (+e.style.opacity < 1) {
-                    // If the browser supports window.requestAnimationFrame
-                    if (window.requestAnimationFrame) {
-                        window.requestAnimationFrame(tick);
-                    } else {
-                        setTimeout(tick, 16);
-                    }
-                }
-        };
-        // Begin animation
-        tick();
+    function fadeIn(element) {
+        // https://css-tricks.com/css-transparency-settings-for-all-broswers/
+        var opacity = 0.1;
+        // Start fade
+        var timer = setInterval(function() {
+            // Once opacity hits full, stop fading
+            if (opacity >= 1) {
+                clearInterval(timer);
+            }
+            // Set new opacity
+            element.style.opacity = opacity;
+            element.style.filter = "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + (opacity*100) + ")"; // IE 8
+            element.style.filter = "alpha(opacity=" + (opacity*100) + ")"; // IE 7
+            // Increment opacity for next loop
+            opacity += 0.1;
+        }, 50); 
     }
 
     function getUserChoices() {
@@ -298,6 +297,9 @@ window.onload = function() {
     }
 
     function reset() {
+        // Hide description for returning user saved choices
+        note.style.display = "none";
+
         // Hide invalid message if it is showing
         if (errorMsg.style.display !== "none") {
             errorMsg.style.display = "none";
@@ -325,23 +327,23 @@ window.onload = function() {
         removeAnswers();
 
         // Clear selects
-        var selects = form.querySelectorAll('select');
-        for (i = 1; i < selects.length; i++) {
-            var eleToRemove = selectsLive.namedItem(selects[i].name);
-            form.removeChild(eleToRemove.previousSibling);
-            form.removeChild(eleToRemove.nextSibling);
-            form.removeChild(selectsLive.namedItem(selects[i].name));
+        var selects = form.getElementsByTagName('select');
+        for (var i = selects.length-1; i >= 1; i--) {
+            var eleToRemove = selects[i];
+            form.removeChild(eleToRemove.previousSibling); // removes label
+            form.removeChild(eleToRemove);
         }
     }
 
+
+
     // Removes answers, the red/green outlines around the colored boxes
     function removeAnswers() {
-        var wrappers = document.getElementsByTagName('div');
-        for (var i = 0; i < wrappers.length; i++) {
-            if (wrappers[i].getAttribute('class') == 'wrapper') {
-                if (wrappers[i].style.border !== "") {
-                    wrappers[i].style.border = "";
-                }
+        for (var i = 0; i < divsLive.length; i++) {
+            var thisDiv;
+            if (divsLive[i].className == 'wrapper') {
+                thisDiv = divsLive[i];
+                thisDiv.style.border = "0px solid black"; 
             }
         }
     }
@@ -350,6 +352,7 @@ window.onload = function() {
 
     var greeting = "Welcome to the color lottery";
     var returnGreeting = "Welcome back to the color lottery";
+    var note = document.getElementById("description");
     var name;
     getNameFromStorage();
 
@@ -376,34 +379,58 @@ window.onload = function() {
     }
 
     function showName(returned) {
-        var note = document.getElementById("description");
-        // Show name
+        // Remove everything from the name element
+        while (p.firstChild) {
+            p.removeChild(p.firstChild);
+        }
+
+        // Show name depending on if new or returning user
         if (returned) {
-            p.textContent = returnGreeting + ", " + name + "! " ;
+            // Show returned user greeting
+            p.appendChild(document.createTextNode(returnGreeting + ", " + name + "! "));
+            // If localStorage contains name & saved selection info, show description
             if (localStorage.length >= 4) {
                 note.style.display = "block";
             }
         } else {
-            p.textContent = greeting + ", " + name + "! ";
+            // Show new user greeting
+            p.appendChild(document.createTextNode(greeting + ", " + name + "! "));
+            // Don't show description
             note.style.display = "none";
         }
+
         // Give user option to change name again
         var a = document.createElement('a');
-        a.appendChild(document.createTextNode('(Not you?)'));
+        a.appendChild(document.createTextNode('Not you?'));
         a.setAttribute('href', '#');
         p.appendChild(a);
+        // If user chooses to change name,
         a.onclick = function() {
-            // Remove link
-            p.removeChild(a);
-            p.textContent = greeting + "!";
+            // Remove name from local storage and cookies (not sure if did cookies right)
+            if (window.localStorage) { 
+                window.localStorage.removeItem('name');
+            } else {
+                if (document.cookie.indexOf('nameCookie') != -1) {
+                     document.cookie = (i+1) + "=nameCookie" +  + "; expires=" + new Date() + "; path=/";
+                }
+            }
+
             // Show form prompting user for name
             promptName();
+
             // Stop browser from redirecting to #
             return false;
         };
     }
 
     function promptName() {
+        // Remove everything from the name element 
+        while (p.firstChild) {
+            p.removeChild(p.firstChild);
+        }
+        // Set name element to new user greeting
+        p.appendChild(document.createTextNode(greeting + "!"));
+
         // Reset game for new user
         reset();
         // Display form prompting user for name
@@ -416,23 +443,32 @@ window.onload = function() {
         }
     }
 
-    function validateName() {
+    function validateName() { 
         // Prevent form from being submitted (considers IE)
         event.preventDefault ? event.preventDefault() : event.returnValue = false;
         console.log("validating name...");
 
         var nameInput = nameForm.elements["nameinput"];
+        var nameError = document.getElementById("userError");
 
         // Trim white spaces from beginning & end of input
         name = nameInput.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-        // If name is valid
-        if (name.length !== 0) {
+        // If name is valid (not an empty string, and consists of only letters)
+        if (name.length !== 0 && /^[a-zA-Z ]+$/.test(name)) {
+            // Remove error msg if assigned
+            nameError.style.display = "none";
+            // Remove invalid css if assigned
+            nameInput.className = "";
              // If valid, save name
             saveName();
             // Show name
             showName();
             // Remove name form
             nameForm.style.display = "none";
+        } else {
+            nameInput.className = "invalid";
+            nameError.style.display = "block";
+            console.log('name is not valid');
         }
     }
 
@@ -480,10 +516,19 @@ window.onload = function() {
     // Check user choices against randomly generated answer
     function check() {
         for (var i = 0; i < guess.length; i++) {
+            // Get the right div (IE7 compatible)
+            var thisDiv;
+            for (var j = 0; j < divsLive.length; j++) {
+                if (divsLive[j].getAttribute('title') == (i+1)) {
+                    thisDiv = divsLive[j];
+                    break;
+                }
+            }
+
             if (guess[i] == answer[i]) {
-                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid green";
+                thisDiv.parentNode.style.border = "2px solid green";
             } else {
-                document.querySelector('[title="'+(i+1)+'"]').parentNode.style.border = "2px solid red";
+                thisDiv.parentNode.style.border = "2px solid red";
             }
         }
     }

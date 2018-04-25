@@ -15,8 +15,12 @@ p {
     font-size: 20px;
 }
 
-#errorMsg {
+#errorMsg, #userError {
     color: red;
+}
+
+.invalid {
+    border: 2px solid red;
 }
 
 a {
@@ -27,9 +31,9 @@ a {
 
 select {
     display: block;
-    margin-left:auto;
-    margin-right:auto;
-    width:100px;
+    margin:0 auto;
+    margin-bottom: 30px;
+    width:150px;
 }
 
 label {
@@ -45,8 +49,10 @@ div > div {
 
 .wrapper {
     display: inline-block;
+    /* for ie7 */
+    *display: inline;
+    *zoom: 1;
     padding: 20px;
-    background-color: "";
 }
 
 #description {
