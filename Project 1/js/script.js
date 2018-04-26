@@ -1,3 +1,4 @@
+// Redirect outdated browsers
 if (!document.getElementById) {
     window.location = "legacy.html";
 }
@@ -7,7 +8,7 @@ if (!window.console) {
     console = {log: function() {}};
 }
 
-
+// When DOM loads, proceed with code
 window.onload = function() {
     // Save info abt whether browser is IE 
     var isIE = ((navigator.userAgent.indexOf("MSIE") != -1) && (navigator.userAgent.indexOf("Opera") == -1)); 
@@ -18,9 +19,15 @@ window.onload = function() {
     // Get selections form & set its onsubmit event listener to handle validation
     var form = document.getElementsByTagName('form')[1];
     if (form.addEventListener) {
-        form.addEventListener("submit", validate); // Modern browsers  
+        form.addEventListener("submit", function(e) {
+            validate(e);
+            return false; // firefox
+        }); // Modern browsers  
     } else if (form.attachEvent) {
-        form.attachEvent('onsubmit', validate); // IE           
+        form.attachEvent('onsubmit', function(e) {
+            validate(e);
+            return false; // firefox
+        }); // IE           
     }
 
     // Initialize other globals
@@ -32,7 +39,7 @@ window.onload = function() {
     var optionTexts;  // holds text for questions & choices
     var currNode;
     var guess;
-     var answer;
+    var answer;
 
     // Get reset button & set its onclick event listener to handle further reset functionality
     resetButton = document.getElementById("resetBtn");
@@ -47,8 +54,6 @@ window.onload = function() {
         generateRandomAnswer(optionTexts[1]);
         console.log(answer);
     }
-
-    ///////////////////////////////// LOAD DATA /////////////////////////////////
 
     // If browser supports XMLHttpRequest,
     if (window.XMLHttpRequest) {
@@ -88,6 +93,7 @@ window.onload = function() {
         getUserChoices();
     }
 
+    // Build array of 3 random colors that will be compared against user's choices
     function generateRandomAnswer(node) {
         // If empty node, quit navigating beyond this node
         if (node === null || node === undefined) {
@@ -121,8 +127,6 @@ window.onload = function() {
         return keys;
     }
 
-    ///////////////////////////////// SHOW MENUS /////////////////////////////////
-
     // Creates all of the dropdowns
     function createDropMenu(texts, id) {
         form.appendChild(playAgainButton);
@@ -135,6 +139,7 @@ window.onload = function() {
             select.attachEvent("onchange", respondToSelection);
         }
 
+        // Event handler
         function respondToSelection() {
             var target;
             if (isIE) {
@@ -166,7 +171,7 @@ window.onload = function() {
         for (var i = 1; i < texts.length; i++) {
             var option = document.createElement("option");
             var optionText = document.createTextNode(texts[i]);
-            //option.value = optionText;
+            //option.setAttribute('value', optionText);
             option.appendChild(optionText);
             select.appendChild(option);
         }
@@ -177,6 +182,7 @@ window.onload = function() {
         fadeIn(select);
     }
 
+    // Colors each square
     function colorBall(selectElement) {
         var color = selectElement.options[selectElement.selectedIndex].text;  // accommodates IE
         var whichSquare = selectElement.name;
@@ -224,6 +230,7 @@ window.onload = function() {
         }
     }
 
+    // Utility function, fade in passed element
     function fadeIn(element) {
         // https://css-tricks.com/css-transparency-settings-for-all-broswers/
         var opacity = 0.1;
@@ -242,8 +249,8 @@ window.onload = function() {
         }, 50); 
     }
 
+    // Get user choices from storage or cookies
     function getUserChoices() {
-        // Check if user choices exist in localstorage or cookies
         var index = 0;
         var choice;
         var oIndex;
@@ -255,6 +262,7 @@ window.onload = function() {
                     break;
                 } else {
                     // If a choice has been saved, proceed
+                    console.log('getting user choices from local storage...');
                     selectElement = selectsLive[index];
                     oIndex = 1;
                     while (selectElement[oIndex]) {
@@ -274,11 +282,14 @@ window.onload = function() {
             // If browser doesn't support window.localStorage, check cookies for choices
             if (document.cookie.indexOf('1=') != -1) {
                 while (true) {
-                    var re = new RegExp((index+1) + '=([\\w\\s]+)');
+                    var re = new RegExp('' + (index+1) + '=([\\w\\s]+)');
                     choice = document.cookie.match(re);
+                    // Exit if no saved choices were found
                     if (!choice) {
                         break;
                     } else {
+                        console.log('getting user choices from cookies...');
+                        choice = choice[1]; // grab first matching group
                         // If a choice has been saved, proceed
                         selectElement = selectsLive[index];
                         oIndex = 1;
@@ -299,6 +310,7 @@ window.onload = function() {
         }
     }
 
+    // Reset form with selections
     function reset() {
         // Hide description for returning user saved choices
         note.style.display = "none";
@@ -311,11 +323,13 @@ window.onload = function() {
         // Remove saved choices from local storage and cookies
         for (var i = 0; i < selectsLive.length; i++) {
             if (window.localStorage) {
+                console.log("removing user choices from local storage");
                 window.localStorage.removeItem(selectsLive[i].name);
             } else {
-                //var lastyear = new Date();
-                //last.setFullYear(lastyear.getFullYear()-1);
-                document.cookie = (i+1) + "=" + selectsLive[i].value + "; expires=" + new Date() + "; path=/";
+                console.log("removing user choices from cookies");
+                var lastyear = new Date();
+                lastyear.setFullYear(lastyear.getFullYear()-1);
+                document.cookie = (i+1) + "=" + selectsLive[i].value + "; expires=" + lastyear.toGMTString() + "; path=/";
             }
         }
 
@@ -355,6 +369,7 @@ window.onload = function() {
     var name;
     getNameFromStorage();
 
+    // Get name from storage or cookies
     function getNameFromStorage() {
         // If browser supports localStorage, retrieve name & show
         if (window.localStorage) {
@@ -377,6 +392,7 @@ window.onload = function() {
         }
     }
 
+    // Show name string
     function showName(returned) {
         // Remove everything from the name element
         while (p.firstChild) {
@@ -407,10 +423,14 @@ window.onload = function() {
         a.onclick = function() {
             // Remove name from local storage and cookies (not sure if did cookies right)
             if (window.localStorage) { 
+                console.log("removing name from local storage");
                 window.localStorage.removeItem('name');
             } else {
                 if (document.cookie.indexOf('nameCookie') != -1) {
-                     document.cookie = (i+1) + "=nameCookie" +  + "; expires=" + new Date() + "; path=/";
+                    console.log("removing name cookie...");
+                    var lastyear = new Date();
+                    lastyear.setFullYear(lastyear.getFullYear()-1);
+                    document.cookie = "nameCookie=" + name + "; expires=" + lastyear.toGMTString() + "; path=/";
                 }
             }
 
@@ -422,6 +442,7 @@ window.onload = function() {
         };
     }
 
+    // Ask user for name
     function promptName() {
         // Remove everything from the name element 
         while (p.firstChild) {
@@ -436,15 +457,22 @@ window.onload = function() {
         nameForm.style.display = "inline";
         // Attach validation event handler to form onsubmit
         if (nameForm.addEventListener) {
-            nameForm.addEventListener("submit", validateName); // Modern browsers  
+            nameForm.addEventListener("submit", function(e) {
+                validateName(e);
+                return false;
+            }); // Modern browsers  
         } else if (nameForm.attachEvent) {
-            nameForm.attachEvent('onsubmit', validateName); // IE           
+            nameForm.attachEvent('onsubmit', function(e) {
+                validateName(e);
+                return false;
+            }); // IE           
         }
     }
 
-    function validateName() { 
+    // Validate user name input
+    function validateName(e) { 
         // Prevent form from being submitted (considers IE)
-        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
         console.log("validating name...");
 
         var nameInput = nameForm.elements["nameinput"];
@@ -471,8 +499,8 @@ window.onload = function() {
         }
     }
 
+    // Save user name to storage or cookie
     function saveName() {
-        // Save to localStorage or cookie
         if (window.localStorage) {
             window.localStorage.setItem('name', name);
             console.log("saved " + window.localStorage.getItem('name') + " to localStorage");
@@ -484,17 +512,18 @@ window.onload = function() {
         }
     }
 
-    //////////////////// FORM SUBMISSION ////////////////////////
-
     // On click of "Check" button, this callback gets called
-    function validate() {
+    function validate(e) {
         // Prevent form from being submitted (considers IE)
-        event.preventDefault ? event.preventDefault() : event.returnValue = false;
-       
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        console.log('validating form...');
         // Make sure no selection is empty.
         // We only need to check the last selection, 
         // as it only appears after other selections have been filled in
-        if (selectsLive[selectsLive.length - 1].value !== "") {
+        console.log('value: ' + typeof(selectsLive[selectsLive.length - 1].options[selectsLive[selectsLive.length - 1].selectedIndex].text));
+        var lastValue = selectsLive[selectsLive.length - 1].options[selectsLive[selectsLive.length - 1].selectedIndex].text;
+        if (lastValue !== "") { 
             // Hide invalid message if it is showing
             if (errorMsg.style.display !== "none") {
                 errorMsg.style.display = "none";
@@ -538,11 +567,13 @@ window.onload = function() {
         // Save choice for each select element
         for (var i = 0; i < selectsLive.length; i++) {
             if (window.localStorage) {
+                console.log("saving user choices to local storage");
                 window.localStorage.setItem((i+1), selectsLive[i].options[selectsLive[i].selectedIndex].text);
             } else {
                 var nextyear = new Date();
                 nextyear.setFullYear(nextyear.getFullYear()+1);
-                var cookieStr = (i+1) + "=" + selectsLive[i].options[selectsLive[i].selectedIndex].text + "; expires=" + nextyear.toGMTString() + "; path=/";
+                var cookieStr = (i+1) + "=" + selectsLive[i].options[selectsLive[i].selectedIndex].text + "; expires=" + nextyear.toUTCString() + "; path=/";
+                console.log("saving user choices to cookies: " + cookieStr);
                 document.cookie = cookieStr;
             }
 
