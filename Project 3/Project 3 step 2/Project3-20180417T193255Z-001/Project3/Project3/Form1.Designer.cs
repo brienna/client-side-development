@@ -99,6 +99,7 @@
             this.pb_fac.Location = new System.Drawing.Point(49, 92);
             this.pb_fac.Name = "pb_fac";
             this.pb_fac.Size = new System.Drawing.Size(100, 50);
+            this.pb_fac.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pb_fac.TabIndex = 5;
             this.pb_fac.TabStop = false;
             // 
@@ -240,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.TabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);

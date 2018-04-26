@@ -8,3 +8,9 @@ C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\RestUtility\obj\Debug\RestUtility.csprojResolveAssemblyReference.cache
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\RestUtility\obj\Debug\RestUtility.dll
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\RestUtility\obj\Debug\RestUtility.pdb
+Z:\Project3\RestUtility\bin\Debug\RestUtility.dll
+Z:\Project3\RestUtility\bin\Debug\RestUtility.pdb
+Z:\Project3\RestUtility\obj\Debug\RestUtility.csprojResolveAssemblyReference.cache
+Z:\Project3\RestUtility\obj\Debug\RestUtility.csproj.CoreCompileInputs.cache
+Z:\Project3\RestUtility\obj\Debug\RestUtility.dll
+Z:\Project3\RestUtility\obj\Debug\RestUtility.pdb

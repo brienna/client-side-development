@@ -34,3 +34,18 @@ C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.csproj.GenerateResource.Cache
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.exe
 C:\Users\Student\Desktop\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.pdb
+Z:\Project3\Project3\bin\Debug\Project3.exe.config
+Z:\Project3\Project3\bin\Debug\Project3.exe
+Z:\Project3\Project3\bin\Debug\Project3.pdb
+Z:\Project3\Project3\bin\Debug\Newtonsoft.Json.dll
+Z:\Project3\Project3\bin\Debug\RestUtility.dll
+Z:\Project3\Project3\bin\Debug\RestUtility.pdb
+Z:\Project3\Project3\obj\Debug\Project3.csprojResolveAssemblyReference.cache
+Z:\Project3\Project3\obj\Debug\Project3.Form1.resources
+Z:\Project3\Project3\obj\Debug\Project3.PepForm.resources
+Z:\Project3\Project3\obj\Debug\Project3.Properties.Resources.resources
+Z:\Project3\Project3\obj\Debug\Project3.csproj.GenerateResource.cache
+Z:\Project3\Project3\obj\Debug\Project3.csproj.CoreCompileInputs.cache
+Z:\Project3\Project3\obj\Debug\Project3.csproj.CopyComplete
+Z:\Project3\Project3\obj\Debug\Project3.exe
+Z:\Project3\Project3\obj\Debug\Project3.pdb

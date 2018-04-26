@@ -19,11 +19,16 @@ namespace Project3
     {
 
         // global objects (to make json data accessible after retrieving)
-        Employment employment;
         About about;
+        Degrees degrees;
+        Minors minors;
         People people;
+        Research research;
+        Employment employment;
+        News news;
         Resources resources;
-
+        Footer footer;
+        
         // get our restful resources...
         REST rj = new REST("http://ist.rit.edu/api");
         // another one we won't use
@@ -86,7 +91,6 @@ namespace Project3
             tb.TabIndex = 1;
             // put on the page
             myNewTab.Controls.Add(tb);
-
         }
 
         #region GetRest

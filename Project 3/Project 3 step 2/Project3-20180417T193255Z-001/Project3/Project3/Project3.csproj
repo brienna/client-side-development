@@ -50,6 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.cs" />
+    <Compile Include="Minors.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="Footer.cs" />
+    <Compile Include="Degrees.cs" />
+    <Compile Include="Research.cs" />
     <Compile Include="Employment.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
