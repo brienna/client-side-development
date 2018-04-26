@@ -50,24 +50,27 @@ window.onload = function() {
 
     ///////////////////////////////// LOAD DATA /////////////////////////////////
 
-    if (isIE) {
-        // NOTE: Couldn't make AJAX work with IE, because of multiple errors...? https://stackoverflow.com/questions/48979128/cant-send-xmlhttprequest-xdomainrequest-in-ie8-fails-on-xhr-send
-        var json = '{"1": {"square 1:": null,"blue": {"square 2:": null,"lightsteelblue": {"square 3:": null,"lightyellow": null,"lightcoral": null},"deepskyblue": {"square 3:": null,"midnightblue": null,"mediumpurple": null},"lightskyblue": {"square 3:": null,"palegoldenrod": null,"oldlace": null}},"red": {"square 2:": null,"pink": {"square 3:": null,"sandybrown": null,"sienna": null},"palevioletred": {"square 3:": null,"wheat": null,"yellow": null},"magenta": {"square 3:": null,"teal": null,"violet": null}},"green": {"square 2:": null,"lime": {"square 3:": null,"mistyrose": null,"orange": null},"mediumspringgreen": {"square 3:": null,"paleturquoise": null,"rosybrown": null},"olivedrab": {"square 3:": null,"salmon": null,"silver": null}}}}';
-        optionTexts = JSON.parse(json);
-        begin();
-    } else {
-        // Create the HTTP object
+    // If browser supports XMLHttpRequest,
+    if (window.XMLHttpRequest) {
+        console.log("Sending AJAX request...");
         var xmlhttp = new XMLHttpRequest();
         var dataUrl = 'data/data2.json';
-        //var dataUrl = 'data/data.json'; // this will also work but won't fit in the scheme of the game
+        //var dataUrl = 'data/data.json'; // this will also load
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 optionTexts = JSON.parse(this.responseText);
                 begin();
             }
-        };
+        }
         xmlhttp.open("GET", dataUrl);
         xmlhttp.send();
+    } else {
+        // If the browser does not support XMLHttpRequest (all required browsers do, so this part is not needed)
+        // https://msdn.microsoft.com/en-us/library/ms537505(v=vs.85).aspx
+        console.log("Browser does not support XMLHttpRequest, loading hard-coded json");
+        var json = '{"1": {"square 1:": null,"blue": {"square 2:": null,"lightsteelblue": {"square 3:": null,"lightyellow": null,"lightcoral": null},"deepskyblue": {"square 3:": null,"midnightblue": null,"mediumpurple": null},"lightskyblue": {"square 3:": null,"palegoldenrod": null,"oldlace": null}},"red": {"square 2:": null,"pink": {"square 3:": null,"sandybrown": null,"sienna": null},"palevioletred": {"square 3:": null,"wheat": null,"yellow": null},"magenta": {"square 3:": null,"teal": null,"violet": null}},"green": {"square 2:": null,"lime": {"square 3:": null,"mistyrose": null,"orange": null},"mediumspringgreen": {"square 3:": null,"paleturquoise": null,"rosybrown": null},"olivedrab": {"square 3:": null,"salmon": null,"silver": null}}}}';
+        optionTexts = JSON.parse(json);
+        begin();
     }
 
     function begin() {
@@ -335,8 +338,6 @@ window.onload = function() {
         }
     }
 
-
-
     // Removes answers, the red/green outlines around the colored boxes
     function removeAnswers() {
         for (var i = 0; i < divsLive.length; i++) {
@@ -347,8 +348,6 @@ window.onload = function() {
             }
         }
     }
-
-    ///////////////////////////////// SHOW GREETING /////////////////////////////////
 
     var greeting = "Welcome to the color lottery";
     var returnGreeting = "Welcome back to the color lottery";
