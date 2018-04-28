@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.rtb_about_desc = new System.Windows.Forms.RichTextBox();
             this.ll_pdf = new System.Windows.Forms.LinkLabel();
             this.ll_resources_appForm = new System.Windows.Forms.LinkLabel();
@@ -41,23 +42,44 @@
             this.term = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listView1 = new System.Windows.Forms.ListView();
             this.TabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_people = new System.Windows.Forms.TabPage();
+            this.tab_degrees = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tab_resources = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.about_btn = new System.Windows.Forms.Button();
+            this.degrees_btn = new System.Windows.Forms.Button();
+            this.people_btn = new System.Windows.Forms.Button();
+            this.research_btn = new System.Windows.Forms.Button();
+            this.emp_btn = new System.Windows.Forms.Button();
+            this.resources_btn = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.body = new System.Windows.Forms.TabControl();
+            this.about_tab = new System.Windows.Forms.TabPage();
+            this.degrees_tab = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tab_people.SuspendLayout();
+            this.tab_degrees.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.body.SuspendLayout();
+            this.about_tab.SuspendLayout();
+            this.degrees_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtb_about_desc
             // 
             this.rtb_about_desc.AccessibleName = "";
-            this.rtb_about_desc.Location = new System.Drawing.Point(12, 12);
+            this.rtb_about_desc.Location = new System.Drawing.Point(19, 24);
             this.rtb_about_desc.Name = "rtb_about_desc";
             this.rtb_about_desc.Size = new System.Drawing.Size(310, 153);
             this.rtb_about_desc.TabIndex = 1;
@@ -66,7 +88,7 @@
             // ll_pdf
             // 
             this.ll_pdf.AutoSize = true;
-            this.ll_pdf.Location = new System.Drawing.Point(420, 15);
+            this.ll_pdf.Location = new System.Drawing.Point(285, 194);
             this.ll_pdf.Name = "ll_pdf";
             this.ll_pdf.Size = new System.Drawing.Size(98, 13);
             this.ll_pdf.TabIndex = 2;
@@ -77,7 +99,7 @@
             // ll_resources_appForm
             // 
             this.ll_resources_appForm.AutoSize = true;
-            this.ll_resources_appForm.Location = new System.Drawing.Point(548, 15);
+            this.ll_resources_appForm.Location = new System.Drawing.Point(368, 92);
             this.ll_resources_appForm.Name = "ll_resources_appForm";
             this.ll_resources_appForm.Size = new System.Drawing.Size(55, 13);
             this.ll_resources_appForm.TabIndex = 3;
@@ -158,46 +180,61 @@
             // 
             // TabControl1
             // 
-            this.TabControl1.Controls.Add(this.tabPage1);
-            this.TabControl1.Controls.Add(this.tabPage2);
+            this.TabControl1.Controls.Add(this.tab_people);
+            this.TabControl1.Controls.Add(this.tab_degrees);
             this.TabControl1.Controls.Add(this.tabPage5);
             this.TabControl1.Controls.Add(this.tabPage6);
-            this.TabControl1.Controls.Add(this.tabPage3);
-            this.TabControl1.Location = new System.Drawing.Point(137, 245);
+            this.TabControl1.Controls.Add(this.tab_resources);
+            this.TabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TabControl1.ItemSize = new System.Drawing.Size(25, 50);
+            this.TabControl1.Location = new System.Drawing.Point(84, 46);
+            this.TabControl1.Multiline = true;
             this.TabControl1.Name = "TabControl1";
+            this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TabControl1.SelectedIndex = 0;
-            this.TabControl1.Size = new System.Drawing.Size(656, 292);
+            this.TabControl1.Size = new System.Drawing.Size(418, 248);
+            this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl1.TabIndex = 10;
             // 
-            // tabPage1
+            // tab_people
             // 
-            this.tabPage1.Controls.Add(this.btn_people);
-            this.tabPage1.Controls.Add(this.pb_fac);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(648, 266);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "People";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tab_people.Controls.Add(this.btn_people);
+            this.tab_people.Controls.Add(this.pb_fac);
+            this.tab_people.Location = new System.Drawing.Point(4, 54);
+            this.tab_people.Name = "tab_people";
+            this.tab_people.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_people.Size = new System.Drawing.Size(410, 190);
+            this.tab_people.TabIndex = 0;
+            this.tab_people.Text = "People";
+            this.tab_people.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tab_degrees
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(648, 266);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Degrees";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_degrees.Controls.Add(this.listView2);
+            this.tab_degrees.Location = new System.Drawing.Point(4, 104);
+            this.tab_degrees.Name = "tab_degrees";
+            this.tab_degrees.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_degrees.Size = new System.Drawing.Size(475, 441);
+            this.tab_degrees.TabIndex = 1;
+            this.tab_degrees.Text = "Degrees";
+            this.tab_degrees.UseVisualStyleBackColor = true;
+            this.tab_degrees.Enter += new System.EventHandler(this.tab_degrees_Enter);
+            // 
+            // listView2
+            // 
+            this.listView2.Location = new System.Drawing.Point(25, 33);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(607, 217);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.DataGridView1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 104);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(648, 266);
+            this.tabPage5.Size = new System.Drawing.Size(475, 441);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "DataGridView";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -207,45 +244,231 @@
             // 
             this.tabPage6.Controls.Add(this.listView1);
             this.tabPage6.Controls.Add(this.btn_ListView);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 104);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(648, 266);
+            this.tabPage6.Size = new System.Drawing.Size(475, 441);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "ListView";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tab_resources
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(648, 266);
-            this.tabPage3.TabIndex = 6;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tab_resources.Location = new System.Drawing.Point(4, 104);
+            this.tab_resources.Name = "tab_resources";
+            this.tab_resources.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_resources.Size = new System.Drawing.Size(475, 441);
+            this.tab_resources.TabIndex = 6;
+            this.tab_resources.Text = "Resources";
+            this.tab_resources.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.resources_btn);
+            this.panel1.Controls.Add(this.emp_btn);
+            this.panel1.Controls.Add(this.research_btn);
+            this.panel1.Controls.Add(this.people_btn);
+            this.panel1.Controls.Add(this.degrees_btn);
+            this.panel1.Controls.Add(this.about_btn);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 549);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 58);
+            this.panel2.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(50, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // about_btn
+            // 
+            this.about_btn.FlatAppearance.BorderSize = 0;
+            this.about_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.about_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.about_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.about_btn.Location = new System.Drawing.Point(0, 99);
+            this.about_btn.Name = "about_btn";
+            this.about_btn.Size = new System.Drawing.Size(200, 43);
+            this.about_btn.TabIndex = 1;
+            this.about_btn.Text = "ABOUT";
+            this.about_btn.UseVisualStyleBackColor = true;
+            this.about_btn.Click += new System.EventHandler(this.about_btn_Click);
+            this.about_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // degrees_btn
+            // 
+            this.degrees_btn.FlatAppearance.BorderSize = 0;
+            this.degrees_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.degrees_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.degrees_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.degrees_btn.Location = new System.Drawing.Point(0, 141);
+            this.degrees_btn.Name = "degrees_btn";
+            this.degrees_btn.Size = new System.Drawing.Size(200, 43);
+            this.degrees_btn.TabIndex = 2;
+            this.degrees_btn.Text = "DEGREES";
+            this.degrees_btn.UseVisualStyleBackColor = true;
+            this.degrees_btn.Click += new System.EventHandler(this.degrees_btn_Click);
+            this.degrees_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // people_btn
+            // 
+            this.people_btn.FlatAppearance.BorderSize = 0;
+            this.people_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.people_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.people_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.people_btn.Location = new System.Drawing.Point(0, 182);
+            this.people_btn.Name = "people_btn";
+            this.people_btn.Size = new System.Drawing.Size(200, 43);
+            this.people_btn.TabIndex = 3;
+            this.people_btn.Text = "PEOPLE";
+            this.people_btn.UseVisualStyleBackColor = true;
+            this.people_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // research_btn
+            // 
+            this.research_btn.FlatAppearance.BorderSize = 0;
+            this.research_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.research_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.research_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.research_btn.Location = new System.Drawing.Point(0, 224);
+            this.research_btn.Name = "research_btn";
+            this.research_btn.Size = new System.Drawing.Size(200, 43);
+            this.research_btn.TabIndex = 4;
+            this.research_btn.Text = "RESEARCH";
+            this.research_btn.UseVisualStyleBackColor = true;
+            this.research_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // emp_btn
+            // 
+            this.emp_btn.FlatAppearance.BorderSize = 0;
+            this.emp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.emp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emp_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.emp_btn.Location = new System.Drawing.Point(0, 266);
+            this.emp_btn.Name = "emp_btn";
+            this.emp_btn.Size = new System.Drawing.Size(200, 43);
+            this.emp_btn.TabIndex = 5;
+            this.emp_btn.Text = "EMPLOYMENT";
+            this.emp_btn.UseVisualStyleBackColor = true;
+            this.emp_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // resources_btn
+            // 
+            this.resources_btn.FlatAppearance.BorderSize = 0;
+            this.resources_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.resources_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resources_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.resources_btn.Location = new System.Drawing.Point(0, 308);
+            this.resources_btn.Name = "resources_btn";
+            this.resources_btn.Size = new System.Drawing.Size(200, 43);
+            this.resources_btn.TabIndex = 6;
+            this.resources_btn.Text = "RESOURCES";
+            this.resources_btn.UseVisualStyleBackColor = true;
+            this.resources_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 458);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 91);
+            this.panel3.TabIndex = 12;
+            // 
+            // body
+            // 
+            this.body.Controls.Add(this.about_tab);
+            this.body.Controls.Add(this.degrees_tab);
+            this.body.Location = new System.Drawing.Point(218, 12);
+            this.body.Name = "body";
+            this.body.SelectedIndex = 0;
+            this.body.Size = new System.Drawing.Size(581, 525);
+            this.body.TabIndex = 12;
+            // 
+            // about_tab
+            // 
+            this.about_tab.Controls.Add(this.TabControl1);
+            this.about_tab.Location = new System.Drawing.Point(4, 22);
+            this.about_tab.Name = "about_tab";
+            this.about_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.about_tab.Size = new System.Drawing.Size(573, 499);
+            this.about_tab.TabIndex = 0;
+            this.about_tab.Text = "About";
+            this.about_tab.UseVisualStyleBackColor = true;
+            // 
+            // degrees_tab
+            // 
+            this.degrees_tab.Controls.Add(this.rtb_about_desc);
+            this.degrees_tab.Controls.Add(this.ll_resources_appForm);
+            this.degrees_tab.Controls.Add(this.ll_pdf);
+            this.degrees_tab.Location = new System.Drawing.Point(4, 22);
+            this.degrees_tab.Name = "degrees_tab";
+            this.degrees_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.degrees_tab.Size = new System.Drawing.Size(573, 499);
+            this.degrees_tab.TabIndex = 1;
+            this.degrees_tab.Text = "Degrees";
+            this.degrees_tab.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 549);
-            this.Controls.Add(this.TabControl1);
-            this.Controls.Add(this.ll_resources_appForm);
-            this.Controls.Add(this.ll_pdf);
-            this.Controls.Add(this.rtb_about_desc);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(811, 549);
+            this.Controls.Add(this.body);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.Text = "Degrees";
+            this.Text = "Information Sciences and Technologies @ RIT";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.TabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tab_people.ResumeLayout(false);
+            this.tab_people.PerformLayout();
+            this.tab_degrees.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.body.ResumeLayout(false);
+            this.about_tab.ResumeLayout(false);
+            this.degrees_tab.ResumeLayout(false);
+            this.degrees_tab.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -264,11 +487,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn term;
         private System.Windows.Forms.TabControl TabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tab_people;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tab_resources;
+        private System.Windows.Forms.ListView listView2;
+        protected internal System.Windows.Forms.TabPage tab_degrees;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button about_btn;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button degrees_btn;
+        private System.Windows.Forms.Button people_btn;
+        private System.Windows.Forms.Button resources_btn;
+        private System.Windows.Forms.Button emp_btn;
+        private System.Windows.Forms.Button research_btn;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabControl body;
+        private System.Windows.Forms.TabPage about_tab;
+        private System.Windows.Forms.TabPage degrees_tab;
     }
 }
 

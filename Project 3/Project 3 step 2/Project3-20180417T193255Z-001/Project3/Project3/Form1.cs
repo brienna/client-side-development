@@ -44,6 +44,11 @@ namespace Project3
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Customize body tab control
+            body.Appearance = TabAppearance.FlatButtons;
+            body.ItemSize = new Size(0, 1);
+            body.SizeMode = TabSizeMode.Fixed;
+
             // go get the /about/ info...
             string jsonAbout = rj.getRestJSON("/about/");
             about = JToken.Parse(jsonAbout).ToObject<About>(); // About.cs with json2csharp
@@ -262,6 +267,32 @@ namespace Project3
                 sw.Stop();
                 Console.WriteLine(sw.ElapsedMilliseconds.ToString());
             }
+        }
+
+        // When the user enters the Degrees tab
+        private void tab_degrees_Enter(object sender, EventArgs e)
+        {
+            // Ensure I have the data
+            if (degrees == null)
+            {
+                Console.WriteLine("Loading degrees...");
+                string jsonDeg = rj.getRestJSON("/degrees/");
+                degrees = JToken.Parse(jsonDeg).ToObject<Degrees>();
+            }
+
+
+        }
+
+        private void about_btn_MouseHover(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.Hand;
+        }
+
+        private void about_btn_Click(object sender, EventArgs e) => body.SelectedTab = about_tab;
+
+        private void degrees_btn_Click(object sender, EventArgs e)
+        {
+            body.SelectedTab = degrees_tab;
         }
     }
     
