@@ -49,18 +49,27 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tab_resources = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.resources_btn = new System.Windows.Forms.Button();
+            this.emp_btn = new System.Windows.Forms.Button();
+            this.research_btn = new System.Windows.Forms.Button();
+            this.people_btn = new System.Windows.Forms.Button();
+            this.degrees_btn = new System.Windows.Forms.Button();
+            this.about_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.about_btn = new System.Windows.Forms.Button();
-            this.degrees_btn = new System.Windows.Forms.Button();
-            this.people_btn = new System.Windows.Forms.Button();
-            this.research_btn = new System.Windows.Forms.Button();
-            this.emp_btn = new System.Windows.Forms.Button();
-            this.resources_btn = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.body = new System.Windows.Forms.TabControl();
             this.about_tab = new System.Windows.Forms.TabPage();
             this.degrees_tab = new System.Windows.Forms.TabPage();
+            this.people_tab = new System.Windows.Forms.TabPage();
+            this.research_tab = new System.Windows.Forms.TabPage();
+            this.emp_tab = new System.Windows.Forms.TabPage();
+            this.resources_tab = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -74,6 +83,10 @@
             this.body.SuspendLayout();
             this.about_tab.SuspendLayout();
             this.degrees_tab.SuspendLayout();
+            this.people_tab.SuspendLayout();
+            this.research_tab.SuspendLayout();
+            this.emp_tab.SuspendLayout();
+            this.resources_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtb_about_desc
@@ -211,10 +224,10 @@
             // tab_degrees
             // 
             this.tab_degrees.Controls.Add(this.listView2);
-            this.tab_degrees.Location = new System.Drawing.Point(4, 104);
+            this.tab_degrees.Location = new System.Drawing.Point(4, 54);
             this.tab_degrees.Name = "tab_degrees";
             this.tab_degrees.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_degrees.Size = new System.Drawing.Size(475, 441);
+            this.tab_degrees.Size = new System.Drawing.Size(410, 190);
             this.tab_degrees.TabIndex = 1;
             this.tab_degrees.Text = "Degrees";
             this.tab_degrees.UseVisualStyleBackColor = true;
@@ -231,10 +244,10 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.DataGridView1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 104);
+            this.tabPage5.Location = new System.Drawing.Point(4, 54);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(475, 441);
+            this.tabPage5.Size = new System.Drawing.Size(410, 190);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "DataGridView";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -244,20 +257,20 @@
             // 
             this.tabPage6.Controls.Add(this.listView1);
             this.tabPage6.Controls.Add(this.btn_ListView);
-            this.tabPage6.Location = new System.Drawing.Point(4, 104);
+            this.tabPage6.Location = new System.Drawing.Point(4, 54);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(475, 441);
+            this.tabPage6.Size = new System.Drawing.Size(410, 190);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "ListView";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // tab_resources
             // 
-            this.tab_resources.Location = new System.Drawing.Point(4, 104);
+            this.tab_resources.Location = new System.Drawing.Point(4, 54);
             this.tab_resources.Name = "tab_resources";
             this.tab_resources.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_resources.Size = new System.Drawing.Size(475, 441);
+            this.tab_resources.Size = new System.Drawing.Size(410, 190);
             this.tab_resources.TabIndex = 6;
             this.tab_resources.Text = "Resources";
             this.tab_resources.UseVisualStyleBackColor = true;
@@ -279,6 +292,117 @@
             this.panel1.Size = new System.Drawing.Size(200, 549);
             this.panel1.TabIndex = 11;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 458);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 91);
+            this.panel3.TabIndex = 12;
+            // 
+            // resources_btn
+            // 
+            this.resources_btn.FlatAppearance.BorderSize = 0;
+            this.resources_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.resources_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resources_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.resources_btn.Location = new System.Drawing.Point(0, 308);
+            this.resources_btn.Name = "resources_btn";
+            this.resources_btn.Size = new System.Drawing.Size(200, 43);
+            this.resources_btn.TabIndex = 6;
+            this.resources_btn.Text = "RESOURCES";
+            this.resources_btn.UseVisualStyleBackColor = true;
+            this.resources_btn.Click += new System.EventHandler(this.resources_btn_Click);
+            this.resources_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // emp_btn
+            // 
+            this.emp_btn.FlatAppearance.BorderSize = 0;
+            this.emp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.emp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emp_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.emp_btn.Location = new System.Drawing.Point(0, 266);
+            this.emp_btn.Name = "emp_btn";
+            this.emp_btn.Size = new System.Drawing.Size(200, 43);
+            this.emp_btn.TabIndex = 5;
+            this.emp_btn.Text = "EMPLOYMENT";
+            this.emp_btn.UseVisualStyleBackColor = true;
+            this.emp_btn.Click += new System.EventHandler(this.emp_btn_Click);
+            this.emp_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // research_btn
+            // 
+            this.research_btn.FlatAppearance.BorderSize = 0;
+            this.research_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.research_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.research_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.research_btn.Location = new System.Drawing.Point(0, 224);
+            this.research_btn.Name = "research_btn";
+            this.research_btn.Size = new System.Drawing.Size(200, 43);
+            this.research_btn.TabIndex = 4;
+            this.research_btn.Text = "RESEARCH";
+            this.research_btn.UseVisualStyleBackColor = true;
+            this.research_btn.Click += new System.EventHandler(this.research_btn_Click);
+            this.research_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // people_btn
+            // 
+            this.people_btn.FlatAppearance.BorderSize = 0;
+            this.people_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.people_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.people_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.people_btn.Location = new System.Drawing.Point(0, 182);
+            this.people_btn.Name = "people_btn";
+            this.people_btn.Size = new System.Drawing.Size(200, 43);
+            this.people_btn.TabIndex = 3;
+            this.people_btn.Text = "PEOPLE";
+            this.people_btn.UseVisualStyleBackColor = true;
+            this.people_btn.Click += new System.EventHandler(this.people_btn_Click);
+            this.people_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // degrees_btn
+            // 
+            this.degrees_btn.FlatAppearance.BorderSize = 0;
+            this.degrees_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.degrees_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.degrees_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.degrees_btn.Location = new System.Drawing.Point(0, 141);
+            this.degrees_btn.Name = "degrees_btn";
+            this.degrees_btn.Size = new System.Drawing.Size(200, 43);
+            this.degrees_btn.TabIndex = 2;
+            this.degrees_btn.Text = "DEGREES";
+            this.degrees_btn.UseVisualStyleBackColor = true;
+            this.degrees_btn.Click += new System.EventHandler(this.degrees_btn_Click);
+            this.degrees_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
+            // about_btn
+            // 
+            this.about_btn.FlatAppearance.BorderSize = 0;
+            this.about_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.about_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.about_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.about_btn.Location = new System.Drawing.Point(0, 99);
+            this.about_btn.Name = "about_btn";
+            this.about_btn.Size = new System.Drawing.Size(200, 43);
+            this.about_btn.TabIndex = 1;
+            this.about_btn.Text = "ABOUT";
+            this.about_btn.UseVisualStyleBackColor = true;
+            this.about_btn.Click += new System.EventHandler(this.about_btn_Click);
+            this.about_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
@@ -299,117 +423,14 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // about_btn
-            // 
-            this.about_btn.FlatAppearance.BorderSize = 0;
-            this.about_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.about_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.about_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.about_btn.Location = new System.Drawing.Point(0, 99);
-            this.about_btn.Name = "about_btn";
-            this.about_btn.Size = new System.Drawing.Size(200, 43);
-            this.about_btn.TabIndex = 1;
-            this.about_btn.Text = "ABOUT";
-            this.about_btn.UseVisualStyleBackColor = true;
-            this.about_btn.Click += new System.EventHandler(this.about_btn_Click);
-            this.about_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // degrees_btn
-            // 
-            this.degrees_btn.FlatAppearance.BorderSize = 0;
-            this.degrees_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.degrees_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.degrees_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.degrees_btn.Location = new System.Drawing.Point(0, 141);
-            this.degrees_btn.Name = "degrees_btn";
-            this.degrees_btn.Size = new System.Drawing.Size(200, 43);
-            this.degrees_btn.TabIndex = 2;
-            this.degrees_btn.Text = "DEGREES";
-            this.degrees_btn.UseVisualStyleBackColor = true;
-            this.degrees_btn.Click += new System.EventHandler(this.degrees_btn_Click);
-            this.degrees_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // people_btn
-            // 
-            this.people_btn.FlatAppearance.BorderSize = 0;
-            this.people_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.people_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.people_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.people_btn.Location = new System.Drawing.Point(0, 182);
-            this.people_btn.Name = "people_btn";
-            this.people_btn.Size = new System.Drawing.Size(200, 43);
-            this.people_btn.TabIndex = 3;
-            this.people_btn.Text = "PEOPLE";
-            this.people_btn.UseVisualStyleBackColor = true;
-            this.people_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // research_btn
-            // 
-            this.research_btn.FlatAppearance.BorderSize = 0;
-            this.research_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.research_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.research_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.research_btn.Location = new System.Drawing.Point(0, 224);
-            this.research_btn.Name = "research_btn";
-            this.research_btn.Size = new System.Drawing.Size(200, 43);
-            this.research_btn.TabIndex = 4;
-            this.research_btn.Text = "RESEARCH";
-            this.research_btn.UseVisualStyleBackColor = true;
-            this.research_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // emp_btn
-            // 
-            this.emp_btn.FlatAppearance.BorderSize = 0;
-            this.emp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.emp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emp_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.emp_btn.Location = new System.Drawing.Point(0, 266);
-            this.emp_btn.Name = "emp_btn";
-            this.emp_btn.Size = new System.Drawing.Size(200, 43);
-            this.emp_btn.TabIndex = 5;
-            this.emp_btn.Text = "EMPLOYMENT";
-            this.emp_btn.UseVisualStyleBackColor = true;
-            this.emp_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // resources_btn
-            // 
-            this.resources_btn.FlatAppearance.BorderSize = 0;
-            this.resources_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.resources_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resources_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.resources_btn.Location = new System.Drawing.Point(0, 308);
-            this.resources_btn.Name = "resources_btn";
-            this.resources_btn.Size = new System.Drawing.Size(200, 43);
-            this.resources_btn.TabIndex = 6;
-            this.resources_btn.Text = "RESOURCES";
-            this.resources_btn.UseVisualStyleBackColor = true;
-            this.resources_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 458);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 91);
-            this.panel3.TabIndex = 12;
-            // 
             // body
             // 
             this.body.Controls.Add(this.about_tab);
             this.body.Controls.Add(this.degrees_tab);
+            this.body.Controls.Add(this.people_tab);
+            this.body.Controls.Add(this.research_tab);
+            this.body.Controls.Add(this.emp_tab);
+            this.body.Controls.Add(this.resources_tab);
             this.body.Location = new System.Drawing.Point(218, 12);
             this.body.Name = "body";
             this.body.SelectedIndex = 0;
@@ -429,6 +450,7 @@
             // 
             // degrees_tab
             // 
+            this.degrees_tab.Controls.Add(this.label5);
             this.degrees_tab.Controls.Add(this.rtb_about_desc);
             this.degrees_tab.Controls.Add(this.ll_resources_appForm);
             this.degrees_tab.Controls.Add(this.ll_pdf);
@@ -439,6 +461,95 @@
             this.degrees_tab.TabIndex = 1;
             this.degrees_tab.Text = "Degrees";
             this.degrees_tab.UseVisualStyleBackColor = true;
+            // 
+            // people_tab
+            // 
+            this.people_tab.Controls.Add(this.label4);
+            this.people_tab.Location = new System.Drawing.Point(4, 22);
+            this.people_tab.Name = "people_tab";
+            this.people_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.people_tab.Size = new System.Drawing.Size(573, 499);
+            this.people_tab.TabIndex = 2;
+            this.people_tab.Text = "People";
+            this.people_tab.UseVisualStyleBackColor = true;
+            // 
+            // research_tab
+            // 
+            this.research_tab.Controls.Add(this.label1);
+            this.research_tab.Location = new System.Drawing.Point(4, 22);
+            this.research_tab.Name = "research_tab";
+            this.research_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.research_tab.Size = new System.Drawing.Size(573, 499);
+            this.research_tab.TabIndex = 3;
+            this.research_tab.Text = "Research";
+            this.research_tab.UseVisualStyleBackColor = true;
+            // 
+            // emp_tab
+            // 
+            this.emp_tab.Controls.Add(this.label2);
+            this.emp_tab.Location = new System.Drawing.Point(4, 22);
+            this.emp_tab.Name = "emp_tab";
+            this.emp_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.emp_tab.Size = new System.Drawing.Size(573, 499);
+            this.emp_tab.TabIndex = 4;
+            this.emp_tab.Text = "Employment";
+            this.emp_tab.UseVisualStyleBackColor = true;
+            // 
+            // resources_tab
+            // 
+            this.resources_tab.Controls.Add(this.label3);
+            this.resources_tab.Location = new System.Drawing.Point(4, 22);
+            this.resources_tab.Name = "resources_tab";
+            this.resources_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.resources_tab.Size = new System.Drawing.Size(573, 499);
+            this.resources_tab.TabIndex = 5;
+            this.resources_tab.Text = "Resources";
+            this.resources_tab.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(159, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Research";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(182, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Employment";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(182, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Resources";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(171, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "People";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(225, 274);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Degrees";
             // 
             // Form1
             // 
@@ -468,6 +579,14 @@
             this.about_tab.ResumeLayout(false);
             this.degrees_tab.ResumeLayout(false);
             this.degrees_tab.PerformLayout();
+            this.people_tab.ResumeLayout(false);
+            this.people_tab.PerformLayout();
+            this.research_tab.ResumeLayout(false);
+            this.research_tab.PerformLayout();
+            this.emp_tab.ResumeLayout(false);
+            this.emp_tab.PerformLayout();
+            this.resources_tab.ResumeLayout(false);
+            this.resources_tab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,6 +625,15 @@
         private System.Windows.Forms.TabControl body;
         private System.Windows.Forms.TabPage about_tab;
         private System.Windows.Forms.TabPage degrees_tab;
+        private System.Windows.Forms.TabPage people_tab;
+        private System.Windows.Forms.TabPage research_tab;
+        private System.Windows.Forms.TabPage emp_tab;
+        private System.Windows.Forms.TabPage resources_tab;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

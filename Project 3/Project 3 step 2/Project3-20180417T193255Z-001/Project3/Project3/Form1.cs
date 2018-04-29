@@ -288,11 +288,33 @@ namespace Project3
             Cursor.Current = Cursors.Hand;
         }
 
+        // Change body view to About section when "About" is clicked
         private void about_btn_Click(object sender, EventArgs e) => body.SelectedTab = about_tab;
-
+        
+        // Change body view to Degrees section when "Degrees" is clicked
         private void degrees_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = degrees_tab;
+        }
+
+        private void people_btn_Click(object sender, EventArgs e)
+        {
+            body.SelectedTab = people_tab;
+        }
+
+        private void research_btn_Click(object sender, EventArgs e)
+        {
+            body.SelectedTab = research_tab;
+        }
+
+        private void emp_btn_Click(object sender, EventArgs e)
+        {
+            body.SelectedTab = emp_tab;
+        }
+
+        private void resources_btn_Click(object sender, EventArgs e)
+        {
+            body.SelectedTab = resources_tab;
         }
     }
     
