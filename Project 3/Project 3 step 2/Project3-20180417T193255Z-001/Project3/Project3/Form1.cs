@@ -312,15 +312,18 @@ namespace Project3
                     degreePanel.ColumnCount = 1;
                     degreePanel.RowCount = 2;
                     degreePanel.AutoSize = true;
+                    degreePanel.Dock = DockStyle.Fill;
                     foreach (RowStyle style in degreePanel.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
                     degreePanel.BorderStyle = BorderStyle.FixedSingle;
-                    //degreePanel.Margin = new Padding(0);
 
                     Label degTitle = new Label();
                     degTitle.Text = degrees.undergraduate[i].title;
                     degTitle.Dock = DockStyle.Fill;
+                    degTitle.AutoSize = false;
+                    degTitle.MaximumSize = new Size(100, 0);
+                    degTitle.AutoSize = true;
 
                     TextBox degDesc = new TextBox();
                     degDesc.ReadOnly = true;
