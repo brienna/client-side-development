@@ -59,17 +59,23 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.body = new System.Windows.Forms.TabControl();
+            this.home_tab = new System.Windows.Forms.TabPage();
             this.about_tab = new System.Windows.Forms.TabPage();
             this.degrees_tab = new System.Windows.Forms.TabPage();
-            this.people_tab = new System.Windows.Forms.TabPage();
-            this.research_tab = new System.Windows.Forms.TabPage();
-            this.emp_tab = new System.Windows.Forms.TabPage();
-            this.resources_tab = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.people_tab = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.research_tab = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.emp_tab = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.resources_tab = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.about_title = new System.Windows.Forms.Label();
+            this.about_desc = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.about_quoteAuth = new System.Windows.Forms.Label();
+            this.about_quote = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -87,6 +93,7 @@
             this.research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtb_about_desc
@@ -200,7 +207,7 @@
             this.TabControl1.Controls.Add(this.tab_resources);
             this.TabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TabControl1.ItemSize = new System.Drawing.Size(25, 50);
-            this.TabControl1.Location = new System.Drawing.Point(84, 46);
+            this.TabControl1.Location = new System.Drawing.Point(75, 148);
             this.TabControl1.Multiline = true;
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -425,28 +432,44 @@
             // 
             // body
             // 
+            this.body.Controls.Add(this.home_tab);
             this.body.Controls.Add(this.about_tab);
             this.body.Controls.Add(this.degrees_tab);
             this.body.Controls.Add(this.people_tab);
             this.body.Controls.Add(this.research_tab);
             this.body.Controls.Add(this.emp_tab);
             this.body.Controls.Add(this.resources_tab);
-            this.body.Location = new System.Drawing.Point(218, 12);
+            this.body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.body.Location = new System.Drawing.Point(200, 0);
             this.body.Name = "body";
             this.body.SelectedIndex = 0;
-            this.body.Size = new System.Drawing.Size(581, 525);
+            this.body.Size = new System.Drawing.Size(611, 549);
             this.body.TabIndex = 12;
+            // 
+            // home_tab
+            // 
+            this.home_tab.BackColor = System.Drawing.Color.Linen;
+            this.home_tab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("home_tab.BackgroundImage")));
+            this.home_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.home_tab.Location = new System.Drawing.Point(4, 22);
+            this.home_tab.Name = "home_tab";
+            this.home_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.home_tab.Size = new System.Drawing.Size(603, 523);
+            this.home_tab.TabIndex = 6;
+            this.home_tab.Text = "Home";
             // 
             // about_tab
             // 
-            this.about_tab.Controls.Add(this.TabControl1);
+            this.about_tab.BackColor = System.Drawing.Color.Black;
+            this.about_tab.Controls.Add(this.panel4);
+            this.about_tab.Controls.Add(this.about_desc);
+            this.about_tab.Controls.Add(this.about_title);
             this.about_tab.Location = new System.Drawing.Point(4, 22);
             this.about_tab.Name = "about_tab";
             this.about_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.about_tab.Size = new System.Drawing.Size(573, 499);
+            this.about_tab.Size = new System.Drawing.Size(603, 523);
             this.about_tab.TabIndex = 0;
             this.about_tab.Text = "About";
-            this.about_tab.UseVisualStyleBackColor = true;
             // 
             // degrees_tab
             // 
@@ -457,10 +480,19 @@
             this.degrees_tab.Location = new System.Drawing.Point(4, 22);
             this.degrees_tab.Name = "degrees_tab";
             this.degrees_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.degrees_tab.Size = new System.Drawing.Size(573, 499);
+            this.degrees_tab.Size = new System.Drawing.Size(603, 523);
             this.degrees_tab.TabIndex = 1;
             this.degrees_tab.Text = "Degrees";
             this.degrees_tab.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(225, 274);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Degrees";
             // 
             // people_tab
             // 
@@ -468,70 +500,10 @@
             this.people_tab.Location = new System.Drawing.Point(4, 22);
             this.people_tab.Name = "people_tab";
             this.people_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.people_tab.Size = new System.Drawing.Size(573, 499);
+            this.people_tab.Size = new System.Drawing.Size(603, 523);
             this.people_tab.TabIndex = 2;
             this.people_tab.Text = "People";
             this.people_tab.UseVisualStyleBackColor = true;
-            // 
-            // research_tab
-            // 
-            this.research_tab.Controls.Add(this.label1);
-            this.research_tab.Location = new System.Drawing.Point(4, 22);
-            this.research_tab.Name = "research_tab";
-            this.research_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.research_tab.Size = new System.Drawing.Size(573, 499);
-            this.research_tab.TabIndex = 3;
-            this.research_tab.Text = "Research";
-            this.research_tab.UseVisualStyleBackColor = true;
-            // 
-            // emp_tab
-            // 
-            this.emp_tab.Controls.Add(this.label2);
-            this.emp_tab.Location = new System.Drawing.Point(4, 22);
-            this.emp_tab.Name = "emp_tab";
-            this.emp_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.emp_tab.Size = new System.Drawing.Size(573, 499);
-            this.emp_tab.TabIndex = 4;
-            this.emp_tab.Text = "Employment";
-            this.emp_tab.UseVisualStyleBackColor = true;
-            // 
-            // resources_tab
-            // 
-            this.resources_tab.Controls.Add(this.label3);
-            this.resources_tab.Location = new System.Drawing.Point(4, 22);
-            this.resources_tab.Name = "resources_tab";
-            this.resources_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.resources_tab.Size = new System.Drawing.Size(573, 499);
-            this.resources_tab.TabIndex = 5;
-            this.resources_tab.Text = "Resources";
-            this.resources_tab.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Research";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Employment";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Resources";
             // 
             // label4
             // 
@@ -542,14 +514,113 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "People";
             // 
-            // label5
+            // research_tab
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(225, 274);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Degrees";
+            this.research_tab.Controls.Add(this.label1);
+            this.research_tab.Location = new System.Drawing.Point(4, 22);
+            this.research_tab.Name = "research_tab";
+            this.research_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.research_tab.Size = new System.Drawing.Size(603, 523);
+            this.research_tab.TabIndex = 3;
+            this.research_tab.Text = "Research";
+            this.research_tab.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(159, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Research";
+            // 
+            // emp_tab
+            // 
+            this.emp_tab.Controls.Add(this.TabControl1);
+            this.emp_tab.Controls.Add(this.label2);
+            this.emp_tab.Location = new System.Drawing.Point(4, 22);
+            this.emp_tab.Name = "emp_tab";
+            this.emp_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.emp_tab.Size = new System.Drawing.Size(603, 523);
+            this.emp_tab.TabIndex = 4;
+            this.emp_tab.Text = "Employment";
+            this.emp_tab.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(182, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Employment";
+            // 
+            // resources_tab
+            // 
+            this.resources_tab.Controls.Add(this.label3);
+            this.resources_tab.Location = new System.Drawing.Point(4, 22);
+            this.resources_tab.Name = "resources_tab";
+            this.resources_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.resources_tab.Size = new System.Drawing.Size(603, 523);
+            this.resources_tab.TabIndex = 5;
+            this.resources_tab.Text = "Resources";
+            this.resources_tab.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(182, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Resources";
+            // 
+            // about_title
+            // 
+            this.about_title.AutoSize = true;
+            this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.about_title.Location = new System.Drawing.Point(270, 61);
+            this.about_title.Name = "about_title";
+            this.about_title.Size = new System.Drawing.Size(49, 13);
+            this.about_title.TabIndex = 0;
+            this.about_title.Text = "[ TITLE ]";
+            // 
+            // about_desc
+            // 
+            this.about_desc.BackColor = System.Drawing.Color.White;
+            this.about_desc.Location = new System.Drawing.Point(95, 97);
+            this.about_desc.Multiline = true;
+            this.about_desc.Name = "about_desc";
+            this.about_desc.Size = new System.Drawing.Size(430, 106);
+            this.about_desc.TabIndex = 1;
+            this.about_desc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Controls.Add(this.about_quote);
+            this.panel4.Controls.Add(this.about_quoteAuth);
+            this.panel4.Location = new System.Drawing.Point(56, 222);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(507, 196);
+            this.panel4.TabIndex = 2;
+            // 
+            // about_quoteAuth
+            // 
+            this.about_quoteAuth.AutoSize = true;
+            this.about_quoteAuth.Location = new System.Drawing.Point(234, 151);
+            this.about_quoteAuth.Name = "about_quoteAuth";
+            this.about_quoteAuth.Size = new System.Drawing.Size(35, 13);
+            this.about_quoteAuth.TabIndex = 2;
+            this.about_quoteAuth.Text = "label6";
+            // 
+            // about_quote
+            // 
+            this.about_quote.Location = new System.Drawing.Point(69, 57);
+            this.about_quote.Multiline = true;
+            this.about_quote.Name = "about_quote";
+            this.about_quote.Size = new System.Drawing.Size(400, 50);
+            this.about_quote.TabIndex = 3;
             // 
             // Form1
             // 
@@ -577,6 +648,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
             this.about_tab.ResumeLayout(false);
+            this.about_tab.PerformLayout();
             this.degrees_tab.ResumeLayout(false);
             this.degrees_tab.PerformLayout();
             this.people_tab.ResumeLayout(false);
@@ -587,6 +659,8 @@
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -634,6 +708,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage home_tab;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox about_desc;
+        private System.Windows.Forms.Label about_title;
+        private System.Windows.Forms.TextBox about_quote;
+        private System.Windows.Forms.Label about_quoteAuth;
     }
 }
 

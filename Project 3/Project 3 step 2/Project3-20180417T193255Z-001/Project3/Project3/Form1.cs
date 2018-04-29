@@ -49,11 +49,6 @@ namespace Project3
             body.ItemSize = new Size(0, 1);
             body.SizeMode = TabSizeMode.Fixed;
 
-            // go get the /about/ info...
-            string jsonAbout = rj.getRestJSON("/about/");
-            about = JToken.Parse(jsonAbout).ToObject<About>(); // About.cs with json2csharp
-            rtb_about_desc.Text = about.description;
-
             // go get the /resources/ info...
             string jsonResources = rj.getRestJSON("/resources/");
             resources = JToken.Parse(jsonResources).ToObject<Resources>(); // (parses returned json and casts to object) Resources.cs with json2csharp
@@ -279,7 +274,7 @@ namespace Project3
                 string jsonDeg = rj.getRestJSON("/degrees/");
                 degrees = JToken.Parse(jsonDeg).ToObject<Degrees>();
             }
-
+            
 
         }
 
@@ -288,30 +283,46 @@ namespace Project3
             Cursor.Current = Cursors.Hand;
         }
 
-        // Change body view to About section when "About" is clicked
-        private void about_btn_Click(object sender, EventArgs e) => body.SelectedTab = about_tab;
-        
-        // Change body view to Degrees section when "Degrees" is clicked
+        // When "ABOUT" is clicked
+        private void about_btn_Click(object sender, EventArgs e) {
+            // Change body view to About section
+            body.SelectedTab = about_tab;
+
+            // Ensure we have the data, fetch if we don't
+            if (about == null) {
+                Console.WriteLine("Loading about...");
+                string jsonAbout = rj.getRestJSON("/about/");
+                about = JToken.Parse(jsonAbout).ToObject<About>();
+
+                // Dynamically load About section page
+                about_title.Text = about.title;
+                about_desc.Text = about.description;
+                about_quote.Text = about.quote;
+                about_quoteAuth.Text = about.quoteAuthor;
+            }
+        }
+
+        // Change body view to Degrees section when "DEGREES" is clicked
         private void degrees_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = degrees_tab;
         }
-
+        // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = people_tab;
         }
-
+        // Change body view to Research section when "RESEARCH" is clicked
         private void research_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = research_tab;
         }
-
+        // Change body view to Employment section when "EMPLOYMENT" is clicked
         private void emp_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = emp_tab;
         }
-
+        // Change body view to Resources section when "RESOURCES" is clicked
         private void resources_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = resources_tab;
