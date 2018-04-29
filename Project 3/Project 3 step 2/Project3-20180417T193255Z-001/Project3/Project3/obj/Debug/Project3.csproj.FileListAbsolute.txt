@@ -64,3 +64,4 @@ Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\ob
 Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.csproj.CopyComplete
 Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.exe
 Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.pdb
+Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\obj\Debug\Project3.Overlay.resources

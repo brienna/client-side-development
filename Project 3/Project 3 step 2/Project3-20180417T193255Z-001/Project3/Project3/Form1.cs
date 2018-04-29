@@ -313,11 +313,12 @@ namespace Project3
                     degreePanel.RowCount = 2;
                     degreePanel.AutoSize = true;
                     degreePanel.Dock = DockStyle.Fill;
+                    degreePanel.BorderStyle = BorderStyle.FixedSingle;
                     foreach (RowStyle style in degreePanel.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
-                    degreePanel.BorderStyle = BorderStyle.FixedSingle;
-
+                    
+                    // Degree title
                     Label degTitle = new Label();
                     degTitle.Text = degrees.undergraduate[i].title;
                     degTitle.Dock = DockStyle.Fill;
@@ -325,6 +326,7 @@ namespace Project3
                     degTitle.MaximumSize = new Size(100, 0);
                     degTitle.AutoSize = true;
 
+                    // Degree description
                     TextBox degDesc = new TextBox();
                     degDesc.ReadOnly = true;
                     degDesc.Multiline = true;
@@ -337,25 +339,36 @@ namespace Project3
                                                 new StringFormat(0));
                     degDesc.Height = (int)size.Height;
 
+                    // Add components to degree panel, then to main panel
                     degreePanel.Controls.Add(degTitle, 0, 0);
                     degreePanel.Controls.Add(degDesc, 0, 1);
                     ug_degrees.Controls.Add(degreePanel, i, row);
 
-                    // Resize rows and columns (only after adding controls)
-                    //ug_degrees.AutoSize = true;
-                    foreach (RowStyle style in ug_degrees.RowStyles)
-                    {
+                    // Resize rows
+                    foreach (RowStyle style in ug_degrees.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
+
+                    // Set onclick event handler
+                    string degName = degrees.undergraduate[i].degreeName;
+                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, degName);
 
                     // Jump to next row if current row is full
                     if ((i+1) % 3 == 0) {
                         row++;
                     }
+
                 }
                 
             }
         }
+
+        private void degree_click(object sender, EventArgs e, String degName)
+        {
+            Overlay overlay = new Overlay(degName);
+            overlay.Show();
+        }
+
         // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e)
         {
