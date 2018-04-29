@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.rtb_about_desc = new System.Windows.Forms.RichTextBox();
             this.ll_pdf = new System.Windows.Forms.LinkLabel();
             this.ll_resources_appForm = new System.Windows.Forms.LinkLabel();
             this.btn_people = new System.Windows.Forms.Button();
@@ -61,7 +60,23 @@
             this.body = new System.Windows.Forms.TabControl();
             this.home_tab = new System.Windows.Forms.TabPage();
             this.about_tab = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.about_quote = new System.Windows.Forms.TextBox();
+            this.about_quoteAuth = new System.Windows.Forms.Label();
+            this.about_desc = new System.Windows.Forms.TextBox();
+            this.about_title = new System.Windows.Forms.Label();
             this.degrees_tab = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.ug_tab = new System.Windows.Forms.TabPage();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.ug_deg_tab = new System.Windows.Forms.TabPage();
+            this.ug_minors_tab = new System.Windows.Forms.TabPage();
+            this.grad_tab = new System.Windows.Forms.TabPage();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.grad_deg_tab = new System.Windows.Forms.TabPage();
+            this.grad_cert_tab = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.people_tab = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -71,11 +86,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resources_tab = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.about_title = new System.Windows.Forms.Label();
-            this.about_desc = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.about_quoteAuth = new System.Windows.Forms.Label();
-            this.about_quote = new System.Windows.Forms.TextBox();
+            this.ug_minors = new System.Windows.Forms.TableLayoutPanel();
+            this.ug_degrees = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -84,31 +96,32 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.body.SuspendLayout();
             this.about_tab.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.degrees_tab.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.ug_tab.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.ug_deg_tab.SuspendLayout();
+            this.ug_minors_tab.SuspendLayout();
+            this.grad_tab.SuspendLayout();
+            this.tabControl4.SuspendLayout();
             this.people_tab.SuspendLayout();
             this.research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // rtb_about_desc
-            // 
-            this.rtb_about_desc.AccessibleName = "";
-            this.rtb_about_desc.Location = new System.Drawing.Point(19, 24);
-            this.rtb_about_desc.Name = "rtb_about_desc";
-            this.rtb_about_desc.Size = new System.Drawing.Size(310, 153);
-            this.rtb_about_desc.TabIndex = 1;
-            this.rtb_about_desc.Text = "";
             // 
             // ll_pdf
             // 
             this.ll_pdf.AutoSize = true;
-            this.ll_pdf.Location = new System.Drawing.Point(285, 194);
+            this.ll_pdf.Location = new System.Drawing.Point(39, 42);
             this.ll_pdf.Name = "ll_pdf";
             this.ll_pdf.Size = new System.Drawing.Size(98, 13);
             this.ll_pdf.TabIndex = 2;
@@ -119,7 +132,7 @@
             // ll_resources_appForm
             // 
             this.ll_resources_appForm.AutoSize = true;
-            this.ll_resources_appForm.Location = new System.Drawing.Point(368, 92);
+            this.ll_resources_appForm.Location = new System.Drawing.Point(70, 12);
             this.ll_resources_appForm.Name = "ll_resources_appForm";
             this.ll_resources_appForm.Size = new System.Drawing.Size(55, 13);
             this.ll_resources_appForm.TabIndex = 3;
@@ -302,6 +315,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel3.Controls.Add(this.ll_resources_appForm);
+            this.panel3.Controls.Add(this.ll_pdf);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 458);
             this.panel3.Name = "panel3";
@@ -441,6 +456,7 @@
             this.body.Controls.Add(this.resources_tab);
             this.body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.body.Location = new System.Drawing.Point(200, 0);
+            this.body.Margin = new System.Windows.Forms.Padding(0);
             this.body.Name = "body";
             this.body.SelectedIndex = 0;
             this.body.Size = new System.Drawing.Size(611, 549);
@@ -471,12 +487,79 @@
             this.about_tab.TabIndex = 0;
             this.about_tab.Text = "About";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Controls.Add(this.pictureBox3);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.about_quote);
+            this.panel4.Controls.Add(this.about_quoteAuth);
+            this.panel4.Location = new System.Drawing.Point(56, 222);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(507, 196);
+            this.panel4.TabIndex = 2;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(237, 153);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(47, 40);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(237, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // about_quote
+            // 
+            this.about_quote.Location = new System.Drawing.Point(69, 57);
+            this.about_quote.Multiline = true;
+            this.about_quote.Name = "about_quote";
+            this.about_quote.Size = new System.Drawing.Size(400, 50);
+            this.about_quote.TabIndex = 3;
+            // 
+            // about_quoteAuth
+            // 
+            this.about_quoteAuth.AutoSize = true;
+            this.about_quoteAuth.Location = new System.Drawing.Point(246, 129);
+            this.about_quoteAuth.Name = "about_quoteAuth";
+            this.about_quoteAuth.Size = new System.Drawing.Size(35, 13);
+            this.about_quoteAuth.TabIndex = 2;
+            this.about_quoteAuth.Text = "label6";
+            // 
+            // about_desc
+            // 
+            this.about_desc.BackColor = System.Drawing.Color.White;
+            this.about_desc.Location = new System.Drawing.Point(95, 97);
+            this.about_desc.Multiline = true;
+            this.about_desc.Name = "about_desc";
+            this.about_desc.Size = new System.Drawing.Size(430, 106);
+            this.about_desc.TabIndex = 1;
+            this.about_desc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // about_title
+            // 
+            this.about_title.AutoSize = true;
+            this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.about_title.Location = new System.Drawing.Point(270, 61);
+            this.about_title.Name = "about_title";
+            this.about_title.Size = new System.Drawing.Size(49, 13);
+            this.about_title.TabIndex = 0;
+            this.about_title.Text = "[ TITLE ]";
+            // 
             // degrees_tab
             // 
+            this.degrees_tab.Controls.Add(this.tabControl2);
             this.degrees_tab.Controls.Add(this.label5);
-            this.degrees_tab.Controls.Add(this.rtb_about_desc);
-            this.degrees_tab.Controls.Add(this.ll_resources_appForm);
-            this.degrees_tab.Controls.Add(this.ll_pdf);
             this.degrees_tab.Location = new System.Drawing.Point(4, 22);
             this.degrees_tab.Name = "degrees_tab";
             this.degrees_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -485,10 +568,107 @@
             this.degrees_tab.Text = "Degrees";
             this.degrees_tab.UseVisualStyleBackColor = true;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.ug_tab);
+            this.tabControl2.Controls.Add(this.grad_tab);
+            this.tabControl2.Location = new System.Drawing.Point(15, 39);
+            this.tabControl2.Multiline = true;
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(588, 476);
+            this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl2.TabIndex = 5;
+            // 
+            // ug_tab
+            // 
+            this.ug_tab.Controls.Add(this.tabControl3);
+            this.ug_tab.Location = new System.Drawing.Point(4, 22);
+            this.ug_tab.Name = "ug_tab";
+            this.ug_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.ug_tab.Size = new System.Drawing.Size(580, 450);
+            this.ug_tab.TabIndex = 0;
+            this.ug_tab.Text = "Undergraduate";
+            this.ug_tab.UseVisualStyleBackColor = true;
+            // 
+            // tabControl3
+            // 
+            this.tabControl3.Controls.Add(this.ug_deg_tab);
+            this.tabControl3.Controls.Add(this.ug_minors_tab);
+            this.tabControl3.Location = new System.Drawing.Point(18, 27);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(521, 397);
+            this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl3.TabIndex = 0;
+            // 
+            // ug_deg_tab
+            // 
+            this.ug_deg_tab.Controls.Add(this.ug_degrees);
+            this.ug_deg_tab.Location = new System.Drawing.Point(4, 22);
+            this.ug_deg_tab.Name = "ug_deg_tab";
+            this.ug_deg_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.ug_deg_tab.Size = new System.Drawing.Size(513, 371);
+            this.ug_deg_tab.TabIndex = 0;
+            this.ug_deg_tab.Text = "Degrees";
+            this.ug_deg_tab.UseVisualStyleBackColor = true;
+            // 
+            // ug_minors_tab
+            // 
+            this.ug_minors_tab.Controls.Add(this.ug_minors);
+            this.ug_minors_tab.Location = new System.Drawing.Point(4, 22);
+            this.ug_minors_tab.Name = "ug_minors_tab";
+            this.ug_minors_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.ug_minors_tab.Size = new System.Drawing.Size(513, 371);
+            this.ug_minors_tab.TabIndex = 1;
+            this.ug_minors_tab.Text = "Minors";
+            this.ug_minors_tab.UseVisualStyleBackColor = true;
+            // 
+            // grad_tab
+            // 
+            this.grad_tab.Controls.Add(this.tabControl4);
+            this.grad_tab.Location = new System.Drawing.Point(4, 22);
+            this.grad_tab.Name = "grad_tab";
+            this.grad_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.grad_tab.Size = new System.Drawing.Size(580, 450);
+            this.grad_tab.TabIndex = 1;
+            this.grad_tab.Text = "Graduate";
+            this.grad_tab.UseVisualStyleBackColor = true;
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.grad_deg_tab);
+            this.tabControl4.Controls.Add(this.grad_cert_tab);
+            this.tabControl4.Location = new System.Drawing.Point(6, 16);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(568, 428);
+            this.tabControl4.TabIndex = 0;
+            // 
+            // grad_deg_tab
+            // 
+            this.grad_deg_tab.Location = new System.Drawing.Point(4, 22);
+            this.grad_deg_tab.Name = "grad_deg_tab";
+            this.grad_deg_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.grad_deg_tab.Size = new System.Drawing.Size(560, 402);
+            this.grad_deg_tab.TabIndex = 0;
+            this.grad_deg_tab.Text = "Degrees";
+            this.grad_deg_tab.UseVisualStyleBackColor = true;
+            // 
+            // grad_cert_tab
+            // 
+            this.grad_cert_tab.Location = new System.Drawing.Point(4, 22);
+            this.grad_cert_tab.Name = "grad_cert_tab";
+            this.grad_cert_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.grad_cert_tab.Size = new System.Drawing.Size(560, 402);
+            this.grad_cert_tab.TabIndex = 1;
+            this.grad_cert_tab.Text = "Certificates";
+            this.grad_cert_tab.UseVisualStyleBackColor = true;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(225, 274);
+            this.label5.Location = new System.Drawing.Point(274, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 4;
@@ -575,52 +755,33 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Resources";
             // 
-            // about_title
+            // ug_minors
             // 
-            this.about_title.AutoSize = true;
-            this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_title.Location = new System.Drawing.Point(270, 61);
-            this.about_title.Name = "about_title";
-            this.about_title.Size = new System.Drawing.Size(49, 13);
-            this.about_title.TabIndex = 0;
-            this.about_title.Text = "[ TITLE ]";
+            this.ug_minors.ColumnCount = 3;
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.ug_minors.Location = new System.Drawing.Point(29, 50);
+            this.ug_minors.Name = "ug_minors";
+            this.ug_minors.RowCount = 2;
+            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.Size = new System.Drawing.Size(454, 294);
+            this.ug_minors.TabIndex = 0;
             // 
-            // about_desc
+            // ug_degrees
             // 
-            this.about_desc.BackColor = System.Drawing.Color.White;
-            this.about_desc.Location = new System.Drawing.Point(95, 97);
-            this.about_desc.Multiline = true;
-            this.about_desc.Name = "about_desc";
-            this.about_desc.Size = new System.Drawing.Size(430, 106);
-            this.about_desc.TabIndex = 1;
-            this.about_desc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
-            this.panel4.Controls.Add(this.about_quote);
-            this.panel4.Controls.Add(this.about_quoteAuth);
-            this.panel4.Location = new System.Drawing.Point(56, 222);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(507, 196);
-            this.panel4.TabIndex = 2;
-            // 
-            // about_quoteAuth
-            // 
-            this.about_quoteAuth.AutoSize = true;
-            this.about_quoteAuth.Location = new System.Drawing.Point(234, 151);
-            this.about_quoteAuth.Name = "about_quoteAuth";
-            this.about_quoteAuth.Size = new System.Drawing.Size(35, 13);
-            this.about_quoteAuth.TabIndex = 2;
-            this.about_quoteAuth.Text = "label6";
-            // 
-            // about_quote
-            // 
-            this.about_quote.Location = new System.Drawing.Point(69, 57);
-            this.about_quote.Multiline = true;
-            this.about_quote.Name = "about_quote";
-            this.about_quote.Size = new System.Drawing.Size(400, 50);
-            this.about_quote.TabIndex = 3;
+            this.ug_degrees.ColumnCount = 3;
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.ug_degrees.Location = new System.Drawing.Point(44, 50);
+            this.ug_degrees.Name = "ug_degrees";
+            this.ug_degrees.RowCount = 2;
+            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.Size = new System.Drawing.Size(438, 152);
+            this.ug_degrees.TabIndex = 0;
             // 
             // Form1
             // 
@@ -644,13 +805,26 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
             this.about_tab.ResumeLayout(false);
             this.about_tab.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.degrees_tab.ResumeLayout(false);
             this.degrees_tab.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.ug_tab.ResumeLayout(false);
+            this.tabControl3.ResumeLayout(false);
+            this.ug_deg_tab.ResumeLayout(false);
+            this.ug_minors_tab.ResumeLayout(false);
+            this.grad_tab.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
             this.people_tab.ResumeLayout(false);
             this.people_tab.PerformLayout();
             this.research_tab.ResumeLayout(false);
@@ -659,15 +833,11 @@
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox rtb_about_desc;
         private System.Windows.Forms.LinkLabel ll_pdf;
         private System.Windows.Forms.LinkLabel ll_resources_appForm;
         private System.Windows.Forms.Button btn_people;
@@ -714,6 +884,19 @@
         private System.Windows.Forms.Label about_title;
         private System.Windows.Forms.TextBox about_quote;
         private System.Windows.Forms.Label about_quoteAuth;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage ug_tab;
+        private System.Windows.Forms.TabPage grad_tab;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage ug_deg_tab;
+        private System.Windows.Forms.TabPage ug_minors_tab;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage grad_deg_tab;
+        private System.Windows.Forms.TabPage grad_cert_tab;
+        private System.Windows.Forms.TableLayoutPanel ug_minors;
+        private System.Windows.Forms.TableLayoutPanel ug_degrees;
     }
 }
 

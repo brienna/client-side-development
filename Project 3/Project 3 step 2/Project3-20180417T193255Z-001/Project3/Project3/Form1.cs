@@ -264,18 +264,9 @@ namespace Project3
             }
         }
 
-        // When the user enters the Degrees tab
+        // DELETE
         private void tab_degrees_Enter(object sender, EventArgs e)
         {
-            // Ensure I have the data
-            if (degrees == null)
-            {
-                Console.WriteLine("Loading degrees...");
-                string jsonDeg = rj.getRestJSON("/degrees/");
-                degrees = JToken.Parse(jsonDeg).ToObject<Degrees>();
-            }
-            
-
         }
 
         private void about_btn_MouseHover(object sender, EventArgs e)
@@ -303,9 +294,64 @@ namespace Project3
         }
 
         // Change body view to Degrees section when "DEGREES" is clicked
-        private void degrees_btn_Click(object sender, EventArgs e)
-        {
+        private void degrees_btn_Click(object sender, EventArgs e) {
+            // Change body view to Degrees section
             body.SelectedTab = degrees_tab;
+
+            // Ensure we have the data, fetch if we don't
+            if (degrees == null) {
+                Console.WriteLine("Loading degrees...");
+                string jsonDeg = rj.getRestJSON("/degrees/");
+                degrees = JToken.Parse(jsonDeg).ToObject<Degrees>();
+
+                // Dynamically load undergraduate degrees
+                int row = 0;
+                for (int i = 0; i < degrees.undergraduate.Count; i++) {
+                    // Create and populate panel for each degree
+                    TableLayoutPanel degreePanel = new TableLayoutPanel();
+                    degreePanel.ColumnCount = 1;
+                    degreePanel.RowCount = 2;
+                    degreePanel.AutoSize = true;
+                    foreach (RowStyle style in degreePanel.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+                    degreePanel.BorderStyle = BorderStyle.FixedSingle;
+                    //degreePanel.Margin = new Padding(0);
+
+                    Label degTitle = new Label();
+                    degTitle.Text = degrees.undergraduate[i].title;
+                    degTitle.Dock = DockStyle.Fill;
+
+                    TextBox degDesc = new TextBox();
+                    degDesc.ReadOnly = true;
+                    degDesc.Multiline = true;
+                    degDesc.Dock = DockStyle.Fill;
+                    degDesc.Text = degrees.undergraduate[i].description;
+                    SizeF size = degDesc.CreateGraphics()
+                                .MeasureString(degDesc.Text,
+                                                degDesc.Font,
+                                                degDesc.Width,
+                                                new StringFormat(0));
+                    degDesc.Height = (int)size.Height;
+
+                    degreePanel.Controls.Add(degTitle, 0, 0);
+                    degreePanel.Controls.Add(degDesc, 0, 1);
+                    ug_degrees.Controls.Add(degreePanel, i, row);
+
+                    // Resize rows and columns (only after adding controls)
+                    //ug_degrees.AutoSize = true;
+                    foreach (RowStyle style in ug_degrees.RowStyles)
+                    {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Jump to next row if current row is full
+                    if ((i+1) % 3 == 0) {
+                        row++;
+                    }
+                }
+                
+            }
         }
         // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e)
