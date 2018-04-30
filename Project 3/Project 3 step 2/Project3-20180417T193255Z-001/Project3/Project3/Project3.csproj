@@ -54,11 +54,11 @@
     <Compile Include="News.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="Degrees.cs" />
-    <Compile Include="Overlay.cs">
+    <Compile Include="Popup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Overlay.Designer.cs">
-      <DependentUpon>Overlay.cs</DependentUpon>
+    <Compile Include="Popup.Designer.cs">
+      <DependentUpon>Popup.cs</DependentUpon>
     </Compile>
     <Compile Include="Research.cs" />
     <Compile Include="Employment.cs" />
@@ -81,11 +81,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Overlay.resx">
-      <DependentUpon>Overlay.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PepForm.resx">
       <DependentUpon>PepForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.resx">
+      <DependentUpon>Popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

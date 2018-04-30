@@ -1,20 +1,16 @@
 ﻿using Newtonsoft.Json.Linq;
+using RestUtility;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using RestUtility;
-using System.Diagnostics;
 
-namespace Project3
-{
+namespace Project3 {
     public partial class Form1 : Form
     {
 
@@ -48,17 +44,6 @@ namespace Project3
             body.Appearance = TabAppearance.FlatButtons;
             body.ItemSize = new Size(0, 1);
             body.SizeMode = TabSizeMode.Fixed;
-
-            // go get the /resources/ info...
-            string jsonResources = rj.getRestJSON("/resources/");
-            resources = JToken.Parse(jsonResources).ToObject<Resources>(); // (parses returned json and casts to object) Resources.cs with json2csharp
-
-            ll_pdf.Tag = resources.coopEnrollment.RITJobZoneGuidelink;
-
-            ll_resources_appForm.Text = "Get the application form";
-            ll_resources_appForm.Tag = resources.studentAmbassadors.applicationFormLink;
-            ll_resources_appForm.LinkClicked += linkLabel1_LinkClicked;
-
 
             /*
              * Let's assume that we are going to get a list of acceptable tabs to show the user from a call
@@ -178,11 +163,6 @@ namespace Project3
 
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // MessageBox.Show("i");
@@ -262,11 +242,6 @@ namespace Project3
                 sw.Stop();
                 Console.WriteLine(sw.ElapsedMilliseconds.ToString());
             }
-        }
-
-        // DELETE
-        private void tab_degrees_Enter(object sender, EventArgs e)
-        {
         }
 
         private void about_btn_MouseHover(object sender, EventArgs e)
@@ -475,19 +450,14 @@ namespace Project3
                     }
                 }
 
-
             }
         }
+        // Show overlay with details when a degree or minor is clicked
+        private void degree_click(object sender, EventArgs e, string deg) {
 
-        private void degree_click(object sender, EventArgs e, string deg)
-        {
-            Overlay overlay = new Overlay(deg);
-            overlay.Show();
         }
-
         // Change body view to People section when "PEOPLE" is clicked
-        private void people_btn_Click(object sender, EventArgs e)
-        {
+        private void people_btn_Click(object sender, EventArgs e) {
             body.SelectedTab = people_tab;
         }
         // Change body view to Research section when "RESEARCH" is clicked
@@ -503,10 +473,49 @@ namespace Project3
         // Change body view to Resources section when "RESOURCES" is clicked
         private void resources_btn_Click(object sender, EventArgs e)
         {
+            // Change body view to Resources section
             body.SelectedTab = resources_tab;
+
+            // Ensure we have the data, fetch if we don't
+            if (resources == null) {
+                Console.WriteLine("Loading resources...");
+                string jsonResources = rj.getRestJSON("/resources/");
+                resources = JToken.Parse(jsonResources).ToObject<Resources>();
+
+                // Delete this when I'm done
+                ll_pdf.Tag = resources.coopEnrollment.RITJobZoneGuidelink;
+                ll_resources_appForm.Text = "Get the application form";
+                ll_resources_appForm.Tag = resources.studentAmbassadors.applicationFormLink;
+                ll_resources_appForm.LinkClicked += linkLabel1_LinkClicked;
+
+                // Set title and subtitle
+                resources_title.Text = resources.title;
+                resources_subtitle.Text = resources.subTitle;
+
+                // Process each resource label and popup event handler
+                resource1.Text = "Forms";
+                resource1.Click += (sender2, e2) => showResourcesPopup(sender2, e2, resource1.Text);
+                resource2.Text = resources.studyAbroad.title;
+                resource2.Click += (sender3, e3) => showResourcesPopup(sender3, e3, resource2.Text);
+                resource3.Text = resources.studentServices.title;
+                resource3.Click += (sender4, e4) => showResourcesPopup(sender4, e4, resource3.Text);
+                resource4.Text = resources.tutorsAndLabInformation.title;
+                resource4.Click += (sender5, e5) => showResourcesPopup(sender5, e5, resource4.Text);
+                resource5.Text = resources.studentAmbassadors.title;
+                resource5.Click += (sender6, e6) => showResourcesPopup(sender6, e6, resource5.Text);
+                resource6.Text = resources.coopEnrollment.title;
+                resource6.Click += (sender7, e7) => showResourcesPopup(sender7, e7, resource6.Text);
+            }
         }
 
-        // Handle minors data when entering "Minors" tab
+        // Popup for Resources
+        private void showResourcesPopup(object sender2, EventArgs e2, string type) {
+            // Populate popup with data
+            Popup popup = new Popup(type, resources);
+            popup.Show();
+        }
+
+        // Load minors data when entering "Minors" tab for the first time
         private void tabControl3_Enter(object sender, EventArgs e) {
             // Ensure we have the data, fetch if we don't
             if (minors == null) {

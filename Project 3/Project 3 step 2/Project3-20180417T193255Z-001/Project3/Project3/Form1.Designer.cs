@@ -80,6 +80,7 @@
             this.grad_deg_tab = new System.Windows.Forms.TabPage();
             this.grad_degrees = new System.Windows.Forms.TableLayoutPanel();
             this.grad_cert_tab = new System.Windows.Forms.TabPage();
+            this.grad_certs = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.people_tab = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -88,8 +89,15 @@
             this.emp_tab = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.resources_tab = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.grad_certs = new System.Windows.Forms.TableLayoutPanel();
+            this.resources_subtitle = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.resource6 = new System.Windows.Forms.Label();
+            this.resource5 = new System.Windows.Forms.Label();
+            this.resource4 = new System.Windows.Forms.Label();
+            this.resource3 = new System.Windows.Forms.Label();
+            this.resource2 = new System.Windows.Forms.Label();
+            this.resource1 = new System.Windows.Forms.Label();
+            this.resources_title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -120,6 +128,7 @@
             this.research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ll_pdf
@@ -185,7 +194,6 @@
             this.DataGridView1.Size = new System.Drawing.Size(549, 150);
             this.DataGridView1.TabIndex = 8;
             this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
-            this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // emp
             // 
@@ -224,7 +232,7 @@
             this.TabControl1.Controls.Add(this.tab_resources);
             this.TabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TabControl1.ItemSize = new System.Drawing.Size(25, 50);
-            this.TabControl1.Location = new System.Drawing.Point(75, 148);
+            this.TabControl1.Location = new System.Drawing.Point(71, 133);
             this.TabControl1.Multiline = true;
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -255,7 +263,6 @@
             this.tab_degrees.TabIndex = 1;
             this.tab_degrees.Text = "Degrees";
             this.tab_degrees.UseVisualStyleBackColor = true;
-            this.tab_degrees.Enter += new System.EventHandler(this.tab_degrees_Enter);
             // 
             // listView2
             // 
@@ -694,7 +701,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -713,6 +720,19 @@
             this.grad_cert_tab.TabIndex = 1;
             this.grad_cert_tab.Text = "Certificates";
             this.grad_cert_tab.UseVisualStyleBackColor = true;
+            // 
+            // grad_certs
+            // 
+            this.grad_certs.ColumnCount = 2;
+            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.Location = new System.Drawing.Point(26, 30);
+            this.grad_certs.Name = "grad_certs";
+            this.grad_certs.RowCount = 2;
+            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.Size = new System.Drawing.Size(514, 252);
+            this.grad_certs.TabIndex = 0;
             // 
             // label5
             // 
@@ -786,7 +806,9 @@
             // 
             // resources_tab
             // 
-            this.resources_tab.Controls.Add(this.label3);
+            this.resources_tab.Controls.Add(this.resources_subtitle);
+            this.resources_tab.Controls.Add(this.tableLayoutPanel1);
+            this.resources_tab.Controls.Add(this.resources_title);
             this.resources_tab.Location = new System.Drawing.Point(4, 22);
             this.resources_tab.Name = "resources_tab";
             this.resources_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -795,27 +817,111 @@
             this.resources_tab.Text = "Resources";
             this.resources_tab.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // resources_subtitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Resources";
+            this.resources_subtitle.AutoSize = true;
+            this.resources_subtitle.Location = new System.Drawing.Point(280, 77);
+            this.resources_subtitle.Name = "resources_subtitle";
+            this.resources_subtitle.Size = new System.Drawing.Size(35, 13);
+            this.resources_subtitle.TabIndex = 2;
+            this.resources_subtitle.Text = "label3";
             // 
-            // grad_certs
+            // tableLayoutPanel1
             // 
-            this.grad_certs.ColumnCount = 2;
-            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.grad_certs.Location = new System.Drawing.Point(26, 30);
-            this.grad_certs.Name = "grad_certs";
-            this.grad_certs.RowCount = 2;
-            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.grad_certs.Size = new System.Drawing.Size(514, 252);
-            this.grad_certs.TabIndex = 0;
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
+            this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.resource3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.resource2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.resource1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(55, 136);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(510, 282);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // resource6
+            // 
+            this.resource6.AutoSize = true;
+            this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource6.Location = new System.Drawing.Point(334, 141);
+            this.resource6.Name = "resource6";
+            this.resource6.Size = new System.Drawing.Size(172, 140);
+            this.resource6.TabIndex = 5;
+            this.resource6.Text = "label11";
+            this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resource5
+            // 
+            this.resource5.AutoSize = true;
+            this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource5.Location = new System.Drawing.Point(169, 141);
+            this.resource5.Name = "resource5";
+            this.resource5.Size = new System.Drawing.Size(158, 140);
+            this.resource5.TabIndex = 4;
+            this.resource5.Text = "label10";
+            this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resource4
+            // 
+            this.resource4.AutoSize = true;
+            this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource4.Location = new System.Drawing.Point(4, 141);
+            this.resource4.Name = "resource4";
+            this.resource4.Size = new System.Drawing.Size(158, 140);
+            this.resource4.TabIndex = 3;
+            this.resource4.Text = "label9";
+            this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resource3
+            // 
+            this.resource3.AutoSize = true;
+            this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource3.Location = new System.Drawing.Point(334, 1);
+            this.resource3.Name = "resource3";
+            this.resource3.Size = new System.Drawing.Size(172, 139);
+            this.resource3.TabIndex = 2;
+            this.resource3.Text = "label8";
+            this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resource2
+            // 
+            this.resource2.AutoSize = true;
+            this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource2.Location = new System.Drawing.Point(169, 1);
+            this.resource2.Name = "resource2";
+            this.resource2.Size = new System.Drawing.Size(158, 139);
+            this.resource2.TabIndex = 1;
+            this.resource2.Text = "label7";
+            this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resource1
+            // 
+            this.resource1.AutoSize = true;
+            this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resource1.Location = new System.Drawing.Point(4, 1);
+            this.resource1.Name = "resource1";
+            this.resource1.Size = new System.Drawing.Size(158, 139);
+            this.resource1.TabIndex = 0;
+            this.resource1.Text = "label6";
+            this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // resources_title
+            // 
+            this.resources_title.AutoSize = true;
+            this.resources_title.Location = new System.Drawing.Point(277, 55);
+            this.resources_title.Name = "resources_title";
+            this.resources_title.Size = new System.Drawing.Size(33, 13);
+            this.resources_title.TabIndex = 0;
+            this.resources_title.Text = "[Title]";
             // 
             // Form1
             // 
@@ -869,6 +975,8 @@
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -913,7 +1021,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label resources_title;
         private System.Windows.Forms.TabPage home_tab;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox about_desc;
@@ -935,6 +1043,14 @@
         private System.Windows.Forms.TableLayoutPanel ug_degrees;
         private System.Windows.Forms.TableLayoutPanel grad_degrees;
         private System.Windows.Forms.TableLayoutPanel grad_certs;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label resource6;
+        private System.Windows.Forms.Label resource5;
+        private System.Windows.Forms.Label resource4;
+        private System.Windows.Forms.Label resource3;
+        private System.Windows.Forms.Label resource2;
+        private System.Windows.Forms.Label resource1;
+        private System.Windows.Forms.Label resources_subtitle;
     }
 }
 
