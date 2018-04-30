@@ -119,20 +119,7 @@ namespace Project3 {
 
         private void btn_people_Click(object sender, EventArgs e)
         {
-            // get the people
-            string jsonPeople = rj.getRestJSON("/people/");
-            // cast people object
-            people = JToken.Parse(jsonPeople).ToObject<People>();
-
-            // play with the data...
-            foreach(Faculty thisFac in people.faculty)
-            {
-                Console.WriteLine(thisFac.name);
-                pb_fac.Load(thisFac.imagePath);
-            }
-
-            // the ability to get a single instance of Faculty from the username
-            getSingleInstance("dsbics");
+            
 
         }
 
@@ -458,7 +445,52 @@ namespace Project3 {
         }
         // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e) {
+            // Change body view to People section
             body.SelectedTab = people_tab;
+
+            // Ensure we have the data, fetch if we don't
+            if (people == null) {
+                Console.WriteLine("Loading people...");
+                string jsonPeople = rj.getRestJSON("/people/");
+                people = JToken.Parse(jsonPeople).ToObject<People>();
+            }
+
+            int row = 0;
+            int column = 0;
+            for (var i = 0; i < people.faculty.Count; i++) {
+                Faculty thisFac = people.faculty[i];
+                Label facName = new Label();
+                facName.Text = thisFac.name;
+                facName.BorderStyle = BorderStyle.FixedSingle;
+                facName.Dock = DockStyle.Fill;
+                faculty.Controls.Add(facName, column, row);
+
+
+
+
+                // Jump to next row if current row is full
+                if ((i + 1) % faculty.ColumnCount == 0) {
+                    row++;
+                    column = 0;
+                } else {
+                    column++;
+                }
+            }
+
+            // Fix row heights
+            foreach (RowStyle style in faculty.RowStyles) {
+                style.SizeType = SizeType.AutoSize;
+            }
+
+
+            // play with the data...
+            foreach (Faculty thisFac in people.faculty) {
+                Console.WriteLine(thisFac.name);
+                pb_fac.Load(thisFac.imagePath);
+            }
+
+            // the ability to get a single instance of Faculty from the username
+            getSingleInstance("dsbics");
         }
         // Change body view to Research section when "RESEARCH" is clicked
         private void research_btn_Click(object sender, EventArgs e)
@@ -483,7 +515,6 @@ namespace Project3 {
                 resources = JToken.Parse(jsonResources).ToObject<Resources>();
 
                 // Delete this when I'm done
-                ll_pdf.Tag = resources.coopEnrollment.RITJobZoneGuidelink;
                 ll_resources_appForm.Text = "Get the application form";
                 ll_resources_appForm.Tag = resources.studentAmbassadors.applicationFormLink;
                 ll_resources_appForm.LinkClicked += linkLabel1_LinkClicked;

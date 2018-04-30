@@ -98,6 +98,13 @@
             this.resource2 = new System.Windows.Forms.Label();
             this.resource1 = new System.Windows.Forms.Label();
             this.resources_title = new System.Windows.Forms.Label();
+            this.people_tabControl = new System.Windows.Forms.TabControl();
+            this.faculty_tab = new System.Windows.Forms.TabPage();
+            this.staff_tab = new System.Windows.Forms.TabPage();
+            this.tabControl5 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.faculty = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -129,6 +136,9 @@
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.people_tabControl.SuspendLayout();
+            this.faculty_tab.SuspendLayout();
+            this.tabControl5.SuspendLayout();
             this.SuspendLayout();
             // 
             // ll_pdf
@@ -683,6 +693,7 @@
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
             this.tabControl4.Size = new System.Drawing.Size(568, 428);
+            this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 0;
             // 
             // grad_deg_tab
@@ -701,7 +712,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -737,14 +748,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(274, 23);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(247, 7);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.Size = new System.Drawing.Size(113, 29);
             this.label5.TabIndex = 4;
             this.label5.Text = "Degrees";
             // 
             // people_tab
             // 
+            this.people_tab.Controls.Add(this.people_tabControl);
             this.people_tab.Controls.Add(this.label4);
             this.people_tab.Location = new System.Drawing.Point(4, 22);
             this.people_tab.Name = "people_tab";
@@ -757,14 +770,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(171, 65);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(258, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(97, 29);
             this.label4.TabIndex = 0;
             this.label4.Text = "People";
             // 
             // research_tab
             // 
+            this.research_tab.Controls.Add(this.tabControl5);
             this.research_tab.Controls.Add(this.label1);
             this.research_tab.Location = new System.Drawing.Point(4, 22);
             this.research_tab.Name = "research_tab";
@@ -777,9 +792,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 79);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(238, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(124, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Research";
             // 
@@ -798,9 +814,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(182, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(157, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Employment";
             // 
@@ -833,7 +850,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
             this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
@@ -852,9 +869,9 @@
             // 
             this.resource6.AutoSize = true;
             this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource6.Location = new System.Drawing.Point(334, 141);
+            this.resource6.Location = new System.Drawing.Point(332, 141);
             this.resource6.Name = "resource6";
-            this.resource6.Size = new System.Drawing.Size(172, 140);
+            this.resource6.Size = new System.Drawing.Size(174, 140);
             this.resource6.TabIndex = 5;
             this.resource6.Text = "label11";
             this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -863,9 +880,9 @@
             // 
             this.resource5.AutoSize = true;
             this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource5.Location = new System.Drawing.Point(169, 141);
+            this.resource5.Location = new System.Drawing.Point(168, 141);
             this.resource5.Name = "resource5";
-            this.resource5.Size = new System.Drawing.Size(158, 140);
+            this.resource5.Size = new System.Drawing.Size(157, 140);
             this.resource5.TabIndex = 4;
             this.resource5.Text = "label10";
             this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -876,7 +893,7 @@
             this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource4.Location = new System.Drawing.Point(4, 141);
             this.resource4.Name = "resource4";
-            this.resource4.Size = new System.Drawing.Size(158, 140);
+            this.resource4.Size = new System.Drawing.Size(157, 140);
             this.resource4.TabIndex = 3;
             this.resource4.Text = "label9";
             this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -885,9 +902,9 @@
             // 
             this.resource3.AutoSize = true;
             this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource3.Location = new System.Drawing.Point(334, 1);
+            this.resource3.Location = new System.Drawing.Point(332, 1);
             this.resource3.Name = "resource3";
-            this.resource3.Size = new System.Drawing.Size(172, 139);
+            this.resource3.Size = new System.Drawing.Size(174, 139);
             this.resource3.TabIndex = 2;
             this.resource3.Text = "label8";
             this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -896,9 +913,9 @@
             // 
             this.resource2.AutoSize = true;
             this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource2.Location = new System.Drawing.Point(169, 1);
+            this.resource2.Location = new System.Drawing.Point(168, 1);
             this.resource2.Name = "resource2";
-            this.resource2.Size = new System.Drawing.Size(158, 139);
+            this.resource2.Size = new System.Drawing.Size(157, 139);
             this.resource2.TabIndex = 1;
             this.resource2.Text = "label7";
             this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -909,7 +926,7 @@
             this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource1.Location = new System.Drawing.Point(4, 1);
             this.resource1.Name = "resource1";
-            this.resource1.Size = new System.Drawing.Size(158, 139);
+            this.resource1.Size = new System.Drawing.Size(157, 139);
             this.resource1.TabIndex = 0;
             this.resource1.Text = "label6";
             this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -917,11 +934,91 @@
             // resources_title
             // 
             this.resources_title.AutoSize = true;
-            this.resources_title.Location = new System.Drawing.Point(277, 55);
+            this.resources_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resources_title.Location = new System.Drawing.Point(256, 33);
             this.resources_title.Name = "resources_title";
-            this.resources_title.Size = new System.Drawing.Size(33, 13);
+            this.resources_title.Size = new System.Drawing.Size(82, 29);
             this.resources_title.TabIndex = 0;
             this.resources_title.Text = "[Title]";
+            // 
+            // people_tabControl
+            // 
+            this.people_tabControl.Controls.Add(this.faculty_tab);
+            this.people_tabControl.Controls.Add(this.staff_tab);
+            this.people_tabControl.Location = new System.Drawing.Point(21, 62);
+            this.people_tabControl.Name = "people_tabControl";
+            this.people_tabControl.SelectedIndex = 0;
+            this.people_tabControl.Size = new System.Drawing.Size(561, 429);
+            this.people_tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.people_tabControl.TabIndex = 1;
+            // 
+            // faculty_tab
+            // 
+            this.faculty_tab.Controls.Add(this.faculty);
+            this.faculty_tab.Location = new System.Drawing.Point(4, 22);
+            this.faculty_tab.Name = "faculty_tab";
+            this.faculty_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.faculty_tab.Size = new System.Drawing.Size(553, 403);
+            this.faculty_tab.TabIndex = 0;
+            this.faculty_tab.Text = "Faculty";
+            this.faculty_tab.UseVisualStyleBackColor = true;
+            // 
+            // staff_tab
+            // 
+            this.staff_tab.Location = new System.Drawing.Point(4, 22);
+            this.staff_tab.Name = "staff_tab";
+            this.staff_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.staff_tab.Size = new System.Drawing.Size(553, 403);
+            this.staff_tab.TabIndex = 1;
+            this.staff_tab.Text = "Staff";
+            this.staff_tab.UseVisualStyleBackColor = true;
+            // 
+            // tabControl5
+            // 
+            this.tabControl5.Controls.Add(this.tabPage1);
+            this.tabControl5.Controls.Add(this.tabPage2);
+            this.tabControl5.Location = new System.Drawing.Point(56, 119);
+            this.tabControl5.Name = "tabControl5";
+            this.tabControl5.SelectedIndex = 0;
+            this.tabControl5.Size = new System.Drawing.Size(520, 380);
+            this.tabControl5.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(512, 354);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // faculty
+            // 
+            this.faculty.AutoSize = true;
+            this.faculty.ColumnCount = 4;
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
+            this.faculty.Location = new System.Drawing.Point(3, 3);
+            this.faculty.Name = "faculty";
+            this.faculty.RowCount = 2;
+            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.faculty.Size = new System.Drawing.Size(547, 0);
+            this.faculty.TabIndex = 0;
             // 
             // Form1
             // 
@@ -977,6 +1074,10 @@
             this.resources_tab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.people_tabControl.ResumeLayout(false);
+            this.faculty_tab.ResumeLayout(false);
+            this.faculty_tab.PerformLayout();
+            this.tabControl5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1051,6 +1152,13 @@
         private System.Windows.Forms.Label resource2;
         private System.Windows.Forms.Label resource1;
         private System.Windows.Forms.Label resources_subtitle;
+        private System.Windows.Forms.TabControl people_tabControl;
+        private System.Windows.Forms.TabPage faculty_tab;
+        private System.Windows.Forms.TableLayoutPanel faculty;
+        private System.Windows.Forms.TabPage staff_tab;
+        private System.Windows.Forms.TabControl tabControl5;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
