@@ -89,6 +89,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resources_tab = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
+            this.grad_certs = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -114,6 +115,7 @@
             this.grad_tab.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.grad_deg_tab.SuspendLayout();
+            this.grad_cert_tab.SuspendLayout();
             this.people_tab.SuspendLayout();
             this.research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
@@ -703,6 +705,7 @@
             // 
             // grad_cert_tab
             // 
+            this.grad_cert_tab.Controls.Add(this.grad_certs);
             this.grad_cert_tab.Location = new System.Drawing.Point(4, 22);
             this.grad_cert_tab.Name = "grad_cert_tab";
             this.grad_cert_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -801,6 +804,19 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Resources";
             // 
+            // grad_certs
+            // 
+            this.grad_certs.ColumnCount = 2;
+            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.Location = new System.Drawing.Point(26, 30);
+            this.grad_certs.Name = "grad_certs";
+            this.grad_certs.RowCount = 2;
+            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.grad_certs.Size = new System.Drawing.Size(514, 252);
+            this.grad_certs.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -844,6 +860,7 @@
             this.grad_tab.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.grad_deg_tab.ResumeLayout(false);
+            this.grad_cert_tab.ResumeLayout(false);
             this.people_tab.ResumeLayout(false);
             this.people_tab.PerformLayout();
             this.research_tab.ResumeLayout(false);
@@ -917,6 +934,7 @@
         private System.Windows.Forms.TableLayoutPanel ug_minors;
         private System.Windows.Forms.TableLayoutPanel ug_degrees;
         private System.Windows.Forms.TableLayoutPanel grad_degrees;
+        private System.Windows.Forms.TableLayoutPanel grad_certs;
     }
 }
 

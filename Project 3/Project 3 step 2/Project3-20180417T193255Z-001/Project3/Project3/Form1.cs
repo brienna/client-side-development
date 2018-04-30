@@ -363,13 +363,59 @@ namespace Project3
                     }
                 }
                 
-                // Dynamically load graduate degrees
+                // Dynamically load graduate degrees and certificates
                 row = 0;
                 column = 0;
                 for (int i = 0; i < degrees.graduate.Count; i++) {
-                    // Ignore certificates
+                    // If certificate,
                     if (degrees.graduate[i].degreeName == "graduate advanced certificates") {
-                        break;
+                        int certRow = 0;
+                        int certColumn = 0;
+                        for (int j = 0; j < degrees.graduate[i].availableCertificates.Count; j++) {
+                            // Create and populate panel for each certificate
+                            TableLayoutPanel certPanel = new TableLayoutPanel();
+                            certPanel.ColumnCount = 1;
+                            certPanel.RowCount = 1;
+                            certPanel.AutoSize = true;
+                            certPanel.Dock = DockStyle.Fill;
+                            certPanel.BorderStyle = BorderStyle.FixedSingle;
+                            foreach (RowStyle style in certPanel.RowStyles) {
+                                style.SizeType = SizeType.AutoSize;
+                            }
+
+                            // Certificate title
+                            LinkLabel certTitle = new LinkLabel();
+                            certTitle.Text = degrees.graduate[i].availableCertificates[j];
+                            certTitle.Dock = DockStyle.Fill;
+                            certTitle.AutoSize = false;
+                            certTitle.MaximumSize = new Size(100, 0);
+                            certTitle.AutoSize = true;
+                            if (certTitle.Text == "Web Development Advanced certificate") {
+                                certTitle.Tag = "http://www.rit.edu/programs/web-development-adv-cert";
+                            } else if (certTitle.Text == "Networking,Planning and Design Advanced Cerificate") {
+                                certTitle.Tag = "http://www.rit.edu/programs/networking-planning-and-design-adv-cert";
+                            }
+
+                            // Add components to certificate panel, then to main panel
+                            certPanel.Controls.Add(certTitle, 0, 0);
+                            grad_certs.Controls.Add(certPanel, certColumn, certRow);
+
+                            // Resize rows
+                            foreach (RowStyle style in grad_certs.RowStyles) {
+                                style.SizeType = SizeType.AutoSize;
+                            }
+
+                            // Jump to next row if current row is full
+                            if ((j + 1) % 3 == 0) {
+                                certRow++;
+                                certColumn = 0;
+                            } else {
+                                certColumn++;
+                            }
+                        }
+
+                        // End current iteration of i loop here
+                        continue;
                     }
 
                     // Create and populate panel for each degree
@@ -428,6 +474,8 @@ namespace Project3
                         column++;
                     }
                 }
+
+
             }
         }
 
