@@ -72,10 +72,13 @@
             this.ug_tab = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.ug_deg_tab = new System.Windows.Forms.TabPage();
+            this.ug_degrees = new System.Windows.Forms.TableLayoutPanel();
             this.ug_minors_tab = new System.Windows.Forms.TabPage();
+            this.ug_minors = new System.Windows.Forms.TableLayoutPanel();
             this.grad_tab = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.grad_deg_tab = new System.Windows.Forms.TabPage();
+            this.grad_degrees = new System.Windows.Forms.TableLayoutPanel();
             this.grad_cert_tab = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.people_tab = new System.Windows.Forms.TabPage();
@@ -86,8 +89,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resources_tab = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.ug_minors = new System.Windows.Forms.TableLayoutPanel();
-            this.ug_degrees = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -112,6 +113,7 @@
             this.ug_minors_tab.SuspendLayout();
             this.grad_tab.SuspendLayout();
             this.tabControl4.SuspendLayout();
+            this.grad_deg_tab.SuspendLayout();
             this.people_tab.SuspendLayout();
             this.research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
@@ -601,6 +603,7 @@
             this.tabControl3.Size = new System.Drawing.Size(521, 397);
             this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl3.TabIndex = 0;
+            this.tabControl3.Enter += new System.EventHandler(this.tabControl3_Enter);
             // 
             // ug_deg_tab
             // 
@@ -613,6 +616,20 @@
             this.ug_deg_tab.Text = "Degrees";
             this.ug_deg_tab.UseVisualStyleBackColor = true;
             // 
+            // ug_degrees
+            // 
+            this.ug_degrees.ColumnCount = 3;
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.ug_degrees.Location = new System.Drawing.Point(21, 50);
+            this.ug_degrees.Name = "ug_degrees";
+            this.ug_degrees.RowCount = 2;
+            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_degrees.Size = new System.Drawing.Size(474, 209);
+            this.ug_degrees.TabIndex = 0;
+            // 
             // ug_minors_tab
             // 
             this.ug_minors_tab.Controls.Add(this.ug_minors);
@@ -623,6 +640,20 @@
             this.ug_minors_tab.TabIndex = 1;
             this.ug_minors_tab.Text = "Minors";
             this.ug_minors_tab.UseVisualStyleBackColor = true;
+            // 
+            // ug_minors
+            // 
+            this.ug_minors.ColumnCount = 3;
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.ug_minors.Location = new System.Drawing.Point(29, 50);
+            this.ug_minors.Name = "ug_minors";
+            this.ug_minors.RowCount = 2;
+            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ug_minors.Size = new System.Drawing.Size(454, 294);
+            this.ug_minors.TabIndex = 0;
             // 
             // grad_tab
             // 
@@ -647,6 +678,7 @@
             // 
             // grad_deg_tab
             // 
+            this.grad_deg_tab.Controls.Add(this.grad_degrees);
             this.grad_deg_tab.Location = new System.Drawing.Point(4, 22);
             this.grad_deg_tab.Name = "grad_deg_tab";
             this.grad_deg_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -654,6 +686,20 @@
             this.grad_deg_tab.TabIndex = 0;
             this.grad_deg_tab.Text = "Degrees";
             this.grad_deg_tab.UseVisualStyleBackColor = true;
+            // 
+            // grad_degrees
+            // 
+            this.grad_degrees.ColumnCount = 3;
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
+            this.grad_degrees.Location = new System.Drawing.Point(28, 31);
+            this.grad_degrees.Name = "grad_degrees";
+            this.grad_degrees.RowCount = 2;
+            this.grad_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.73579F));
+            this.grad_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.26421F));
+            this.grad_degrees.Size = new System.Drawing.Size(507, 299);
+            this.grad_degrees.TabIndex = 0;
             // 
             // grad_cert_tab
             // 
@@ -755,34 +801,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Resources";
             // 
-            // ug_minors
-            // 
-            this.ug_minors.ColumnCount = 3;
-            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.ug_minors.Location = new System.Drawing.Point(29, 50);
-            this.ug_minors.Name = "ug_minors";
-            this.ug_minors.RowCount = 2;
-            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.Size = new System.Drawing.Size(454, 294);
-            this.ug_minors.TabIndex = 0;
-            // 
-            // ug_degrees
-            // 
-            this.ug_degrees.ColumnCount = 3;
-            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.ug_degrees.Location = new System.Drawing.Point(44, 50);
-            this.ug_degrees.Name = "ug_degrees";
-            this.ug_degrees.RowCount = 2;
-            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_degrees.Size = new System.Drawing.Size(438, 152);
-            this.ug_degrees.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,6 +843,7 @@
             this.ug_minors_tab.ResumeLayout(false);
             this.grad_tab.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
+            this.grad_deg_tab.ResumeLayout(false);
             this.people_tab.ResumeLayout(false);
             this.people_tab.PerformLayout();
             this.research_tab.ResumeLayout(false);
@@ -897,6 +916,7 @@
         private System.Windows.Forms.TabPage grad_cert_tab;
         private System.Windows.Forms.TableLayoutPanel ug_minors;
         private System.Windows.Forms.TableLayoutPanel ug_degrees;
+        private System.Windows.Forms.TableLayoutPanel grad_degrees;
     }
 }
 

@@ -306,6 +306,7 @@ namespace Project3
 
                 // Dynamically load undergraduate degrees
                 int row = 0;
+                int column = 0;
                 for (int i = 0; i < degrees.undergraduate.Count; i++) {
                     // Create and populate panel for each degree
                     TableLayoutPanel degreePanel = new TableLayoutPanel();
@@ -317,7 +318,7 @@ namespace Project3
                     foreach (RowStyle style in degreePanel.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
-                    
+
                     // Degree title
                     Label degTitle = new Label();
                     degTitle.Text = degrees.undergraduate[i].title;
@@ -342,30 +343,97 @@ namespace Project3
                     // Add components to degree panel, then to main panel
                     degreePanel.Controls.Add(degTitle, 0, 0);
                     degreePanel.Controls.Add(degDesc, 0, 1);
-                    ug_degrees.Controls.Add(degreePanel, i, row);
+                    ug_degrees.Controls.Add(degreePanel, column, row);
 
                     // Resize rows
                     foreach (RowStyle style in ug_degrees.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
 
-                    // Set onclick event handler
-                    string degName = degrees.undergraduate[i].degreeName;
-                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, degName);
+                    // Set onclick event handler to show degree details in popup
+                    string s = " hi ";
+                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
 
                     // Jump to next row if current row is full
-                    if ((i+1) % 3 == 0) {
+                    if ((i + 1) % 3 == 0) {
                         row++;
+                        column = 0;
+                    } else {
+                        column++;
                     }
-
                 }
                 
+                // Dynamically load graduate degrees
+                row = 0;
+                column = 0;
+                for (int i = 0; i < degrees.graduate.Count; i++) {
+                    // Ignore certificates
+                    if (degrees.graduate[i].degreeName == "graduate advanced certificates") {
+                        break;
+                    }
+
+                    // Create and populate panel for each degree
+                    TableLayoutPanel degreePanel = new TableLayoutPanel();
+                    degreePanel.ColumnCount = 1;
+                    degreePanel.RowCount = 2;
+                    degreePanel.AutoSize = true;
+                    degreePanel.Dock = DockStyle.Fill;
+                    degreePanel.BorderStyle = BorderStyle.FixedSingle;
+                    foreach (RowStyle style in degreePanel.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Degree title
+                    Label degTitle = new Label();
+                    degTitle.Text = degrees.graduate[i].title;
+                    degTitle.Dock = DockStyle.Fill;
+                    degTitle.AutoSize = false;
+                    degTitle.MaximumSize = new Size(100, 0);
+                    degTitle.AutoSize = true;
+
+                    // Degree description
+                    TextBox degDesc = new TextBox();
+                    degDesc.ReadOnly = true;
+                    degDesc.Multiline = true;
+                    degDesc.Dock = DockStyle.Fill;
+                    degDesc.Text = degrees.graduate[i].description;
+                    SizeF size = degDesc.CreateGraphics()
+                                .MeasureString(degDesc.Text,
+                                                degDesc.Font,
+                                                degDesc.Width,
+                                                new StringFormat(0));
+                    degDesc.Height = (int)size.Height;
+
+                    // Add components to degree panel, then to main panel
+                    degreePanel.Controls.Add(degTitle, 0, 0);
+                    degreePanel.Controls.Add(degDesc, 0, 1);
+                    grad_degrees.Controls.Add(degreePanel, column, row);
+
+                    // Resize rows
+                    foreach (RowStyle style in grad_degrees.RowStyles)
+                    {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Set onclick event handler to show degree details in popup
+                    string s = " hi ";
+                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
+
+                    // Jump to next row if current row is full
+                    if ((i + 1) % 3 == 0)
+                    {
+                        row++;
+                        column = 0;
+                    } else {
+                        column++;
+                    }
+                }
             }
         }
 
-        private void degree_click(object sender, EventArgs e, String degName)
+        private void degree_click(object sender, EventArgs e, string deg)
         {
-            Overlay overlay = new Overlay(degName);
+            Overlay overlay = new Overlay(deg);
             overlay.Show();
         }
 
@@ -389,6 +457,60 @@ namespace Project3
         {
             body.SelectedTab = resources_tab;
         }
+
+        // Handle minors data when entering "Minors" tab
+        private void tabControl3_Enter(object sender, EventArgs e) {
+            // Ensure we have the data, fetch if we don't
+            if (minors == null) {
+                Console.WriteLine("Loading minors...");
+                string jsonMinors = rj.getRestJSON("/minors/");
+                minors = JToken.Parse(jsonMinors).ToObject<Minors>();
+
+                // Dynamically load minors
+                int row = 0;
+                int column = 0;
+                for (int i = 0; i < minors.UgMinors.Count; i++) {
+                    // Create and populate panel for each minor
+                    TableLayoutPanel minorPanel = new TableLayoutPanel();
+                    minorPanel.ColumnCount = 1;
+                    minorPanel.RowCount = 1;
+                    minorPanel.AutoSize = true;
+                    minorPanel.Dock = DockStyle.Fill;
+                    minorPanel.BorderStyle = BorderStyle.FixedSingle;
+                    foreach (RowStyle style in minorPanel.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Minor title
+                    Label minorTitle = new Label();
+                    minorTitle.Text = minors.UgMinors[i].title;
+                    minorTitle.Dock = DockStyle.Fill;
+                    minorTitle.AutoSize = false;
+                    minorTitle.MaximumSize = new Size(100, 0);
+                    minorTitle.AutoSize = true;
+
+                    // Add components to degree panel, then to main panel
+                    minorPanel.Controls.Add(minorTitle, 0, 0);
+                    ug_minors.Controls.Add(minorPanel, column, row);
+
+                    // Resize rows
+                    foreach (RowStyle style in ug_minors.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Set onclick event handler to show degree details in popup
+                    string s = " hi ";
+                    minorPanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
+
+                    // Jump to next row if current row is full
+                    if ((i + 1) % 3 == 0) {
+                        row++;
+                        column = 0;
+                    } else {
+                        column++;
+                    }
+                }
+            }
+        }
     }
-    
 }
