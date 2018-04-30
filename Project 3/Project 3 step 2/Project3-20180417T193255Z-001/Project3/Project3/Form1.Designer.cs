@@ -105,6 +105,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.faculty = new System.Windows.Forms.TableLayoutPanel();
+            this.staff = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -138,6 +139,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.people_tabControl.SuspendLayout();
             this.faculty_tab.SuspendLayout();
+            this.staff_tab.SuspendLayout();
             this.tabControl5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -965,6 +967,7 @@
             // 
             // staff_tab
             // 
+            this.staff_tab.Controls.Add(this.staff);
             this.staff_tab.Location = new System.Drawing.Point(4, 22);
             this.staff_tab.Name = "staff_tab";
             this.staff_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -972,6 +975,7 @@
             this.staff_tab.TabIndex = 1;
             this.staff_tab.Text = "Staff";
             this.staff_tab.UseVisualStyleBackColor = true;
+            this.staff_tab.Enter += new System.EventHandler(this.staff_tab_Enter);
             // 
             // tabControl5
             // 
@@ -1019,6 +1023,23 @@
             this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.faculty.Size = new System.Drawing.Size(547, 0);
             this.faculty.TabIndex = 0;
+            // 
+            // staff
+            // 
+            this.staff.AutoSize = true;
+            this.staff.ColumnCount = 4;
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
+            this.staff.Dock = System.Windows.Forms.DockStyle.Top;
+            this.staff.Location = new System.Drawing.Point(3, 3);
+            this.staff.Name = "staff";
+            this.staff.RowCount = 2;
+            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staff.Size = new System.Drawing.Size(547, 0);
+            this.staff.TabIndex = 0;
             // 
             // Form1
             // 
@@ -1077,6 +1098,8 @@
             this.people_tabControl.ResumeLayout(false);
             this.faculty_tab.ResumeLayout(false);
             this.faculty_tab.PerformLayout();
+            this.staff_tab.ResumeLayout(false);
+            this.staff_tab.PerformLayout();
             this.tabControl5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1159,6 +1182,7 @@
         private System.Windows.Forms.TabControl tabControl5;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel staff;
     }
 }
 

@@ -454,19 +454,21 @@ namespace Project3 {
                 string jsonPeople = rj.getRestJSON("/people/");
                 people = JToken.Parse(jsonPeople).ToObject<People>();
             }
-
+            
             int row = 0;
             int column = 0;
+            Console.WriteLine("Loading faculty...");
             for (var i = 0; i < people.faculty.Count; i++) {
                 Faculty thisFac = people.faculty[i];
                 Label facName = new Label();
                 facName.Text = thisFac.name;
                 facName.BorderStyle = BorderStyle.FixedSingle;
+                facName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                facName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                facName.Margin = new Padding(0, 0, facName.Margin.Right, facName.Margin.Right);
+                facName.TextAlign = ContentAlignment.MiddleCenter;
                 facName.Dock = DockStyle.Fill;
                 faculty.Controls.Add(facName, column, row);
-
-
-
 
                 // Jump to next row if current row is full
                 if ((i + 1) % faculty.ColumnCount == 0) {
@@ -492,6 +494,23 @@ namespace Project3 {
             // the ability to get a single instance of Faculty from the username
             getSingleInstance("dsbics");
         }
+
+        // Hover event handler for table cells (actually operates on nested controls)
+        private void changeCellColor(object sender2, EventArgs e2) {
+            if (sender2 is Label) {
+                Label currLabel = (Label)sender2;
+                if (currLabel.BackColor == Color.Black) {
+                    currLabel.BackColor = Color.Transparent;
+                    currLabel.ForeColor = Color.Black;
+                    this.Cursor = Cursors.Default;
+                } else if (currLabel.BackColor == Color.Transparent) {
+                    currLabel.BackColor = Color.Black;
+                    currLabel.ForeColor = Color.LightGray;
+                    this.Cursor = Cursors.Hand;
+                }
+            }
+        }
+
         // Change body view to Research section when "RESEARCH" is clicked
         private void research_btn_Click(object sender, EventArgs e)
         {
@@ -597,6 +616,41 @@ namespace Project3 {
                     } else {
                         column++;
                     }
+                }
+            }
+        }
+
+        // Load staff when entering "Staff" tab for the first time
+        private void staff_tab_Enter(object sender, EventArgs e) {
+            // Change people view to Staff section
+            people_tabControl.SelectedTab = staff_tab;
+
+            // Stop loading if already loaded
+            if (staff.HasChildren) {
+                return;
+            }
+
+            int row = 0;
+            int column = 0;
+            Console.WriteLine("Loading staff...");
+            for (var i = 0; i < people.staff.Count; i++) {
+                Staff thisStaff = people.staff[i];
+                Label staffName = new Label();
+                staffName.Text = thisStaff.name;
+                staffName.BorderStyle = BorderStyle.FixedSingle;
+                staffName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                staffName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                staffName.Margin = new Padding(0, 0, staffName.Margin.Right, staffName.Margin.Right);
+                staffName.TextAlign = ContentAlignment.MiddleCenter;
+                staffName.Dock = DockStyle.Fill;
+                staff.Controls.Add(staffName, column, row);
+
+                // Jump to next row if current row is full
+                if ((i + 1) % staff.ColumnCount == 0) {
+                    row++;
+                    column = 0;
+                } else {
+                    column++;
                 }
             }
         }
