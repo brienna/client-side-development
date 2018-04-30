@@ -34,13 +34,17 @@
             this.advising_tab = new System.Windows.Forms.TabPage();
             this.advising_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.tutors_tab = new System.Windows.Forms.TabPage();
-            this.ambassadors_tab = new System.Windows.Forms.TabPage();
-            this.coop_tab = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tutors_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.coop_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ambassadors_tab = new System.Windows.Forms.TabPage();
             this.ambassadors_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.coop_tab = new System.Windows.Forms.TabPage();
+            this.coop_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.people_popup_tab = new System.Windows.Forms.TabPage();
+            this.person_details = new System.Windows.Forms.RichTextBox();
+            this.person_img = new System.Windows.Forms.PictureBox();
+            this.person_title = new System.Windows.Forms.Label();
+            this.person_name = new System.Windows.Forms.Label();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.popup_tabs.SuspendLayout();
             this.forms_tab.SuspendLayout();
             this.studyAbroad_tab.SuspendLayout();
@@ -48,6 +52,8 @@
             this.tutors_tab.SuspendLayout();
             this.ambassadors_tab.SuspendLayout();
             this.coop_tab.SuspendLayout();
+            this.people_popup_tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.person_img)).BeginInit();
             this.SuspendLayout();
             // 
             // popup_tabs
@@ -58,7 +64,7 @@
             this.popup_tabs.Controls.Add(this.tutors_tab);
             this.popup_tabs.Controls.Add(this.ambassadors_tab);
             this.popup_tabs.Controls.Add(this.coop_tab);
-            this.popup_tabs.Controls.Add(this.tabPage7);
+            this.popup_tabs.Controls.Add(this.people_popup_tab);
             this.popup_tabs.Controls.Add(this.tabPage8);
             this.popup_tabs.Location = new System.Drawing.Point(12, 12);
             this.popup_tabs.Name = "popup_tabs";
@@ -168,6 +174,17 @@
             this.tutors_tab.Text = "Tutors";
             this.tutors_tab.UseVisualStyleBackColor = true;
             // 
+            // tutors_panel
+            // 
+            this.tutors_panel.AutoScroll = true;
+            this.tutors_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tutors_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.tutors_panel.Location = new System.Drawing.Point(3, 3);
+            this.tutors_panel.Name = "tutors_panel";
+            this.tutors_panel.Size = new System.Drawing.Size(539, 402);
+            this.tutors_panel.TabIndex = 0;
+            this.tutors_panel.WrapContents = false;
+            // 
             // ambassadors_tab
             // 
             this.ambassadors_tab.Controls.Add(this.ambassadors_panel);
@@ -178,6 +195,17 @@
             this.ambassadors_tab.TabIndex = 4;
             this.ambassadors_tab.Text = "Ambassadors";
             this.ambassadors_tab.UseVisualStyleBackColor = true;
+            // 
+            // ambassadors_panel
+            // 
+            this.ambassadors_panel.AutoScroll = true;
+            this.ambassadors_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ambassadors_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ambassadors_panel.Location = new System.Drawing.Point(3, 3);
+            this.ambassadors_panel.Name = "ambassadors_panel";
+            this.ambassadors_panel.Size = new System.Drawing.Size(539, 402);
+            this.ambassadors_panel.TabIndex = 0;
+            this.ambassadors_panel.WrapContents = false;
             // 
             // coop_tab
             // 
@@ -190,37 +218,6 @@
             this.coop_tab.Text = "Coop";
             this.coop_tab.UseVisualStyleBackColor = true;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(545, 408);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(545, 408);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "tabPage8";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tutors_panel
-            // 
-            this.tutors_panel.AutoScroll = true;
-            this.tutors_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tutors_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.tutors_panel.Location = new System.Drawing.Point(3, 3);
-            this.tutors_panel.Name = "tutors_panel";
-            this.tutors_panel.Size = new System.Drawing.Size(539, 402);
-            this.tutors_panel.TabIndex = 0;
-            this.tutors_panel.WrapContents = false;
-            // 
             // coop_panel
             // 
             this.coop_panel.AutoScroll = true;
@@ -232,16 +229,65 @@
             this.coop_panel.TabIndex = 0;
             this.coop_panel.WrapContents = false;
             // 
-            // ambassadors_panel
+            // people_popup_tab
             // 
-            this.ambassadors_panel.AutoScroll = true;
-            this.ambassadors_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ambassadors_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ambassadors_panel.Location = new System.Drawing.Point(3, 3);
-            this.ambassadors_panel.Name = "ambassadors_panel";
-            this.ambassadors_panel.Size = new System.Drawing.Size(539, 402);
-            this.ambassadors_panel.TabIndex = 0;
-            this.ambassadors_panel.WrapContents = false;
+            this.people_popup_tab.Controls.Add(this.person_details);
+            this.people_popup_tab.Controls.Add(this.person_img);
+            this.people_popup_tab.Controls.Add(this.person_title);
+            this.people_popup_tab.Controls.Add(this.person_name);
+            this.people_popup_tab.Location = new System.Drawing.Point(4, 22);
+            this.people_popup_tab.Name = "people_popup_tab";
+            this.people_popup_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.people_popup_tab.Size = new System.Drawing.Size(545, 408);
+            this.people_popup_tab.TabIndex = 6;
+            this.people_popup_tab.Text = "People";
+            this.people_popup_tab.UseVisualStyleBackColor = true;
+            // 
+            // person_details
+            // 
+            this.person_details.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.person_details.Location = new System.Drawing.Point(259, 92);
+            this.person_details.Name = "person_details";
+            this.person_details.Size = new System.Drawing.Size(174, 141);
+            this.person_details.TabIndex = 4;
+            this.person_details.Text = "";
+            // 
+            // person_img
+            // 
+            this.person_img.Location = new System.Drawing.Point(38, 142);
+            this.person_img.Name = "person_img";
+            this.person_img.Size = new System.Drawing.Size(100, 50);
+            this.person_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.person_img.TabIndex = 3;
+            this.person_img.TabStop = false;
+            // 
+            // person_title
+            // 
+            this.person_title.AutoSize = true;
+            this.person_title.Location = new System.Drawing.Point(47, 66);
+            this.person_title.Name = "person_title";
+            this.person_title.Size = new System.Drawing.Size(35, 13);
+            this.person_title.TabIndex = 1;
+            this.person_title.Text = "label2";
+            // 
+            // person_name
+            // 
+            this.person_name.AutoSize = true;
+            this.person_name.Location = new System.Drawing.Point(44, 36);
+            this.person_name.Name = "person_name";
+            this.person_name.Size = new System.Drawing.Size(35, 13);
+            this.person_name.TabIndex = 0;
+            this.person_name.Text = "label1";
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(545, 408);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "tabPage8";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // Popup
             // 
@@ -261,6 +307,9 @@
             this.tutors_tab.ResumeLayout(false);
             this.ambassadors_tab.ResumeLayout(false);
             this.coop_tab.ResumeLayout(false);
+            this.people_popup_tab.ResumeLayout(false);
+            this.people_popup_tab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.person_img)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,7 +323,7 @@
         private System.Windows.Forms.TabPage tutors_tab;
         private System.Windows.Forms.TabPage ambassadors_tab;
         private System.Windows.Forms.TabPage coop_tab;
-        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage people_popup_tab;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Label forms_title;
         private System.Windows.Forms.Label studyAbroad_title;
@@ -285,5 +334,9 @@
         private System.Windows.Forms.FlowLayoutPanel tutors_panel;
         private System.Windows.Forms.FlowLayoutPanel coop_panel;
         private System.Windows.Forms.FlowLayoutPanel ambassadors_panel;
+        private System.Windows.Forms.RichTextBox person_details;
+        private System.Windows.Forms.PictureBox person_img;
+        private System.Windows.Forms.Label person_title;
+        private System.Windows.Forms.Label person_name;
     }
 }

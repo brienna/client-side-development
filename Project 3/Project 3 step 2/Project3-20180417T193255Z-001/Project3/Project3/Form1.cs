@@ -465,6 +465,7 @@ namespace Project3 {
                 facName.BorderStyle = BorderStyle.FixedSingle;
                 facName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
                 facName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                facName.Click += (sender4, e4) => showFacultyPopup(sender4, e4, thisFac);
                 facName.Margin = new Padding(0, 0, facName.Margin.Right, facName.Margin.Right);
                 facName.TextAlign = ContentAlignment.MiddleCenter;
                 facName.Dock = DockStyle.Fill;
@@ -565,6 +566,20 @@ namespace Project3 {
             popup.Show();
         }
 
+        // Popup for Faculty
+        private void showFacultyPopup(object sender4, object e4, Faculty thisFac) {
+            // Populate popup with data
+            Popup popup = new Popup(thisFac);
+            popup.Show();
+        }
+
+        // Popup for Staff
+        private void showStaffPopup(object sender4, EventArgs e4, Staff thisStaff) {
+            // Populate popup with data
+            Popup popup = new Popup(thisStaff);
+            popup.Show();
+        }
+
         // Load minors data when entering "Minors" tab for the first time
         private void tabControl3_Enter(object sender, EventArgs e) {
             // Ensure we have the data, fetch if we don't
@@ -640,6 +655,7 @@ namespace Project3 {
                 staffName.BorderStyle = BorderStyle.FixedSingle;
                 staffName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
                 staffName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                staffName.Click += (sender4, e4) => showStaffPopup(sender4, e4, thisStaff);
                 staffName.Margin = new Padding(0, 0, staffName.Margin.Right, staffName.Margin.Right);
                 staffName.TextAlign = ContentAlignment.MiddleCenter;
                 staffName.Dock = DockStyle.Fill;
@@ -654,5 +670,6 @@ namespace Project3 {
                 }
             }
         }
+
     }
 }
