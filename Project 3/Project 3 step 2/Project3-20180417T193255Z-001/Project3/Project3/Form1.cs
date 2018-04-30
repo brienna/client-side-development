@@ -11,9 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Project3 {
-    public partial class Form1 : Form
-    {
-
+    public partial class Form1 : Form {
         // global objects (to make json data accessible after retrieving)
         About about;
         Degrees degrees;
@@ -26,56 +24,20 @@ namespace Project3 {
         Footer footer;
         
         // get our restful resources...
-        REST rj = new REST("http://ist.rit.edu/api");
-        // another one we won't use
-        REST rx = new REST("http://google.com/api");
+        public REST rj = new REST("http://ist.rit.edu/api");
 
         // stopwatch for testing...
         Stopwatch sw = new Stopwatch();
 
-        public Form1()
-        {
+        public Form1() {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
             // Customize body tab control
             body.Appearance = TabAppearance.FlatButtons;
             body.ItemSize = new Size(0, 1);
             body.SizeMode = TabSizeMode.Fixed;
-
-            /*
-             * Let's assume that we are going to get a list of acceptable tabs to show the user from a call
-             */
-
-            // retrieved from the server
-            string[] names = { "Degrees", "People", "ListView", "DataGridView", "Employment" };
-
-            // look through all tabpages
-            foreach (TabPage tab in TabControl1.TabPages)
-            {
-                // is this tab in the names?
-                if (!names.Contains(tab.Text))
-                {
-                    // get which one
-                    int t = TabControl1.TabPages.IndexOf(tab);
-                    TabControl1.TabPages.RemoveAt(t);
-                }
-            }
-
-            // create a new tabPage
-            TabPage myNewTab = new TabPage("News");
-            TabControl1.TabPages.Add(myNewTab);
-
-            // create something for this tabPage
-            TextBox tb = new TextBox();
-            tb.BackColor = SystemColors.HotTrack;
-            tb.Location = new Point(30, 30);
-            tb.Size = new Size(180, 300);
-            tb.TabIndex = 1;
-            // put on the page
-            myNewTab.Controls.Add(tb);
         }
 
         #region GetRest
@@ -117,41 +79,7 @@ namespace Project3 {
             System.Diagnostics.Process.Start(me.Tag.ToString());
         }
 
-        private void btn_people_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void getSingleInstance(string id)
-        {
-            /*
-             * We are going to need a way to find a specific instance of a list of objects
-             * to send to the other form for display 
-             */
-
-            // horrible, ugly, don't do it this way - way... will continue searching even after finding
-            /*
-            foreach(Faculty thisFac in people.faculty)
-            {
-                if (thisFac.username == id)
-                {
-                    MessageBox.Show(thisFac.name);
-                }
-            }*/
-
-            // better way
-            Faculty result = people.faculty.Find(x => x.username == id);
-            MessageBox.Show(result.name);
-
-            // OR
-            List<Faculty> facList = people.faculty.FindAll(x => x.title == "Associate Professor");
-            Console.WriteLine(facList[2].name);
-
-        }
-
-        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
             // MessageBox.Show("i");
             int col = e.ColumnIndex; // won't use
             int row = e.RowIndex;
@@ -160,8 +88,7 @@ namespace Project3 {
             MessageBox.Show(id);
         }
 
-        private void btn_ListView_Click(object sender, EventArgs e)
-        {
+        private void btn_ListView_Click(object sender, EventArgs e) {
             // how long does this take? (remember to remove stopwatch when deploy app, remove System.Diagnostics)
             sw.Reset();
             sw.Start();
@@ -270,6 +197,8 @@ namespace Project3 {
                 int row = 0;
                 int column = 0;
                 for (int i = 0; i < degrees.undergraduate.Count; i++) {
+                    Undergraduate currUgDeg = degrees.undergraduate[i];
+
                     // Create and populate panel for each degree
                     TableLayoutPanel degreePanel = new TableLayoutPanel();
                     degreePanel.ColumnCount = 1;
@@ -283,7 +212,7 @@ namespace Project3 {
 
                     // Degree title
                     Label degTitle = new Label();
-                    degTitle.Text = degrees.undergraduate[i].title;
+                    degTitle.Text = currUgDeg.title;
                     degTitle.Dock = DockStyle.Fill;
                     degTitle.AutoSize = false;
                     degTitle.MaximumSize = new Size(100, 0);
@@ -294,7 +223,7 @@ namespace Project3 {
                     degDesc.ReadOnly = true;
                     degDesc.Multiline = true;
                     degDesc.Dock = DockStyle.Fill;
-                    degDesc.Text = degrees.undergraduate[i].description;
+                    degDesc.Text = currUgDeg.description;
                     SizeF size = degDesc.CreateGraphics()
                                 .MeasureString(degDesc.Text,
                                                 degDesc.Font,
@@ -313,8 +242,7 @@ namespace Project3 {
                     }
 
                     // Set onclick event handler to show degree details in popup
-                    string s = " hi ";
-                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
+                    degreePanel.Click += (sender2, e2) => showUgDegreePopup(sender2, e2, currUgDeg);
 
                     // Jump to next row if current row is full
                     if ((i + 1) % 3 == 0) {
@@ -329,11 +257,13 @@ namespace Project3 {
                 row = 0;
                 column = 0;
                 for (int i = 0; i < degrees.graduate.Count; i++) {
+                    Graduate currGradDeg = degrees.graduate[i];
+
                     // If certificate,
-                    if (degrees.graduate[i].degreeName == "graduate advanced certificates") {
+                    if (currGradDeg.degreeName == "graduate advanced certificates") {
                         int certRow = 0;
                         int certColumn = 0;
-                        for (int j = 0; j < degrees.graduate[i].availableCertificates.Count; j++) {
+                        for (int j = 0; j < currGradDeg.availableCertificates.Count; j++) {
                             // Create and populate panel for each certificate
                             TableLayoutPanel certPanel = new TableLayoutPanel();
                             certPanel.ColumnCount = 1;
@@ -393,7 +323,7 @@ namespace Project3 {
 
                     // Degree title
                     Label degTitle = new Label();
-                    degTitle.Text = degrees.graduate[i].title;
+                    degTitle.Text = currGradDeg.title;
                     degTitle.Dock = DockStyle.Fill;
                     degTitle.AutoSize = false;
                     degTitle.MaximumSize = new Size(100, 0);
@@ -404,7 +334,7 @@ namespace Project3 {
                     degDesc.ReadOnly = true;
                     degDesc.Multiline = true;
                     degDesc.Dock = DockStyle.Fill;
-                    degDesc.Text = degrees.graduate[i].description;
+                    degDesc.Text = currGradDeg.description;
                     SizeF size = degDesc.CreateGraphics()
                                 .MeasureString(degDesc.Text,
                                                 degDesc.Font,
@@ -418,18 +348,15 @@ namespace Project3 {
                     grad_degrees.Controls.Add(degreePanel, column, row);
 
                     // Resize rows
-                    foreach (RowStyle style in grad_degrees.RowStyles)
-                    {
+                    foreach (RowStyle style in grad_degrees.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
 
                     // Set onclick event handler to show degree details in popup
-                    string s = " hi ";
-                    degreePanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
+                    degreePanel.Click += (sender2, e2) => showGradDegreeDetails(sender2, e2, currGradDeg);
 
                     // Jump to next row if current row is full
-                    if ((i + 1) % 3 == 0)
-                    {
+                    if ((i + 1) % 3 == 0) {
                         row++;
                         column = 0;
                     } else {
@@ -439,10 +366,82 @@ namespace Project3 {
 
             }
         }
-        // Show overlay with details when a degree or minor is clicked
-        private void degree_click(object sender, EventArgs e, string deg) {
 
+        // Show overlay with details when grad degree is clicked
+        private void showGradDegreeDetails(object sender2, EventArgs e2, Graduate gradDeg) {
+            // Populate popup with data
+            Popup popup = new Popup(gradDeg);
+            popup.Show();
         }
+
+        // Show overlay with details when ug degree is clicked
+        private void showUgDegreePopup(object sender, EventArgs e, Undergraduate ugDeg) {
+            // Populate popup with data
+            Popup popup = new Popup(ugDeg);
+            popup.Show();
+        }
+
+        // Show overlay with details when ug minor is clicked
+        private void showUgMinorPopup(object sender2, EventArgs e2, UgMinor ugMinor) {
+            // Populate popup with data
+            Popup popup = new Popup(ugMinor);
+            popup.Show();
+        }
+
+        // Load minors data when entering "Minors" tab for the first time
+        private void tabControl3_Enter(object sender, EventArgs e) {
+            // Ensure we have the data, fetch if we don't
+            if (minors == null) {
+                Console.WriteLine("Loading minors...");
+                string jsonMinors = rj.getRestJSON("/minors/");
+                minors = JToken.Parse(jsonMinors).ToObject<Minors>();
+
+                // Dynamically load minors
+                int row = 0;
+                int column = 0;
+                for (int i = 0; i < minors.UgMinors.Count; i++) {
+                    // Create and populate panel for each minor
+                    TableLayoutPanel minorPanel = new TableLayoutPanel();
+                    minorPanel.ColumnCount = 1;
+                    minorPanel.RowCount = 1;
+                    minorPanel.AutoSize = true;
+                    minorPanel.Dock = DockStyle.Fill;
+                    minorPanel.BorderStyle = BorderStyle.FixedSingle;
+                    foreach (RowStyle style in minorPanel.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Minor title
+                    Label minorTitle = new Label();
+                    minorTitle.Text = minors.UgMinors[i].title;
+                    minorTitle.Dock = DockStyle.Fill;
+                    minorTitle.AutoSize = false;
+                    minorTitle.MaximumSize = new Size(100, 0);
+                    minorTitle.AutoSize = true;
+
+                    // Add components to degree panel, then to main panel
+                    minorPanel.Controls.Add(minorTitle, 0, 0);
+                    ug_minors.Controls.Add(minorPanel, column, row);
+
+                    // Resize rows
+                    foreach (RowStyle style in ug_minors.RowStyles) {
+                        style.SizeType = SizeType.AutoSize;
+                    }
+
+                    // Set onclick event handler to show degree details in popup
+                    minorPanel.Click += (sender2, e2) => showUgMinorPopup(sender2, e2, minors.UgMinors[i]);
+
+                    // Jump to next row if current row is full
+                    if ((i + 1) % 3 == 0) {
+                        row++;
+                        column = 0;
+                    } else {
+                        column++;
+                    }
+                }
+            }
+        }
+
         // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e) {
             // Change body view to People section
@@ -484,16 +483,6 @@ namespace Project3 {
             foreach (RowStyle style in faculty.RowStyles) {
                 style.SizeType = SizeType.AutoSize;
             }
-
-
-            // play with the data...
-            foreach (Faculty thisFac in people.faculty) {
-                Console.WriteLine(thisFac.name);
-                pb_fac.Load(thisFac.imagePath);
-            }
-
-            // the ability to get a single instance of Faculty from the username
-            getSingleInstance("dsbics");
         }
 
         // Hover event handler for table cells (actually operates on nested controls)
@@ -517,11 +506,13 @@ namespace Project3 {
         {
             body.SelectedTab = research_tab;
         }
+
         // Change body view to Employment section when "EMPLOYMENT" is clicked
         private void emp_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = emp_tab;
         }
+
         // Change body view to Resources section when "RESOURCES" is clicked
         private void resources_btn_Click(object sender, EventArgs e)
         {
@@ -578,61 +569,6 @@ namespace Project3 {
             // Populate popup with data
             Popup popup = new Popup(thisStaff);
             popup.Show();
-        }
-
-        // Load minors data when entering "Minors" tab for the first time
-        private void tabControl3_Enter(object sender, EventArgs e) {
-            // Ensure we have the data, fetch if we don't
-            if (minors == null) {
-                Console.WriteLine("Loading minors...");
-                string jsonMinors = rj.getRestJSON("/minors/");
-                minors = JToken.Parse(jsonMinors).ToObject<Minors>();
-
-                // Dynamically load minors
-                int row = 0;
-                int column = 0;
-                for (int i = 0; i < minors.UgMinors.Count; i++) {
-                    // Create and populate panel for each minor
-                    TableLayoutPanel minorPanel = new TableLayoutPanel();
-                    minorPanel.ColumnCount = 1;
-                    minorPanel.RowCount = 1;
-                    minorPanel.AutoSize = true;
-                    minorPanel.Dock = DockStyle.Fill;
-                    minorPanel.BorderStyle = BorderStyle.FixedSingle;
-                    foreach (RowStyle style in minorPanel.RowStyles) {
-                        style.SizeType = SizeType.AutoSize;
-                    }
-
-                    // Minor title
-                    Label minorTitle = new Label();
-                    minorTitle.Text = minors.UgMinors[i].title;
-                    minorTitle.Dock = DockStyle.Fill;
-                    minorTitle.AutoSize = false;
-                    minorTitle.MaximumSize = new Size(100, 0);
-                    minorTitle.AutoSize = true;
-
-                    // Add components to degree panel, then to main panel
-                    minorPanel.Controls.Add(minorTitle, 0, 0);
-                    ug_minors.Controls.Add(minorPanel, column, row);
-
-                    // Resize rows
-                    foreach (RowStyle style in ug_minors.RowStyles) {
-                        style.SizeType = SizeType.AutoSize;
-                    }
-
-                    // Set onclick event handler to show degree details in popup
-                    string s = " hi ";
-                    minorPanel.Click += (sender2, e2) => degree_click(sender2, e2, s);
-
-                    // Jump to next row if current row is full
-                    if ((i + 1) % 3 == 0) {
-                        row++;
-                        column = 0;
-                    } else {
-                        column++;
-                    }
-                }
-            }
         }
 
         // Load staff when entering "Staff" tab for the first time

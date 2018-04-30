@@ -172,7 +172,6 @@
             this.btn_people.TabIndex = 4;
             this.btn_people.Text = "Get people";
             this.btn_people.UseVisualStyleBackColor = true;
-            this.btn_people.Click += new System.EventHandler(this.btn_people_Click);
             // 
             // pb_fac
             // 

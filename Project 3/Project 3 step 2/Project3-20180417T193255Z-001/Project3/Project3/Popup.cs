@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +16,11 @@ namespace Project3 {
         Resources resources = null;
         Faculty thisFaculty = null;
         Staff thisStaff = null;
+        Graduate thisGradDeg = null;
+        Undergraduate thisUgDeg = null;
+        UgMinor thisUgMinor = null;
+        List<CourseInfo> courseInfos = null;
+        Form1 utilityForm = null;
         string type = null;
 
         public Popup() {
@@ -39,6 +46,24 @@ namespace Project3 {
             thisStaff = s;
         }
 
+        // Constructs popup for Graduate degree
+        public Popup(Graduate gDeg) {
+            InitializeComponent();
+            thisGradDeg = gDeg;
+        }
+
+        // Constructs popup for Undergraduate degree
+        public Popup(Undergraduate ugDeg) {
+            InitializeComponent();
+            thisUgDeg = ugDeg;
+        }
+
+        // Constructs popup for Undergraduate minor
+        public Popup(UgMinor ugMinor) {
+            InitializeComponent();
+            thisUgMinor = ugMinor;
+        }
+
         private void Popup_Load(object sender, EventArgs e) {
             // Hide tab headers
             popup_tabs.Appearance = TabAppearance.FlatButtons;
@@ -62,9 +87,146 @@ namespace Project3 {
                 loadFacultyDetails();
             } else if (thisStaff != null) {
                 loadStaffDetails();
+            } else if (thisGradDeg != null) {
+                loadGradDegree();
+            } else if (thisUgDeg != null) {
+                loadUgDegree();
+            } else if (thisUgMinor != null) {
+                loadUgMinor();
             }
         }
 
+        // Loads undergrad minor details
+        private void loadUgMinor() {
+            throw new NotImplementedException();
+        }
+
+        // Loads undergrad degree details
+        private void loadUgDegree() {
+            // Show and populate Degree tab
+            popup_tabs.SelectedTab = deg_tab;
+
+            string degName = "BS" + thisUgDeg.degreeName.ToUpper(); // save to fetch courses later
+            Label degTitle = new Label();
+            degTitle.Text = thisUgDeg.title;
+            degTitle.Width = degreePanel.Width - (degTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;  
+
+            RichTextBox ugDegDesc = new RichTextBox();
+            ugDegDesc.Text = thisUgDeg.description;
+            ugDegDesc.ContentsResized += rtb_ContentsResized;
+            ugDegDesc.BorderStyle = BorderStyle.None;
+            ugDegDesc.Width = degreePanel.Width - (ugDegDesc.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            Label degConcTitle = new Label();
+            degConcTitle.Text = "Concentrations";
+            degConcTitle.Width = degreePanel.Width - (degConcTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            RichTextBox ugDegConcs = new RichTextBox();
+            ugDegConcs.ContentsResized += rtb_ContentsResized;
+            ugDegConcs.BorderStyle = BorderStyle.None;
+            ugDegConcs.Width = degreePanel.Width - (ugDegConcs.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            
+            for (int i = 0; i < thisUgDeg.concentrations.Count; i++) {
+                ugDegConcs.AppendText("\u2022  " + thisUgDeg.concentrations[i]);
+                if (i != thisUgDeg.concentrations.Count - 1) {
+                    ugDegConcs.AppendText(Environment.NewLine);
+                }
+            }
+            
+            Label coursesAvailableTitle = new Label();
+            coursesAvailableTitle.Text = "Courses Available (Select to view description)";
+            coursesAvailableTitle.Width = degreePanel.Width - (coursesAvailableTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            
+            // Get courses, passing specific path
+            Courses courses = GetCourses("/courses/degreeName=" + degName);
+            // Keep each course if...
+            List<String> names = new List<String>();
+            foreach (string course in courses.courses) {
+                Regex courseRegex = new Regex("[A-Z]{3,4}-(?!0)\\d{2,3}");
+                Match m = courseRegex.Match(course);
+                // its name is valid
+                if (m.Success) {
+                    // and unique
+                    if (!names.Contains(course)) {
+                        names.Add(course);
+                    } 
+                } 
+            }
+
+            // Sort courses by alphabetical order
+            names.Sort();
+
+            // Add each course to view
+            ListView courseList = new ListView();
+            courseList.View = View.Details; // we want text
+            courseList.Columns.Add("Courses", -2);
+            courseList.HeaderStyle = ColumnHeaderStyle.None;
+            //listView1.GridLines = true;
+            courseList.FullRowSelect = true; // click, highlight full row
+            courseList.Width = degreePanel.Width - (courseList.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            courseList.Height = 200;
+            foreach (string name in names) {
+                courseList.Items.Add(new ListViewItem(name));
+            }
+
+            // Process course selection & message box dialog popup with descriptions
+            courseInfos = new List<CourseInfo>();
+            courseList.ItemSelectionChanged += (sender2, e2) => toggleCourseInfo(sender2, e2);
+
+            degreePanel.Controls.Add(degTitle);
+            degreePanel.Controls.Add(ugDegDesc);
+            degreePanel.Controls.Add(degConcTitle);
+            degreePanel.Controls.Add(ugDegConcs);
+            degreePanel.Controls.Add(coursesAvailableTitle);
+            degreePanel.Controls.Add(courseList);
+        }
+
+        // Show course info  
+        private void toggleCourseInfo(object sender, ListViewItemSelectionChangedEventArgs e) {
+            if (e.IsSelected) {
+                // Check which item was selected
+                ListViewItem selectedItem = e.Item;
+                string selectedCourse = selectedItem.Text;
+
+                // Check if we have course info on the item
+                CourseInfo courseInfo = courseInfos.Find(x => x.courseID == selectedCourse);
+                // If we don't, we need to load its info
+                if (courseInfo == null) {
+                    // Load course info
+                    Console.WriteLine("Loading info for " + selectedCourse);
+                    // Use REST utility from Form1 to request data
+                    if (utilityForm == null) {
+                        utilityForm = new Form1();
+                    }
+                    string jsonCourseInfo = utilityForm.rj.getRestJSON("/course/courseID=" + selectedCourse);
+                    courseInfo = JToken.Parse(jsonCourseInfo).ToObject<CourseInfo>();
+                    // Add to array for tracking
+                    courseInfos.Add(courseInfo);
+                }
+
+                // Show course info
+                MessageBox.Show(courseInfo.courseID + ": " + courseInfo.title + "\n\n" + courseInfo.description);
+            }
+        }
+
+        // Utility function to fetch courses for specific degree
+        private Courses GetCourses(string coursePath) {
+            // Load courses
+            Console.WriteLine("Loading courses for ...");
+            // Use REST utility from Form1 to request data
+            if (utilityForm == null) {
+                utilityForm = new Form1();
+            }
+            string jsonCourses = utilityForm.rj.getRestJSON(coursePath);
+            return JToken.Parse(jsonCourses).ToObject<Courses>();
+        }
+
+        // Loads grad degree details
+        private void loadGradDegree() {
+            throw new NotImplementedException();
+        }
+
+        // Loads staff details
         private void loadStaffDetails() {
             // Show and populate People tab
             popup_tabs.SelectedTab = people_popup_tab;
@@ -106,6 +268,7 @@ namespace Project3 {
             }
         }
 
+        // Loads faculty details
         private void loadFacultyDetails() {
             // Show and populate People tab
             popup_tabs.SelectedTab = people_popup_tab;
@@ -115,11 +278,14 @@ namespace Project3 {
                 title = title + ", " + thisFaculty.tagline;
             }
             person_title.Text = title;
+            person_img.SizeMode = PictureBoxSizeMode.AutoSize;
             person_img.Load(thisFaculty.imagePath);
-            int oldWidth = person_img.Width; // given that image was set to Autosize in Design
+            int oldWidth = person_img.Width; 
+            int oldHeight = person_img.Height;
+            int newWidth = people_popup_tab.Width / 3;
+            int newHeight = oldHeight * (newWidth / oldWidth);
             person_img.SizeMode = PictureBoxSizeMode.StretchImage;
-            person_img.Width = people_popup_tab.Width/2;
-            person_img.Height = person_img.Height * (person_img.Width / oldWidth);
+            person_img.Width = newWidth;
 
             if (thisFaculty.office != "") {
                 person_details.AppendText("\u2022  Office: " + thisFaculty.office);

@@ -44,7 +44,8 @@
             this.person_img = new System.Windows.Forms.PictureBox();
             this.person_title = new System.Windows.Forms.Label();
             this.person_name = new System.Windows.Forms.Label();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.deg_tab = new System.Windows.Forms.TabPage();
+            this.degreePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.popup_tabs.SuspendLayout();
             this.forms_tab.SuspendLayout();
             this.studyAbroad_tab.SuspendLayout();
@@ -54,6 +55,7 @@
             this.coop_tab.SuspendLayout();
             this.people_popup_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.person_img)).BeginInit();
+            this.deg_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // popup_tabs
@@ -65,7 +67,7 @@
             this.popup_tabs.Controls.Add(this.ambassadors_tab);
             this.popup_tabs.Controls.Add(this.coop_tab);
             this.popup_tabs.Controls.Add(this.people_popup_tab);
-            this.popup_tabs.Controls.Add(this.tabPage8);
+            this.popup_tabs.Controls.Add(this.deg_tab);
             this.popup_tabs.Location = new System.Drawing.Point(12, 12);
             this.popup_tabs.Name = "popup_tabs";
             this.popup_tabs.SelectedIndex = 0;
@@ -279,15 +281,27 @@
             this.person_name.TabIndex = 0;
             this.person_name.Text = "label1";
             // 
-            // tabPage8
+            // deg_tab
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(545, 408);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "tabPage8";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.deg_tab.Controls.Add(this.degreePanel);
+            this.deg_tab.Location = new System.Drawing.Point(4, 22);
+            this.deg_tab.Name = "deg_tab";
+            this.deg_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.deg_tab.Size = new System.Drawing.Size(545, 408);
+            this.deg_tab.TabIndex = 7;
+            this.deg_tab.Text = "Degree";
+            this.deg_tab.UseVisualStyleBackColor = true;
+            // 
+            // degreePanel
+            // 
+            this.degreePanel.AutoScroll = true;
+            this.degreePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.degreePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.degreePanel.Location = new System.Drawing.Point(3, 3);
+            this.degreePanel.Name = "degreePanel";
+            this.degreePanel.Size = new System.Drawing.Size(539, 402);
+            this.degreePanel.TabIndex = 0;
+            this.degreePanel.WrapContents = false;
             // 
             // Popup
             // 
@@ -310,6 +324,7 @@
             this.people_popup_tab.ResumeLayout(false);
             this.people_popup_tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.person_img)).EndInit();
+            this.deg_tab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -324,7 +339,7 @@
         private System.Windows.Forms.TabPage ambassadors_tab;
         private System.Windows.Forms.TabPage coop_tab;
         private System.Windows.Forms.TabPage people_popup_tab;
-        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage deg_tab;
         private System.Windows.Forms.Label forms_title;
         private System.Windows.Forms.Label studyAbroad_title;
         private System.Windows.Forms.FlowLayoutPanel forms_list;
@@ -338,5 +353,6 @@
         private System.Windows.Forms.PictureBox person_img;
         private System.Windows.Forms.Label person_title;
         private System.Windows.Forms.Label person_name;
+        private System.Windows.Forms.FlowLayoutPanel degreePanel;
     }
 }

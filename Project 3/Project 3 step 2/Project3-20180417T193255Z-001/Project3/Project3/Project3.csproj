@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.cs" />
+    <Compile Include="CourseInfo.cs" />
+    <Compile Include="Courses.cs" />
     <Compile Include="Minors.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Footer.cs" />
