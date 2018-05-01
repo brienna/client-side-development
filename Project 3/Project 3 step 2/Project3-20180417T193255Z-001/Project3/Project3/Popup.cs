@@ -22,6 +22,7 @@ namespace Project3 {
         List<CourseInfo> courseInfos = null;
         Form1 utilityForm = null;
         ByInterestArea researchByInterestArea = null;
+        ByFaculty researchByFaculty = null;
         string type = null;
 
         public Popup() {
@@ -71,6 +72,11 @@ namespace Project3 {
             researchByInterestArea = area;
         }
 
+        public Popup(ByFaculty fac) {
+            InitializeComponent();
+            researchByFaculty = fac;
+        }
+
         private void Popup_Load(object sender, EventArgs e) {
             // Hide tab headers
             popup_tabs.Appearance = TabAppearance.FlatButtons;
@@ -102,7 +108,36 @@ namespace Project3 {
                 loadUgMinor();
             } else if (researchByInterestArea != null) {
                 loadResearchByInterestArea();
+            } else if (researchByFaculty != null) {
+                loadResearchByFaculty();
             }
+        }
+
+        private void loadResearchByFaculty() {
+            // Show and populate Research tab
+            popup_tabs.SelectedTab = research;
+
+            // Area name
+            Label facName = new Label();
+            facName.Text = researchByFaculty.facultyName;
+            facName.Font = new Font("Arial", 14, FontStyle.Bold);
+            facName.Width = research_panel.Width - (facName.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            // Citations
+            RichTextBox citations = new RichTextBox();
+            citations.ReadOnly = true;
+            citations.ContentsResized += rtb_ContentsResized;
+            citations.BorderStyle = BorderStyle.None;
+            citations.Width = research_panel.Width - (citations.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            for (int i = 0; i < researchByFaculty.citations.Count; i++) {
+                citations.AppendText("\u2022  " + researchByFaculty.citations[i]);
+                if (i != researchByFaculty.citations.Count - 1) {
+                    citations.AppendText(Environment.NewLine);
+                }
+            }
+
+            research_panel.Controls.Add(facName);
+            research_panel.Controls.Add(citations);
         }
 
         // Loads research by interest area

@@ -27,7 +27,7 @@ namespace Project3 {
         public REST rj = new REST("http://ist.rit.edu/api");
 
         // stopwatch for testing...
-        Stopwatch sw = new Stopwatch();
+        // Stopwatch sw = new Stopwatch();
 
         public Form1() {
             InitializeComponent();
@@ -89,10 +89,6 @@ namespace Project3 {
         }
 
         private void btn_ListView_Click(object sender, EventArgs e) {
-            // how long does this take? (remember to remove stopwatch when deploy app, remove System.Diagnostics)
-            sw.Reset();
-            sw.Start();
-
             // dynamically create 
             listView1.View = View.Details; // we want text
             listView1.GridLines = true;
@@ -119,48 +115,11 @@ namespace Project3 {
 
                 listView1.Items.Add(item);
             }
-
-            sw.Stop();
-            Console.WriteLine(sw.ElapsedMilliseconds.ToString());
-        }
-
-        private void tabPage5_Enter(object sender, EventArgs e)
-        {
-            // do i have the data?
-            if (employment == null)
-            {
-                MessageBox.Show("load");
-                // go get the /employment info
-                string jsonEmp = rj.getRestJSON("/employment/");
-                employment = JToken.Parse(jsonEmp).ToObject<Employment>();
-
-            }
-
-            // have I been built?
-            if (DataGridView1.Rows.Count < 2)
-            {
-                // start stopwatch
-                sw.Reset();
-                sw.Start();
-
-                // populate the dataGridView...
-                for (int i = 0; i < employment.coopTable.coopInformation.Count; i++)
-                {
-                    DataGridView1.Rows.Add();
-                    DataGridView1.Rows[i].Cells[0].Value = employment.coopTable.coopInformation[i].employer;
-                    DataGridView1.Rows[i].Cells[1].Value = employment.coopTable.coopInformation[i].degree;
-                    DataGridView1.Rows[i].Cells[2].Value = employment.coopTable.coopInformation[i].city;
-                    DataGridView1.Rows[i].Cells[3].Value = employment.coopTable.coopInformation[i].term;
-                }
-
-                sw.Stop();
-                Console.WriteLine(sw.ElapsedMilliseconds.ToString());
-            }
         }
 
         private void about_btn_MouseHover(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.Hand;
+            this.Cursor = Cursors.Hand;
         }
 
         // When "ABOUT" is clicked
@@ -539,6 +498,56 @@ namespace Project3 {
             }
         }
 
+        // Change body view to Faculty section when "By Faculty Area" is clicked
+        private void faculty_research_tab_Enter(object sender, EventArgs e) {
+            research_tabs.SelectedTab = faculty_research_tab;
+
+            // Ensure data hasn't already been loaded
+            if (faculty_research_panel.HasChildren) {
+                return;
+            }
+
+            // Dynamically load research by faculty 
+            int row = 0;
+            int column = 0;
+            for (int i = 0; i < research.byFaculty.Count; i++) {
+                ByFaculty fac = research.byFaculty[i];
+
+                Label facName = new Label();
+                facName.Text = fac.facultyName;
+                facName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                facName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                facName.Margin = new Padding(0, 0, facName.Margin.Right, facName.Margin.Right);
+                facName.BorderStyle = BorderStyle.FixedSingle;
+                facName.TextAlign = ContentAlignment.MiddleCenter;
+                facName.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+                faculty_research_panel.Controls.Add(facName, column, row);
+
+                // Set onclick event handler to show degree details in popup
+                facName.Click += (sender4, e4) => showResearchFacPopup(sender4, e4, fac);
+
+                // Jump to next row if current row is full
+                if ((i + 1) % 3 == 0) {
+                    row++;
+                    column = 0;
+                } else {
+                    column++;
+                }
+            }
+
+            // Resize rows
+            foreach (RowStyle style in faculty_research_panel.RowStyles) {
+                style.SizeType = SizeType.AutoSize;
+            }
+            
+        }
+
+        // Popup for Research by Faculty
+        private void showResearchFacPopup(object sender4, EventArgs e4, ByFaculty facName) {
+            Popup popup = new Popup(facName);
+            popup.Show();
+        }
+
         // Popup for Research by interest area
         private void showResearchPopup(object sender4, EventArgs e4, ByInterestArea area) {
             Popup popup = new Popup(area);
@@ -549,6 +558,40 @@ namespace Project3 {
         private void emp_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = emp_tab;
+
+            // Ensure we have data, fetch if we don't
+            if (employment == null) {
+                Console.WriteLine("Loading employment...");
+                // go get the /employment info
+                string jsonEmp = rj.getRestJSON("/employment/");
+                employment = JToken.Parse(jsonEmp).ToObject<Employment>();
+
+                Introduction contents = employment.introduction;
+                DegreeStatistics stats = employment.degreeStatistics;
+                Employers employers = employment.employers;
+                Careers careers = employment.careers;
+                CoopTable coopTable = employment.coopTable;
+                EmploymentTable empTable = employment.employmentTable;
+
+                Label title = new Label();
+                title.Text = employment.introduction.title;
+
+                
+
+
+            }
+
+            // have I been built?
+            if (DataGridView1.Rows.Count < 2) {
+                // populate the dataGridView...
+                for (int i = 0; i < employment.coopTable.coopInformation.Count; i++) {
+                    DataGridView1.Rows.Add();
+                    DataGridView1.Rows[i].Cells[0].Value = employment.coopTable.coopInformation[i].employer;
+                    DataGridView1.Rows[i].Cells[1].Value = employment.coopTable.coopInformation[i].degree;
+                    DataGridView1.Rows[i].Cells[2].Value = employment.coopTable.coopInformation[i].city;
+                    DataGridView1.Rows[i].Cells[3].Value = employment.coopTable.coopInformation[i].term;
+                }
+            }
         }
 
         // Change body view to Resources section when "RESOURCES" is clicked
@@ -640,5 +683,52 @@ namespace Project3 {
             }
         }
 
+        // Load news when click "NEWS" button
+        private void news_btn_Click(object sender, EventArgs e) {
+            // Switch to news view
+            body.SelectedTab = news_tab;
+
+            if (news == null) {
+                // Get news
+                Console.WriteLine("Loading news...");
+                string jsonNews = rj.getRestJSON("/news/");
+                news = JToken.Parse(jsonNews).ToObject<News>();
+
+                Label mainTitle = new Label();
+                mainTitle.Text = "News";
+                mainTitle.Width = news_panel.Width - (mainTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+                mainTitle.Font = new Font("Arial", 18, FontStyle.Bold);
+                news_panel.Controls.Add(mainTitle);
+
+                // Load news
+                for (int i = 0; i < news.older.Count; i++) {
+                    Label newsTitle = new Label();
+                    newsTitle.Text = news.older[i].title;
+                    newsTitle.Width = news_panel.Width - (newsTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+                    newsTitle.Font = new Font("Arial", 14, FontStyle.Bold);
+                    
+                    RichTextBox newsBox = new RichTextBox();
+                    newsBox.ReadOnly = true;
+                    newsBox.ContentsResized += rtb_ContentsResized;
+                    newsBox.BorderStyle = BorderStyle.None;
+                    newsBox.Width = news_panel.Width - (newsBox.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+                    newsBox.AppendText(news.older[i].date);
+                    newsBox.AppendText(Environment.NewLine);
+                    newsBox.AppendText(Environment.NewLine);
+                    if (news.older[i].description != null) {
+                        newsBox.AppendText(news.older[i].description);
+                    }
+                    
+                    news_panel.Controls.Add(newsTitle);
+                    news_panel.Controls.Add(newsBox);
+                }
+            }
+        }
+
+        // Utility event handler to resize richtextboxes
+        private void rtb_ContentsResized(object sender, ContentsResizedEventArgs e) {
+            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+        }
     }
 }

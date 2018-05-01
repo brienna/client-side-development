@@ -44,6 +44,8 @@
             this.listView2 = new System.Windows.Forms.ListView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.btn_ListView = new System.Windows.Forms.Button();
             this.tab_resources = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -90,7 +92,9 @@
             this.research_tab = new System.Windows.Forms.TabPage();
             this.research_tabs = new System.Windows.Forms.TabControl();
             this.interestarea_tab = new System.Windows.Forms.TabPage();
+            this.interestareas = new System.Windows.Forms.TableLayoutPanel();
             this.faculty_research_tab = new System.Windows.Forms.TabPage();
+            this.faculty_research_panel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.emp_tab = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,9 +108,10 @@
             this.resource2 = new System.Windows.Forms.Label();
             this.resource1 = new System.Windows.Forms.Label();
             this.resources_title = new System.Windows.Forms.Label();
-            this.btn_ListView = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.interestareas = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.news_btn = new System.Windows.Forms.Button();
+            this.news_tab = new System.Windows.Forms.TabPage();
+            this.news_panel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -119,6 +124,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.body.SuspendLayout();
+            this.home_tab.SuspendLayout();
             this.about_tab.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -140,9 +146,11 @@
             this.research_tab.SuspendLayout();
             this.research_tabs.SuspendLayout();
             this.interestarea_tab.SuspendLayout();
+            this.faculty_research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.news_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // ll_pdf
@@ -243,7 +251,7 @@
             this.tab_people.Location = new System.Drawing.Point(4, 54);
             this.tab_people.Name = "tab_people";
             this.tab_people.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_people.Size = new System.Drawing.Size(410, 190);
+            this.tab_people.Size = new System.Drawing.Size(603, 190);
             this.tab_people.TabIndex = 0;
             this.tab_people.Text = "People";
             this.tab_people.UseVisualStyleBackColor = true;
@@ -254,7 +262,7 @@
             this.tab_degrees.Location = new System.Drawing.Point(4, 54);
             this.tab_degrees.Name = "tab_degrees";
             this.tab_degrees.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_degrees.Size = new System.Drawing.Size(410, 190);
+            this.tab_degrees.Size = new System.Drawing.Size(603, 190);
             this.tab_degrees.TabIndex = 1;
             this.tab_degrees.Text = "Degrees";
             this.tab_degrees.UseVisualStyleBackColor = true;
@@ -273,11 +281,10 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 54);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(410, 190);
+            this.tabPage5.Size = new System.Drawing.Size(603, 190);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "DataGridView";
             this.tabPage5.UseVisualStyleBackColor = true;
-            this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
             // 
             // tabPage6
             // 
@@ -291,19 +298,38 @@
             this.tabPage6.Text = "ListView";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(98, 13);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(279, 192);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // btn_ListView
+            // 
+            this.btn_ListView.Location = new System.Drawing.Point(215, 211);
+            this.btn_ListView.Name = "btn_ListView";
+            this.btn_ListView.Size = new System.Drawing.Size(162, 23);
+            this.btn_ListView.TabIndex = 7;
+            this.btn_ListView.Text = "Populate ListView";
+            this.btn_ListView.UseVisualStyleBackColor = true;
+            this.btn_ListView.Click += new System.EventHandler(this.btn_ListView_Click);
+            // 
             // tab_resources
             // 
             this.tab_resources.Location = new System.Drawing.Point(4, 54);
             this.tab_resources.Name = "tab_resources";
             this.tab_resources.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_resources.Size = new System.Drawing.Size(410, 190);
+            this.tab_resources.Size = new System.Drawing.Size(603, 190);
             this.tab_resources.TabIndex = 6;
             this.tab_resources.Text = "Resources";
             this.tab_resources.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.news_btn);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.resources_btn);
             this.panel1.Controls.Add(this.emp_btn);
@@ -324,110 +350,116 @@
             this.panel3.Controls.Add(this.ll_resources_appForm);
             this.panel3.Controls.Add(this.ll_pdf);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 458);
+            this.panel3.Location = new System.Drawing.Point(0, 393);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 91);
+            this.panel3.Size = new System.Drawing.Size(200, 156);
             this.panel3.TabIndex = 12;
             // 
             // resources_btn
             // 
+            this.resources_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.resources_btn.FlatAppearance.BorderSize = 0;
-            this.resources_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.resources_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.resources_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.resources_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resources_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.resources_btn.Location = new System.Drawing.Point(0, 308);
+            this.resources_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.resources_btn.Location = new System.Drawing.Point(0, 288);
             this.resources_btn.Name = "resources_btn";
             this.resources_btn.Size = new System.Drawing.Size(200, 43);
             this.resources_btn.TabIndex = 6;
             this.resources_btn.Text = "RESOURCES";
-            this.resources_btn.UseVisualStyleBackColor = true;
+            this.resources_btn.UseVisualStyleBackColor = false;
             this.resources_btn.Click += new System.EventHandler(this.resources_btn_Click);
             this.resources_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // emp_btn
             // 
+            this.emp_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.emp_btn.FlatAppearance.BorderSize = 0;
-            this.emp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.emp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.emp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.emp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emp_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.emp_btn.Location = new System.Drawing.Point(0, 266);
+            this.emp_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.emp_btn.Location = new System.Drawing.Point(0, 246);
             this.emp_btn.Name = "emp_btn";
             this.emp_btn.Size = new System.Drawing.Size(200, 43);
             this.emp_btn.TabIndex = 5;
             this.emp_btn.Text = "EMPLOYMENT";
-            this.emp_btn.UseVisualStyleBackColor = true;
+            this.emp_btn.UseVisualStyleBackColor = false;
             this.emp_btn.Click += new System.EventHandler(this.emp_btn_Click);
             this.emp_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // research_btn
             // 
+            this.research_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.research_btn.FlatAppearance.BorderSize = 0;
-            this.research_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.research_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.research_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.research_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.research_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.research_btn.Location = new System.Drawing.Point(0, 224);
+            this.research_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.research_btn.Location = new System.Drawing.Point(0, 204);
             this.research_btn.Name = "research_btn";
             this.research_btn.Size = new System.Drawing.Size(200, 43);
             this.research_btn.TabIndex = 4;
             this.research_btn.Text = "RESEARCH";
-            this.research_btn.UseVisualStyleBackColor = true;
+            this.research_btn.UseVisualStyleBackColor = false;
             this.research_btn.Click += new System.EventHandler(this.research_btn_Click);
             this.research_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // people_btn
             // 
+            this.people_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.people_btn.FlatAppearance.BorderSize = 0;
-            this.people_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.people_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.people_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.people_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.people_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.people_btn.Location = new System.Drawing.Point(0, 182);
+            this.people_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.people_btn.Location = new System.Drawing.Point(0, 162);
             this.people_btn.Name = "people_btn";
             this.people_btn.Size = new System.Drawing.Size(200, 43);
             this.people_btn.TabIndex = 3;
             this.people_btn.Text = "PEOPLE";
-            this.people_btn.UseVisualStyleBackColor = true;
+            this.people_btn.UseVisualStyleBackColor = false;
             this.people_btn.Click += new System.EventHandler(this.people_btn_Click);
             this.people_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // degrees_btn
             // 
+            this.degrees_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.degrees_btn.FlatAppearance.BorderSize = 0;
-            this.degrees_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.degrees_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.degrees_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.degrees_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.degrees_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.degrees_btn.Location = new System.Drawing.Point(0, 141);
+            this.degrees_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.degrees_btn.Location = new System.Drawing.Point(0, 121);
             this.degrees_btn.Name = "degrees_btn";
             this.degrees_btn.Size = new System.Drawing.Size(200, 43);
             this.degrees_btn.TabIndex = 2;
             this.degrees_btn.Text = "DEGREES";
-            this.degrees_btn.UseVisualStyleBackColor = true;
+            this.degrees_btn.UseVisualStyleBackColor = false;
             this.degrees_btn.Click += new System.EventHandler(this.degrees_btn_Click);
             this.degrees_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // about_btn
             // 
+            this.about_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.about_btn.FlatAppearance.BorderSize = 0;
-            this.about_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.about_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.about_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.about_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.about_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.about_btn.Location = new System.Drawing.Point(0, 99);
+            this.about_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.about_btn.Location = new System.Drawing.Point(0, 79);
             this.about_btn.Name = "about_btn";
             this.about_btn.Size = new System.Drawing.Size(200, 43);
             this.about_btn.TabIndex = 1;
             this.about_btn.Text = "ABOUT";
-            this.about_btn.UseVisualStyleBackColor = true;
+            this.about_btn.UseVisualStyleBackColor = false;
             this.about_btn.Click += new System.EventHandler(this.about_btn_Click);
             this.about_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
             // 
@@ -460,6 +492,7 @@
             this.body.Controls.Add(this.research_tab);
             this.body.Controls.Add(this.emp_tab);
             this.body.Controls.Add(this.resources_tab);
+            this.body.Controls.Add(this.news_tab);
             this.body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.body.Location = new System.Drawing.Point(200, 0);
             this.body.Margin = new System.Windows.Forms.Padding(0);
@@ -474,6 +507,7 @@
             this.home_tab.BackColor = System.Drawing.Color.Linen;
             this.home_tab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("home_tab.BackgroundImage")));
             this.home_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.home_tab.Controls.Add(this.label3);
             this.home_tab.Location = new System.Drawing.Point(4, 22);
             this.home_tab.Name = "home_tab";
             this.home_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -652,7 +686,7 @@
             this.ug_minors.ColumnCount = 3;
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.ug_minors.Dock = System.Windows.Forms.DockStyle.Top;
             this.ug_minors.Location = new System.Drawing.Point(3, 3);
             this.ug_minors.Name = "ug_minors";
@@ -700,7 +734,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -784,7 +818,7 @@
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
             this.faculty.Location = new System.Drawing.Point(3, 3);
             this.faculty.Name = "faculty";
@@ -800,7 +834,7 @@
             this.staff_tab.Location = new System.Drawing.Point(4, 22);
             this.staff_tab.Name = "staff_tab";
             this.staff_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.staff_tab.Size = new System.Drawing.Size(553, 403);
+            this.staff_tab.Size = new System.Drawing.Size(603, 459);
             this.staff_tab.TabIndex = 1;
             this.staff_tab.Text = "Staff";
             this.staff_tab.UseVisualStyleBackColor = true;
@@ -813,14 +847,14 @@
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
             this.staff.Dock = System.Windows.Forms.DockStyle.Top;
             this.staff.Location = new System.Drawing.Point(3, 3);
             this.staff.Name = "staff";
             this.staff.RowCount = 2;
             this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.staff.Size = new System.Drawing.Size(547, 0);
+            this.staff.Size = new System.Drawing.Size(597, 0);
             this.staff.TabIndex = 0;
             // 
             // label4
@@ -866,8 +900,24 @@
             this.interestarea_tab.Text = "By Interest Area";
             this.interestarea_tab.UseVisualStyleBackColor = true;
             // 
+            // interestareas
+            // 
+            this.interestareas.AutoSize = true;
+            this.interestareas.ColumnCount = 2;
+            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.interestareas.Location = new System.Drawing.Point(3, 3);
+            this.interestareas.Name = "interestareas";
+            this.interestareas.RowCount = 2;
+            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.Size = new System.Drawing.Size(597, 0);
+            this.interestareas.TabIndex = 0;
+            // 
             // faculty_research_tab
             // 
+            this.faculty_research_tab.Controls.Add(this.faculty_research_panel);
             this.faculty_research_tab.Location = new System.Drawing.Point(4, 22);
             this.faculty_research_tab.Name = "faculty_research_tab";
             this.faculty_research_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -875,6 +925,23 @@
             this.faculty_research_tab.TabIndex = 1;
             this.faculty_research_tab.Text = "By Faculty";
             this.faculty_research_tab.UseVisualStyleBackColor = true;
+            this.faculty_research_tab.Enter += new System.EventHandler(this.faculty_research_tab_Enter);
+            // 
+            // faculty_research_panel
+            // 
+            this.faculty_research_panel.AutoSize = true;
+            this.faculty_research_panel.ColumnCount = 3;
+            this.faculty_research_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.faculty_research_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.faculty_research_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
+            this.faculty_research_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.faculty_research_panel.Location = new System.Drawing.Point(3, 3);
+            this.faculty_research_panel.Name = "faculty_research_panel";
+            this.faculty_research_panel.RowCount = 2;
+            this.faculty_research_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.faculty_research_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.faculty_research_panel.Size = new System.Drawing.Size(597, 0);
+            this.faculty_research_panel.TabIndex = 0;
             // 
             // label1
             // 
@@ -937,7 +1004,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
@@ -956,9 +1023,9 @@
             // 
             this.resource6.AutoSize = true;
             this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource6.Location = new System.Drawing.Point(330, 141);
+            this.resource6.Location = new System.Drawing.Point(326, 141);
             this.resource6.Name = "resource6";
-            this.resource6.Size = new System.Drawing.Size(176, 140);
+            this.resource6.Size = new System.Drawing.Size(180, 140);
             this.resource6.TabIndex = 5;
             this.resource6.Text = "label11";
             this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -967,9 +1034,9 @@
             // 
             this.resource5.AutoSize = true;
             this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource5.Location = new System.Drawing.Point(167, 141);
+            this.resource5.Location = new System.Drawing.Point(165, 141);
             this.resource5.Name = "resource5";
-            this.resource5.Size = new System.Drawing.Size(156, 140);
+            this.resource5.Size = new System.Drawing.Size(154, 140);
             this.resource5.TabIndex = 4;
             this.resource5.Text = "label10";
             this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -980,7 +1047,7 @@
             this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource4.Location = new System.Drawing.Point(4, 141);
             this.resource4.Name = "resource4";
-            this.resource4.Size = new System.Drawing.Size(156, 140);
+            this.resource4.Size = new System.Drawing.Size(154, 140);
             this.resource4.TabIndex = 3;
             this.resource4.Text = "label9";
             this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -989,9 +1056,9 @@
             // 
             this.resource3.AutoSize = true;
             this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource3.Location = new System.Drawing.Point(330, 1);
+            this.resource3.Location = new System.Drawing.Point(326, 1);
             this.resource3.Name = "resource3";
-            this.resource3.Size = new System.Drawing.Size(176, 139);
+            this.resource3.Size = new System.Drawing.Size(180, 139);
             this.resource3.TabIndex = 2;
             this.resource3.Text = "label8";
             this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1000,9 +1067,9 @@
             // 
             this.resource2.AutoSize = true;
             this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource2.Location = new System.Drawing.Point(167, 1);
+            this.resource2.Location = new System.Drawing.Point(165, 1);
             this.resource2.Name = "resource2";
-            this.resource2.Size = new System.Drawing.Size(156, 139);
+            this.resource2.Size = new System.Drawing.Size(154, 139);
             this.resource2.TabIndex = 1;
             this.resource2.Text = "label7";
             this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1013,7 +1080,7 @@
             this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource1.Location = new System.Drawing.Point(4, 1);
             this.resource1.Name = "resource1";
-            this.resource1.Size = new System.Drawing.Size(156, 139);
+            this.resource1.Size = new System.Drawing.Size(154, 139);
             this.resource1.TabIndex = 0;
             this.resource1.Text = "label6";
             this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1028,38 +1095,55 @@
             this.resources_title.TabIndex = 0;
             this.resources_title.Text = "[Title]";
             // 
-            // btn_ListView
+            // label3
             // 
-            this.btn_ListView.Location = new System.Drawing.Point(215, 211);
-            this.btn_ListView.Name = "btn_ListView";
-            this.btn_ListView.Size = new System.Drawing.Size(162, 23);
-            this.btn_ListView.TabIndex = 7;
-            this.btn_ListView.Text = "Populate ListView";
-            this.btn_ListView.UseVisualStyleBackColor = true;
-            this.btn_ListView.Click += new System.EventHandler(this.btn_ListView_Click);
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(66, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(475, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Information Sciences and Technologies";
             // 
-            // listView1
+            // news_btn
             // 
-            this.listView1.Location = new System.Drawing.Point(98, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(279, 192);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.news_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.news_btn.FlatAppearance.BorderSize = 0;
+            this.news_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.news_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.news_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.news_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.news_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.news_btn.Location = new System.Drawing.Point(0, 331);
+            this.news_btn.Name = "news_btn";
+            this.news_btn.Size = new System.Drawing.Size(200, 43);
+            this.news_btn.TabIndex = 13;
+            this.news_btn.Text = "NEWS";
+            this.news_btn.UseVisualStyleBackColor = false;
+            this.news_btn.Click += new System.EventHandler(this.news_btn_Click);
             // 
-            // interestareas
+            // news_tab
             // 
-            this.interestareas.AutoSize = true;
-            this.interestareas.ColumnCount = 2;
-            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.interestareas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.interestareas.Location = new System.Drawing.Point(3, 3);
-            this.interestareas.Name = "interestareas";
-            this.interestareas.RowCount = 2;
-            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.interestareas.Size = new System.Drawing.Size(597, 0);
-            this.interestareas.TabIndex = 0;
+            this.news_tab.Controls.Add(this.news_panel);
+            this.news_tab.Location = new System.Drawing.Point(4, 22);
+            this.news_tab.Name = "news_tab";
+            this.news_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.news_tab.Size = new System.Drawing.Size(603, 523);
+            this.news_tab.TabIndex = 7;
+            this.news_tab.Text = "News";
+            this.news_tab.UseVisualStyleBackColor = true;
+            // 
+            // news_panel
+            // 
+            this.news_panel.AutoScroll = true;
+            this.news_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.news_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.news_panel.Location = new System.Drawing.Point(3, 3);
+            this.news_panel.Name = "news_panel";
+            this.news_panel.Size = new System.Drawing.Size(597, 517);
+            this.news_panel.TabIndex = 0;
+            this.news_panel.WrapContents = false;
             // 
             // Form1
             // 
@@ -1088,6 +1172,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
+            this.home_tab.ResumeLayout(false);
+            this.home_tab.PerformLayout();
             this.about_tab.ResumeLayout(false);
             this.about_tab.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1118,12 +1204,15 @@
             this.research_tabs.ResumeLayout(false);
             this.interestarea_tab.ResumeLayout(false);
             this.interestarea_tab.PerformLayout();
+            this.faculty_research_tab.ResumeLayout(false);
+            this.faculty_research_tab.PerformLayout();
             this.emp_tab.ResumeLayout(false);
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.news_tab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1207,6 +1296,11 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btn_ListView;
         private System.Windows.Forms.TableLayoutPanel interestareas;
+        private System.Windows.Forms.TableLayoutPanel faculty_research_panel;
+        private System.Windows.Forms.Button news_btn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage news_tab;
+        private System.Windows.Forms.FlowLayoutPanel news_panel;
     }
 }
 
