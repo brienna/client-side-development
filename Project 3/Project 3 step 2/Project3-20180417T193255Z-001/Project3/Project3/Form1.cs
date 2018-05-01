@@ -401,37 +401,21 @@ namespace Project3 {
                 int column = 0;
                 for (int i = 0; i < minors.UgMinors.Count; i++) {
                     UgMinor thisMinor = minors.UgMinors[i];
-                    // Create and populate panel for each minor
-                    TableLayoutPanel minorPanel = new TableLayoutPanel();
-                    minorPanel.ColumnCount = 1;
-                    minorPanel.RowCount = 1;
-                    minorPanel.AutoSize = true;
-                    minorPanel.Dock = DockStyle.Fill;
-                    foreach (RowStyle style in minorPanel.RowStyles) {
-                        style.SizeType = SizeType.AutoSize;
-                    }
-
                     // Minor title
                     Label minorTitle = new Label();
                     minorTitle.Text = thisMinor.title;
-                    minorTitle.Dock = DockStyle.Fill;
-                    minorTitle.AutoSize = false;
-                    minorTitle.MaximumSize = new Size(100, 0);
-                    minorTitle.AutoSize = true;
                     minorTitle.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
                     minorTitle.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                    minorTitle.Margin = new Padding(0, 0, minorTitle.Margin.Right, minorTitle.Margin.Right);
+                    minorTitle.BorderStyle = BorderStyle.FixedSingle;
+                    minorTitle.TextAlign = ContentAlignment.MiddleCenter;
+                    minorTitle.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
 
                     // Add components to degree panel, then to main panel
-                    minorPanel.Controls.Add(minorTitle, 0, 0);
-                    ug_minors.Controls.Add(minorPanel, column, row);
-
-                    // Resize rows
-                    foreach (RowStyle style in ug_minors.RowStyles) {
-                        style.SizeType = SizeType.AutoSize;
-                    }
+                    ug_minors.Controls.Add(minorTitle, column, row);
 
                     // Set onclick event handler to show degree details in popup
-                    minorPanel.Click += (sender4, e4) => showUgMinorPopup(sender4, e4, thisMinor);
+                    minorTitle.Click += (sender4, e4) => showUgMinorPopup(sender4, e4, thisMinor);
 
                     // Jump to next row if current row is full
                     if ((i + 1) % 3 == 0) {
@@ -440,6 +424,11 @@ namespace Project3 {
                     } else {
                         column++;
                     }
+                }
+
+                // Resize rows
+                foreach (RowStyle style in ug_minors.RowStyles) {
+                    style.SizeType = SizeType.AutoSize;
                 }
             }
         }
@@ -507,6 +496,53 @@ namespace Project3 {
         private void research_btn_Click(object sender, EventArgs e)
         {
             body.SelectedTab = research_tab;
+
+            // Ensure we have the data, fetch if we don't
+            if (research == null) {
+                Console.WriteLine("Loading research...");
+                string jsonResearch = rj.getRestJSON("/research/");
+                research = JToken.Parse(jsonResearch).ToObject<Research>();
+
+                // Dynamically load research by interest area
+                int row = 0;
+                int column = 0;
+                for (int i = 0; i < research.byInterestArea.Count; i++) {
+                    ByInterestArea area = research.byInterestArea[i];
+
+                    Label areaName = new Label();
+                    areaName.Text = area.areaName;
+                    areaName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                    areaName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                    areaName.Margin = new Padding(0, 0, areaName.Margin.Right, areaName.Margin.Right);
+                    areaName.BorderStyle = BorderStyle.FixedSingle;
+                    areaName.TextAlign = ContentAlignment.MiddleCenter;
+                    areaName.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+
+                    interestareas.Controls.Add(areaName, column, row);
+
+                    // Set onclick event handler to show degree details in popup
+                    areaName.Click += (sender4, e4) => showResearchPopup(sender4, e4, area);
+
+                    // Jump to next row if current row is full
+                    if ((i + 1) % 3 == 0) {
+                        row++;
+                        column = 0;
+                    } else {
+                        column++;
+                    }
+                }
+
+                // Resize rows
+                foreach (RowStyle style in interestareas.RowStyles) {
+                    style.SizeType = SizeType.AutoSize;
+                }
+            }
+        }
+
+        // Popup for Research by interest area
+        private void showResearchPopup(object sender4, EventArgs e4, ByInterestArea area) {
+            Popup popup = new Popup(area);
+            popup.Show();
         }
 
         // Change body view to Employment section when "EMPLOYMENT" is clicked
@@ -526,11 +562,6 @@ namespace Project3 {
                 Console.WriteLine("Loading resources...");
                 string jsonResources = rj.getRestJSON("/resources/");
                 resources = JToken.Parse(jsonResources).ToObject<Resources>();
-
-                // Delete this when I'm done
-                ll_resources_appForm.Text = "Get the application form";
-                ll_resources_appForm.Tag = resources.studentAmbassadors.applicationFormLink;
-                ll_resources_appForm.LinkClicked += linkLabel1_LinkClicked;
 
                 // Set title and subtitle
                 resources_title.Text = resources.title;

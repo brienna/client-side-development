@@ -46,6 +46,8 @@
             this.person_name = new System.Windows.Forms.Label();
             this.deg_tab = new System.Windows.Forms.TabPage();
             this.degreePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.research = new System.Windows.Forms.TabPage();
+            this.research_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.popup_tabs.SuspendLayout();
             this.forms_tab.SuspendLayout();
             this.studyAbroad_tab.SuspendLayout();
@@ -56,6 +58,7 @@
             this.people_popup_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.person_img)).BeginInit();
             this.deg_tab.SuspendLayout();
+            this.research.SuspendLayout();
             this.SuspendLayout();
             // 
             // popup_tabs
@@ -68,6 +71,7 @@
             this.popup_tabs.Controls.Add(this.coop_tab);
             this.popup_tabs.Controls.Add(this.people_popup_tab);
             this.popup_tabs.Controls.Add(this.deg_tab);
+            this.popup_tabs.Controls.Add(this.research);
             this.popup_tabs.Location = new System.Drawing.Point(12, 12);
             this.popup_tabs.Name = "popup_tabs";
             this.popup_tabs.SelectedIndex = 0;
@@ -303,6 +307,28 @@
             this.degreePanel.TabIndex = 0;
             this.degreePanel.WrapContents = false;
             // 
+            // research
+            // 
+            this.research.Controls.Add(this.research_panel);
+            this.research.Location = new System.Drawing.Point(4, 22);
+            this.research.Name = "research";
+            this.research.Padding = new System.Windows.Forms.Padding(3);
+            this.research.Size = new System.Drawing.Size(545, 408);
+            this.research.TabIndex = 8;
+            this.research.Text = "Research";
+            this.research.UseVisualStyleBackColor = true;
+            // 
+            // research_panel
+            // 
+            this.research_panel.AutoScroll = true;
+            this.research_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.research_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.research_panel.Location = new System.Drawing.Point(3, 3);
+            this.research_panel.Name = "research_panel";
+            this.research_panel.Size = new System.Drawing.Size(539, 402);
+            this.research_panel.TabIndex = 0;
+            this.research_panel.WrapContents = false;
+            // 
             // Popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +351,7 @@
             this.people_popup_tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.person_img)).EndInit();
             this.deg_tab.ResumeLayout(false);
+            this.research.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -354,5 +381,7 @@
         private System.Windows.Forms.Label person_title;
         private System.Windows.Forms.Label person_name;
         private System.Windows.Forms.FlowLayoutPanel degreePanel;
+        private System.Windows.Forms.TabPage research;
+        private System.Windows.Forms.FlowLayoutPanel research_panel;
     }
 }

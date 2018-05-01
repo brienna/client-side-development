@@ -106,6 +106,7 @@
             this.resources_title = new System.Windows.Forms.Label();
             this.btn_ListView = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.interestareas = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -138,6 +139,7 @@
             this.staff_tab.SuspendLayout();
             this.research_tab.SuspendLayout();
             this.research_tabs.SuspendLayout();
+            this.interestarea_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
             this.resources_tab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -646,16 +648,18 @@
             // 
             // ug_minors
             // 
+            this.ug_minors.AutoSize = true;
             this.ug_minors.ColumnCount = 3;
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.ug_minors.Location = new System.Drawing.Point(77, 49);
+            this.ug_minors.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ug_minors.Location = new System.Drawing.Point(3, 3);
             this.ug_minors.Name = "ug_minors";
             this.ug_minors.RowCount = 2;
             this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ug_minors.Size = new System.Drawing.Size(454, 294);
+            this.ug_minors.Size = new System.Drawing.Size(597, 0);
             this.ug_minors.TabIndex = 0;
             // 
             // grad_tab
@@ -853,6 +857,7 @@
             // 
             // interestarea_tab
             // 
+            this.interestarea_tab.Controls.Add(this.interestareas);
             this.interestarea_tab.Location = new System.Drawing.Point(4, 22);
             this.interestarea_tab.Name = "interestarea_tab";
             this.interestarea_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -1041,6 +1046,21 @@
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // interestareas
+            // 
+            this.interestareas.AutoSize = true;
+            this.interestareas.ColumnCount = 2;
+            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.interestareas.Location = new System.Drawing.Point(3, 3);
+            this.interestareas.Name = "interestareas";
+            this.interestareas.RowCount = 2;
+            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.interestareas.Size = new System.Drawing.Size(597, 0);
+            this.interestareas.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1081,6 +1101,7 @@
             this.tabControl3.ResumeLayout(false);
             this.ug_deg_tab.ResumeLayout(false);
             this.ug_minors_tab.ResumeLayout(false);
+            this.ug_minors_tab.PerformLayout();
             this.grad_tab.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.grad_deg_tab.ResumeLayout(false);
@@ -1095,6 +1116,8 @@
             this.research_tab.ResumeLayout(false);
             this.research_tab.PerformLayout();
             this.research_tabs.ResumeLayout(false);
+            this.interestarea_tab.ResumeLayout(false);
+            this.interestarea_tab.PerformLayout();
             this.emp_tab.ResumeLayout(false);
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
@@ -1183,6 +1206,7 @@
         private System.Windows.Forms.TableLayoutPanel staff;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btn_ListView;
+        private System.Windows.Forms.TableLayoutPanel interestareas;
     }
 }
 

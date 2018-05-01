@@ -21,6 +21,7 @@ namespace Project3 {
         UgMinor thisUgMinor = null;
         List<CourseInfo> courseInfos = null;
         Form1 utilityForm = null;
+        ByInterestArea researchByInterestArea = null;
         string type = null;
 
         public Popup() {
@@ -64,6 +65,12 @@ namespace Project3 {
             thisUgMinor = ugMinor;
         }
 
+        // Constructs popup for Research by interest area
+        public Popup(ByInterestArea area) {
+            InitializeComponent();
+            researchByInterestArea = area;
+        }
+
         private void Popup_Load(object sender, EventArgs e) {
             // Hide tab headers
             popup_tabs.Appearance = TabAppearance.FlatButtons;
@@ -93,7 +100,37 @@ namespace Project3 {
                 loadUgDegree();
             } else if (thisUgMinor != null) {
                 loadUgMinor();
+            } else if (researchByInterestArea != null) {
+                loadResearchByInterestArea();
             }
+        }
+
+        // Loads research by interest area
+        private void loadResearchByInterestArea() {
+            // Show and populate Research tab
+            popup_tabs.SelectedTab = research;
+
+            // Area name
+            Label areaName = new Label();
+            areaName.Text = researchByInterestArea.areaName;
+            areaName.Font = new Font("Arial", 14, FontStyle.Bold);
+            areaName.Width = research_panel.Width - (areaName.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            // Citations
+            RichTextBox citations = new RichTextBox();
+            citations.ReadOnly = true;
+            citations.ContentsResized += rtb_ContentsResized;
+            citations.BorderStyle = BorderStyle.None;
+            citations.Width = research_panel.Width - (citations.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            for (int i = 0; i < researchByInterestArea.citations.Count; i++) {
+                citations.AppendText("\u2022  " + researchByInterestArea.citations[i]);
+                if (i != researchByInterestArea.citations.Count - 1) {
+                    citations.AppendText(Environment.NewLine);
+                }
+            }
+
+            research_panel.Controls.Add(areaName);
+            research_panel.Controls.Add(citations);
         }
 
         // Loads undergrad minor details
