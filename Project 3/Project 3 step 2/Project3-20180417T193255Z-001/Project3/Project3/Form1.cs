@@ -35,6 +35,33 @@ namespace Project3 {
             body.Appearance = TabAppearance.FlatButtons;
             body.ItemSize = new Size(0, 1);
             body.SizeMode = TabSizeMode.Fixed;
+
+            // Load footer
+            if (footer == null) {
+                Console.WriteLine("Loading footer...");
+                string jsonFooter = rj.getRestJSON("/footer/");
+                footer = JToken.Parse(jsonFooter).ToObject<Footer>();
+
+                link1.Text = footer.quickLinks[0].title;
+                link1.Tag = footer.quickLinks[0].href;
+                link1.LinkClicked += linkLabel1_LinkClicked;
+                link2.Text = footer.quickLinks[1].title;
+                link2.Tag = footer.quickLinks[1].href;
+                link2.LinkClicked += linkLabel1_LinkClicked;
+                link3.Text = footer.quickLinks[2].title;
+                link3.Tag = footer.quickLinks[2].href;
+                link3.LinkClicked += linkLabel1_LinkClicked;
+                link4.Text = footer.quickLinks[3].title;
+                link4.Tag = footer.quickLinks[3].href;
+                link4.LinkClicked += linkLabel1_LinkClicked;
+                link5.Text = "Facebook";
+                link5.Tag = footer.social.facebook;
+                link5.LinkClicked += linkLabel1_LinkClicked;
+                link6.Text = "Twitter";
+                link6.Tag = footer.social.twitter;
+                link6.LinkClicked += linkLabel1_LinkClicked;
+
+            }
         }
 
         #region GetRest
@@ -712,6 +739,11 @@ namespace Project3 {
         // Utility event handler to resize richtextboxes
         private void rtb_ContentsResized(object sender, ContentsResizedEventArgs e) {
             ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+        }
+
+        // Show Contact view when click "CONTACT" button
+        private void button1_Click(object sender, EventArgs e) {
+            body.SelectedTab = contact;
         }
     }
 }

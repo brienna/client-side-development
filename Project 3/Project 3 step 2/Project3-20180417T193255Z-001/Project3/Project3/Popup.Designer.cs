@@ -93,15 +93,15 @@
             // forms_list
             // 
             this.forms_list.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.forms_list.Location = new System.Drawing.Point(120, 88);
+            this.forms_list.Location = new System.Drawing.Point(192, 84);
             this.forms_list.Name = "forms_list";
-            this.forms_list.Size = new System.Drawing.Size(326, 283);
+            this.forms_list.Size = new System.Drawing.Size(168, 283);
             this.forms_list.TabIndex = 1;
             // 
             // forms_title
             // 
             this.forms_title.AutoSize = true;
-            this.forms_title.Location = new System.Drawing.Point(233, 27);
+            this.forms_title.Location = new System.Drawing.Point(255, 45);
             this.forms_title.Name = "forms_title";
             this.forms_title.Size = new System.Drawing.Size(35, 13);
             this.forms_title.TabIndex = 0;
@@ -252,25 +252,25 @@
             // person_details
             // 
             this.person_details.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.person_details.Location = new System.Drawing.Point(259, 92);
+            this.person_details.Location = new System.Drawing.Point(275, 92);
             this.person_details.Name = "person_details";
-            this.person_details.Size = new System.Drawing.Size(174, 141);
+            this.person_details.Size = new System.Drawing.Size(174, 236);
             this.person_details.TabIndex = 4;
             this.person_details.Text = "";
             // 
             // person_img
             // 
-            this.person_img.Location = new System.Drawing.Point(38, 142);
+            this.person_img.Location = new System.Drawing.Point(35, 92);
             this.person_img.Name = "person_img";
-            this.person_img.Size = new System.Drawing.Size(100, 50);
-            this.person_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.person_img.Size = new System.Drawing.Size(195, 236);
+            this.person_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.person_img.TabIndex = 3;
             this.person_img.TabStop = false;
             // 
             // person_title
             // 
             this.person_title.AutoSize = true;
-            this.person_title.Location = new System.Drawing.Point(47, 66);
+            this.person_title.Location = new System.Drawing.Point(33, 58);
             this.person_title.Name = "person_title";
             this.person_title.Size = new System.Drawing.Size(35, 13);
             this.person_title.TabIndex = 1;
@@ -279,9 +279,10 @@
             // person_name
             // 
             this.person_name.AutoSize = true;
-            this.person_name.Location = new System.Drawing.Point(44, 36);
+            this.person_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.person_name.Location = new System.Drawing.Point(32, 26);
             this.person_name.Name = "person_name";
-            this.person_name.Size = new System.Drawing.Size(35, 13);
+            this.person_name.Size = new System.Drawing.Size(51, 20);
             this.person_name.TabIndex = 0;
             this.person_name.Text = "label1";
             // 

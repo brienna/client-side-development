@@ -117,12 +117,24 @@
             this.employer_stats = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.link1 = new System.Windows.Forms.LinkLabel();
+            this.link2 = new System.Windows.Forms.LinkLabel();
+            this.link3 = new System.Windows.Forms.LinkLabel();
+            this.link6 = new System.Windows.Forms.LinkLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.link5 = new System.Windows.Forms.LinkLabel();
+            this.link4 = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.contact = new System.Windows.Forms.TabPage();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
             this.coop_emp_tab.SuspendLayout();
             this.emp_emp_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.body.SuspendLayout();
@@ -154,6 +166,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.news_tab.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.contact.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridView1
@@ -290,6 +304,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.news_btn);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.resources_btn);
@@ -314,7 +329,7 @@
             this.news_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.news_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.news_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.news_btn.Location = new System.Drawing.Point(0, 310);
+            this.news_btn.Location = new System.Drawing.Point(0, 325);
             this.news_btn.Name = "news_btn";
             this.news_btn.Size = new System.Drawing.Size(200, 43);
             this.news_btn.TabIndex = 13;
@@ -325,10 +340,11 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel3.Controls.Add(this.panel5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 359);
+            this.panel3.Location = new System.Drawing.Point(0, 413);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 190);
+            this.panel3.Size = new System.Drawing.Size(200, 136);
             this.panel3.TabIndex = 12;
             // 
             // resources_btn
@@ -340,7 +356,7 @@
             this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resources_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.resources_btn.Location = new System.Drawing.Point(0, 267);
+            this.resources_btn.Location = new System.Drawing.Point(0, 282);
             this.resources_btn.Name = "resources_btn";
             this.resources_btn.Size = new System.Drawing.Size(200, 43);
             this.resources_btn.TabIndex = 6;
@@ -358,7 +374,7 @@
             this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emp_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emp_btn.Location = new System.Drawing.Point(0, 225);
+            this.emp_btn.Location = new System.Drawing.Point(0, 240);
             this.emp_btn.Name = "emp_btn";
             this.emp_btn.Size = new System.Drawing.Size(200, 43);
             this.emp_btn.TabIndex = 5;
@@ -376,7 +392,7 @@
             this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.research_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.research_btn.Location = new System.Drawing.Point(0, 183);
+            this.research_btn.Location = new System.Drawing.Point(0, 198);
             this.research_btn.Name = "research_btn";
             this.research_btn.Size = new System.Drawing.Size(200, 43);
             this.research_btn.TabIndex = 4;
@@ -394,7 +410,7 @@
             this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.people_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.people_btn.Location = new System.Drawing.Point(0, 141);
+            this.people_btn.Location = new System.Drawing.Point(0, 156);
             this.people_btn.Name = "people_btn";
             this.people_btn.Size = new System.Drawing.Size(200, 43);
             this.people_btn.TabIndex = 3;
@@ -412,7 +428,7 @@
             this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.degrees_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.degrees_btn.Location = new System.Drawing.Point(0, 100);
+            this.degrees_btn.Location = new System.Drawing.Point(0, 115);
             this.degrees_btn.Name = "degrees_btn";
             this.degrees_btn.Size = new System.Drawing.Size(200, 43);
             this.degrees_btn.TabIndex = 2;
@@ -430,7 +446,7 @@
             this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.about_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_btn.Location = new System.Drawing.Point(0, 58);
+            this.about_btn.Location = new System.Drawing.Point(0, 73);
             this.about_btn.Name = "about_btn";
             this.about_btn.Size = new System.Drawing.Size(200, 43);
             this.about_btn.TabIndex = 1;
@@ -469,6 +485,7 @@
             this.body.Controls.Add(this.emp_tab);
             this.body.Controls.Add(this.resources_tab);
             this.body.Controls.Add(this.news_tab);
+            this.body.Controls.Add(this.contact);
             this.body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.body.Location = new System.Drawing.Point(200, 0);
             this.body.Margin = new System.Windows.Forms.Padding(0);
@@ -578,7 +595,7 @@
             // 
             this.about_title.AutoSize = true;
             this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_title.Location = new System.Drawing.Point(262, 0);
+            this.about_title.Location = new System.Drawing.Point(216, 69);
             this.about_title.Name = "about_title";
             this.about_title.Size = new System.Drawing.Size(49, 13);
             this.about_title.TabIndex = 0;
@@ -980,7 +997,7 @@
             // resources_subtitle
             // 
             this.resources_subtitle.AutoSize = true;
-            this.resources_subtitle.Location = new System.Drawing.Point(270, 68);
+            this.resources_subtitle.Location = new System.Drawing.Point(186, 69);
             this.resources_subtitle.Name = "resources_subtitle";
             this.resources_subtitle.Size = new System.Drawing.Size(35, 13);
             this.resources_subtitle.TabIndex = 2;
@@ -1078,7 +1095,7 @@
             // 
             this.resources_title.AutoSize = true;
             this.resources_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resources_title.Location = new System.Drawing.Point(247, 0);
+            this.resources_title.Location = new System.Drawing.Point(184, 7);
             this.resources_title.Name = "resources_title";
             this.resources_title.Size = new System.Drawing.Size(82, 29);
             this.resources_title.TabIndex = 0;
@@ -1110,7 +1127,7 @@
             // 
             this.emptitle.AutoSize = true;
             this.emptitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptitle.Location = new System.Drawing.Point(199, 41);
+            this.emptitle.Location = new System.Drawing.Point(171, 32);
             this.emptitle.Name = "emptitle";
             this.emptitle.Size = new System.Drawing.Size(41, 13);
             this.emptitle.TabIndex = 11;
@@ -1118,6 +1135,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel2);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.employer_stats);
@@ -1152,7 +1170,7 @@
             // 
             this.employer_stats.Location = new System.Drawing.Point(414, 25);
             this.employer_stats.Name = "employer_stats";
-            this.employer_stats.Size = new System.Drawing.Size(147, 117);
+            this.employer_stats.Size = new System.Drawing.Size(147, 95);
             this.employer_stats.TabIndex = 2;
             this.employer_stats.Text = "";
             // 
@@ -1176,6 +1194,139 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Employers";
             // 
+            // link1
+            // 
+            this.link1.AutoSize = true;
+            this.link1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link1.Location = new System.Drawing.Point(21, 13);
+            this.link1.Name = "link1";
+            this.link1.Size = new System.Drawing.Size(46, 12);
+            this.link1.TabIndex = 0;
+            this.link1.TabStop = true;
+            this.link1.Text = "linkLabel1";
+            this.link1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // link2
+            // 
+            this.link2.AutoSize = true;
+            this.link2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link2.Location = new System.Drawing.Point(21, 35);
+            this.link2.Name = "link2";
+            this.link2.Size = new System.Drawing.Size(46, 12);
+            this.link2.TabIndex = 1;
+            this.link2.TabStop = true;
+            this.link2.Text = "linkLabel1";
+            // 
+            // link3
+            // 
+            this.link3.AutoSize = true;
+            this.link3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link3.Location = new System.Drawing.Point(21, 60);
+            this.link3.Name = "link3";
+            this.link3.Size = new System.Drawing.Size(46, 12);
+            this.link3.TabIndex = 2;
+            this.link3.TabStop = true;
+            this.link3.Text = "linkLabel2";
+            // 
+            // link6
+            // 
+            this.link6.AutoSize = true;
+            this.link6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link6.Location = new System.Drawing.Point(103, 60);
+            this.link6.Name = "link6";
+            this.link6.Size = new System.Drawing.Size(46, 12);
+            this.link6.TabIndex = 3;
+            this.link6.TabStop = true;
+            this.link6.Text = "linkLabel3";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.link4);
+            this.panel5.Controls.Add(this.link5);
+            this.panel5.Controls.Add(this.link1);
+            this.panel5.Controls.Add(this.link6);
+            this.panel5.Controls.Add(this.link2);
+            this.panel5.Controls.Add(this.link3);
+            this.panel5.Location = new System.Drawing.Point(12, 23);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(174, 92);
+            this.panel5.TabIndex = 4;
+            // 
+            // link5
+            // 
+            this.link5.AutoSize = true;
+            this.link5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link5.Location = new System.Drawing.Point(103, 35);
+            this.link5.Name = "link5";
+            this.link5.Size = new System.Drawing.Size(46, 12);
+            this.link5.TabIndex = 4;
+            this.link5.TabStop = true;
+            this.link5.Text = "linkLabel4";
+            // 
+            // link4
+            // 
+            this.link4.AutoSize = true;
+            this.link4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link4.Location = new System.Drawing.Point(103, 13);
+            this.link4.Name = "link4";
+            this.link4.Size = new System.Drawing.Size(46, 12);
+            this.link4.TabIndex = 5;
+            this.link4.TabStop = true;
+            this.link4.Text = "linkLabel5";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(0, 365);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 43);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "CONTACT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // contact
+            // 
+            this.contact.Controls.Add(this.linkLabel1);
+            this.contact.Location = new System.Drawing.Point(4, 22);
+            this.contact.Name = "contact";
+            this.contact.Padding = new System.Windows.Forms.Padding(3);
+            this.contact.Size = new System.Drawing.Size(603, 523);
+            this.contact.TabIndex = 8;
+            this.contact.Text = "Contact";
+            this.contact.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(169, 203);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(270, 20);
+            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Tag = "http://ist.rit.edu/api/contactForm.php";
+            this.linkLabel1.Text = "Click to be taken to contact form";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(444, 126);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(88, 13);
+            this.linkLabel2.TabIndex = 13;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Tag = "http://ist.rit.edu/api/map.php";
+            this.linkLabel2.Text = "Employment Map";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1195,6 +1346,7 @@
             this.emp_emp_tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
@@ -1241,6 +1393,10 @@
             this.news_tab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.contact.ResumeLayout(false);
+            this.contact.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1334,6 +1490,17 @@
         private System.Windows.Forms.RichTextBox employer_stats;
         private System.Windows.Forms.RichTextBox careers_stats;
         private System.Windows.Forms.RichTextBox stats_rtb;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.LinkLabel link4;
+        private System.Windows.Forms.LinkLabel link5;
+        private System.Windows.Forms.LinkLabel link1;
+        private System.Windows.Forms.LinkLabel link6;
+        private System.Windows.Forms.LinkLabel link2;
+        private System.Windows.Forms.LinkLabel link3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage contact;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 

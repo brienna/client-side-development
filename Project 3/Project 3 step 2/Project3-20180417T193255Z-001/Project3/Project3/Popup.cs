@@ -502,14 +502,12 @@ namespace Project3 {
                 title = title + ", " + thisFaculty.tagline;
             }
             person_title.Text = title;
-            person_img.SizeMode = PictureBoxSizeMode.AutoSize;
             person_img.Load(thisFaculty.imagePath);
-            int oldWidth = person_img.Width; 
-            int oldHeight = person_img.Height;
-            int newWidth = people_popup_tab.Width / 3;
-            int newHeight = oldHeight * (newWidth / oldWidth);
-            person_img.SizeMode = PictureBoxSizeMode.StretchImage;
-            person_img.Width = newWidth;
+            //int oldWidth = person_img.Width; 
+            //int oldHeight = person_img.Height;
+            //int newWidth = people_popup_tab.Width / 3;
+            //int newHeight = oldHeight * (newWidth / oldWidth);
+            //person_img.SizeMode = PictureBoxSizeMode.StretchImage;
 
             if (thisFaculty.office != "") {
                 person_details.AppendText("\u2022  Office: " + thisFaculty.office);
