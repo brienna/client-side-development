@@ -26,9 +26,6 @@ namespace Project3 {
         // get our restful resources...
         public REST rj = new REST("http://ist.rit.edu/api");
 
-        // stopwatch for testing...
-        // Stopwatch sw = new Stopwatch();
-
         public Form1() {
             InitializeComponent();
         }
@@ -69,8 +66,8 @@ namespace Project3 {
         }
         #endregion
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+        // Go to link when click on link
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             // which link am I?
             LinkLabel me = sender as LinkLabel;
             // me
@@ -79,44 +76,7 @@ namespace Project3 {
             System.Diagnostics.Process.Start(me.Tag.ToString());
         }
 
-        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
-            // MessageBox.Show("i");
-            int col = e.ColumnIndex; // won't use
-            int row = e.RowIndex;
-
-            string id = DataGridView1[0, row].Value.ToString();
-            MessageBox.Show(id);
-        }
-
-        private void btn_ListView_Click(object sender, EventArgs e) {
-            // dynamically create 
-            listView1.View = View.Details; // we want text
-            listView1.GridLines = true;
-            listView1.FullRowSelect = true; // click, highlight full row
-            listView1.Width = 710;
-
-            // create the column headers...
-            listView1.Columns.Add("Employers", 200); // 2nd arg is how big it shld be
-            listView1.Columns.Add("Degrees", 200);
-            listView1.Columns.Add("City", 200);
-            listView1.Columns.Add("Term", 100);
-
-            // and populate ListView
-            ListViewItem item;
-
-            for (int i = 0; i < employment.coopTable.coopInformation.Count; i++)
-            {
-                item = new ListViewItem(new String[] {
-                    employment.coopTable.coopInformation[i].employer,
-                    employment.coopTable.coopInformation[i].degree,
-                    employment.coopTable.coopInformation[i].city,
-                    employment.coopTable.coopInformation[i].term
-                });
-
-                listView1.Items.Add(item);
-            }
-        }
-
+        // When menu buttons are hovered over, change cursor
         private void about_btn_MouseHover(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Hand;
@@ -236,6 +196,7 @@ namespace Project3 {
 
                             // Certificate title
                             LinkLabel certTitle = new LinkLabel();
+                            certTitle.LinkClicked += linkLabel1_LinkClicked;
                             certTitle.Text = degrees.graduate[i].availableCertificates[j];
                             certTitle.Dock = DockStyle.Fill;
                             certTitle.AutoSize = false;
@@ -555,8 +516,7 @@ namespace Project3 {
         }
 
         // Change body view to Employment section when "EMPLOYMENT" is clicked
-        private void emp_btn_Click(object sender, EventArgs e)
-        {
+        private void emp_btn_Click(object sender, EventArgs e) {
             body.SelectedTab = emp_tab;
 
             // Ensure we have data, fetch if we don't
@@ -566,23 +526,34 @@ namespace Project3 {
                 string jsonEmp = rj.getRestJSON("/employment/");
                 employment = JToken.Parse(jsonEmp).ToObject<Employment>();
 
-                Introduction contents = employment.introduction;
+                Introduction intro = employment.introduction;
                 DegreeStatistics stats = employment.degreeStatistics;
                 Employers employers = employment.employers;
                 Careers careers = employment.careers;
-                CoopTable coopTable = employment.coopTable;
-                EmploymentTable empTable = employment.employmentTable;
 
-                Label title = new Label();
-                title.Text = employment.introduction.title;
+                // Load stuff
+                emptitle.Text = intro.title;
+                for (int i = 0; i < employers.employerNames.Count; i++) {
+                    employer_stats.AppendText("\u2022  " + employers.employerNames[i]);
+                    if (i != employers.employerNames.Count - 1) {
+                        employer_stats.AppendText(Environment.NewLine);
+                    }
+                }
+                for (int i = 0; i < careers.careerNames.Count; i++) {
+                    careers_stats.AppendText("\u2022  " + careers.careerNames[i]);
+                    if (i != careers.careerNames.Count - 1) {
+                        careers_stats.AppendText(Environment.NewLine);
+                    }
+                }
+                for (int i = 0; i < stats.statistics.Count; i++) {
+                    stats_rtb.AppendText("\u2022  " + stats.statistics[i].value + " -- " + stats.statistics[i].description);
+                    if (i != stats.statistics.Count - 1) {
+                        stats_rtb.AppendText(Environment.NewLine);
+                    }
+                }
 
-                
-
-
-            }
-
-            // have I been built?
-            if (DataGridView1.Rows.Count < 2) {
+                // Coop tab
+                coop_desc.Text = intro.content[1].description;
                 // populate the dataGridView...
                 for (int i = 0; i < employment.coopTable.coopInformation.Count; i++) {
                     DataGridView1.Rows.Add();
@@ -590,6 +561,18 @@ namespace Project3 {
                     DataGridView1.Rows[i].Cells[1].Value = employment.coopTable.coopInformation[i].degree;
                     DataGridView1.Rows[i].Cells[2].Value = employment.coopTable.coopInformation[i].city;
                     DataGridView1.Rows[i].Cells[3].Value = employment.coopTable.coopInformation[i].term;
+                }
+
+                // Professional emp tab
+                prof_emp_desc.Text = intro.content[0].description;
+                // populate the dataGridView...
+                for (int i = 0; i < employment.employmentTable.professionalEmploymentInformation.Count; i++) {
+                    dataGridView2.Rows.Add();
+                    dataGridView2.Rows[i].Cells[0].Value = employment.employmentTable.professionalEmploymentInformation[i].degree;
+                    dataGridView2.Rows[i].Cells[1].Value = employment.employmentTable.professionalEmploymentInformation[i].employer;
+                    dataGridView2.Rows[i].Cells[2].Value = employment.employmentTable.professionalEmploymentInformation[i].title;
+                    dataGridView2.Rows[i].Cells[3].Value = employment.employmentTable.professionalEmploymentInformation[i].city;
+                    dataGridView2.Rows[i].Cells[4].Value = employment.employmentTable.professionalEmploymentInformation[i].startDate;
                 }
             }
         }

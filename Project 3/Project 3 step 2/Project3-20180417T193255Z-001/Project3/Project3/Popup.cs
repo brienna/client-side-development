@@ -570,6 +570,7 @@ namespace Project3 {
                 ambassadors_panel.Controls.Add(sectionDesc);
             }
             LinkLabel appForm = new LinkLabel();
+            appForm.LinkClicked += linkLabel1_LinkClicked;
             appForm.Text = "Google Forms link.";
             appForm.Tag = resources.studentAmbassadors.applicationFormLink;
             appForm.Width = ambassadors_panel.Width - (appForm.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -591,6 +592,7 @@ namespace Project3 {
             coop_title.Text = resources.coopEnrollment.title;
             coop_title.Width = coop_panel.Width - (coop_title.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             LinkLabel guide = new LinkLabel();
+            guide.LinkClicked += linkLabel1_LinkClicked;
             guide.Text = "Please refer to our Co-op Guide!";
             guide.Tag = resources.coopEnrollment.RITJobZoneGuidelink;
             guide.Width = coop_panel.Width - (guide.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -626,6 +628,7 @@ namespace Project3 {
             tutors_desc.ContentsResized += rtb_ContentsResized;
             tutors_desc.Width = tutors_panel.Width - (tutors_desc.Margin.Right * 2);
             LinkLabel tutors_schedule = new LinkLabel();
+            tutors_schedule.LinkClicked += linkLabel1_LinkClicked;
             tutors_schedule.Text = "Lab Hours and TA Schedule";
             tutors_schedule.Tag = resources.tutorsAndLabInformation.tutoringLabHoursLink;
             tutors_schedule.Width = tutors_panel.Width - (tutors_schedule.Margin.Right * 2);
@@ -650,6 +653,7 @@ namespace Project3 {
             aaRtb.Text = resources.studentServices.academicAdvisors.description;
             aaRtb.Width = advising_panel.Width - (aaRtb.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             LinkLabel aaFaq = new LinkLabel();
+            aaFaq.LinkClicked += linkLabel1_LinkClicked;
             aaFaq.Text = resources.studentServices.academicAdvisors.faq.title;
             aaFaq.Tag = resources.studentServices.academicAdvisors.faq.contentHref;
             aaFaq.Width = advising_panel.Width - (aaFaq.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -736,6 +740,7 @@ namespace Project3 {
             forms_list.Controls.Add(ugLabel);
             for (int i = 0; i < resources.forms.undergraduateForms.Count; i++) {
                 LinkLabel form = new LinkLabel();
+                form.LinkClicked += linkLabel1_LinkClicked;
                 form.Text = resources.forms.undergraduateForms[i].formName;
                 form.Tag = resources.forms.undergraduateForms[i].href;
                 forms_list.Controls.Add(form);
@@ -746,6 +751,7 @@ namespace Project3 {
             forms_list.Controls.Add(gradLabel);
             for (int i = 0; i < resources.forms.graduateForms.Count; i++) {
                 LinkLabel form = new LinkLabel();
+                form.LinkClicked += linkLabel1_LinkClicked;
                 form.Text = resources.forms.graduateForms[i].formName;
                 form.Tag = resources.forms.graduateForms[i].href;
                 forms_list.Controls.Add(form);
@@ -755,6 +761,16 @@ namespace Project3 {
         // Utility event handler to resize richtextboxes
         private void rtb_ContentsResized(object sender, ContentsResizedEventArgs e) {
             ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+        }
+
+        // Utility event handler to go to link when click on link
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            // which link am I?
+            LinkLabel me = sender as LinkLabel;
+            // me
+            me.LinkVisited = true;
+            // navigate to the url
+            System.Diagnostics.Process.Start(me.Tag.ToString());
         }
     }
 }

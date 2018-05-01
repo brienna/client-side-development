@@ -29,25 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.ll_pdf = new System.Windows.Forms.LinkLabel();
-            this.ll_resources_appForm = new System.Windows.Forms.LinkLabel();
-            this.btn_people = new System.Windows.Forms.Button();
-            this.pb_fac = new System.Windows.Forms.PictureBox();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.term = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControl1 = new System.Windows.Forms.TabControl();
-            this.tab_people = new System.Windows.Forms.TabPage();
-            this.tab_degrees = new System.Windows.Forms.TabPage();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.btn_ListView = new System.Windows.Forms.Button();
-            this.tab_resources = new System.Windows.Forms.TabPage();
+            this.coop_emp_tab = new System.Windows.Forms.TabPage();
+            this.coop_desc = new System.Windows.Forms.RichTextBox();
+            this.emp_emp_tab = new System.Windows.Forms.TabPage();
+            this.prof_emp_desc = new System.Windows.Forms.RichTextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.news_btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.resources_btn = new System.Windows.Forms.Button();
             this.emp_btn = new System.Windows.Forms.Button();
@@ -59,6 +58,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.body = new System.Windows.Forms.TabControl();
             this.home_tab = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.about_tab = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -108,19 +108,21 @@
             this.resource2 = new System.Windows.Forms.Label();
             this.resource1 = new System.Windows.Forms.Label();
             this.resources_title = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.news_btn = new System.Windows.Forms.Button();
             this.news_tab = new System.Windows.Forms.TabPage();
             this.news_panel = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
+            this.emptitle = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.stats_rtb = new System.Windows.Forms.RichTextBox();
+            this.careers_stats = new System.Windows.Forms.RichTextBox();
+            this.employer_stats = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
-            this.tab_people.SuspendLayout();
-            this.tab_degrees.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
+            this.coop_emp_tab.SuspendLayout();
+            this.emp_emp_tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.body.SuspendLayout();
@@ -151,46 +153,8 @@
             this.resources_tab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.news_tab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ll_pdf
-            // 
-            this.ll_pdf.AutoSize = true;
-            this.ll_pdf.Location = new System.Drawing.Point(39, 42);
-            this.ll_pdf.Name = "ll_pdf";
-            this.ll_pdf.Size = new System.Drawing.Size(98, 13);
-            this.ll_pdf.TabIndex = 2;
-            this.ll_pdf.TabStop = true;
-            this.ll_pdf.Text = "Click me for the pdf";
-            this.ll_pdf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // ll_resources_appForm
-            // 
-            this.ll_resources_appForm.AutoSize = true;
-            this.ll_resources_appForm.Location = new System.Drawing.Point(70, 12);
-            this.ll_resources_appForm.Name = "ll_resources_appForm";
-            this.ll_resources_appForm.Size = new System.Drawing.Size(55, 13);
-            this.ll_resources_appForm.TabIndex = 3;
-            this.ll_resources_appForm.TabStop = true;
-            this.ll_resources_appForm.Text = "linkLabel1";
-            // 
-            // btn_people
-            // 
-            this.btn_people.Location = new System.Drawing.Point(49, 44);
-            this.btn_people.Name = "btn_people";
-            this.btn_people.Size = new System.Drawing.Size(75, 23);
-            this.btn_people.TabIndex = 4;
-            this.btn_people.Text = "Get people";
-            this.btn_people.UseVisualStyleBackColor = true;
-            // 
-            // pb_fac
-            // 
-            this.pb_fac.Location = new System.Drawing.Point(49, 92);
-            this.pb_fac.Name = "pb_fac";
-            this.pb_fac.Size = new System.Drawing.Size(100, 50);
-            this.pb_fac.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pb_fac.TabIndex = 5;
-            this.pb_fac.TabStop = false;
             // 
             // DataGridView1
             // 
@@ -200,11 +164,10 @@
             this.deg,
             this.city,
             this.term});
-            this.DataGridView1.Location = new System.Drawing.Point(38, 72);
+            this.DataGridView1.Location = new System.Drawing.Point(65, 121);
             this.DataGridView1.Name = "DataGridView1";
-            this.DataGridView1.Size = new System.Drawing.Size(549, 150);
+            this.DataGridView1.Size = new System.Drawing.Size(458, 129);
             this.DataGridView1.TabIndex = 8;
-            this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
             // emp
             // 
@@ -228,103 +191,101 @@
             // 
             // TabControl1
             // 
-            this.TabControl1.Controls.Add(this.tab_people);
-            this.TabControl1.Controls.Add(this.tab_degrees);
-            this.TabControl1.Controls.Add(this.tabPage5);
-            this.TabControl1.Controls.Add(this.tabPage6);
-            this.TabControl1.Controls.Add(this.tab_resources);
+            this.TabControl1.Controls.Add(this.coop_emp_tab);
+            this.TabControl1.Controls.Add(this.emp_emp_tab);
             this.TabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TabControl1.ItemSize = new System.Drawing.Size(25, 50);
-            this.TabControl1.Location = new System.Drawing.Point(-4, 160);
+            this.TabControl1.Location = new System.Drawing.Point(-4, 216);
             this.TabControl1.Multiline = true;
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TabControl1.SelectedIndex = 0;
-            this.TabControl1.Size = new System.Drawing.Size(611, 248);
+            this.TabControl1.Size = new System.Drawing.Size(611, 311);
             this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl1.TabIndex = 10;
             // 
-            // tab_people
+            // coop_emp_tab
             // 
-            this.tab_people.Controls.Add(this.btn_people);
-            this.tab_people.Controls.Add(this.pb_fac);
-            this.tab_people.Location = new System.Drawing.Point(4, 54);
-            this.tab_people.Name = "tab_people";
-            this.tab_people.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_people.Size = new System.Drawing.Size(603, 190);
-            this.tab_people.TabIndex = 0;
-            this.tab_people.Text = "People";
-            this.tab_people.UseVisualStyleBackColor = true;
+            this.coop_emp_tab.Controls.Add(this.coop_desc);
+            this.coop_emp_tab.Controls.Add(this.DataGridView1);
+            this.coop_emp_tab.Location = new System.Drawing.Point(4, 54);
+            this.coop_emp_tab.Name = "coop_emp_tab";
+            this.coop_emp_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.coop_emp_tab.Size = new System.Drawing.Size(603, 253);
+            this.coop_emp_tab.TabIndex = 4;
+            this.coop_emp_tab.Text = "Cooperative Education";
+            this.coop_emp_tab.UseVisualStyleBackColor = true;
             // 
-            // tab_degrees
+            // coop_desc
             // 
-            this.tab_degrees.Controls.Add(this.listView2);
-            this.tab_degrees.Location = new System.Drawing.Point(4, 54);
-            this.tab_degrees.Name = "tab_degrees";
-            this.tab_degrees.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_degrees.Size = new System.Drawing.Size(603, 190);
-            this.tab_degrees.TabIndex = 1;
-            this.tab_degrees.Text = "Degrees";
-            this.tab_degrees.UseVisualStyleBackColor = true;
+            this.coop_desc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.coop_desc.Location = new System.Drawing.Point(33, 14);
+            this.coop_desc.Name = "coop_desc";
+            this.coop_desc.ReadOnly = true;
+            this.coop_desc.Size = new System.Drawing.Size(536, 96);
+            this.coop_desc.TabIndex = 9;
+            this.coop_desc.Text = "";
             // 
-            // listView2
+            // emp_emp_tab
             // 
-            this.listView2.Location = new System.Drawing.Point(25, 33);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(607, 217);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.emp_emp_tab.Controls.Add(this.prof_emp_desc);
+            this.emp_emp_tab.Controls.Add(this.dataGridView2);
+            this.emp_emp_tab.Location = new System.Drawing.Point(4, 54);
+            this.emp_emp_tab.Name = "emp_emp_tab";
+            this.emp_emp_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.emp_emp_tab.Size = new System.Drawing.Size(603, 253);
+            this.emp_emp_tab.TabIndex = 5;
+            this.emp_emp_tab.Text = "Professional Employment";
+            this.emp_emp_tab.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
+            // prof_emp_desc
             // 
-            this.tabPage5.Controls.Add(this.DataGridView1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 54);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(603, 190);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "DataGridView";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.prof_emp_desc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.prof_emp_desc.Location = new System.Drawing.Point(33, 14);
+            this.prof_emp_desc.Name = "prof_emp_desc";
+            this.prof_emp_desc.ReadOnly = true;
+            this.prof_emp_desc.Size = new System.Drawing.Size(536, 96);
+            this.prof_emp_desc.TabIndex = 11;
+            this.prof_emp_desc.Text = "";
             // 
-            // tabPage6
+            // dataGridView2
             // 
-            this.tabPage6.Controls.Add(this.listView1);
-            this.tabPage6.Controls.Add(this.btn_ListView);
-            this.tabPage6.Location = new System.Drawing.Point(4, 54);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(603, 190);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "ListView";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn1,
+            this.Title,
+            this.dataGridViewTextBoxColumn3,
+            this.startdate});
+            this.dataGridView2.Location = new System.Drawing.Point(28, 118);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(549, 131);
+            this.dataGridView2.TabIndex = 10;
             // 
-            // listView1
+            // dataGridViewTextBoxColumn2
             // 
-            this.listView1.Location = new System.Drawing.Point(98, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(279, 192);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Degree";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // btn_ListView
+            // dataGridViewTextBoxColumn1
             // 
-            this.btn_ListView.Location = new System.Drawing.Point(215, 211);
-            this.btn_ListView.Name = "btn_ListView";
-            this.btn_ListView.Size = new System.Drawing.Size(162, 23);
-            this.btn_ListView.TabIndex = 7;
-            this.btn_ListView.Text = "Populate ListView";
-            this.btn_ListView.UseVisualStyleBackColor = true;
-            this.btn_ListView.Click += new System.EventHandler(this.btn_ListView_Click);
+            this.dataGridViewTextBoxColumn1.HeaderText = "Employer";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // tab_resources
+            // Title
             // 
-            this.tab_resources.Location = new System.Drawing.Point(4, 54);
-            this.tab_resources.Name = "tab_resources";
-            this.tab_resources.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_resources.Size = new System.Drawing.Size(603, 190);
-            this.tab_resources.TabIndex = 6;
-            this.tab_resources.Text = "Resources";
-            this.tab_resources.UseVisualStyleBackColor = true;
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "City";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // startdate
+            // 
+            this.startdate.HeaderText = "Start Date";
+            this.startdate.Name = "startdate";
             // 
             // panel1
             // 
@@ -344,15 +305,30 @@
             this.panel1.Size = new System.Drawing.Size(200, 549);
             this.panel1.TabIndex = 11;
             // 
+            // news_btn
+            // 
+            this.news_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.news_btn.FlatAppearance.BorderSize = 0;
+            this.news_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.news_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.news_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.news_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.news_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.news_btn.Location = new System.Drawing.Point(0, 310);
+            this.news_btn.Name = "news_btn";
+            this.news_btn.Size = new System.Drawing.Size(200, 43);
+            this.news_btn.TabIndex = 13;
+            this.news_btn.Text = "NEWS";
+            this.news_btn.UseVisualStyleBackColor = false;
+            this.news_btn.Click += new System.EventHandler(this.news_btn_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel3.Controls.Add(this.ll_resources_appForm);
-            this.panel3.Controls.Add(this.ll_pdf);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 393);
+            this.panel3.Location = new System.Drawing.Point(0, 359);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 156);
+            this.panel3.Size = new System.Drawing.Size(200, 190);
             this.panel3.TabIndex = 12;
             // 
             // resources_btn
@@ -364,7 +340,7 @@
             this.resources_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resources_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resources_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.resources_btn.Location = new System.Drawing.Point(0, 288);
+            this.resources_btn.Location = new System.Drawing.Point(0, 267);
             this.resources_btn.Name = "resources_btn";
             this.resources_btn.Size = new System.Drawing.Size(200, 43);
             this.resources_btn.TabIndex = 6;
@@ -382,7 +358,7 @@
             this.emp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emp_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emp_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emp_btn.Location = new System.Drawing.Point(0, 246);
+            this.emp_btn.Location = new System.Drawing.Point(0, 225);
             this.emp_btn.Name = "emp_btn";
             this.emp_btn.Size = new System.Drawing.Size(200, 43);
             this.emp_btn.TabIndex = 5;
@@ -400,7 +376,7 @@
             this.research_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.research_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.research_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.research_btn.Location = new System.Drawing.Point(0, 204);
+            this.research_btn.Location = new System.Drawing.Point(0, 183);
             this.research_btn.Name = "research_btn";
             this.research_btn.Size = new System.Drawing.Size(200, 43);
             this.research_btn.TabIndex = 4;
@@ -418,7 +394,7 @@
             this.people_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.people_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.people_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.people_btn.Location = new System.Drawing.Point(0, 162);
+            this.people_btn.Location = new System.Drawing.Point(0, 141);
             this.people_btn.Name = "people_btn";
             this.people_btn.Size = new System.Drawing.Size(200, 43);
             this.people_btn.TabIndex = 3;
@@ -436,7 +412,7 @@
             this.degrees_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.degrees_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.degrees_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.degrees_btn.Location = new System.Drawing.Point(0, 121);
+            this.degrees_btn.Location = new System.Drawing.Point(0, 100);
             this.degrees_btn.Name = "degrees_btn";
             this.degrees_btn.Size = new System.Drawing.Size(200, 43);
             this.degrees_btn.TabIndex = 2;
@@ -454,7 +430,7 @@
             this.about_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.about_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.about_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_btn.Location = new System.Drawing.Point(0, 79);
+            this.about_btn.Location = new System.Drawing.Point(0, 58);
             this.about_btn.Name = "about_btn";
             this.about_btn.Size = new System.Drawing.Size(200, 43);
             this.about_btn.TabIndex = 1;
@@ -515,6 +491,17 @@
             this.home_tab.TabIndex = 6;
             this.home_tab.Text = "Home";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(66, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(475, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Information Sciences and Technologies";
+            // 
             // about_tab
             // 
             this.about_tab.BackColor = System.Drawing.Color.Black;
@@ -571,7 +558,7 @@
             // about_quoteAuth
             // 
             this.about_quoteAuth.AutoSize = true;
-            this.about_quoteAuth.Location = new System.Drawing.Point(246, 129);
+            this.about_quoteAuth.Location = new System.Drawing.Point(206, 117);
             this.about_quoteAuth.Name = "about_quoteAuth";
             this.about_quoteAuth.Size = new System.Drawing.Size(35, 13);
             this.about_quoteAuth.TabIndex = 2;
@@ -734,7 +721,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -818,7 +805,7 @@
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
             this.faculty.Location = new System.Drawing.Point(3, 3);
             this.faculty.Name = "faculty";
@@ -847,7 +834,7 @@
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.staff.Dock = System.Windows.Forms.DockStyle.Top;
             this.staff.Location = new System.Drawing.Point(3, 3);
             this.staff.Name = "staff";
@@ -955,6 +942,8 @@
             // 
             // emp_tab
             // 
+            this.emp_tab.Controls.Add(this.groupBox1);
+            this.emp_tab.Controls.Add(this.emptitle);
             this.emp_tab.Controls.Add(this.TabControl1);
             this.emp_tab.Controls.Add(this.label2);
             this.emp_tab.Location = new System.Drawing.Point(4, 22);
@@ -1004,7 +993,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 187F));
             this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
@@ -1023,9 +1012,9 @@
             // 
             this.resource6.AutoSize = true;
             this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource6.Location = new System.Drawing.Point(326, 141);
+            this.resource6.Location = new System.Drawing.Point(324, 141);
             this.resource6.Name = "resource6";
-            this.resource6.Size = new System.Drawing.Size(180, 140);
+            this.resource6.Size = new System.Drawing.Size(182, 140);
             this.resource6.TabIndex = 5;
             this.resource6.Text = "label11";
             this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1034,9 +1023,9 @@
             // 
             this.resource5.AutoSize = true;
             this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource5.Location = new System.Drawing.Point(165, 141);
+            this.resource5.Location = new System.Drawing.Point(164, 141);
             this.resource5.Name = "resource5";
-            this.resource5.Size = new System.Drawing.Size(154, 140);
+            this.resource5.Size = new System.Drawing.Size(153, 140);
             this.resource5.TabIndex = 4;
             this.resource5.Text = "label10";
             this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1047,7 +1036,7 @@
             this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource4.Location = new System.Drawing.Point(4, 141);
             this.resource4.Name = "resource4";
-            this.resource4.Size = new System.Drawing.Size(154, 140);
+            this.resource4.Size = new System.Drawing.Size(153, 140);
             this.resource4.TabIndex = 3;
             this.resource4.Text = "label9";
             this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1056,9 +1045,9 @@
             // 
             this.resource3.AutoSize = true;
             this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource3.Location = new System.Drawing.Point(326, 1);
+            this.resource3.Location = new System.Drawing.Point(324, 1);
             this.resource3.Name = "resource3";
-            this.resource3.Size = new System.Drawing.Size(180, 139);
+            this.resource3.Size = new System.Drawing.Size(182, 139);
             this.resource3.TabIndex = 2;
             this.resource3.Text = "label8";
             this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1067,9 +1056,9 @@
             // 
             this.resource2.AutoSize = true;
             this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource2.Location = new System.Drawing.Point(165, 1);
+            this.resource2.Location = new System.Drawing.Point(164, 1);
             this.resource2.Name = "resource2";
-            this.resource2.Size = new System.Drawing.Size(154, 139);
+            this.resource2.Size = new System.Drawing.Size(153, 139);
             this.resource2.TabIndex = 1;
             this.resource2.Text = "label7";
             this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1080,7 +1069,7 @@
             this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource1.Location = new System.Drawing.Point(4, 1);
             this.resource1.Name = "resource1";
-            this.resource1.Size = new System.Drawing.Size(154, 139);
+            this.resource1.Size = new System.Drawing.Size(153, 139);
             this.resource1.TabIndex = 0;
             this.resource1.Text = "label6";
             this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1094,34 +1083,6 @@
             this.resources_title.Size = new System.Drawing.Size(82, 29);
             this.resources_title.TabIndex = 0;
             this.resources_title.Text = "[Title]";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(66, 145);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(475, 37);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Information Sciences and Technologies";
-            // 
-            // news_btn
-            // 
-            this.news_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.news_btn.FlatAppearance.BorderSize = 0;
-            this.news_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.news_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
-            this.news_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.news_btn.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.news_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.news_btn.Location = new System.Drawing.Point(0, 331);
-            this.news_btn.Name = "news_btn";
-            this.news_btn.Size = new System.Drawing.Size(200, 43);
-            this.news_btn.TabIndex = 13;
-            this.news_btn.Text = "NEWS";
-            this.news_btn.UseVisualStyleBackColor = false;
-            this.news_btn.Click += new System.EventHandler(this.news_btn_Click);
             // 
             // news_tab
             // 
@@ -1145,6 +1106,76 @@
             this.news_panel.TabIndex = 0;
             this.news_panel.WrapContents = false;
             // 
+            // emptitle
+            // 
+            this.emptitle.AutoSize = true;
+            this.emptitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emptitle.Location = new System.Drawing.Point(199, 41);
+            this.emptitle.Name = "emptitle";
+            this.emptitle.Size = new System.Drawing.Size(41, 13);
+            this.emptitle.TabIndex = 11;
+            this.emptitle.Text = "label6";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.employer_stats);
+            this.groupBox1.Controls.Add(this.careers_stats);
+            this.groupBox1.Controls.Add(this.stats_rtb);
+            this.groupBox1.Location = new System.Drawing.Point(16, 57);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(579, 153);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Degree Statistics";
+            // 
+            // stats_rtb
+            // 
+            this.stats_rtb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stats_rtb.Location = new System.Drawing.Point(17, 26);
+            this.stats_rtb.Name = "stats_rtb";
+            this.stats_rtb.ReadOnly = true;
+            this.stats_rtb.Size = new System.Drawing.Size(234, 117);
+            this.stats_rtb.TabIndex = 0;
+            this.stats_rtb.Text = "";
+            // 
+            // careers_stats
+            // 
+            this.careers_stats.Location = new System.Drawing.Point(257, 25);
+            this.careers_stats.Name = "careers_stats";
+            this.careers_stats.Size = new System.Drawing.Size(147, 117);
+            this.careers_stats.TabIndex = 1;
+            this.careers_stats.Text = "";
+            // 
+            // employer_stats
+            // 
+            this.employer_stats.Location = new System.Drawing.Point(414, 25);
+            this.employer_stats.Name = "employer_stats";
+            this.employer_stats.Size = new System.Drawing.Size(147, 117);
+            this.employer_stats.TabIndex = 2;
+            this.employer_stats.Text = "";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(304, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Careers";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(458, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Employers";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1158,17 +1189,12 @@
             this.Name = "Form1";
             this.Text = "Information Sciences and Technologies @ RIT";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.TabControl1.ResumeLayout(false);
-            this.tab_people.ResumeLayout(false);
-            this.tab_people.PerformLayout();
-            this.tab_degrees.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
+            this.coop_emp_tab.ResumeLayout(false);
+            this.emp_emp_tab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
@@ -1213,27 +1239,21 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.news_tab.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.LinkLabel ll_pdf;
-        private System.Windows.Forms.LinkLabel ll_resources_appForm;
-        private System.Windows.Forms.Button btn_people;
-        private System.Windows.Forms.PictureBox pb_fac;
         private System.Windows.Forms.DataGridView DataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn emp;
         private System.Windows.Forms.DataGridViewTextBoxColumn deg;
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn term;
         private System.Windows.Forms.TabControl TabControl1;
-        private System.Windows.Forms.TabPage tab_people;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TabPage tab_resources;
-        private System.Windows.Forms.ListView listView2;
-        protected internal System.Windows.Forms.TabPage tab_degrees;
+        private System.Windows.Forms.TabPage coop_emp_tab;
+        private System.Windows.Forms.TabPage emp_emp_tab;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button about_btn;
@@ -1293,14 +1313,27 @@
         private System.Windows.Forms.TabPage interestarea_tab;
         private System.Windows.Forms.TabPage faculty_research_tab;
         private System.Windows.Forms.TableLayoutPanel staff;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button btn_ListView;
         private System.Windows.Forms.TableLayoutPanel interestareas;
         private System.Windows.Forms.TableLayoutPanel faculty_research_panel;
         private System.Windows.Forms.Button news_btn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage news_tab;
         private System.Windows.Forms.FlowLayoutPanel news_panel;
+        private System.Windows.Forms.RichTextBox coop_desc;
+        private System.Windows.Forms.RichTextBox prof_emp_desc;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startdate;
+        private System.Windows.Forms.Label emptitle;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RichTextBox employer_stats;
+        private System.Windows.Forms.RichTextBox careers_stats;
+        private System.Windows.Forms.RichTextBox stats_rtb;
     }
 }
 
