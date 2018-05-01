@@ -46,8 +46,16 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.news_btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.link4 = new System.Windows.Forms.LinkLabel();
+            this.link5 = new System.Windows.Forms.LinkLabel();
+            this.link1 = new System.Windows.Forms.LinkLabel();
+            this.link6 = new System.Windows.Forms.LinkLabel();
+            this.link2 = new System.Windows.Forms.LinkLabel();
+            this.link3 = new System.Windows.Forms.LinkLabel();
             this.resources_btn = new System.Windows.Forms.Button();
             this.emp_btn = new System.Windows.Forms.Button();
             this.research_btn = new System.Windows.Forms.Button();
@@ -97,6 +105,14 @@
             this.faculty_research_panel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.emp_tab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.employer_stats = new System.Windows.Forms.RichTextBox();
+            this.careers_stats = new System.Windows.Forms.RichTextBox();
+            this.stats_rtb = new System.Windows.Forms.RichTextBox();
+            this.emptitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.resources_tab = new System.Windows.Forms.TabPage();
             this.resources_subtitle = new System.Windows.Forms.Label();
@@ -110,24 +126,8 @@
             this.resources_title = new System.Windows.Forms.Label();
             this.news_tab = new System.Windows.Forms.TabPage();
             this.news_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.emptitle = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.stats_rtb = new System.Windows.Forms.RichTextBox();
-            this.careers_stats = new System.Windows.Forms.RichTextBox();
-            this.employer_stats = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.link1 = new System.Windows.Forms.LinkLabel();
-            this.link2 = new System.Windows.Forms.LinkLabel();
-            this.link3 = new System.Windows.Forms.LinkLabel();
-            this.link6 = new System.Windows.Forms.LinkLabel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.link5 = new System.Windows.Forms.LinkLabel();
-            this.link4 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
             this.contact = new System.Windows.Forms.TabPage();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
             this.coop_emp_tab.SuspendLayout();
@@ -135,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.body.SuspendLayout();
@@ -162,11 +163,10 @@
             this.interestarea_tab.SuspendLayout();
             this.faculty_research_tab.SuspendLayout();
             this.emp_tab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.resources_tab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.news_tab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.contact.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -320,6 +320,25 @@
             this.panel1.Size = new System.Drawing.Size(200, 549);
             this.panel1.TabIndex = 11;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(0, 365);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 43);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "CONTACT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.button1.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
+            // 
             // news_btn
             // 
             this.news_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -336,6 +355,8 @@
             this.news_btn.Text = "NEWS";
             this.news_btn.UseVisualStyleBackColor = false;
             this.news_btn.Click += new System.EventHandler(this.news_btn_Click);
+            this.news_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.news_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // panel3
             // 
@@ -346,6 +367,86 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 136);
             this.panel3.TabIndex = 12;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.link4);
+            this.panel5.Controls.Add(this.link5);
+            this.panel5.Controls.Add(this.link1);
+            this.panel5.Controls.Add(this.link6);
+            this.panel5.Controls.Add(this.link2);
+            this.panel5.Controls.Add(this.link3);
+            this.panel5.Location = new System.Drawing.Point(12, 23);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(174, 92);
+            this.panel5.TabIndex = 4;
+            // 
+            // link4
+            // 
+            this.link4.AutoSize = true;
+            this.link4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link4.Location = new System.Drawing.Point(103, 13);
+            this.link4.Name = "link4";
+            this.link4.Size = new System.Drawing.Size(46, 12);
+            this.link4.TabIndex = 5;
+            this.link4.TabStop = true;
+            this.link4.Text = "linkLabel5";
+            // 
+            // link5
+            // 
+            this.link5.AutoSize = true;
+            this.link5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link5.Location = new System.Drawing.Point(103, 35);
+            this.link5.Name = "link5";
+            this.link5.Size = new System.Drawing.Size(46, 12);
+            this.link5.TabIndex = 4;
+            this.link5.TabStop = true;
+            this.link5.Text = "linkLabel4";
+            // 
+            // link1
+            // 
+            this.link1.AutoSize = true;
+            this.link1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link1.Location = new System.Drawing.Point(21, 13);
+            this.link1.Name = "link1";
+            this.link1.Size = new System.Drawing.Size(46, 12);
+            this.link1.TabIndex = 0;
+            this.link1.TabStop = true;
+            this.link1.Text = "linkLabel1";
+            this.link1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // link6
+            // 
+            this.link6.AutoSize = true;
+            this.link6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link6.Location = new System.Drawing.Point(103, 60);
+            this.link6.Name = "link6";
+            this.link6.Size = new System.Drawing.Size(46, 12);
+            this.link6.TabIndex = 3;
+            this.link6.TabStop = true;
+            this.link6.Text = "linkLabel3";
+            // 
+            // link2
+            // 
+            this.link2.AutoSize = true;
+            this.link2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link2.Location = new System.Drawing.Point(21, 35);
+            this.link2.Name = "link2";
+            this.link2.Size = new System.Drawing.Size(46, 12);
+            this.link2.TabIndex = 1;
+            this.link2.TabStop = true;
+            this.link2.Text = "linkLabel1";
+            // 
+            // link3
+            // 
+            this.link3.AutoSize = true;
+            this.link3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link3.Location = new System.Drawing.Point(21, 60);
+            this.link3.Name = "link3";
+            this.link3.Size = new System.Drawing.Size(46, 12);
+            this.link3.TabIndex = 2;
+            this.link3.TabStop = true;
+            this.link3.Text = "linkLabel2";
             // 
             // resources_btn
             // 
@@ -363,7 +464,8 @@
             this.resources_btn.Text = "RESOURCES";
             this.resources_btn.UseVisualStyleBackColor = false;
             this.resources_btn.Click += new System.EventHandler(this.resources_btn_Click);
-            this.resources_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.resources_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.resources_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // emp_btn
             // 
@@ -381,7 +483,8 @@
             this.emp_btn.Text = "EMPLOYMENT";
             this.emp_btn.UseVisualStyleBackColor = false;
             this.emp_btn.Click += new System.EventHandler(this.emp_btn_Click);
-            this.emp_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.emp_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.emp_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // research_btn
             // 
@@ -399,7 +502,8 @@
             this.research_btn.Text = "RESEARCH";
             this.research_btn.UseVisualStyleBackColor = false;
             this.research_btn.Click += new System.EventHandler(this.research_btn_Click);
-            this.research_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.research_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.research_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // people_btn
             // 
@@ -417,7 +521,8 @@
             this.people_btn.Text = "PEOPLE";
             this.people_btn.UseVisualStyleBackColor = false;
             this.people_btn.Click += new System.EventHandler(this.people_btn_Click);
-            this.people_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.people_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.people_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // degrees_btn
             // 
@@ -435,7 +540,8 @@
             this.degrees_btn.Text = "DEGREES";
             this.degrees_btn.UseVisualStyleBackColor = false;
             this.degrees_btn.Click += new System.EventHandler(this.degrees_btn_Click);
-            this.degrees_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.degrees_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.degrees_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // about_btn
             // 
@@ -453,7 +559,8 @@
             this.about_btn.Text = "ABOUT";
             this.about_btn.UseVisualStyleBackColor = false;
             this.about_btn.Click += new System.EventHandler(this.about_btn_Click);
-            this.about_btn.MouseHover += new System.EventHandler(this.about_btn_MouseHover);
+            this.about_btn.MouseEnter += new System.EventHandler(this.about_btn_MouseHover);
+            this.about_btn.MouseLeave += new System.EventHandler(this.about_btn_MouseHover);
             // 
             // panel2
             // 
@@ -594,10 +701,11 @@
             // about_title
             // 
             this.about_title.AutoSize = true;
+            this.about_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_title.Location = new System.Drawing.Point(216, 69);
+            this.about_title.Location = new System.Drawing.Point(92, 51);
             this.about_title.Name = "about_title";
-            this.about_title.Size = new System.Drawing.Size(49, 13);
+            this.about_title.Size = new System.Drawing.Size(72, 18);
             this.about_title.TabIndex = 0;
             this.about_title.Text = "[ TITLE ]";
             // 
@@ -738,7 +846,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -822,7 +930,7 @@
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
             this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
             this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
             this.faculty.Location = new System.Drawing.Point(3, 3);
             this.faculty.Name = "faculty";
@@ -851,7 +959,7 @@
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
             this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.staff.Dock = System.Windows.Forms.DockStyle.Top;
             this.staff.Location = new System.Drawing.Point(3, 3);
             this.staff.Name = "staff";
@@ -971,6 +1079,89 @@
             this.emp_tab.Text = "Employment";
             this.emp_tab.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.linkLabel2);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.employer_stats);
+            this.groupBox1.Controls.Add(this.careers_stats);
+            this.groupBox1.Controls.Add(this.stats_rtb);
+            this.groupBox1.Location = new System.Drawing.Point(16, 57);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(579, 153);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Degree Statistics";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(444, 126);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(88, 13);
+            this.linkLabel2.TabIndex = 13;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Tag = "http://ist.rit.edu/api/map.php";
+            this.linkLabel2.Text = "Employment Map";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(458, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Employers";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(304, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Careers";
+            // 
+            // employer_stats
+            // 
+            this.employer_stats.Location = new System.Drawing.Point(414, 25);
+            this.employer_stats.Name = "employer_stats";
+            this.employer_stats.Size = new System.Drawing.Size(147, 95);
+            this.employer_stats.TabIndex = 2;
+            this.employer_stats.Text = "";
+            // 
+            // careers_stats
+            // 
+            this.careers_stats.Location = new System.Drawing.Point(257, 25);
+            this.careers_stats.Name = "careers_stats";
+            this.careers_stats.Size = new System.Drawing.Size(147, 117);
+            this.careers_stats.TabIndex = 1;
+            this.careers_stats.Text = "";
+            // 
+            // stats_rtb
+            // 
+            this.stats_rtb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stats_rtb.Location = new System.Drawing.Point(17, 26);
+            this.stats_rtb.Name = "stats_rtb";
+            this.stats_rtb.ReadOnly = true;
+            this.stats_rtb.Size = new System.Drawing.Size(234, 117);
+            this.stats_rtb.TabIndex = 0;
+            this.stats_rtb.Text = "";
+            // 
+            // emptitle
+            // 
+            this.emptitle.AutoSize = true;
+            this.emptitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emptitle.Location = new System.Drawing.Point(171, 32);
+            this.emptitle.Name = "emptitle";
+            this.emptitle.Size = new System.Drawing.Size(41, 13);
+            this.emptitle.TabIndex = 11;
+            this.emptitle.Text = "label6";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1010,7 +1201,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 187F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
@@ -1029,23 +1220,27 @@
             // 
             this.resource6.AutoSize = true;
             this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource6.Location = new System.Drawing.Point(324, 141);
+            this.resource6.Location = new System.Drawing.Point(322, 141);
             this.resource6.Name = "resource6";
-            this.resource6.Size = new System.Drawing.Size(182, 140);
+            this.resource6.Size = new System.Drawing.Size(184, 140);
             this.resource6.TabIndex = 5;
             this.resource6.Text = "label11";
             this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource6.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource6.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resource5
             // 
             this.resource5.AutoSize = true;
             this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource5.Location = new System.Drawing.Point(164, 141);
+            this.resource5.Location = new System.Drawing.Point(163, 141);
             this.resource5.Name = "resource5";
-            this.resource5.Size = new System.Drawing.Size(153, 140);
+            this.resource5.Size = new System.Drawing.Size(152, 140);
             this.resource5.TabIndex = 4;
             this.resource5.Text = "label10";
             this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource5.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource5.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resource4
             // 
@@ -1053,32 +1248,38 @@
             this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource4.Location = new System.Drawing.Point(4, 141);
             this.resource4.Name = "resource4";
-            this.resource4.Size = new System.Drawing.Size(153, 140);
+            this.resource4.Size = new System.Drawing.Size(152, 140);
             this.resource4.TabIndex = 3;
             this.resource4.Text = "label9";
             this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource4.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource4.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resource3
             // 
             this.resource3.AutoSize = true;
             this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource3.Location = new System.Drawing.Point(324, 1);
+            this.resource3.Location = new System.Drawing.Point(322, 1);
             this.resource3.Name = "resource3";
-            this.resource3.Size = new System.Drawing.Size(182, 139);
+            this.resource3.Size = new System.Drawing.Size(184, 139);
             this.resource3.TabIndex = 2;
             this.resource3.Text = "label8";
             this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource3.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource3.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resource2
             // 
             this.resource2.AutoSize = true;
             this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource2.Location = new System.Drawing.Point(164, 1);
+            this.resource2.Location = new System.Drawing.Point(163, 1);
             this.resource2.Name = "resource2";
-            this.resource2.Size = new System.Drawing.Size(153, 139);
+            this.resource2.Size = new System.Drawing.Size(152, 139);
             this.resource2.TabIndex = 1;
             this.resource2.Text = "label7";
             this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource2.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource2.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resource1
             // 
@@ -1086,10 +1287,12 @@
             this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource1.Location = new System.Drawing.Point(4, 1);
             this.resource1.Name = "resource1";
-            this.resource1.Size = new System.Drawing.Size(153, 139);
+            this.resource1.Size = new System.Drawing.Size(152, 139);
             this.resource1.TabIndex = 0;
             this.resource1.Text = "label6";
             this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resource1.MouseEnter += new System.EventHandler(this.changeCellColor);
+            this.resource1.MouseLeave += new System.EventHandler(this.changeCellColor);
             // 
             // resources_title
             // 
@@ -1123,174 +1326,6 @@
             this.news_panel.TabIndex = 0;
             this.news_panel.WrapContents = false;
             // 
-            // emptitle
-            // 
-            this.emptitle.AutoSize = true;
-            this.emptitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptitle.Location = new System.Drawing.Point(171, 32);
-            this.emptitle.Name = "emptitle";
-            this.emptitle.Size = new System.Drawing.Size(41, 13);
-            this.emptitle.TabIndex = 11;
-            this.emptitle.Text = "label6";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.linkLabel2);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.employer_stats);
-            this.groupBox1.Controls.Add(this.careers_stats);
-            this.groupBox1.Controls.Add(this.stats_rtb);
-            this.groupBox1.Location = new System.Drawing.Point(16, 57);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(579, 153);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Degree Statistics";
-            // 
-            // stats_rtb
-            // 
-            this.stats_rtb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stats_rtb.Location = new System.Drawing.Point(17, 26);
-            this.stats_rtb.Name = "stats_rtb";
-            this.stats_rtb.ReadOnly = true;
-            this.stats_rtb.Size = new System.Drawing.Size(234, 117);
-            this.stats_rtb.TabIndex = 0;
-            this.stats_rtb.Text = "";
-            // 
-            // careers_stats
-            // 
-            this.careers_stats.Location = new System.Drawing.Point(257, 25);
-            this.careers_stats.Name = "careers_stats";
-            this.careers_stats.Size = new System.Drawing.Size(147, 117);
-            this.careers_stats.TabIndex = 1;
-            this.careers_stats.Text = "";
-            // 
-            // employer_stats
-            // 
-            this.employer_stats.Location = new System.Drawing.Point(414, 25);
-            this.employer_stats.Name = "employer_stats";
-            this.employer_stats.Size = new System.Drawing.Size(147, 95);
-            this.employer_stats.TabIndex = 2;
-            this.employer_stats.Text = "";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(304, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Careers";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(458, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Employers";
-            // 
-            // link1
-            // 
-            this.link1.AutoSize = true;
-            this.link1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link1.Location = new System.Drawing.Point(21, 13);
-            this.link1.Name = "link1";
-            this.link1.Size = new System.Drawing.Size(46, 12);
-            this.link1.TabIndex = 0;
-            this.link1.TabStop = true;
-            this.link1.Text = "linkLabel1";
-            this.link1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // link2
-            // 
-            this.link2.AutoSize = true;
-            this.link2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link2.Location = new System.Drawing.Point(21, 35);
-            this.link2.Name = "link2";
-            this.link2.Size = new System.Drawing.Size(46, 12);
-            this.link2.TabIndex = 1;
-            this.link2.TabStop = true;
-            this.link2.Text = "linkLabel1";
-            // 
-            // link3
-            // 
-            this.link3.AutoSize = true;
-            this.link3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link3.Location = new System.Drawing.Point(21, 60);
-            this.link3.Name = "link3";
-            this.link3.Size = new System.Drawing.Size(46, 12);
-            this.link3.TabIndex = 2;
-            this.link3.TabStop = true;
-            this.link3.Text = "linkLabel2";
-            // 
-            // link6
-            // 
-            this.link6.AutoSize = true;
-            this.link6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link6.Location = new System.Drawing.Point(103, 60);
-            this.link6.Name = "link6";
-            this.link6.Size = new System.Drawing.Size(46, 12);
-            this.link6.TabIndex = 3;
-            this.link6.TabStop = true;
-            this.link6.Text = "linkLabel3";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.link4);
-            this.panel5.Controls.Add(this.link5);
-            this.panel5.Controls.Add(this.link1);
-            this.panel5.Controls.Add(this.link6);
-            this.panel5.Controls.Add(this.link2);
-            this.panel5.Controls.Add(this.link3);
-            this.panel5.Location = new System.Drawing.Point(12, 23);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(174, 92);
-            this.panel5.TabIndex = 4;
-            // 
-            // link5
-            // 
-            this.link5.AutoSize = true;
-            this.link5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link5.Location = new System.Drawing.Point(103, 35);
-            this.link5.Name = "link5";
-            this.link5.Size = new System.Drawing.Size(46, 12);
-            this.link5.TabIndex = 4;
-            this.link5.TabStop = true;
-            this.link5.Text = "linkLabel4";
-            // 
-            // link4
-            // 
-            this.link4.AutoSize = true;
-            this.link4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link4.Location = new System.Drawing.Point(103, 13);
-            this.link4.Name = "link4";
-            this.link4.Size = new System.Drawing.Size(46, 12);
-            this.link4.TabIndex = 5;
-            this.link4.TabStop = true;
-            this.link4.Text = "linkLabel5";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 365);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 43);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "CONTACT";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // contact
             // 
             this.contact.Controls.Add(this.linkLabel1);
@@ -1315,18 +1350,6 @@
             this.linkLabel1.Text = "Click to be taken to contact form";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(444, 126);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(88, 13);
-            this.linkLabel2.TabIndex = 13;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Tag = "http://ist.rit.edu/api/map.php";
-            this.linkLabel2.Text = "Employment Map";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1347,6 +1370,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.body.ResumeLayout(false);
@@ -1386,15 +1411,13 @@
             this.faculty_research_tab.PerformLayout();
             this.emp_tab.ResumeLayout(false);
             this.emp_tab.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.news_tab.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.contact.ResumeLayout(false);
             this.contact.PerformLayout();
             this.ResumeLayout(false);

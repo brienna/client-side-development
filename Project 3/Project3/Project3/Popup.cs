@@ -543,6 +543,7 @@ namespace Project3 {
             // Show and populate Ambassadors tab
             popup_tabs.SelectedTab = ambassadors_tab;
             Label ambassadors_title = new Label();
+            ambassadors_title.Font = new Font("Arial", 14, FontStyle.Bold);
             ambassadors_title.Text = resources.studentAmbassadors.title;
             ambassadors_title.Width = ambassadors_panel.Width - (ambassadors_title.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             PictureBox img = new PictureBox();
@@ -556,6 +557,7 @@ namespace Project3 {
             for (int i = 0; i < resources.studentAmbassadors.subSectionContent.Count; i++) {
                 SubSectionContent section = resources.studentAmbassadors.subSectionContent[i];
                 Label sectionTitle = new Label();
+                sectionTitle.Font = new Font("Arial", 10, FontStyle.Bold);
                 sectionTitle.Text = section.title;
                 sectionTitle.Width = ambassadors_panel.Width - (sectionTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                 RichTextBox sectionDesc = new RichTextBox();
@@ -587,6 +589,7 @@ namespace Project3 {
             // Show and populate Coop Enrollment tab
             popup_tabs.SelectedTab = coop_tab;
             Label coop_title = new Label();
+            coop_title.Font = new Font("Arial", 14, FontStyle.Bold);
             coop_title.Text = resources.coopEnrollment.title;
             coop_title.Width = coop_panel.Width - (coop_title.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             LinkLabel guide = new LinkLabel();
@@ -599,6 +602,7 @@ namespace Project3 {
             for (int i = 0; i < resources.coopEnrollment.enrollmentInformationContent.Count; i++) {
                 EnrollmentInformationContent info = resources.coopEnrollment.enrollmentInformationContent[i];
                 Label infoTitle = new Label();
+                infoTitle.Font = new Font("Arial", 10, FontStyle.Bold);
                 infoTitle.Text = info.title;
                 infoTitle.Width = coop_panel.Width - (infoTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                 RichTextBox infoDesc = new RichTextBox();
@@ -617,6 +621,7 @@ namespace Project3 {
             // Show and populate Tutors tab
             popup_tabs.SelectedTab = tutors_tab;
             Label tutors_title = new Label();
+            tutors_title.Font = new Font("Arial", 14, FontStyle.Bold);
             tutors_title.Text = resources.tutorsAndLabInformation.title;
             tutors_title.Width = tutors_panel.Width - (tutors_title.Margin.Right * 2);
             RichTextBox tutors_desc = new RichTextBox();
@@ -642,6 +647,7 @@ namespace Project3 {
 
             // Academic advisors
             Label aaLabel = new Label();
+            aaLabel.Font = new Font("Arial", 14, FontStyle.Bold);
             aaLabel.Text = resources.studentServices.academicAdvisors.title;
             aaLabel.Width = advising_panel.Width - (aaLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox aaRtb = new RichTextBox();
@@ -661,6 +667,7 @@ namespace Project3 {
 
             // Faculty advisors
             Label faLabel = new Label();
+            faLabel.Font = new Font("Arial", 14, FontStyle.Bold);
             faLabel.Text = resources.studentServices.facultyAdvisors.title;
             faLabel.Width = advising_panel.Width - (faLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox faRtb = new RichTextBox();
@@ -674,6 +681,7 @@ namespace Project3 {
 
             // IST minor advisors
             Label imaLabel = new Label();
+            imaLabel.Font = new Font("Arial", 14, FontStyle.Bold);
             imaLabel.Text = resources.studentServices.istMinorAdvising.title;
             imaLabel.Width = advising_panel.Width - (imaLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox imaRtb = new RichTextBox();
@@ -693,6 +701,7 @@ namespace Project3 {
 
             // Professional advisors
             Label paLabel = new Label();
+            paLabel.Font = new Font("Arial", 14, FontStyle.Bold);
             paLabel.Text = resources.studentServices.professonalAdvisors.title;
             paLabel.Width = advising_panel.Width - (paLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox paRtb = new RichTextBox();
@@ -734,7 +743,9 @@ namespace Project3 {
             forms_title.Text = resources.title;
             // Undergraduate forms
             Label ugLabel = new Label();
+            ugLabel.Font = new Font("Arial", 10, FontStyle.Bold);
             ugLabel.Text = "Undergraduate Forms";
+            ugLabel.Width = forms_list.Width;
             forms_list.Controls.Add(ugLabel);
             for (int i = 0; i < resources.forms.undergraduateForms.Count; i++) {
                 LinkLabel form = new LinkLabel();
@@ -745,7 +756,9 @@ namespace Project3 {
             }
             // Graduate forms 
             Label gradLabel = new Label();
+            gradLabel.Font = new Font("Arial", 10, FontStyle.Bold);
             gradLabel.Text = "Graduate Forms";
+            gradLabel.Width = forms_list.Width;
             forms_list.Controls.Add(gradLabel);
             for (int i = 0; i < resources.forms.graduateForms.Count; i++) {
                 LinkLabel form = new LinkLabel();

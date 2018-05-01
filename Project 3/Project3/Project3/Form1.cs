@@ -106,11 +106,17 @@ namespace Project3 {
         // When menu buttons are hovered over, change cursor
         private void about_btn_MouseHover(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.Hand;
+            if (this.Cursor == Cursors.Hand) {
+                this.Cursor = Cursors.Default;
+            } else {
+                this.Cursor = Cursors.Hand;
+            }
         }
 
         // When "ABOUT" is clicked
         private void about_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             // Change body view to About section
             body.SelectedTab = about_tab;
 
@@ -128,8 +134,28 @@ namespace Project3 {
             }
         }
 
-        // Change body view to Degrees section when "DEGREES" is clicked
+        // Render only active menu button colored
+        private void processButtons(object sender) {
+            Button activeMenuBtn = (Button)sender;
+            // Loop through side bar looking for buttons
+            for (int i = 0; i < panel1.Controls.Count; i++) {
+                if (panel1.Controls[i] is Button) {
+                    Button currButton = (Button)panel1.Controls[i];
+                    // If button is currently active one, render colored
+                    if (currButton != activeMenuBtn) {
+                        currButton.BackColor = SystemColors.ActiveCaptionText;
+                    } else {
+                        // Otherwise remove any renderings from previous clicks 
+                        currButton.BackColor = Color.DarkOrange;
+                    }
+                }
+            }
+        }
+
+        // Show Degrees section when "DEGREES" is clicked
         private void degrees_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             // Change body view to Degrees section
             body.SelectedTab = degrees_tab;
 
@@ -160,7 +186,12 @@ namespace Project3 {
                     Label degTitle = new Label();
                     degTitle.Text = currUgDeg.title;
                     degTitle.Dock = DockStyle.Fill;
+                    degTitle.ForeColor = Color.DarkOrange;
+                    degTitle.Font = new Font("Arial", 9, FontStyle.Bold);
                     degTitle.AutoSize = false;
+                    degTitle.Click += (sender4, e4) => showUgDegreePopup(sender4, e4, currUgDeg);
+                    degTitle.MouseEnter += (sender13, e13) => changeDegreeColor(sender13, e13, degreePanel);
+                    degTitle.MouseLeave += (sender14, e14) => changeDegreeColor(sender14, e14, degreePanel);
                     degTitle.MaximumSize = new Size(100, 0);
                     degTitle.AutoSize = true;
 
@@ -170,6 +201,9 @@ namespace Project3 {
                     degDesc.Multiline = true;
                     degDesc.Dock = DockStyle.Fill;
                     degDesc.Text = currUgDeg.description;
+                    degDesc.Click += (sender3, e3) => showUgDegreePopup(sender3, e3, currUgDeg);
+                    degDesc.MouseEnter += (sender11, e11) => changeDegreeColor(sender11, e11, degreePanel);
+                    degDesc.MouseLeave += (sender12, e12) => changeDegreeColor(sender12, e12, degreePanel);
                     SizeF size = degDesc.CreateGraphics()
                                 .MeasureString(degDesc.Text,
                                                 degDesc.Font,
@@ -189,6 +223,8 @@ namespace Project3 {
 
                     // Set onclick event handler to show degree details in popup
                     degreePanel.Click += (sender2, e2) => showUgDegreePopup(sender2, e2, currUgDeg);
+                    degreePanel.MouseEnter += (sender9, e9) => changeDegreeColor(sender9, e9, degreePanel);
+                    degreePanel.MouseLeave += (sender10, e10) => changeDegreeColor(sender10, e10, degreePanel);
 
                     // Jump to next row if current row is full
                     if ((i + 1) % 3 == 0) {
@@ -207,42 +243,24 @@ namespace Project3 {
 
                     // If certificate,
                     if (currGradDeg.degreeName == "graduate advanced certificates") {
+                        // Dynamically load research by faculty 
                         int certRow = 0;
                         int certColumn = 0;
                         for (int j = 0; j < currGradDeg.availableCertificates.Count; j++) {
-                            // Create and populate panel for each certificate
-                            TableLayoutPanel certPanel = new TableLayoutPanel();
-                            certPanel.ColumnCount = 1;
-                            certPanel.RowCount = 1;
-                            certPanel.AutoSize = true;
-                            certPanel.Dock = DockStyle.Fill;
-                            certPanel.BorderStyle = BorderStyle.FixedSingle;
-                            foreach (RowStyle style in certPanel.RowStyles) {
-                                style.SizeType = SizeType.AutoSize;
-                            }
-
                             // Certificate title
                             LinkLabel certTitle = new LinkLabel();
-                            certTitle.LinkClicked += linkLabel1_LinkClicked;
                             certTitle.Text = degrees.graduate[i].availableCertificates[j];
-                            certTitle.Dock = DockStyle.Fill;
-                            certTitle.AutoSize = false;
-                            certTitle.MaximumSize = new Size(100, 0);
-                            certTitle.AutoSize = true;
                             if (certTitle.Text == "Web Development Advanced certificate") {
                                 certTitle.Tag = "http://www.rit.edu/programs/web-development-adv-cert";
                             } else if (certTitle.Text == "Networking,Planning and Design Advanced Cerificate") {
                                 certTitle.Tag = "http://www.rit.edu/programs/networking-planning-and-design-adv-cert";
                             }
-
-                            // Add components to certificate panel, then to main panel
-                            certPanel.Controls.Add(certTitle, 0, 0);
-                            grad_certs.Controls.Add(certPanel, certColumn, certRow);
-
-                            // Resize rows
-                            foreach (RowStyle style in grad_certs.RowStyles) {
-                                style.SizeType = SizeType.AutoSize;
-                            }
+                            certTitle.LinkClicked += linkLabel1_LinkClicked;
+                            certTitle.Margin = new Padding(0, 0, certTitle.Margin.Right, certTitle.Margin.Right);
+                            certTitle.BorderStyle = BorderStyle.FixedSingle;
+                            certTitle.TextAlign = ContentAlignment.MiddleCenter;
+                            certTitle.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+                            grad_certs.Controls.Add(certTitle, certColumn, certRow);
 
                             // Jump to next row if current row is full
                             if ((j + 1) % 3 == 0) {
@@ -253,6 +271,11 @@ namespace Project3 {
                             }
                         }
 
+                        // Resize rows
+                        foreach (RowStyle style in grad_certs.RowStyles) {
+                            style.SizeType = SizeType.AutoSize;
+                        }
+                        
                         // End current iteration of i loop here
                         continue;
                     }
@@ -272,6 +295,11 @@ namespace Project3 {
                     Label degTitle = new Label();
                     degTitle.Text = currGradDeg.title;
                     degTitle.Dock = DockStyle.Fill;
+                    degTitle.ForeColor = Color.DarkOrange;
+                    degTitle.Font = new Font("Arial", 9, FontStyle.Bold);
+                    degTitle.Click += (sender4, e4) => showGradDegreeDetails(sender4, e4, currGradDeg);
+                    degTitle.MouseEnter += (sender19, e19) => changeDegreeColor(sender19, e19, degreePanel);
+                    degTitle.MouseLeave += (sender20, e20) => changeDegreeColor(sender20, e20, degreePanel);
                     degTitle.AutoSize = false;
                     degTitle.MaximumSize = new Size(100, 0);
                     degTitle.AutoSize = true;
@@ -280,6 +308,9 @@ namespace Project3 {
                     TextBox degDesc = new TextBox();
                     degDesc.ReadOnly = true;
                     degDesc.Multiline = true;
+                    degDesc.Click += (sender3, e3) => showGradDegreeDetails(sender3, e3, currGradDeg);
+                    degDesc.MouseEnter += (sender17, e17) => changeDegreeColor(sender17, e17, degreePanel);
+                    degDesc.MouseLeave += (sender18, e18) => changeDegreeColor(sender18, e18, degreePanel);
                     degDesc.Dock = DockStyle.Fill;
                     degDesc.Text = currGradDeg.description;
                     SizeF size = degDesc.CreateGraphics()
@@ -301,6 +332,8 @@ namespace Project3 {
 
                     // Set onclick event handler to show degree details in popup
                     degreePanel.Click += (sender2, e2) => showGradDegreeDetails(sender2, e2, currGradDeg);
+                    degreePanel.MouseEnter += (sender15, e15) => changeDegreeColor(sender15, e15, degreePanel);
+                    degreePanel.MouseLeave += (sender16, e16) => changeDegreeColor(sender16, e16, degreePanel);
 
                     // Jump to next row if current row is full
                     if ((i + 1) % 3 == 0) {
@@ -314,21 +347,31 @@ namespace Project3 {
             }
         }
 
-        // Show overlay with details when grad degree is clicked
+        private void changeDegreeColor(object sender, EventArgs e, TableLayoutPanel degreePanel) {
+            if (degreePanel.BackColor == Color.Transparent) {
+                degreePanel.BackColor = Color.Black;
+                this.Cursor = Cursors.Hand;
+            } else if (degreePanel.BackColor == Color.Black) {
+                degreePanel.BackColor = Color.Transparent;
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        // Popup for grad degree
         private void showGradDegreeDetails(object sender2, EventArgs e2, Graduate gradDeg) {
             // Populate popup with data
             Popup popup = new Popup(gradDeg);
             popup.Show();
         }
 
-        // Show overlay with details when ug degree is clicked
+        // Popup for ug degree
         private void showUgDegreePopup(object sender, EventArgs e, Undergraduate ugDeg) {
             // Populate popup with data
             Popup popup = new Popup(ugDeg);
             popup.Show();
         }
 
-        // Show overlay with details when ug minor is clicked
+        // Popup for ug minors
         private void showUgMinorPopup(object sender2, EventArgs e2, UgMinor ugMinor) {
             // Populate popup with data
             Popup popup = new Popup(ugMinor);
@@ -382,6 +425,8 @@ namespace Project3 {
 
         // Change body view to People section when "PEOPLE" is clicked
         private void people_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             // Change body view to People section
             body.SelectedTab = people_tab;
 
@@ -436,12 +481,13 @@ namespace Project3 {
                     currLabel.ForeColor = Color.LightGray;
                     this.Cursor = Cursors.Hand;
                 }
-            }
+            } 
         }
 
         // Change body view to Research section when "RESEARCH" is clicked
-        private void research_btn_Click(object sender, EventArgs e)
-        {
+        private void research_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             body.SelectedTab = research_tab;
 
             // Ensure we have the data, fetch if we don't
@@ -544,6 +590,7 @@ namespace Project3 {
 
         // Change body view to Employment section when "EMPLOYMENT" is clicked
         private void emp_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
             body.SelectedTab = emp_tab;
 
             // Ensure we have data, fetch if we don't
@@ -605,8 +652,9 @@ namespace Project3 {
         }
 
         // Change body view to Resources section when "RESOURCES" is clicked
-        private void resources_btn_Click(object sender, EventArgs e)
-        {
+        private void resources_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             // Change body view to Resources section
             body.SelectedTab = resources_tab;
 
@@ -622,16 +670,22 @@ namespace Project3 {
 
                 // Process each resource label and popup event handler
                 resource1.Text = "Forms";
+                resource1.BackColor = Color.Transparent;
                 resource1.Click += (sender2, e2) => showResourcesPopup(sender2, e2, resource1.Text);
                 resource2.Text = resources.studyAbroad.title;
+                resource2.BackColor = Color.Transparent;
                 resource2.Click += (sender3, e3) => showResourcesPopup(sender3, e3, resource2.Text);
                 resource3.Text = resources.studentServices.title;
+                resource3.BackColor = Color.Transparent;
                 resource3.Click += (sender4, e4) => showResourcesPopup(sender4, e4, resource3.Text);
                 resource4.Text = resources.tutorsAndLabInformation.title;
+                resource4.BackColor = Color.Transparent;
                 resource4.Click += (sender5, e5) => showResourcesPopup(sender5, e5, resource4.Text);
                 resource5.Text = resources.studentAmbassadors.title;
+                resource5.BackColor = Color.Transparent;
                 resource5.Click += (sender6, e6) => showResourcesPopup(sender6, e6, resource5.Text);
                 resource6.Text = resources.coopEnrollment.title;
+                resource6.BackColor = Color.Transparent;
                 resource6.Click += (sender7, e7) => showResourcesPopup(sender7, e7, resource6.Text);
             }
         }
@@ -695,6 +749,8 @@ namespace Project3 {
 
         // Load news when click "NEWS" button
         private void news_btn_Click(object sender, EventArgs e) {
+            processButtons(sender);
+
             // Switch to news view
             body.SelectedTab = news_tab;
 
@@ -703,12 +759,6 @@ namespace Project3 {
                 Console.WriteLine("Loading news...");
                 string jsonNews = rj.getRestJSON("/news/");
                 news = JToken.Parse(jsonNews).ToObject<News>();
-
-                Label mainTitle = new Label();
-                mainTitle.Text = "News";
-                mainTitle.Width = news_panel.Width - (mainTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
-                mainTitle.Font = new Font("Arial", 18, FontStyle.Bold);
-                news_panel.Controls.Add(mainTitle);
 
                 // Load news
                 for (int i = 0; i < news.older.Count; i++) {
@@ -743,6 +793,7 @@ namespace Project3 {
 
         // Show Contact view when click "CONTACT" button
         private void button1_Click(object sender, EventArgs e) {
+            processButtons(sender);
             body.SelectedTab = contact;
         }
     }

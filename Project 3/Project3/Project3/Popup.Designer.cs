@@ -93,17 +93,18 @@
             // forms_list
             // 
             this.forms_list.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.forms_list.Location = new System.Drawing.Point(192, 84);
+            this.forms_list.Location = new System.Drawing.Point(102, 78);
             this.forms_list.Name = "forms_list";
-            this.forms_list.Size = new System.Drawing.Size(168, 283);
+            this.forms_list.Size = new System.Drawing.Size(336, 283);
             this.forms_list.TabIndex = 1;
             // 
             // forms_title
             // 
             this.forms_title.AutoSize = true;
-            this.forms_title.Location = new System.Drawing.Point(255, 45);
+            this.forms_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forms_title.Location = new System.Drawing.Point(200, 39);
             this.forms_title.Name = "forms_title";
-            this.forms_title.Size = new System.Drawing.Size(35, 13);
+            this.forms_title.Size = new System.Drawing.Size(66, 24);
             this.forms_title.TabIndex = 0;
             this.forms_title.Text = "label1";
             // 
@@ -141,9 +142,10 @@
             // studyAbroad_title
             // 
             this.studyAbroad_title.AutoSize = true;
-            this.studyAbroad_title.Location = new System.Drawing.Point(236, 26);
+            this.studyAbroad_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studyAbroad_title.Location = new System.Drawing.Point(178, 20);
             this.studyAbroad_title.Name = "studyAbroad_title";
-            this.studyAbroad_title.Size = new System.Drawing.Size(35, 13);
+            this.studyAbroad_title.Size = new System.Drawing.Size(66, 24);
             this.studyAbroad_title.TabIndex = 0;
             this.studyAbroad_title.Text = "label1";
             // 
@@ -279,10 +281,10 @@
             // person_name
             // 
             this.person_name.AutoSize = true;
-            this.person_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.person_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.person_name.Location = new System.Drawing.Point(32, 26);
             this.person_name.Name = "person_name";
-            this.person_name.Size = new System.Drawing.Size(51, 20);
+            this.person_name.Size = new System.Drawing.Size(57, 20);
             this.person_name.TabIndex = 0;
             this.person_name.Text = "label1";
             // 
