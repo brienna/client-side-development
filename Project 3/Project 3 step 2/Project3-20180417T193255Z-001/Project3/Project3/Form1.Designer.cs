@@ -33,13 +33,11 @@
             this.ll_resources_appForm = new System.Windows.Forms.LinkLabel();
             this.btn_people = new System.Windows.Forms.Button();
             this.pb_fac = new System.Windows.Forms.PictureBox();
-            this.btn_ListView = new System.Windows.Forms.Button();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.term = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.tab_people = new System.Windows.Forms.TabPage();
             this.tab_degrees = new System.Windows.Forms.TabPage();
@@ -83,8 +81,16 @@
             this.grad_certs = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.people_tab = new System.Windows.Forms.TabPage();
+            this.people_tabControl = new System.Windows.Forms.TabControl();
+            this.faculty_tab = new System.Windows.Forms.TabPage();
+            this.faculty = new System.Windows.Forms.TableLayoutPanel();
+            this.staff_tab = new System.Windows.Forms.TabPage();
+            this.staff = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.research_tab = new System.Windows.Forms.TabPage();
+            this.research_tabs = new System.Windows.Forms.TabControl();
+            this.interestarea_tab = new System.Windows.Forms.TabPage();
+            this.faculty_research_tab = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.emp_tab = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,14 +104,8 @@
             this.resource2 = new System.Windows.Forms.Label();
             this.resource1 = new System.Windows.Forms.Label();
             this.resources_title = new System.Windows.Forms.Label();
-            this.people_tabControl = new System.Windows.Forms.TabControl();
-            this.faculty_tab = new System.Windows.Forms.TabPage();
-            this.staff_tab = new System.Windows.Forms.TabPage();
-            this.tabControl5 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.faculty = new System.Windows.Forms.TableLayoutPanel();
-            this.staff = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_ListView = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pb_fac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.TabControl1.SuspendLayout();
@@ -133,14 +133,14 @@
             this.grad_deg_tab.SuspendLayout();
             this.grad_cert_tab.SuspendLayout();
             this.people_tab.SuspendLayout();
-            this.research_tab.SuspendLayout();
-            this.emp_tab.SuspendLayout();
-            this.resources_tab.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.people_tabControl.SuspendLayout();
             this.faculty_tab.SuspendLayout();
             this.staff_tab.SuspendLayout();
-            this.tabControl5.SuspendLayout();
+            this.research_tab.SuspendLayout();
+            this.research_tabs.SuspendLayout();
+            this.emp_tab.SuspendLayout();
+            this.resources_tab.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ll_pdf
@@ -182,16 +182,6 @@
             this.pb_fac.TabIndex = 5;
             this.pb_fac.TabStop = false;
             // 
-            // btn_ListView
-            // 
-            this.btn_ListView.Location = new System.Drawing.Point(215, 211);
-            this.btn_ListView.Name = "btn_ListView";
-            this.btn_ListView.Size = new System.Drawing.Size(162, 23);
-            this.btn_ListView.TabIndex = 7;
-            this.btn_ListView.Text = "Populate ListView";
-            this.btn_ListView.UseVisualStyleBackColor = true;
-            this.btn_ListView.Click += new System.EventHandler(this.btn_ListView_Click);
-            // 
             // DataGridView1
             // 
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -226,14 +216,6 @@
             this.term.HeaderText = "Term";
             this.term.Name = "term";
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(98, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(279, 192);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // TabControl1
             // 
             this.TabControl1.Controls.Add(this.tab_people);
@@ -243,12 +225,12 @@
             this.TabControl1.Controls.Add(this.tab_resources);
             this.TabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TabControl1.ItemSize = new System.Drawing.Size(25, 50);
-            this.TabControl1.Location = new System.Drawing.Point(71, 133);
+            this.TabControl1.Location = new System.Drawing.Point(-4, 160);
             this.TabControl1.Multiline = true;
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TabControl1.SelectedIndex = 0;
-            this.TabControl1.Size = new System.Drawing.Size(418, 248);
+            this.TabControl1.Size = new System.Drawing.Size(611, 248);
             this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl1.TabIndex = 10;
             // 
@@ -302,7 +284,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 54);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(410, 190);
+            this.tabPage6.Size = new System.Drawing.Size(603, 190);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "ListView";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -480,6 +462,7 @@
             this.body.Location = new System.Drawing.Point(200, 0);
             this.body.Margin = new System.Windows.Forms.Padding(0);
             this.body.Name = "body";
+            this.body.Padding = new System.Drawing.Point(0, 0);
             this.body.SelectedIndex = 0;
             this.body.Size = new System.Drawing.Size(611, 549);
             this.body.TabIndex = 12;
@@ -572,7 +555,7 @@
             // 
             this.about_title.AutoSize = true;
             this.about_title.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.about_title.Location = new System.Drawing.Point(270, 61);
+            this.about_title.Location = new System.Drawing.Point(262, 0);
             this.about_title.Name = "about_title";
             this.about_title.Size = new System.Drawing.Size(49, 13);
             this.about_title.TabIndex = 0;
@@ -594,11 +577,11 @@
             // 
             this.tabControl2.Controls.Add(this.ug_tab);
             this.tabControl2.Controls.Add(this.grad_tab);
-            this.tabControl2.Location = new System.Drawing.Point(15, 39);
+            this.tabControl2.Location = new System.Drawing.Point(-4, 39);
             this.tabControl2.Multiline = true;
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(588, 476);
+            this.tabControl2.Size = new System.Drawing.Size(611, 488);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 5;
             // 
@@ -608,7 +591,7 @@
             this.ug_tab.Location = new System.Drawing.Point(4, 22);
             this.ug_tab.Name = "ug_tab";
             this.ug_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.ug_tab.Size = new System.Drawing.Size(580, 450);
+            this.ug_tab.Size = new System.Drawing.Size(603, 462);
             this.ug_tab.TabIndex = 0;
             this.ug_tab.Text = "Undergraduate";
             this.ug_tab.UseVisualStyleBackColor = true;
@@ -617,10 +600,10 @@
             // 
             this.tabControl3.Controls.Add(this.ug_deg_tab);
             this.tabControl3.Controls.Add(this.ug_minors_tab);
-            this.tabControl3.Location = new System.Drawing.Point(18, 27);
+            this.tabControl3.Location = new System.Drawing.Point(-4, 6);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(521, 397);
+            this.tabControl3.Size = new System.Drawing.Size(611, 460);
             this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl3.TabIndex = 0;
             this.tabControl3.Enter += new System.EventHandler(this.tabControl3_Enter);
@@ -631,7 +614,7 @@
             this.ug_deg_tab.Location = new System.Drawing.Point(4, 22);
             this.ug_deg_tab.Name = "ug_deg_tab";
             this.ug_deg_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.ug_deg_tab.Size = new System.Drawing.Size(513, 371);
+            this.ug_deg_tab.Size = new System.Drawing.Size(603, 434);
             this.ug_deg_tab.TabIndex = 0;
             this.ug_deg_tab.Text = "Degrees";
             this.ug_deg_tab.UseVisualStyleBackColor = true;
@@ -642,7 +625,7 @@
             this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.ug_degrees.Location = new System.Drawing.Point(21, 50);
+            this.ug_degrees.Location = new System.Drawing.Point(69, 50);
             this.ug_degrees.Name = "ug_degrees";
             this.ug_degrees.RowCount = 2;
             this.ug_degrees.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -656,7 +639,7 @@
             this.ug_minors_tab.Location = new System.Drawing.Point(4, 22);
             this.ug_minors_tab.Name = "ug_minors_tab";
             this.ug_minors_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.ug_minors_tab.Size = new System.Drawing.Size(513, 371);
+            this.ug_minors_tab.Size = new System.Drawing.Size(603, 434);
             this.ug_minors_tab.TabIndex = 1;
             this.ug_minors_tab.Text = "Minors";
             this.ug_minors_tab.UseVisualStyleBackColor = true;
@@ -667,7 +650,7 @@
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ug_minors.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.ug_minors.Location = new System.Drawing.Point(29, 50);
+            this.ug_minors.Location = new System.Drawing.Point(77, 49);
             this.ug_minors.Name = "ug_minors";
             this.ug_minors.RowCount = 2;
             this.ug_minors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -681,7 +664,7 @@
             this.grad_tab.Location = new System.Drawing.Point(4, 22);
             this.grad_tab.Name = "grad_tab";
             this.grad_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.grad_tab.Size = new System.Drawing.Size(580, 450);
+            this.grad_tab.Size = new System.Drawing.Size(603, 462);
             this.grad_tab.TabIndex = 1;
             this.grad_tab.Text = "Graduate";
             this.grad_tab.UseVisualStyleBackColor = true;
@@ -713,7 +696,7 @@
             this.grad_degrees.ColumnCount = 3;
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.6631F));
             this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.3369F));
-            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
+            this.grad_degrees.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.grad_degrees.Location = new System.Drawing.Point(28, 31);
             this.grad_degrees.Name = "grad_degrees";
             this.grad_degrees.RowCount = 2;
@@ -750,7 +733,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(247, 7);
+            this.label5.Location = new System.Drawing.Point(239, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(113, 29);
             this.label5.TabIndex = 4;
@@ -768,11 +751,79 @@
             this.people_tab.Text = "People";
             this.people_tab.UseVisualStyleBackColor = true;
             // 
+            // people_tabControl
+            // 
+            this.people_tabControl.Controls.Add(this.faculty_tab);
+            this.people_tabControl.Controls.Add(this.staff_tab);
+            this.people_tabControl.Location = new System.Drawing.Point(-4, 42);
+            this.people_tabControl.Name = "people_tabControl";
+            this.people_tabControl.SelectedIndex = 0;
+            this.people_tabControl.Size = new System.Drawing.Size(611, 485);
+            this.people_tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.people_tabControl.TabIndex = 1;
+            // 
+            // faculty_tab
+            // 
+            this.faculty_tab.Controls.Add(this.faculty);
+            this.faculty_tab.Location = new System.Drawing.Point(4, 22);
+            this.faculty_tab.Name = "faculty_tab";
+            this.faculty_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.faculty_tab.Size = new System.Drawing.Size(603, 459);
+            this.faculty_tab.TabIndex = 0;
+            this.faculty_tab.Text = "Faculty";
+            this.faculty_tab.UseVisualStyleBackColor = true;
+            // 
+            // faculty
+            // 
+            this.faculty.AutoSize = true;
+            this.faculty.ColumnCount = 4;
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
+            this.faculty.Location = new System.Drawing.Point(3, 3);
+            this.faculty.Name = "faculty";
+            this.faculty.RowCount = 2;
+            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.faculty.Size = new System.Drawing.Size(597, 0);
+            this.faculty.TabIndex = 0;
+            // 
+            // staff_tab
+            // 
+            this.staff_tab.Controls.Add(this.staff);
+            this.staff_tab.Location = new System.Drawing.Point(4, 22);
+            this.staff_tab.Name = "staff_tab";
+            this.staff_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.staff_tab.Size = new System.Drawing.Size(553, 403);
+            this.staff_tab.TabIndex = 1;
+            this.staff_tab.Text = "Staff";
+            this.staff_tab.UseVisualStyleBackColor = true;
+            this.staff_tab.Enter += new System.EventHandler(this.staff_tab_Enter);
+            // 
+            // staff
+            // 
+            this.staff.AutoSize = true;
+            this.staff.ColumnCount = 4;
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.staff.Dock = System.Windows.Forms.DockStyle.Top;
+            this.staff.Location = new System.Drawing.Point(3, 3);
+            this.staff.Name = "staff";
+            this.staff.RowCount = 2;
+            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staff.Size = new System.Drawing.Size(547, 0);
+            this.staff.TabIndex = 0;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(258, 7);
+            this.label4.Location = new System.Drawing.Point(245, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 29);
             this.label4.TabIndex = 0;
@@ -780,7 +831,7 @@
             // 
             // research_tab
             // 
-            this.research_tab.Controls.Add(this.tabControl5);
+            this.research_tab.Controls.Add(this.research_tabs);
             this.research_tab.Controls.Add(this.label1);
             this.research_tab.Location = new System.Drawing.Point(4, 22);
             this.research_tab.Name = "research_tab";
@@ -790,11 +841,41 @@
             this.research_tab.Text = "Research";
             this.research_tab.UseVisualStyleBackColor = true;
             // 
+            // research_tabs
+            // 
+            this.research_tabs.Controls.Add(this.interestarea_tab);
+            this.research_tabs.Controls.Add(this.faculty_research_tab);
+            this.research_tabs.Location = new System.Drawing.Point(-4, 32);
+            this.research_tabs.Name = "research_tabs";
+            this.research_tabs.SelectedIndex = 0;
+            this.research_tabs.Size = new System.Drawing.Size(611, 495);
+            this.research_tabs.TabIndex = 1;
+            // 
+            // interestarea_tab
+            // 
+            this.interestarea_tab.Location = new System.Drawing.Point(4, 22);
+            this.interestarea_tab.Name = "interestarea_tab";
+            this.interestarea_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.interestarea_tab.Size = new System.Drawing.Size(603, 469);
+            this.interestarea_tab.TabIndex = 0;
+            this.interestarea_tab.Text = "By Interest Area";
+            this.interestarea_tab.UseVisualStyleBackColor = true;
+            // 
+            // faculty_research_tab
+            // 
+            this.faculty_research_tab.Location = new System.Drawing.Point(4, 22);
+            this.faculty_research_tab.Name = "faculty_research_tab";
+            this.faculty_research_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.faculty_research_tab.Size = new System.Drawing.Size(603, 469);
+            this.faculty_research_tab.TabIndex = 1;
+            this.faculty_research_tab.Text = "By Faculty";
+            this.faculty_research_tab.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(238, 16);
+            this.label1.Location = new System.Drawing.Point(229, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 29);
             this.label1.TabIndex = 0;
@@ -816,7 +897,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(182, 94);
+            this.label2.Location = new System.Drawing.Point(216, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 29);
             this.label2.TabIndex = 0;
@@ -838,7 +919,7 @@
             // resources_subtitle
             // 
             this.resources_subtitle.AutoSize = true;
-            this.resources_subtitle.Location = new System.Drawing.Point(280, 77);
+            this.resources_subtitle.Location = new System.Drawing.Point(270, 68);
             this.resources_subtitle.Name = "resources_subtitle";
             this.resources_subtitle.Size = new System.Drawing.Size(35, 13);
             this.resources_subtitle.TabIndex = 2;
@@ -851,7 +932,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
             this.tableLayoutPanel1.Controls.Add(this.resource6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.resource4, 0, 1);
@@ -870,9 +951,9 @@
             // 
             this.resource6.AutoSize = true;
             this.resource6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource6.Location = new System.Drawing.Point(332, 141);
+            this.resource6.Location = new System.Drawing.Point(330, 141);
             this.resource6.Name = "resource6";
-            this.resource6.Size = new System.Drawing.Size(174, 140);
+            this.resource6.Size = new System.Drawing.Size(176, 140);
             this.resource6.TabIndex = 5;
             this.resource6.Text = "label11";
             this.resource6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -881,9 +962,9 @@
             // 
             this.resource5.AutoSize = true;
             this.resource5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource5.Location = new System.Drawing.Point(168, 141);
+            this.resource5.Location = new System.Drawing.Point(167, 141);
             this.resource5.Name = "resource5";
-            this.resource5.Size = new System.Drawing.Size(157, 140);
+            this.resource5.Size = new System.Drawing.Size(156, 140);
             this.resource5.TabIndex = 4;
             this.resource5.Text = "label10";
             this.resource5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -894,7 +975,7 @@
             this.resource4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource4.Location = new System.Drawing.Point(4, 141);
             this.resource4.Name = "resource4";
-            this.resource4.Size = new System.Drawing.Size(157, 140);
+            this.resource4.Size = new System.Drawing.Size(156, 140);
             this.resource4.TabIndex = 3;
             this.resource4.Text = "label9";
             this.resource4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -903,9 +984,9 @@
             // 
             this.resource3.AutoSize = true;
             this.resource3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource3.Location = new System.Drawing.Point(332, 1);
+            this.resource3.Location = new System.Drawing.Point(330, 1);
             this.resource3.Name = "resource3";
-            this.resource3.Size = new System.Drawing.Size(174, 139);
+            this.resource3.Size = new System.Drawing.Size(176, 139);
             this.resource3.TabIndex = 2;
             this.resource3.Text = "label8";
             this.resource3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -914,9 +995,9 @@
             // 
             this.resource2.AutoSize = true;
             this.resource2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resource2.Location = new System.Drawing.Point(168, 1);
+            this.resource2.Location = new System.Drawing.Point(167, 1);
             this.resource2.Name = "resource2";
-            this.resource2.Size = new System.Drawing.Size(157, 139);
+            this.resource2.Size = new System.Drawing.Size(156, 139);
             this.resource2.TabIndex = 1;
             this.resource2.Text = "label7";
             this.resource2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -927,7 +1008,7 @@
             this.resource1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resource1.Location = new System.Drawing.Point(4, 1);
             this.resource1.Name = "resource1";
-            this.resource1.Size = new System.Drawing.Size(157, 139);
+            this.resource1.Size = new System.Drawing.Size(156, 139);
             this.resource1.TabIndex = 0;
             this.resource1.Text = "label6";
             this.resource1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -936,109 +1017,29 @@
             // 
             this.resources_title.AutoSize = true;
             this.resources_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resources_title.Location = new System.Drawing.Point(256, 33);
+            this.resources_title.Location = new System.Drawing.Point(247, 0);
             this.resources_title.Name = "resources_title";
             this.resources_title.Size = new System.Drawing.Size(82, 29);
             this.resources_title.TabIndex = 0;
             this.resources_title.Text = "[Title]";
             // 
-            // people_tabControl
+            // btn_ListView
             // 
-            this.people_tabControl.Controls.Add(this.faculty_tab);
-            this.people_tabControl.Controls.Add(this.staff_tab);
-            this.people_tabControl.Location = new System.Drawing.Point(21, 62);
-            this.people_tabControl.Name = "people_tabControl";
-            this.people_tabControl.SelectedIndex = 0;
-            this.people_tabControl.Size = new System.Drawing.Size(561, 429);
-            this.people_tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.people_tabControl.TabIndex = 1;
+            this.btn_ListView.Location = new System.Drawing.Point(215, 211);
+            this.btn_ListView.Name = "btn_ListView";
+            this.btn_ListView.Size = new System.Drawing.Size(162, 23);
+            this.btn_ListView.TabIndex = 7;
+            this.btn_ListView.Text = "Populate ListView";
+            this.btn_ListView.UseVisualStyleBackColor = true;
+            this.btn_ListView.Click += new System.EventHandler(this.btn_ListView_Click);
             // 
-            // faculty_tab
+            // listView1
             // 
-            this.faculty_tab.Controls.Add(this.faculty);
-            this.faculty_tab.Location = new System.Drawing.Point(4, 22);
-            this.faculty_tab.Name = "faculty_tab";
-            this.faculty_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.faculty_tab.Size = new System.Drawing.Size(553, 403);
-            this.faculty_tab.TabIndex = 0;
-            this.faculty_tab.Text = "Faculty";
-            this.faculty_tab.UseVisualStyleBackColor = true;
-            // 
-            // staff_tab
-            // 
-            this.staff_tab.Controls.Add(this.staff);
-            this.staff_tab.Location = new System.Drawing.Point(4, 22);
-            this.staff_tab.Name = "staff_tab";
-            this.staff_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.staff_tab.Size = new System.Drawing.Size(553, 403);
-            this.staff_tab.TabIndex = 1;
-            this.staff_tab.Text = "Staff";
-            this.staff_tab.UseVisualStyleBackColor = true;
-            this.staff_tab.Enter += new System.EventHandler(this.staff_tab_Enter);
-            // 
-            // tabControl5
-            // 
-            this.tabControl5.Controls.Add(this.tabPage1);
-            this.tabControl5.Controls.Add(this.tabPage2);
-            this.tabControl5.Location = new System.Drawing.Point(56, 119);
-            this.tabControl5.Name = "tabControl5";
-            this.tabControl5.SelectedIndex = 0;
-            this.tabControl5.Size = new System.Drawing.Size(520, 380);
-            this.tabControl5.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 354);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // faculty
-            // 
-            this.faculty.AutoSize = true;
-            this.faculty.ColumnCount = 4;
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.35714F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.64286F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.faculty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
-            this.faculty.Dock = System.Windows.Forms.DockStyle.Top;
-            this.faculty.Location = new System.Drawing.Point(3, 3);
-            this.faculty.Name = "faculty";
-            this.faculty.RowCount = 2;
-            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.faculty.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.faculty.Size = new System.Drawing.Size(547, 0);
-            this.faculty.TabIndex = 0;
-            // 
-            // staff
-            // 
-            this.staff.AutoSize = true;
-            this.staff.ColumnCount = 4;
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.76923F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.23077F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.staff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
-            this.staff.Dock = System.Windows.Forms.DockStyle.Top;
-            this.staff.Location = new System.Drawing.Point(3, 3);
-            this.staff.Name = "staff";
-            this.staff.RowCount = 2;
-            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.staff.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.staff.Size = new System.Drawing.Size(547, 0);
-            this.staff.TabIndex = 0;
+            this.listView1.Location = new System.Drawing.Point(98, 13);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(279, 192);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
@@ -1086,20 +1087,20 @@
             this.grad_cert_tab.ResumeLayout(false);
             this.people_tab.ResumeLayout(false);
             this.people_tab.PerformLayout();
+            this.people_tabControl.ResumeLayout(false);
+            this.faculty_tab.ResumeLayout(false);
+            this.faculty_tab.PerformLayout();
+            this.staff_tab.ResumeLayout(false);
+            this.staff_tab.PerformLayout();
             this.research_tab.ResumeLayout(false);
             this.research_tab.PerformLayout();
+            this.research_tabs.ResumeLayout(false);
             this.emp_tab.ResumeLayout(false);
             this.emp_tab.PerformLayout();
             this.resources_tab.ResumeLayout(false);
             this.resources_tab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.people_tabControl.ResumeLayout(false);
-            this.faculty_tab.ResumeLayout(false);
-            this.faculty_tab.PerformLayout();
-            this.staff_tab.ResumeLayout(false);
-            this.staff_tab.PerformLayout();
-            this.tabControl5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1109,9 +1110,7 @@
         private System.Windows.Forms.LinkLabel ll_resources_appForm;
         private System.Windows.Forms.Button btn_people;
         private System.Windows.Forms.PictureBox pb_fac;
-        private System.Windows.Forms.Button btn_ListView;
         private System.Windows.Forms.DataGridView DataGridView1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn emp;
         private System.Windows.Forms.DataGridViewTextBoxColumn deg;
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
@@ -1178,10 +1177,12 @@
         private System.Windows.Forms.TabPage faculty_tab;
         private System.Windows.Forms.TableLayoutPanel faculty;
         private System.Windows.Forms.TabPage staff_tab;
-        private System.Windows.Forms.TabControl tabControl5;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl research_tabs;
+        private System.Windows.Forms.TabPage interestarea_tab;
+        private System.Windows.Forms.TabPage faculty_research_tab;
         private System.Windows.Forms.TableLayoutPanel staff;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btn_ListView;
     }
 }
 

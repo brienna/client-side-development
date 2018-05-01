@@ -400,24 +400,26 @@ namespace Project3 {
                 int row = 0;
                 int column = 0;
                 for (int i = 0; i < minors.UgMinors.Count; i++) {
+                    UgMinor thisMinor = minors.UgMinors[i];
                     // Create and populate panel for each minor
                     TableLayoutPanel minorPanel = new TableLayoutPanel();
                     minorPanel.ColumnCount = 1;
                     minorPanel.RowCount = 1;
                     minorPanel.AutoSize = true;
                     minorPanel.Dock = DockStyle.Fill;
-                    minorPanel.BorderStyle = BorderStyle.FixedSingle;
                     foreach (RowStyle style in minorPanel.RowStyles) {
                         style.SizeType = SizeType.AutoSize;
                     }
 
                     // Minor title
                     Label minorTitle = new Label();
-                    minorTitle.Text = minors.UgMinors[i].title;
+                    minorTitle.Text = thisMinor.title;
                     minorTitle.Dock = DockStyle.Fill;
                     minorTitle.AutoSize = false;
                     minorTitle.MaximumSize = new Size(100, 0);
                     minorTitle.AutoSize = true;
+                    minorTitle.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                    minorTitle.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
 
                     // Add components to degree panel, then to main panel
                     minorPanel.Controls.Add(minorTitle, 0, 0);
@@ -429,7 +431,7 @@ namespace Project3 {
                     }
 
                     // Set onclick event handler to show degree details in popup
-                    minorPanel.Click += (sender2, e2) => showUgMinorPopup(sender2, e2, minors.UgMinors[i]);
+                    minorPanel.Click += (sender4, e4) => showUgMinorPopup(sender4, e4, thisMinor);
 
                     // Jump to next row if current row is full
                     if ((i + 1) % 3 == 0) {
@@ -452,36 +454,36 @@ namespace Project3 {
                 Console.WriteLine("Loading people...");
                 string jsonPeople = rj.getRestJSON("/people/");
                 people = JToken.Parse(jsonPeople).ToObject<People>();
-            }
-            
-            int row = 0;
-            int column = 0;
-            Console.WriteLine("Loading faculty...");
-            for (var i = 0; i < people.faculty.Count; i++) {
-                Faculty thisFac = people.faculty[i];
-                Label facName = new Label();
-                facName.Text = thisFac.name;
-                facName.BorderStyle = BorderStyle.FixedSingle;
-                facName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
-                facName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
-                facName.Click += (sender4, e4) => showFacultyPopup(sender4, e4, thisFac);
-                facName.Margin = new Padding(0, 0, facName.Margin.Right, facName.Margin.Right);
-                facName.TextAlign = ContentAlignment.MiddleCenter;
-                facName.Dock = DockStyle.Fill;
-                faculty.Controls.Add(facName, column, row);
 
-                // Jump to next row if current row is full
-                if ((i + 1) % faculty.ColumnCount == 0) {
-                    row++;
-                    column = 0;
-                } else {
-                    column++;
+                int row = 0;
+                int column = 0;
+                Console.WriteLine("Loading faculty...");
+                for (var i = 0; i < people.faculty.Count; i++) {
+                    Faculty thisFac = people.faculty[i];
+                    Label facName = new Label();
+                    facName.Text = thisFac.name;
+                    facName.BorderStyle = BorderStyle.FixedSingle;
+                    facName.MouseEnter += (sender2, e2) => changeCellColor(sender2, e2);
+                    facName.MouseLeave += (sender3, e3) => changeCellColor(sender3, e3);
+                    facName.Click += (sender4, e4) => showFacultyPopup(sender4, e4, thisFac);
+                    facName.Margin = new Padding(0, 0, facName.Margin.Right, facName.Margin.Right);
+                    facName.TextAlign = ContentAlignment.MiddleCenter;
+                    facName.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+                    faculty.Controls.Add(facName, column, row);
+
+                    // Jump to next row if current row is full
+                    if ((i + 1) % faculty.ColumnCount == 0) {
+                        row++;
+                        column = 0;
+                    } else {
+                        column++;
+                    }
                 }
-            }
 
-            // Fix row heights
-            foreach (RowStyle style in faculty.RowStyles) {
-                style.SizeType = SizeType.AutoSize;
+                // Fix row heights
+                foreach (RowStyle style in faculty.RowStyles) {
+                    style.SizeType = SizeType.AutoSize;
+                }
             }
         }
 

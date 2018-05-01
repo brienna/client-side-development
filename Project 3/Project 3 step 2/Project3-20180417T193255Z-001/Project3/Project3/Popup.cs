@@ -98,7 +98,68 @@ namespace Project3 {
 
         // Loads undergrad minor details
         private void loadUgMinor() {
-            throw new NotImplementedException();
+            // Show and populate Degree tab
+            popup_tabs.SelectedTab = deg_tab;
+
+            Label minorTitle = new Label();
+            minorTitle.Font = new Font("Arial", 14, FontStyle.Bold);
+            minorTitle.Text = thisUgMinor.title;
+            minorTitle.Width = degreePanel.Width - (minorTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            RichTextBox minorDesc = new RichTextBox();
+            minorDesc.ReadOnly = true;
+            minorDesc.Text = thisUgMinor.description;
+            minorDesc.ContentsResized += rtb_ContentsResized;
+            minorDesc.BorderStyle = BorderStyle.None;
+            minorDesc.Width = degreePanel.Width - (minorDesc.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            Label coursesAvailableTitle = new Label();
+            coursesAvailableTitle.Font = new Font("Arial", 10, FontStyle.Bold);
+            coursesAvailableTitle.Text = "Courses Available (Select to view description)";
+            coursesAvailableTitle.Width = degreePanel.Width - (coursesAvailableTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            List<String> names = new List<String>();
+            foreach (string course in thisUgMinor.courses) {
+                // If unique
+                if (!names.Contains(course)) {
+                    names.Add(course);
+                }
+            }
+
+            // Sort courses by alphabetical order
+            names.Sort();
+
+            // Add each course to view
+            ListView courseList = new ListView();
+            courseList.View = View.Details; // we want text
+            courseList.Columns.Add("Courses", -2);
+            courseList.HeaderStyle = ColumnHeaderStyle.None;
+            //listView1.GridLines = true;
+            courseList.FullRowSelect = true; // click, highlight full row
+            courseList.Width = degreePanel.Width - (courseList.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            courseList.Height = 200;
+            foreach (string name in names) {
+                courseList.Items.Add(new ListViewItem(name));
+            }
+
+            // Process course selection & message box dialog popup with descriptions
+            courseInfos = new List<CourseInfo>();
+            courseList.ItemSelectionChanged += (sender2, e2) => toggleCourseInfo(sender2, e2);
+
+            RichTextBox note = new RichTextBox();
+            note.ReadOnly = true;
+            note.Text = thisUgMinor.note;
+            note.ContentsResized += rtb_ContentsResized;
+            note.BorderStyle = BorderStyle.None;
+            note.Width = degreePanel.Width - (note.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            degreePanel.Controls.Add(minorTitle);
+            degreePanel.Controls.Add(minorDesc);
+            degreePanel.Controls.Add(coursesAvailableTitle);
+            degreePanel.Controls.Add(courseList);
+            if (note.Text != "") {
+                degreePanel.Controls.Add(note);
+            }
         }
 
         // Loads undergrad degree details
@@ -108,10 +169,12 @@ namespace Project3 {
 
             string degName = "BS" + thisUgDeg.degreeName.ToUpper(); // save to fetch courses later
             Label degTitle = new Label();
+            degTitle.Font = new Font("Arial", 14, FontStyle.Bold);
             degTitle.Text = thisUgDeg.title;
             degTitle.Width = degreePanel.Width - (degTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;  
 
             RichTextBox ugDegDesc = new RichTextBox();
+            ugDegDesc.ReadOnly = true;
             ugDegDesc.Text = thisUgDeg.description;
             ugDegDesc.ContentsResized += rtb_ContentsResized;
             ugDegDesc.BorderStyle = BorderStyle.None;
@@ -119,9 +182,11 @@ namespace Project3 {
 
             Label degConcTitle = new Label();
             degConcTitle.Text = "Concentrations";
+            degConcTitle.Font = new Font("Arial", 10, FontStyle.Bold);
             degConcTitle.Width = degreePanel.Width - (degConcTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
 
             RichTextBox ugDegConcs = new RichTextBox();
+            ugDegConcs.ReadOnly = true;
             ugDegConcs.ContentsResized += rtb_ContentsResized;
             ugDegConcs.BorderStyle = BorderStyle.None;
             ugDegConcs.Width = degreePanel.Width - (ugDegConcs.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -134,6 +199,7 @@ namespace Project3 {
             }
             
             Label coursesAvailableTitle = new Label();
+            coursesAvailableTitle.Font = new Font("Arial", 10, FontStyle.Bold);
             coursesAvailableTitle.Text = "Courses Available (Select to view description)";
             coursesAvailableTitle.Width = degreePanel.Width - (coursesAvailableTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             
@@ -223,7 +289,93 @@ namespace Project3 {
 
         // Loads grad degree details
         private void loadGradDegree() {
-            throw new NotImplementedException();
+            // Show and populate Degree tab
+            popup_tabs.SelectedTab = deg_tab;
+
+            string degName;
+            // Exception is IST which is malformed
+            if (thisGradDeg.degreeName == "ist") {
+                degName = "MSIT";
+            } else {
+                degName = "MS" + thisGradDeg.degreeName.ToUpper();
+            }
+            Label degTitle = new Label();
+            degTitle.Font = new Font("Arial", 14, FontStyle.Bold);
+            degTitle.Text = thisGradDeg.title;
+            degTitle.Width = degreePanel.Width - (degTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            RichTextBox gDegDesc = new RichTextBox();
+            gDegDesc.ReadOnly = true;
+            gDegDesc.Text = thisGradDeg.description;
+            gDegDesc.ContentsResized += rtb_ContentsResized;
+            gDegDesc.BorderStyle = BorderStyle.None;
+            gDegDesc.Width = degreePanel.Width - (gDegDesc.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            Label degConcTitle = new Label();
+            degConcTitle.Text = "Concentrations";
+            degConcTitle.Font = new Font("Arial", 10, FontStyle.Bold);
+            degConcTitle.Width = degreePanel.Width - (degConcTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            RichTextBox gDegConcs = new RichTextBox();
+            gDegConcs.ContentsResized += rtb_ContentsResized;
+            gDegConcs.ReadOnly = true;
+            gDegConcs.BorderStyle = BorderStyle.None;
+            gDegConcs.Width = degreePanel.Width - (gDegConcs.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            for (int i = 0; i < thisGradDeg.concentrations.Count; i++) {
+                gDegConcs.AppendText("\u2022  " + thisGradDeg.concentrations[i]);
+                if (i != thisGradDeg.concentrations.Count - 1) {
+                    gDegConcs.AppendText(Environment.NewLine);
+                }
+            }
+
+            Label coursesAvailableTitle = new Label();
+            coursesAvailableTitle.Font = new Font("Arial", 10, FontStyle.Bold);
+            coursesAvailableTitle.Text = "Courses Available (Select to view description)";
+            coursesAvailableTitle.Width = degreePanel.Width - (coursesAvailableTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+
+            // Get courses, passing specific path
+            Courses courses = GetCourses("/courses/degreeName=" + degName);
+            // Keep each course if...
+            List<String> names = new List<String>();
+            foreach (string course in courses.courses) {
+                Regex courseRegex = new Regex("[A-Z]{3,4}-(?!0)\\d{2,3}");
+                Match m = courseRegex.Match(course);
+                // its name is valid
+                if (m.Success) {
+                    // and unique
+                    if (!names.Contains(course)) {
+                        names.Add(course);
+                    }
+                }
+            }
+
+            // Sort courses by alphabetical order
+            names.Sort();
+
+            // Add each course to view
+            ListView courseList = new ListView();
+            courseList.View = View.Details; // we want text
+            courseList.Columns.Add("Courses", -2);
+            courseList.HeaderStyle = ColumnHeaderStyle.None;
+            //listView1.GridLines = true;
+            courseList.FullRowSelect = true; // click, highlight full row
+            courseList.Width = degreePanel.Width - (courseList.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+            courseList.Height = 200;
+            foreach (string name in names) {
+                courseList.Items.Add(new ListViewItem(name));
+            }
+
+            // Process course selection & message box dialog popup with descriptions
+            courseInfos = new List<CourseInfo>();
+            courseList.ItemSelectionChanged += (sender2, e2) => toggleCourseInfo(sender2, e2);
+
+            degreePanel.Controls.Add(degTitle);
+            degreePanel.Controls.Add(gDegDesc);
+            degreePanel.Controls.Add(degConcTitle);
+            degreePanel.Controls.Add(gDegConcs);
+            degreePanel.Controls.Add(coursesAvailableTitle);
+            degreePanel.Controls.Add(courseList);
         }
 
         // Loads staff details
@@ -337,6 +489,8 @@ namespace Project3 {
                 sectionTitle.Text = section.title;
                 sectionTitle.Width = ambassadors_panel.Width - (sectionTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                 RichTextBox sectionDesc = new RichTextBox();
+                sectionDesc.BorderStyle = BorderStyle.None;
+                sectionDesc.ReadOnly = true;
                 sectionDesc.Text = section.description;
                 sectionDesc.Width = ambassadors_panel.Width - (sectionTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                 sectionDesc.ContentsResized += rtb_ContentsResized;
@@ -348,6 +502,8 @@ namespace Project3 {
             appForm.Tag = resources.studentAmbassadors.applicationFormLink;
             appForm.Width = ambassadors_panel.Width - (appForm.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox note = new RichTextBox();
+            note.BorderStyle = BorderStyle.None;
+            note.ReadOnly = true;
             note.Text = resources.studentAmbassadors.note;
             note.Width = ambassadors_panel.Width - (note.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             note.ContentsResized += rtb_ContentsResized;
@@ -374,6 +530,8 @@ namespace Project3 {
                 infoTitle.Text = info.title;
                 infoTitle.Width = coop_panel.Width - (infoTitle.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                 RichTextBox infoDesc = new RichTextBox();
+                infoDesc.BorderStyle = BorderStyle.None;
+                infoDesc.ReadOnly = true;
                 infoDesc.Text = info.description;
                 infoDesc.ContentsResized += rtb_ContentsResized;
                 infoDesc.Width = coop_panel.Width - (infoDesc.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -390,6 +548,8 @@ namespace Project3 {
             tutors_title.Text = resources.tutorsAndLabInformation.title;
             tutors_title.Width = tutors_panel.Width - (tutors_title.Margin.Right * 2);
             RichTextBox tutors_desc = new RichTextBox();
+            tutors_desc.ReadOnly = true;
+            tutors_desc.BorderStyle = BorderStyle.None;
             tutors_desc.Text = resources.tutorsAndLabInformation.description;
             tutors_desc.ContentsResized += rtb_ContentsResized;
             tutors_desc.Width = tutors_panel.Width - (tutors_desc.Margin.Right * 2);
@@ -412,6 +572,8 @@ namespace Project3 {
             aaLabel.Text = resources.studentServices.academicAdvisors.title;
             aaLabel.Width = advising_panel.Width - (aaLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox aaRtb = new RichTextBox();
+            aaRtb.BorderStyle = BorderStyle.None;
+            aaRtb.ReadOnly = true;
             aaRtb.ContentsResized += rtb_ContentsResized;
             aaRtb.Text = resources.studentServices.academicAdvisors.description;
             aaRtb.Width = advising_panel.Width - (aaRtb.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -428,6 +590,8 @@ namespace Project3 {
             faLabel.Text = resources.studentServices.facultyAdvisors.title;
             faLabel.Width = advising_panel.Width - (faLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox faRtb = new RichTextBox();
+            faRtb.BorderStyle = BorderStyle.None;
+            faRtb.ReadOnly = true;
             faRtb.ContentsResized += rtb_ContentsResized;
             faRtb.Text = resources.studentServices.facultyAdvisors.description;
             faRtb.Width = advising_panel.Width - (faRtb.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
@@ -439,6 +603,8 @@ namespace Project3 {
             imaLabel.Text = resources.studentServices.istMinorAdvising.title;
             imaLabel.Width = advising_panel.Width - (imaLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox imaRtb = new RichTextBox();
+            imaRtb.BorderStyle = BorderStyle.None;
+            imaRtb.ReadOnly = true;
             imaRtb.ContentsResized += rtb_ContentsResized;
             imaRtb.Width = advising_panel.Width - (imaRtb.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             for (int i = 0; i < resources.studentServices.istMinorAdvising.minorAdvisorInformation.Count; i++) {
@@ -456,6 +622,8 @@ namespace Project3 {
             paLabel.Text = resources.studentServices.professonalAdvisors.title;
             paLabel.Width = advising_panel.Width - (paLabel.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             RichTextBox paRtb = new RichTextBox();
+            paRtb.BorderStyle = BorderStyle.None;
+            paRtb.ReadOnly = true;
             paRtb.ContentsResized += rtb_ContentsResized;
             paRtb.Width = advising_panel.Width - (paRtb.Margin.Right * 2) - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
             for (int i = 0; i < resources.studentServices.professonalAdvisors.advisorInformation.Count; i++) {
