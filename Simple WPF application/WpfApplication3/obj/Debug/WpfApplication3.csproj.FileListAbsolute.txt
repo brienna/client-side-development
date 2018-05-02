@@ -1,0 +1,65 @@
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe.config
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.pdb
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\MainWindow.g.cs
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\App.g.cs
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.cache
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.lref
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\MainWindow.baml
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.g.resources
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.Properties.Resources.resources
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.csproj.GenerateResource.Cache
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.exe
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.pdb
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\Window1.g.cs
+c:\users\student\documents\visual studio 2015\Projects\WpfApplication3\WpfApplication3\obj\Debug\Window1.baml
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe.config
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.exe
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.pdb
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.pdb
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.csprojResolveAssemblyReference.cache
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\MainWindow.g.cs
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\Window1.g.cs
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\App.g.cs
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.cache
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.lref
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\MainWindow.baml
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\Window1.baml
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.g.resources
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.Properties.Resources.resources
+C:\Users\Student\Downloads\29-20180412T190605Z-001\ISTE 754 3-29\WpfApplication3\WpfApplication3\obj\Debug\WpfApplication3.csproj.GenerateResource.Cache
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csprojResolveAssemblyReference.cache
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\MainWindow.g.cs
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\Window1.g.cs
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\App.g.cs
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.cache
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.lref
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.exe
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.pdb
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.exe.config
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.exe
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.pdb
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\MainWindow.baml
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\Window1.baml
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.g.resources
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.Properties.Resources.resources
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csproj.GenerateResource.cache
+Z:\In-class homework\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csproj.CoreCompileInputs.cache
+Z:\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.exe.config
+Z:\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.exe
+Z:\ISTE 754 3-29\WpfApplication3\bin\Debug\WpfApplication3.pdb
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csprojResolveAssemblyReference.cache
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\MainWindow.g.cs
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\Window1.g.cs
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\App.g.cs
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.cache
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3_MarkupCompile.lref
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\MainWindow.baml
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\Window1.baml
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.g.resources
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.Properties.Resources.resources
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csproj.GenerateResource.cache
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.csproj.CoreCompileInputs.cache
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.exe
+Z:\ISTE 754 3-29\WpfApplication3\obj\Debug\WpfApplication3.pdb
