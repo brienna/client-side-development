@@ -1,0 +1,34 @@
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe.config
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.pdb
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csprojResolveAssemblyReference.cache
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Form1.resources
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Properties.Resources.resources
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.GenerateResource.Cache
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.exe
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.pdb
+c:\users\student\documents\visual studio 2015\Projects\Class3FileIO\Class3FileIO\bin\Debug\Newtonsoft.Json.dll
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe.config
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.pdb
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\bin\Debug\Newtonsoft.Json.dll
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csprojResolveAssemblyReference.cache
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Form1.resources
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Properties.Resources.resources
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.GenerateResource.cache
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.CoreCompileInputs.cache
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.CopyComplete
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.exe
+Z:\XML - JSON - TXT load\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.pdb
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe.config
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.exe
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\bin\Debug\Class3FileIO.pdb
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\bin\Debug\Newtonsoft.Json.dll
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csprojResolveAssemblyReference.cache
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Form1.resources
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.Properties.Resources.resources
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.GenerateResource.cache
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.CoreCompileInputs.cache
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.csproj.CopyComplete
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.exe
+Z:\client-side-development\FileIO\Class3FileIO\Class3FileIO\obj\Debug\Class3FileIO.pdb
