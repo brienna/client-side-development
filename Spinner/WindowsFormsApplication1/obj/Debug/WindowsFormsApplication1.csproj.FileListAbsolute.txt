@@ -1,0 +1,54 @@
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+\\vmware-host\Shared Folders\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+Z:\Documents\Visual Studio 2013\Projects\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2145\14a\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2155\02\15a\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\dsbics\Desktop\VisualStudio Files (weeks 10-15)\2158\10b\waitTest\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Student\Desktop\waitTestStart (1)\waitTestStart\waitTestStart\waitTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
