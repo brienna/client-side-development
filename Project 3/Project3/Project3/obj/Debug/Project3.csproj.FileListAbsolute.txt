@@ -81,3 +81,18 @@ Z:\Project 3\Project 3 step 2\Project3-20180417T193255Z-001\Project3\Project3\ob
 \\vmware-host\Shared Folders\Project3\Project3\obj\Debug\Project3.pdb
 \\vmware-host\Shared Folders\Project3\Project3\obj\Debug\Project3.Popup.resources
 Z:\Project3\Project3\obj\Debug\Project3.Popup.resources
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\Project3.exe.config
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\Project3.exe
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\Project3.pdb
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\Newtonsoft.Json.dll
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\RestUtility.dll
+Z:\client-side-development\Project 3\Project3\Project3\bin\Debug\RestUtility.pdb
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.csprojResolveAssemblyReference.cache
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.Form1.resources
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.Popup.resources
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.Properties.Resources.resources
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.csproj.GenerateResource.cache
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.csproj.CoreCompileInputs.cache
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.csproj.CopyComplete
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.exe
+Z:\client-side-development\Project 3\Project3\Project3\obj\Debug\Project3.pdb

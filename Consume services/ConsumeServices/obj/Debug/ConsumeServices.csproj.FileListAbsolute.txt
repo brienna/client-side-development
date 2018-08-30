@@ -1,0 +1,21 @@
+c:/users/student/documents/visual studio 2015/Projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.exe.config
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.exe
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.pdb
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.csprojResolveAssemblyReference.cache
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.frmServices.resources
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.Properties.Resources.resources
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.csproj.GenerateResource.Cache
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.exe
+C:/Users/Student/Documents/Visual Studio 2015/Projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.pdb
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.csprojResolveAssemblyReference.cache
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.frmServices.resources
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.Properties.Resources.resources
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.csproj.GenerateResource.Cache
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.csproj.CoreCompileInputs.cache
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.exe
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.pdb
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/obj/Debug/ConsumeServices.exe.config
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.exe.config
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.exe
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/bin/Debug/ConsumeServices.pdb
+/Users/Brienna/Documents/Coursework/Master's Program/Spring 2018/ISTE 754/Visual Studio projects/ConsumeServices/ConsumeServices/bin/Debug/CookComputing.XmlRpcV2.dll

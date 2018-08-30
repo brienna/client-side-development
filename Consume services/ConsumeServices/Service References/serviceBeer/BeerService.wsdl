@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://server/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="BeerService" targetNamespace="http://server/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://simon.ist.rit.edu:8080/beer/BeerService?xsd=1" namespace="http://server/" />
+    </xsd:schema>
+  </types>
+  <message name="getMethods">
+    <part name="parameters" element="tns:getMethods" />
+  </message>
+  <message name="getMethodsResponse">
+    <part name="parameters" element="tns:getMethodsResponse" />
+  </message>
+  <message name="HelloWorld">
+    <part name="parameters" element="tns:HelloWorld" />
+  </message>
+  <message name="HelloWorldResponse">
+    <part name="parameters" element="tns:HelloWorldResponse" />
+  </message>
+  <message name="getCheapest">
+    <part name="parameters" element="tns:getCheapest" />
+  </message>
+  <message name="getCheapestResponse">
+    <part name="parameters" element="tns:getCheapestResponse" />
+  </message>
+  <message name="getCostliest">
+    <part name="parameters" element="tns:getCostliest" />
+  </message>
+  <message name="getCostliestResponse">
+    <part name="parameters" element="tns:getCostliestResponse" />
+  </message>
+  <message name="getPrice">
+    <part name="parameters" element="tns:getPrice" />
+  </message>
+  <message name="getPriceResponse">
+    <part name="parameters" element="tns:getPriceResponse" />
+  </message>
+  <message name="getBeers">
+    <part name="parameters" element="tns:getBeers" />
+  </message>
+  <message name="getBeersResponse">
+    <part name="parameters" element="tns:getBeersResponse" />
+  </message>
+  <portType name="Beer">
+    <operation name="getMethods">
+      <input wsam:Action="http://server/Beer/getMethodsRequest" message="tns:getMethods" />
+      <output wsam:Action="http://server/Beer/getMethodsResponse" message="tns:getMethodsResponse" />
+    </operation>
+    <operation name="HelloWorld">
+      <input wsam:Action="http://server/Beer/HelloWorldRequest" message="tns:HelloWorld" />
+      <output wsam:Action="http://server/Beer/HelloWorldResponse" message="tns:HelloWorldResponse" />
+    </operation>
+    <operation name="getCheapest">
+      <input wsam:Action="http://server/Beer/getCheapestRequest" message="tns:getCheapest" />
+      <output wsam:Action="http://server/Beer/getCheapestResponse" message="tns:getCheapestResponse" />
+    </operation>
+    <operation name="getCostliest">
+      <input wsam:Action="http://server/Beer/getCostliestRequest" message="tns:getCostliest" />
+      <output wsam:Action="http://server/Beer/getCostliestResponse" message="tns:getCostliestResponse" />
+    </operation>
+    <operation name="getPrice">
+      <input wsam:Action="http://server/Beer/getPriceRequest" message="tns:getPrice" />
+      <output wsam:Action="http://server/Beer/getPriceResponse" message="tns:getPriceResponse" />
+    </operation>
+    <operation name="getBeers">
+      <input wsam:Action="http://server/Beer/getBeersRequest" message="tns:getBeers" />
+      <output wsam:Action="http://server/Beer/getBeersResponse" message="tns:getBeersResponse" />
+    </operation>
+  </portType>
+  <binding name="BeerPortBinding" type="tns:Beer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getMethods">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="HelloWorld">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCheapest">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCostliest">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getPrice">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getBeers">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BeerService">
+    <port name="BeerPort" binding="tns:BeerPortBinding">
+      <soap:address location="http://simon.ist.rit.edu:8080/beer/BeerService" />
+    </port>
+  </service>
+</definitions>

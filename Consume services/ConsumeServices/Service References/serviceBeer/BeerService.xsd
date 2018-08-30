@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://server/" targetNamespace="http://server/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="HelloWorld" type="tns:HelloWorld" />
+  <xs:element name="HelloWorldResponse" type="tns:HelloWorldResponse" />
+  <xs:element name="getBeers" type="tns:getBeers" />
+  <xs:element name="getBeersResponse" type="tns:getBeersResponse" />
+  <xs:element name="getCheapest" type="tns:getCheapest" />
+  <xs:element name="getCheapestResponse" type="tns:getCheapestResponse" />
+  <xs:element name="getCostliest" type="tns:getCostliest" />
+  <xs:element name="getCostliestResponse" type="tns:getCostliestResponse" />
+  <xs:element name="getMethods" type="tns:getMethods" />
+  <xs:element name="getMethodsResponse" type="tns:getMethodsResponse" />
+  <xs:element name="getPrice" type="tns:getPrice" />
+  <xs:element name="getPriceResponse" type="tns:getPriceResponse" />
+  <xs:complexType name="getMethods">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getMethodsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCostliest">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getCostliestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPriceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCheapest">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getCheapestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBeers">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getBeersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HelloWorld">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="HelloWorldResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

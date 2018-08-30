@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{1B7D5784-EB2B-44EA-BFBB-30386885AD4D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsumeServices/frmServices.cs">
+    <Files>
+      <File FileName="ConsumeServices/frmServices.cs" Line="14" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ConsumeServices" expanded="True">
+            <Node name="ConsumeServices" expanded="True">
+              <Node name="References" expanded="True">
+                <Node name="System.Deployment" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ConsumeServices PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
