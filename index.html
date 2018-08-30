@@ -1,84 +1,193 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">  <!-- Note: Need this tag? -->
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8"/>
-    <style> 
-        body {
-            background-color: #F9FAFC;
-            font-size: 14px;
-            font-family: Arial;
-            color: #3a3a3a;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        p {
-            font-weight: bold;
-        }
-
-        #name {
-            font-size: 20px;
-        }
-
-        a {
-            color: #7ABBDB;
-            font-style: italic;
-            font-weight: normal;
-        }
-
-        select {
-            display: block;
-            margin-left:auto;
-            margin-right:auto;
-            width:100px;
-        }
-
-        .question {
-            color: gray;
-        }
-
-        /* http://jonraasch.com/blog/css-rounded-corners-in-all-browsers */
-        div > div {
-            /*behavior: url(/css/border-radius.htc);
-            border-radius: 50px;*/
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            background: #F9FAFC;
-        }
-
-        .wrapper {
-            display: inline-block;
-            padding: 20px;
-            background-color: "";
-        }
-
-        #description {
-            display: none;
-        }
-    </style>
-    
-    <!-- polyfills for IE -->
-    <script src="js/polyfills/Object.keys.polyfill.js"></script>
-    <script src="js/polyfills/JSON.polyfill.js"></script>
-    <script src="js/polyfills/getElementsByClassName.polyfill.js"></script>
-    <!-- my script -->
-    <script src="js/script.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- My stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Google Maps https://tilotiti.github.io/jQuery-Google-Map/ -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbgEZ6hTmDlIYt3YNWcb2BLk15ZMkVWlI"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.googlemap/1.5/jquery.googlemap.min.js"></script>
+    <!-- TweenMax, a ScrollMagic dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script> 
+    <!-- ScrollMagic http://scrollmagic.io/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> 
+    <!-- GSAP, a ScrollMagic dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script> 
+    <!-- Scrollmagic debugger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> 
+    <!-- Popup overlay http://dev.vast.com/jquery-popup-overlay/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-popup-overlay/1.7.9/jquery.popupoverlay.min.js"></script>
+    <!-- Fonts / Icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <!-- Match height -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <!-- Modernizr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <!-- My code -->
+    <script src="script.js"></script>
 </head>
-
 <body>
-    <p id="name">Welcome! </p>
-    <p id="description">Your choices have been saved from your last visit, <br>but the quiz has generated a new answer.</p>
-    <br>
-    <p>Guess the colors of these squares...</p>
-    <br>
-    <div class="wrapper"><div title="1"></div></div>
-    <div class="wrapper"><div title="2"></div></div>
-    <div class="wrapper"><div title="3"></div></div>
-    <br><br>
-    <form></form>
+
+    <header>
+        <img class="menu" src="/assets/hamburger.png"/>
+        <img class="close" src="/assets/close.png"/>
+        <p>Information Sciences and Technologies @ <a href="http://rit.edu" target="_blank"><img src="/assets/rit.jpg" /></a></p>
+    </header>
+
+    <!-- Menu -->
+    <nav>
+        <ul class="list-group">
+            <a href="#start" class="menu-btn list-group-item">About</a>
+            <a href="#start" class="menu-btn list-group-item">Degrees</a>
+            <a href="#start" class="menu-btn list-group-item">People</a>
+            <a href="#start" class="menu-btn list-group-item">Research</a>
+            <a href="#start" class="menu-btn list-group-item">Employment</a>
+            <a href="#start" class="menu-btn list-group-item">Resources</a>
+            <a href="#contact" class="menu-btn list-group-item">Contact</a>
+        </ul>
+    </nav>
+
+    <!-- Main panel -->
+    <section id="main">
+        <h1>Information Sciences  <br/> and Technologies</h1>
+        <!-- News main view-->
+        <div class="news container-fluid">
+            <div id="news" class="row">
+                <div class="news_column col-sm-6"><!-- Onload AJAX request --></div>
+                <div class="news_column col-sm-6"><!-- Onload AJAX request --></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="pinContainer">
+        <div id="slideContainer">
+        <a name="start"></a>
+            <!-- About IST panel -->
+            <section class="panel" id="about">
+                <div class="inner">
+                    <h1><!-- Onload AJAX request --></h1>
+                    <p><!-- Onload AJAX request --></p>
+                    <div class="bkg">
+                        <i class="fas fa-quote-left"></i>
+                        <p id="quote"><!-- Onload AJAX request --></p>
+                        <p><!-- Onload AJAX request --></p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IST degrees panel -->
+            <section class="panel" id="deg_panel">
+                <div class="inner">
+                    <h1>Our Degrees</h1>
+                    <p>To view undergraduate degrees and minors, and graduate degrees and certificates, click below.</p> 
+                    <h2><span class="clickable" id="showUndergrad">UNDERGRADUATE</span> | <span class="clickable" id="showGrad">GRADUATE</span></h2>
+                    <div id="undergraduate" class="container-fluid">
+                        <h3><span class="clickable" id="showMajors">DEGREES</span> | <span class="clickable" id="showMinors">MINORS</span></h3>
+                        <div id="majors" class="row-fluid"><!-- Onload AJAX request --></div>
+                        <div id="minors" class="row-fluid"><!-- Onload AJAX request --></div>
+                    </div>
+                    <div>
+                        <div id="graduate" class="container-fluid">
+                            <h3><span class="clickable" id="showDegrees">DEGREES</span> | <span class="clickable" id="showCertificates">CERTIFICATES</span></h3>
+                            <div id="degrees" class="row"><!-- Onload AJAX request --></div>
+                            <div id="certificates" class="row"><!-- Onload AJAX request --></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IST Faculty/Staff panel -->
+            <section class="panel" id="people">
+                <div class="inner">
+                    <h1><!-- Onload AJAX request --></h1>
+                    <p><!-- Onload AJAX request --></p>
+                    <h2><span class="clickable" id="showFaculty">FACULTY</span> | <span class="clickable" id="showStaff">STAFF</span></h2>
+                    <div class="people container-fluid"><ul class="row"><!-- Onload AJAX request --></div>
+                </div>
+            </section>
+
+            <!-- IST Research panel -->
+            <section class="panel" id="research">
+                <div class="inner">
+                    <h1>Research</h1>
+                    <h2><span class="clickable" id="showResearchInterest">BY INTEREST AREA</span> | <span class="clickable" id="showResearchFaculty">BY FACULTY</span></h2>
+                    <div class="container-fluid researching"><ul class="row"><!-- Onload AJAX request --></div>
+                </div>
+            </section>
+
+            <!-- IST Employment 1st panel -->
+            <a name="employmentAnchor"></a>
+            <section class="panel" id="employment1">
+                <div class="inner container-fluid">
+                    <h1><!-- Onload AJAX request --></h1>
+                    <div class="row">
+                        <div class="col-md-6"><!-- Onload AJAX request --></div>
+                        <div class="col-md-6"><!-- Onload AJAX request --></div>
+                    </div>
+                    <div class="row">
+                        <!-- Onload AJAX request -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- IST Employment 2nd panel -->
+            <section class="panel" id="employment2">
+                <div class="inner container-fluid"><!-- Onload AJAX request --></div>
+                <p>*These employers and career names are chosen randomly.</p>
+            </section>
+
+            <!-- IST Employment 3rd panel -->
+            <section class="panel" id="employment3">
+                <div class="inner">
+                    <h1>Where our students work</h1>
+                    <div id="map"><!-- Onload AJAX request --></div>
+                </div>
+            </section>
+
+            <!-- IST Resources panel -->
+            <section class="panel" id="resources">
+                <div class="inner container-fluid">
+                    <h1></h1>
+                    <p></p>
+                    <div class="row">
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                        <div class="resource clickable col-md-2"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- IST Contact Form panel -->
+    <a name="contact"></a>
+    <section id="contact">
+        <!-- Onload AJAX request -->
+    </section>
+
+    <!-- News popup overlay, reusable -->
+    <div id="popup" class="fadeandscale container-fluid">
+        <img class="popup_close" src="/assets/close.png"/>
+        <!-- Onclick AJAX requests -->
+    </div>
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div id="quicklinks" class="col-md-6"></div>
+            <div id="social" class="col-md-6"></div>
+        </div>
+    </footer>
+
 </body>
 </html>
-
-
-
