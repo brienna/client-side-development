@@ -31,13 +31,13 @@ $(document).ready(function() {
     function xhr(type, dataType, path) {
         return $.ajax({
             type: type,
-            url: 'proxy.php',   // Note: Needed because data is on different server
+            url: './proxy.php',   // Note: Needed because data is on different server
             cache: false,       // Note: Set once and it will work always
             async: true,        // Note: ^^^
             dataType: dataType,
             data: path,
         }).fail(function(err) {
-            console.log('Error: ' + err);
+            console.log('Error: ' + Object.keys(err));
         });                     // Note: No .done() here
     }
 
