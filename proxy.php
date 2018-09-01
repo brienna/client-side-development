@@ -3,7 +3,7 @@
 error_reporting(0);
 
 //sets the base of the url we want to hit
-define ('HOSTNAME', 'https://cors-anywhere.herokuapp.com/http://www.ist.rit.edu/api');
+define ('HOSTNAME', 'http://www.ist.rit.edu/api');
 
 //access the api - remember we have to send in a leading '/'
 //so the path variable could be '/about/'
@@ -24,7 +24,7 @@ $url=HOSTNAME.$_GET['path'];
 	curl_close($ch);
 
 //we want json back so set the correct mimetype
-header("Content-Type: application/json");
+header("Content-Type: text/plain");
 
 //give it to me!
 echo $result;

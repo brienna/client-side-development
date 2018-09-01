@@ -28,16 +28,16 @@ $(document).ready(function() {
      * @param path API node to query
      * @return result in json
      **/
-    function xhr(type, dataType, path) {
+    function xhr(type_, dataType, path) {
         return $.ajax({
-            type: type,
-            url: './proxy.php',   // Note: Needed because data is on different server
+            type: type_,
+            url: 'proxy.php',   // Note: Needed because data is on different server
             cache: false,       // Note: Set once and it will work always
             async: true,        // Note: ^^^
             dataType: dataType,
             data: path,
         }).fail(function(err) {
-            console.log('Error: ' + Object.keys(err));
+            console.log('Error: ' + err.statusText);
         });                     // Note: No .done() here
     }
 
@@ -891,7 +891,7 @@ $(document).ready(function() {
 
     /**************************** CONTACT FORM ****************************/
     // Query Contact Form  
-    xhr('get', 'html', { path : '/contactForm/' }).done(function(results) {
+    xhr('get', 'html', { path : '/contactForm.php' }).done(function(results) {
         console.log("Getting contact form...");
         $('#contact').append(results);
     });
